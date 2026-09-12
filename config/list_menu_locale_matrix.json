@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "bank": "00",
+  "module": "home/list_menu.asm",
+  "currency_rendering_families": {
+    "money-sign-flag": {
+      "targets": ["en-us-eu", "de", "it"],
+      "quantity_price": "PrintBCDNumber with MONEY_SIGN; no separately placed currency tile",
+      "list_price": "PrintBCDNumber with MONEY_SIGN; no separately placed currency tile"
+    },
+    "explicit-yen-tile": {
+      "targets": ["fr", "es"],
+      "quantity_price": "PrintBCDNumber without MONEY_SIGN plus a separately placed ¥ tile at (18,10)",
+      "list_price": "PrintBCDNumber without MONEY_SIGN followed by a ¥ tile"
+    },
+    "explicit-yen-kanji": {
+      "targets": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"],
+      "quantity_price": "PrintBCDNumber without MONEY_SIGN plus a separately placed 円 tile at (18,10)",
+      "list_price": "PrintBCDNumber without MONEY_SIGN followed by a 円 tile"
+    }
+  },
+  "targets": {
+    "en-us-eu": {
+      "initial_quantity_offset": "0x2d28",
+      "cancel_offset": "0x2e8c",
+      "cancel_text": "CANCEL",
+      "currency_family": "money-sign-flag",
+      "status": "direct-rom-extracted"
+    },
+    "fr": {
+      "initial_quantity_offset": "0x2d29",
+      "cancel_offset": "0x2e8f",
+      "cancel_text": "RETOUR",
+      "currency_family": "explicit-yen-tile",
+      "quantity_currency_opcode_offset": "0x2c6d",
+      "list_currency_opcode_offset": "0x2de4",
+      "status": "direct-rom-extracted"
+    },
+    "de": {
+      "initial_quantity_offset": "0x2d2d",
+      "cancel_offset": "0x2e91",
+      "cancel_text": "ZURÜCK",
+      "cancel_raw": "99 94 91 c2 82 8a 50",
+      "currency_family": "money-sign-flag",
+      "status": "direct-rom-extracted"
+    },
+    "it": {
+      "initial_quantity_offset": "0x2d28",
+      "cancel_offset": "0x2e8c",
+      "cancel_text": "ESCI",
+      "cancel_raw": "84 92 82 88 50",
+      "currency_family": "money-sign-flag",
+      "status": "direct-rom-extracted"
+    },
+    "es": {
+      "initial_quantity_offset": "0x2d2c",
+      "cancel_offset": "0x2e92",
+      "cancel_text": "SALIR",
+      "cancel_raw": "92 80 8b 88 91 50",
+      "currency_family": "explicit-yen-tile",
+      "quantity_currency_opcode_offset": "0x2c70",
+      "list_currency_opcode_offset": "0x2de7",
+      "status": "direct-rom-extracted"
+    },
+    "jp-rev0a": {
+      "initial_quantity_offset": "0x2dbc",
+      "cancel_offset": "0x2f22",
+      "cancel_text": "やめる",
+      "cancel_raw": "d4 d2 d9 50",
+      "currency_family": "explicit-yen-kanji",
+      "quantity_currency_opcode_offset": "0x2d00",
+      "list_currency_opcode_offset": "0x2e77",
+      "status": "direct-rom-extracted"
+    },
+    "jp-revb": {
+      "initial_quantity_offset": "0x2dc1",
+      "cancel_offset": "0x2f27",
+      "cancel_text": "やめる",
+      "cancel_raw": "d4 d2 d9 50",
+      "currency_family": "explicit-yen-kanji",
+      "quantity_currency_opcode_offset": "0x2d05",
+      "list_currency_opcode_offset": "0x2e7c",
+      "status": "direct-rom-extracted"
+    },
+    "jp-revc": {
+      "initial_quantity_offset": "0x2dc1",
+      "cancel_offset": "0x2f27",
+      "cancel_text": "やめる",
+      "cancel_raw": "d4 d2 d9 50",
+      "currency_family": "explicit-yen-kanji",
+      "quantity_currency_opcode_offset": "0x2d05",
+      "list_currency_opcode_offset": "0x2e7c",
+      "status": "direct-rom-extracted"
+    },
+    "jp-revd": {
+      "initial_quantity_offset": "0x2dc1",
+      "cancel_offset": "0x2f27",
+      "cancel_text": "やめる",
+      "cancel_raw": "d4 d2 d9 50",
+      "currency_family": "explicit-yen-kanji",
+      "quantity_currency_opcode_offset": "0x2d05",
+      "list_currency_opcode_offset": "0x2e7c",
+      "status": "direct-rom-extracted"
+    }
+  },
+  "japanese_layout": {
+    "list_price_offset_columns": 6,
+    "pokemon_level_offset_columns": 6,
+    "item_quantity_offset_columns": 9,
+    "initial_quantity_source_text": "×０１",
+    "space_source_text": "　　　　　　"
+  },
+  "international_layout": {
+    "list_price_offset": "SCREEN_WIDTH + 5",
+    "pokemon_level_offset": "SCREEN_WIDTH + 8",
+    "item_quantity_offset": "SCREEN_WIDTH + 8",
+    "initial_quantity_source_text": "×01",
+    "space_source_text": "      "
+  },
+  "authority": "Reference ROM bytes override public-disassembly source when they differ."
+}
