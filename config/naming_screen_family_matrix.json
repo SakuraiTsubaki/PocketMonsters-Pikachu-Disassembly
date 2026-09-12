@@ -1,46 +1,81 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "bank": "01",
   "module": "engine/menus/naming_screen.asm",
-  "status": "survey-in-progress",
+  "status": "family-and-locale-survey-complete",
   "authority": "Reference ROM bytes override public disassembly source when they differ.",
   "families": {
     "international_latin": ["en-us-eu", "fr", "de", "it", "es"],
+    "international_compositional_prompt": ["en-us-eu", "de"],
+    "international_direct_prompt": ["fr", "it", "es"],
     "japanese_kana": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"]
   },
   "engine_differences": {
     "wild_battle_clear_area": {
-      "international":{"origin":[0,0],"size":[4,11]},
-      "japanese":{"origin":[1,0],"size":[4,10]}
+      "international": {"origin": [0, 0], "size": [4, 11]},
+      "japanese": {"origin": [1, 0], "size": [4, 10]}
     },
     "naming_box": {
-      "international":{"size":[9,18],"max_menu_item":7},
-      "japanese":{"size":[11,18],"max_menu_item":8}
+      "international": {"size": [9, 18], "max_menu_item": 7},
+      "japanese": {"size": [11, 18], "max_menu_item": 8}
     },
     "keyboard": {
-      "international":"5x9 Latin upper/lowercase tables; case row index 6; ED row index 5.",
-      "japanese":"6x9 Katakana/Hiragana tables plus KanaInputText; case row index 7; ED row index 6."
+      "international": "5x9 Latin upper/lowercase tables; case row index 6; ED row index 5.",
+      "japanese": "6x9 Katakana/Hiragana tables plus KanaInputText; case row index 7; ED row index 6."
+    },
+    "prompt_composition": {
+      "en-us-eu_and_de": "Player/rival prefix is placed first, then NameTextString is appended.",
+      "fr_it_es": "YourTextString/RivalsTextString are complete questions and jump directly to PlaceString; NameTextString is retained but unreferenced.",
+      "japanese": "Inline Japanese labels and nickname prompt use the Japanese layout path."
     },
     "ed_tile_loading": {
-      "international":"MBC5-safe HBlank direct VRAM copy of four doubled tile rows.",
-      "japanese":"CopyVideoDataDouble with BANK(\"Home\")/bank 0; source documents reliance on MBC3 bank-zero behaviour."
+      "international": "MBC5-safe HBlank direct VRAM copy of four doubled tile rows.",
+      "japanese": "CopyVideoDataDouble with BANK(\"Home\")/bank 0; public source documents reliance on MBC3 bank-zero behaviour."
     },
     "name_length_logic": {
-      "international":"Distinguishes player/rival length from Pokémon nickname length.",
-      "japanese":"Uses NAME_LENGTH path for the displayed input layout."
+      "international": "Distinguishes player/rival length from Pokémon nickname length.",
+      "japanese": "Uses NAME_LENGTH path for the displayed input layout."
     },
     "dakuten_glyphs": {
-      "international":["ﾞ","ﾟ"],
-      "japanese":["゛","゜"]
+      "international": ["ﾞ", "ﾟ"],
+      "japanese": ["゛", "゜"]
     },
     "prompt_text": {
-      "international":"DoYouWantToNicknameText is far text.",
-      "japanese":"Nickname question and naming labels are inline in Bank 01."
+      "international": "DoYouWantToNicknameText is far text.",
+      "japanese": "Nickname question and naming labels are inline in Bank 01."
     }
   },
-  "public_source_sha1": {
-    "pret/pokeyellow":"5b4b2415feb8228d9da9bdbd52b2c41050d5c7ab",
-    "Narishma-gb/pokeyellow-jp":"ff370546fc5a46faae16ad0579d4a76eb9d8cd6f"
+  "alphabet_tables": {
+    "en-us-eu": {"offset": "0x651c", "length": 112, "sha1": "1a48901bc9c8c46aa0cced96e168ea1b4d7f267d", "case_strings": ["UPPER CASE", "lower case"]},
+    "fr": {"offset": "0x65a5", "length": 112, "sha1": "747ff3c2e8c9e7b837676c172fdbef7c951b38ef", "case_strings": ["MAJUSCULES", "minuscules"]},
+    "de": {"offset": "0x6531", "length": 122, "sha1": "07d661ba5023ac73463720658f9156d275443dbc", "case_strings": ["GROSSBUCHSTABEN", "kleinbuchstaben"], "keyboard_note": "German grid adds äöü/ÄÖÜ."},
+    "it": {"offset": "0x656b", "length": 110, "sha1": "699123dd520a3200ec1189cd0a8235f9c7e1968b", "case_strings": ["MAIUSCOLO", "minuscolo"]},
+    "es": {"offset": "0x6563", "length": 112, "sha1": "83c2df9399901a572b6379bb60fcc93d56864ef7", "case_strings": ["MAYÚSCULAS", "minúsculas"], "encoding_note": "Ú=$ce, ú=$d5 in the reference ROM table."}
   },
-  "next_verification":"Compare FR/DE public Latin tables and extract IT/ES alphabet/string tables directly from the reference ROMs before reconstruction."
+  "naming_labels": {
+    "en-us-eu": ["YOUR ", "RIVAL's ", "NAME?", "NICKNAME?"],
+    "fr": ["VOTRE NOM?", "NOM DU RIVAL?", "NOM?", "SURNOM?"],
+    "de": ["DEIN ", "GEGNER-", "NAME?", "ALIAS?"],
+    "it": ["NOME TUO?", "NOME RIVALE?", "NOME?", "NOME?"],
+    "es": ["¿TU NOMBRE?", "¿NOMBRE RIVAL?", "¿NOMBRE?", "¿APODO?"]
+  },
+  "direct_rom_label_offsets": {
+    "fr": ["0x6738", "0x6743", "0x6751", "0x6756"],
+    "de": ["0x66d6", "0x66dc", "0x66e4", "0x66ea"],
+    "it": ["0x66fc", "0x6706", "0x6713", "0x6719"],
+    "es": ["0x66f6", "0x6702", "0x6711", "0x671a"]
+  },
+  "source_files": {
+    "alphabet_selector": "data/text/alphabets.asm",
+    "alphabet_locales": ["data/text/alphabets/en.asm", "data/text/alphabets/fr.asm", "data/text/alphabets/de.asm", "data/text/alphabets/it.asm", "data/text/alphabets/es.asm"],
+    "japanese_kana": "data/text/kana.asm",
+    "dakuten": "data/text/dakutens.asm"
+  },
+  "public_source_sha1": {
+    "pret/pokeyellow": "5b4b2415feb8228d9da9bdbd52b2c41050d5c7ab",
+    "Narishma-gb/pokeyellow-fr": "2f2723f24736a5bd0b939e0aab21cd5dd63c1add",
+    "Brianum/pokeyellow-de": "8406bb2017e1eb2164393ebd738fc6b62e50eacc",
+    "Narishma-gb/pokeyellow-jp": "ff370546fc5a46faae16ad0579d4a76eb9d8cd6f"
+  },
+  "next_verification": "Reconstruct the module with the three verified prompt/keyboard families, then assemble each target and compare the Bank 01 byte ranges against its reference ROM."
 }
