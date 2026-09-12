@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "bank": "01",
+  "module": "engine/overworld/movement.asm",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "families": {
+    "international": ["en-us-eu", "fr", "de", "it", "es"],
+    "japanese": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"]
+  },
+  "direct_rom_observations": {
+    "initialize_sprite_status": {
+      "international": "Calls InitializeSpriteScreenPosition before returning.",
+      "japanese": "Returns immediately after initializing Y/X displacement.",
+      "addresses": {
+        "en-us-eu":"0x4FFF",
+        "fr":"0x507A",
+        "de":"0x4FFC",
+        "it":"0x504E",
+        "es":"0x5038",
+        "jp-rev0a":"0x4F62",
+        "jp-revb":"0x4F62",
+        "jp-revc":"0x4F62",
+        "jp-revd":"0x4F62"
+      }
+    },
+    "relative_screen_coordinate_conversion": {
+      "international": "Uses signed conversion helper Func_5033 after subtracting player map coordinates.",
+      "japanese": "Uses direct SWAP conversion with no signed helper."
+    },
+    "npc_displacement_lower_bound": {
+      "international": "The cp $05 checks do not branch to .impassable; the old lower-bound restriction is disabled.",
+      "japanese": "Both vertical and horizontal cp $05 checks branch carry to .impassable.",
+      "vertical_addresses": {
+        "en-us-eu":"0x512C",
+        "fr":"0x51A7",
+        "de":"0x5129",
+        "it":"0x517B",
+        "es":"0x5165",
+        "jp-rev0a":"0x507E",
+        "jp-revb":"0x507E",
+        "jp-revc":"0x507E",
+        "jp-revd":"0x507E"
+      },
+      "horizontal_addresses": {
+        "en-us-eu":"0x513B",
+        "fr":"0x51B6",
+        "de":"0x5138",
+        "it":"0x518A",
+        "es":"0x5174",
+        "jp-rev0a":"0x508F",
+        "jp-revb":"0x508F",
+        "jp-revc":"0x508F",
+        "jp-revd":"0x508F"
+      }
+    }
+  },
+  "public_source_crosscheck": {
+    "pret/pokeyellow_sha1":"9c661cff1b757de597391665fc45f9a81cbd4d59",
+    "Narishma-gb/pokeyellow-fr_sha1":"165208eb4f55ff68b80d015b1686c7a2e09d4822",
+    "Brianum/pokeyellow-de_sha1":"165208eb4f55ff68b80d015b1686c7a2e09d4822",
+    "Narishma-gb/pokeyellow-jp_sha1":"228b2e3bc220a5574bd47e9e77cd3d8c25c0ce4",
+    "note":"English source organization differs from FR/DE source history, but direct ROM evidence groups all five international releases together for the identified executable differences."
+  }
+}
