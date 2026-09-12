@@ -223,7 +223,6 @@ DisplayContinueGameInfo:
 IF DEF(_JAPAN)
 	hlcoord 4, 7
 	lb bc, 8, 13
-	hlcoord 4, 7
 ELIF DEF(_GERMAN)
 	hlcoord 3, 7
 	lb bc, 8, 15
