@@ -17,7 +17,7 @@
     {"path":"home/copy2.asm","status":"reference-crosschecked"},
     {"path":"home/pikachu_cries.asm","status":"reference-crosschecked"},
     {"path":"home/joypad.asm","status":"reference-crosschecked"},
-    {"path":"home/overworld.asm","status":"pending"},
+    {"path":"home/overworld.asm","status":"reference-crosschecked"},
     {"path":"home/pokemon.asm","status":"reference-crosschecked"},
     {"path":"home/print_bcd.asm","status":"reference-crosschecked"},
     {"path":"home/pics.asm","status":"reference-crosschecked"},
