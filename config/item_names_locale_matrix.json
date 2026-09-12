@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "bank": "01",
+  "table": "ItemNames",
+  "entry_count": 97,
+  "terminator": "0x50",
+  "authority": "Reference ROM bytes override public disassembly text when they differ.",
+  "tables": {
+    "en-us-eu": {"start":"0x45B7","end":"0x491E","length":871,"sha1":"8b8c3b7caa103ca4f22666b059d4fdf3ca400878","source":"pret/pokeyellow + reference ROM"},
+    "fr": {"start":"0x45B8","end":"0x499A","length":994,"sha1":"d2fa386a740c4e36bec0397ee889e1b16d044d08","source":"Narishma-gb/pokeyellow-fr + reference ROM"},
+    "de": {"start":"0x45B8","end":"0x4919","length":865,"sha1":"01899153019a56b29df50df998b2f6ba21f0df31","source":"Brianum/pokeyellow-de + reference ROM"},
+    "it": {"start":"0x45B8","end":"0x496E","length":950,"sha1":"15cdbc934cddd1393d4664eb229b16cef802fdbb","source":"reference ROM direct extraction"},
+    "es": {"start":"0x45B8","end":"0x4957","length":927,"sha1":"6df0999ad2ddd7af4106e1d37e8f958a3d96c862","source":"reference ROM direct extraction"},
+    "jp-rev0a": {"start":"0x45C4","end":"0x487A","length":694,"sha1":"42ab90ff322ddbc7ecd5e4f4eb243296b8e6374e","source":"Narishma-gb/pokeyellow-jp + reference ROM"},
+    "jp-revb": {"start":"0x45C4","end":"0x487A","length":694,"sha1":"42ab90ff322ddbc7ecd5e4f4eb243296b8e6374e","source":"Narishma-gb/pokeyellow-jp + reference ROM"},
+    "jp-revc": {"start":"0x45C4","end":"0x487A","length":694,"sha1":"42ab90ff322ddbc7ecd5e4f4eb243296b8e6374e","source":"Narishma-gb/pokeyellow-jp + reference ROM"},
+    "jp-revd": {"start":"0x45C4","end":"0x487A","length":694,"sha1":"42ab90ff322ddbc7ecd5e4f4eb243296b8e6374e","source":"Narishma-gb/pokeyellow-jp + reference ROM"}
+  },
+  "price_table": {
+    "entry_count": 97,
+    "bytes_per_entry": 3,
+    "length": 291,
+    "starts": {"en-us-eu":"0x4494","fr":"0x4495","de":"0x4495","it":"0x4495","es":"0x4495","jp":"0x44A1"},
+    "observation": "The item-name table starts immediately after the 291-byte common price table in every target."
+  },
+  "encoding_notes": {
+    "western": "Generation I Western encodings are locale-specific; Italian/Spanish extended glyph assignments were cross-checked against the documented Gen I Italian/Spanish character table.",
+    "italian": ["0xBC = é", "0xBE = À", "0xD6 = º"],
+    "spanish": ["0xBC = é", "0xBF = Á", "0xC7 = É", "0xC9 = Í", "0xCA = Ñ", "0xCC = Ó", "0xCE = Ú", "0xD2 = ñ"],
+    "spanish_original_quirk": "OLD_ROD and GOOD_ROD encode CAñA with lowercase ñ (0xD2), while SUPER_ROD encodes CAÑA with uppercase Ñ (0xCA). Preserve these original bytes."
+  }
+}
