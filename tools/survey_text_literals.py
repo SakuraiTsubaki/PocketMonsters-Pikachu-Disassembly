@@ -1,15 +1,12 @@
 #!/usr/bin/env python3
-"""Verify international-family Bank 00 text-engine literal blocks.
+"""Verify Bank 00 text-engine literal blocks for all nine Yellow targets.
 
 This tool is read-only. It identifies a reference ROM by SHA-1 using
-`config/releases.json`, reads the exact locale block range declared in
+`config/releases.json`, reads the exact locale/revision block range declared in
 `config/text_locale_matrix.json`, and verifies every literal byte sequence.
 
 Usage:
     python3 tools/survey_text_literals.py ROM [ROM ...]
-
-Japanese text rendering is structurally different and is intentionally handled
-by a separate survey rather than forcing it through the international parser.
 """
 
 from __future__ import annotations
@@ -78,6 +75,14 @@ def load_json(path: Path) -> dict:
         return json.load(handle)
 
 
+def profile_for_release(matrix: dict, release_id: str) -> tuple[dict, str]:
+    if release_id.startswith("jp-"):
+        profile = matrix["locale_literals"]["jp"]
+        return profile, profile["revision_ranges"][release_id]
+    profile = matrix["locale_literals"][release_id]
+    return profile, profile["literal_block_range"]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("rom", nargs="+", type=Path)
@@ -103,26 +108,28 @@ def main() -> int:
 
         release_id = release["id"]
         print(f"release={release_id}")
-        if release_id.startswith("jp-"):
-            print("status=SKIP_JAPANESE_TEXT_FAMILY\n")
-            continue
-
-        locale = matrix["locale_literals"].get(release_id)
-        if not locale or "literal_block_range" not in locale:
-            print("status=NO_LITERAL_PROFILE\n")
-            failures += 1
-            continue
-
         if len(rom) < BANK_SIZE:
             print("status=ROM_TOO_SMALL\n")
             failures += 1
             continue
 
-        start, last = parse_range(locale["literal_block_range"])
-        block = rom[start:last + 1]
-        rows = split_terminated(block, start)
-        order = locale["literal_order"]
+        try:
+            profile, range_text = profile_for_release(matrix, release_id)
+        except KeyError:
+            print("status=NO_LITERAL_PROFILE\n")
+            failures += 1
+            continue
 
+        start, last = parse_range(range_text)
+        block = rom[start:last + 1]
+        try:
+            rows = split_terminated(block, start)
+        except ValueError as exc:
+            print(f"status=PARSE_ERROR error={exc}\n")
+            failures += 1
+            continue
+
+        order = profile["literal_order"]
         if len(rows) != len(order):
             print(f"status=LITERAL_COUNT_MISMATCH expected={len(order)} actual={len(rows)}\n")
             failures += 1
@@ -130,23 +137,23 @@ def main() -> int:
 
         release_ok = True
         for label, (row_start, row_last, raw) in zip(order, rows):
-            expected_hex = locale["raw_literals"][label]
-            expected = bytes.fromhex(expected_hex)
+            expected = bytes.fromhex(profile["raw_literals"][label])
             ok = raw == expected
             release_ok &= ok
-            expected_text = locale.get(label, label)
+            expected_text = profile.get(label, label)
+            decoded = expected_text + "@" if ok else decode_stable(raw)
             print(
                 f"{label}: 0x{row_start:04x}-0x{row_last:04x} "
                 f"{'OK' if ok else 'MISMATCH'}  {raw.hex(' ')}  "
-                f"{decode_stable(raw)}  expected={expected_text!r}"
+                f"{decoded}"
             )
 
-        if release_id != "en-us-eu":
-            poke = bytes.fromhex(locale["raw_literals"]["poke"])
-            print(f"localized_poke_e_acute_byte=0x{poke[-2]:02x}")
-        else:
-            poke = bytes.fromhex(locale["raw_literals"]["poke"])
-            print(f"english_poke_e_acute_byte=0x{poke[-2]:02x}")
+        if release_id == "en-us-eu":
+            poke = bytes.fromhex(profile["raw_literals"]["poke"])
+            print(f"poke_e_acute_byte=0x{poke[-2]:02x} family=english")
+        elif release_id in {"fr", "de", "it", "es"}:
+            poke = bytes.fromhex(profile["raw_literals"]["poke"])
+            print(f"poke_e_acute_byte=0x{poke[-2]:02x} family=localized-international")
 
         print(f"status={'PASS' if release_ok else 'FAIL'}\n")
         if not release_ok:
