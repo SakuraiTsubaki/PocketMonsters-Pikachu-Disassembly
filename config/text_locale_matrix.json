@@ -35,6 +35,8 @@
   },
   "locale_literals": {
     "en-us-eu": {
+      "literal_block_range": "0x1823-0x1849",
+      "literal_order": ["tm", "trainer", "pc", "rocket", "poke", "six_dots", "enemy", "pkmn"],
       "tm": "TM",
       "trainer": "TRAINER",
       "pc": "PC",
@@ -43,9 +45,21 @@
       "enemy": "Enemy ",
       "enemy_phrase_order": "literal-then-nickname",
       "dex_end": ".",
-      "status": "reference-crosschecked"
+      "raw_literals": {
+        "tm": "93 8c 50",
+        "trainer": "93 91 80 88 8d 84 91 50",
+        "pc": "8f 82 50",
+        "rocket": "91 8e 82 8a 84 93 50",
+        "poke": "8f 8e 8a ba 50",
+        "six_dots": "75 75 50",
+        "enemy": "84 ad a4 ac b8 7f 50",
+        "pkmn": "e1 e2 50"
+      },
+      "status": "direct-rom-extracted"
     },
     "fr": {
+      "literal_block_range": "0x1820-0x1845",
+      "literal_order": ["pc", "rocket", "six_dots", "pkmn", "tm", "trainer", "poke", "enemy"],
       "tm": "CT",
       "trainer": "DRES.",
       "pc": "PC",
@@ -54,9 +68,21 @@
       "enemy": " ennemi",
       "enemy_phrase_order": "nickname-then-literal",
       "dex_end": ".",
-      "status": "reference-crosschecked"
+      "raw_literals": {
+        "pc": "8f 82 50",
+        "rocket": "91 8e 82 8a 84 93 50",
+        "six_dots": "75 75 50",
+        "pkmn": "e1 e2 50",
+        "tm": "82 93 50",
+        "trainer": "83 91 84 92 e8 50",
+        "poke": "8f 8e 8a bc 50",
+        "enemy": "7f a4 ad ad a4 ac a8 50"
+      },
+      "status": "direct-rom-extracted"
     },
     "de": {
+      "literal_block_range": "0x1823-0x184e",
+      "literal_order": ["pc", "rocket", "six_dots", "pkmn", "tm", "trainer", "poke", "enemy"],
       "tm": "TM",
       "trainer": "TRAINER",
       "pc": "PC",
@@ -65,10 +91,21 @@
       "enemy": "Gegn. ",
       "enemy_phrase_order": "literal-then-nickname",
       "dex_end": ".",
-      "status": "reference-crosschecked"
+      "raw_literals": {
+        "pc": "8f 82 50",
+        "rocket": "93 84 80 8c 7f 91 8e 82 8a 84 93 50",
+        "six_dots": "75 75 50",
+        "pkmn": "e1 e2 50",
+        "tm": "93 8c 50",
+        "trainer": "93 91 80 88 8d 84 91 50",
+        "poke": "8f 8e 8a bc 50",
+        "enemy": "86 a4 a6 ad e8 7f 50"
+      },
+      "status": "direct-rom-extracted"
     },
     "it": {
       "literal_block_range": "0x1823-0x1849",
+      "literal_order": ["pc", "rocket", "six_dots", "pkmn", "tm", "trainer", "poke", "enemy"],
       "tm": "MT",
       "trainer": "ALLEN.",
       "pc": "PC",
@@ -91,6 +128,7 @@
     },
     "es": {
       "literal_block_range": "0x1823-0x1848",
+      "literal_order": ["pc", "rocket", "six_dots", "pkmn", "tm", "trainer", "poke", "enemy"],
       "tm": "MT",
       "trainer": "ENTREN.",
       "pc": "PC",
@@ -123,6 +161,11 @@
       "blank": "　",
       "status": "reference-crosschecked"
     }
+  },
+  "encoding_notes": {
+    "english_poke_e_acute_byte": "0xba",
+    "fr_de_it_es_poke_e_acute_byte": "0xbc",
+    "note": "The localized international releases do not share the English character mapping byte-for-byte. Locale-specific charmaps must be reconstructed and selected per target."
   },
   "authority": "Reference ROM bytes override public-disassembly source when they differ."
 }
