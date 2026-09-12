@@ -1,8 +1,8 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "bank": "01",
   "module": "engine/menus/naming_screen.asm",
-  "status": "family-and-locale-survey-complete",
+  "status": "source-reconstructed",
   "authority": "Reference ROM bytes override public disassembly source when they differ.",
   "families": {
     "international_latin": ["en-us-eu", "fr", "de", "it", "es"],
@@ -66,6 +66,7 @@
     "es": ["0x66f6", "0x6702", "0x6711", "0x671a"]
   },
   "source_files": {
+    "engine": "engine/menus/naming_screen.asm",
     "alphabet_selector": "data/text/alphabets.asm",
     "alphabet_locales": ["data/text/alphabets/en.asm", "data/text/alphabets/fr.asm", "data/text/alphabets/de.asm", "data/text/alphabets/it.asm", "data/text/alphabets/es.asm"],
     "japanese_kana": "data/text/kana.asm",
@@ -77,5 +78,9 @@
     "Brianum/pokeyellow-de": "8406bb2017e1eb2164393ebd738fc6b62e50eacc",
     "Narishma-gb/pokeyellow-jp": "ff370546fc5a46faae16ad0579d4a76eb9d8cd6f"
   },
-  "next_verification": "Reconstruct the module with the three verified prompt/keyboard families, then assemble each target and compare the Bank 01 byte ranges against its reference ROM."
+  "reconstruction": {
+    "source_status": "complete",
+    "bank_build_validation": "pending integration and byte-diff verification"
+  },
+  "next_verification": "Assemble each release target when Bank 01 build integration is available and compare the reconstructed naming-screen byte ranges against each reference ROM."
 }
