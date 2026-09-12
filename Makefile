@@ -16,7 +16,7 @@ check-policy:
 	@$(PYTHON) tools/check_repository_policy.py
 
 releases:
-	@$(PYTHON) -c 'import json; d=json.load(open("config/releases.json", encoding="utf-8")); [print(f"{r[\"id\"]:12} {r[\"sha1\"]}  {r[\"name\"]}") for r in d["releases"]]'
+	@$(PYTHON) -c 'import json; d=json.load(open("config/releases.json", encoding="utf-8")); [print("{:12} {}  {}".format(r["id"], r["sha1"], r["name"])) for r in d["releases"]]'
 
 status:
-	@$(PYTHON) -c 'import json; d=json.load(open("config/releases.json", encoding="utf-8")); [print(f"{r[\"id\"]:12} {r[\"build_status\"]}") for r in d["releases"]]'
+	@$(PYTHON) -c 'import json; d=json.load(open("config/releases.json", encoding="utf-8")); [print("{:12} {}".format(r["id"], r["build_status"])) for r in d["releases"]]'
