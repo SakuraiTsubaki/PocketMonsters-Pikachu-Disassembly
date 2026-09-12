@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Repository policy checks for the disassembly project.
 
-Fails if a ROM image is tracked or if source files directly depend on a local
-base ROM through INCBIN. Reconstructed repository-owned binary assets are
-allowed.
+Fails if a ROM image is tracked or if assembler source directly depends on a
+local base/reference ROM through INCBIN. Reconstructed repository-owned binary
+assets are allowed. Documentation may describe forbidden patterns without being
+mistaken for an executable dependency.
 """
 
 from __future__ import annotations
@@ -16,9 +17,7 @@ import sys
 ROM_SUFFIXES = {
     ".gb", ".gbc", ".gba", ".nds", ".3ds", ".cia", ".xci", ".nsp"
 }
-TEXT_SUFFIXES = {
-    ".asm", ".inc", ".mk", ".py", ".sh", ".md", ".txt", ".json", ".yml", ".yaml"
-}
+ASSEMBLY_SUFFIXES = {".asm", ".inc"}
 BASEROM_INCBIN = re.compile(
     r"\bINCBIN\b[^\n]*(?:baserom|base_rom|base-rom|reference-rom|reference_rom)",
     re.IGNORECASE,
@@ -39,7 +38,9 @@ def main() -> int:
             errors.append(f"tracked ROM image: {path}")
             continue
 
-        if path.suffix.lower() not in TEXT_SUFFIXES:
+        # INCBIN is an assembler directive. Restrict this check to assembler
+        # sources so README/docs can explain the forbidden pattern verbatim.
+        if path.suffix.lower() not in ASSEMBLY_SUFFIXES:
             continue
 
         try:
