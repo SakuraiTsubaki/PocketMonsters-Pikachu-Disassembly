@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "bank": "00",
+  "module": "home/names.asm",
+  "international_machine_prefixes": {
+    "en-us-eu": {
+      "offset": "0x2f31",
+      "technical": "TM",
+      "hidden": "HM",
+      "raw": "93 8c 87 8c",
+      "status": "direct-rom-extracted"
+    },
+    "fr": {
+      "offset": "0x2f34",
+      "technical": "CT",
+      "hidden": "CS",
+      "raw": "82 93 82 92",
+      "status": "direct-rom-extracted"
+    },
+    "de": {
+      "offset": "0x2f36",
+      "technical": "TM",
+      "hidden": "VM",
+      "raw": "93 8c 95 8c",
+      "status": "direct-rom-extracted"
+    },
+    "it": {
+      "offset": "0x2f2f",
+      "technical": "MT",
+      "hidden": "MN",
+      "raw": "8c 93 8c 8d",
+      "status": "direct-rom-extracted"
+    },
+    "es": {
+      "offset": "0x2f36",
+      "technical": "MT",
+      "hidden": "MO",
+      "raw": "8c 93 8c 8e",
+      "status": "direct-rom-extracted"
+    }
+  },
+  "japanese": {
+    "technical": "わざマシン",
+    "hidden": "ひでんマシン",
+    "number_digits": "full-width",
+    "monster_name_slot_bytes": 5,
+    "status": "reference-crosschecked"
+  },
+  "authority": "Reference ROM bytes override public-disassembly source when they differ."
+}
