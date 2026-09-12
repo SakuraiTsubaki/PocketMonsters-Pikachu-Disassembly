@@ -22,15 +22,16 @@
     "jp-rev0a_vs_jp-revb_differing_bytes": 883,
     "international_pairwise_differences_are_large": true,
     "international_pairwise_range_observed": "13245-14150 differing bytes",
-    "jp_vs_international_range_observed": "15376-15648 differing bytes"
+    "jp_vs_international_range_observed": "15376-15648 differing bytes",
+    "item_prices_sha1_all_targets": "c73f21cb5ddee9c231a6d988f321637513619d0f"
   },
   "modules": [
     {"path":"data/sprites/facings.asm","status":"reference-crosschecked"},
     {"path":"engine/battle/safari_zone.asm","status":"reference-crosschecked"},
     {"path":"engine/movie/title.asm","status":"reference-crosschecked"},
-    {"path":"engine/pokemon/load_mon_data.asm","status":"pending"},
-    {"path":"data/items/prices.asm","status":"pending"},
-    {"path":"data/items/names.asm","status":"pending"},
+    {"path":"engine/pokemon/load_mon_data.asm","status":"reference-crosschecked"},
+    {"path":"data/items/prices.asm","status":"direct-byte-verified"},
+    {"path":"data/items/names.asm","status":"reference-crosschecked","evidence":"config/item_names_locale_matrix.json"},
     {"path":"data/text/unused_names.asm","status":"pending"},
     {"path":"engine/gfx/sprite_oam.asm","status":"pending"},
     {"path":"engine/link/print_waiting_text.asm","status":"pending"},
