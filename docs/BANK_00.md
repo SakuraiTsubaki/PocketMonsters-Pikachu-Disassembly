@@ -32,7 +32,7 @@ These addresses are extracted directly from the nine reference ROMs and are reco
 | `fr` | `$01AB` | `$1D0C` | `$1DE1` | `$15A9` | `$1F75` | `$2166` |
 | `de` | `$01AB` | `$1D15` | `$1DEA` | `$15AC` | `$1F7E` | `$216F` |
 | `it` | `$01AB` | `$1D10` | `$1DE5` | `$15AC` | `$1F79` | `$216A` |
-| `es` | `$01AB` | `$1D0F` | `$1D0F` | `$15AC` | `$1F78` | `$2169` |
+| `es` | `$01AB` | `$1D0F` | `$1DE4` | `$15AC` | `$1F78` | `$2169` |
 
 The `Serial` entry to `Timer` entry span is exactly **497 bytes in every target**.
 
