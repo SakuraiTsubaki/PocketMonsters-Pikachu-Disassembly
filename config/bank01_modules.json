@@ -25,9 +25,9 @@
     "jp_vs_international_range_observed": "15376-15648 differing bytes"
   },
   "modules": [
-    {"path":"data/sprites/facings.asm","status":"pending"},
-    {"path":"engine/battle/safari_zone.asm","status":"pending"},
-    {"path":"engine/movie/title.asm","status":"pending"},
+    {"path":"data/sprites/facings.asm","status":"reference-crosschecked"},
+    {"path":"engine/battle/safari_zone.asm","status":"reference-crosschecked"},
+    {"path":"engine/movie/title.asm","status":"reference-crosschecked"},
     {"path":"engine/pokemon/load_mon_data.asm","status":"pending"},
     {"path":"data/items/prices.asm","status":"pending"},
     {"path":"data/items/names.asm","status":"pending"},
