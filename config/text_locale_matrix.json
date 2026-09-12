@@ -41,6 +41,7 @@
       "rocket": "ROCKET",
       "poke": "POKé",
       "enemy": "Enemy ",
+      "enemy_phrase_order": "literal-then-nickname",
       "dex_end": ".",
       "status": "reference-crosschecked"
     },
@@ -62,14 +63,53 @@
       "rocket": "TEAM ROCKET",
       "poke": "POKé",
       "enemy": "Gegn. ",
+      "enemy_phrase_order": "literal-then-nickname",
       "dex_end": ".",
       "status": "reference-crosschecked"
     },
     "it": {
-      "status": "rom-extraction-pending"
+      "literal_block_range": "0x1823-0x1849",
+      "tm": "MT",
+      "trainer": "ALLEN.",
+      "pc": "PC",
+      "rocket": "ROCKET",
+      "poke": "POKé",
+      "enemy": " nemico",
+      "enemy_phrase_order": "nickname-then-literal",
+      "dex_end": ".",
+      "raw_literals": {
+        "pc": "8f 82 50",
+        "rocket": "91 8e 82 8a 84 93 50",
+        "six_dots": "75 75 50",
+        "pkmn": "e1 e2 50",
+        "tm": "8c 93 50",
+        "trainer": "80 8b 8b 84 8d e8 50",
+        "poke": "8f 8e 8a bc 50",
+        "enemy": "7f ad a4 ac a8 a2 ae 50"
+      },
+      "status": "direct-rom-extracted"
     },
     "es": {
-      "status": "rom-extraction-pending"
+      "literal_block_range": "0x1823-0x1848",
+      "tm": "MT",
+      "trainer": "ENTREN.",
+      "pc": "PC",
+      "rocket": "ROCKET",
+      "poke": "POKé",
+      "enemy": "Enem.",
+      "enemy_phrase_order": "literal-then-nickname",
+      "dex_end": ".",
+      "raw_literals": {
+        "pc": "8f 82 50",
+        "rocket": "91 8e 82 8a 84 93 50",
+        "six_dots": "75 75 50",
+        "pkmn": "e1 e2 50",
+        "tm": "8c 93 50",
+        "trainer": "84 8d 93 91 84 8d e8 50",
+        "poke": "8f 8e 8a bc 50",
+        "enemy": "84 ad a4 ac e8 50"
+      },
+      "status": "direct-rom-extracted"
     },
     "jp": {
       "tm": "わざマシン",
