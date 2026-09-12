@@ -21,3 +21,6 @@ jobs:
 
       - name: Enforce ROM-free repository policy
         run: make check-policy
+
+      - name: Validate Bank 01 source reconstruction
+        run: make bank01-check
