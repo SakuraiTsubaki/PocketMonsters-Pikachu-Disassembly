@@ -4,20 +4,29 @@
 Usage:
     python3 tools/survey_bank00.py ROM [ROM ...]
 
-The script prints hashes, cartridge-header fields, vector bytes, entry points,
-and pairwise Bank 00 difference counts. It is intentionally read-only.
+The script prints hashes, cartridge-header fields, interrupt/vector targets,
+entry/init addresses, the Serial->Timer span, and pairwise Bank 00 differences.
+It is intentionally read-only.
 """
 
 from __future__ import annotations
 
 import argparse
 import hashlib
-from pathlib import Path
 from itertools import combinations
+from pathlib import Path
 
 BANK_SIZE = 0x4000
-VECTOR_ADDRS = (0x0000, 0x0008, 0x0010, 0x0018, 0x0020, 0x0028,
-                0x0030, 0x0038, 0x0040, 0x0048, 0x0050, 0x0058, 0x0060)
+VECTOR_ADDRS = (
+    0x0000, 0x0008, 0x0010, 0x0018, 0x0020, 0x0028,
+    0x0030, 0x0038, 0x0040, 0x0048, 0x0050, 0x0058, 0x0060,
+)
+INTERRUPT_VECTORS = {
+    "vblank": 0x0040,
+    "lcdc": 0x0048,
+    "timer": 0x0050,
+    "serial": 0x0058,
+}
 
 
 def digest(data: bytes, name: str) -> str:
@@ -58,6 +67,26 @@ def header_info(rom: bytes) -> dict[str, str | int]:
     }
 
 
+def jp_target(rom: bytes, addr: int) -> int | None:
+    if rom[addr] != 0xC3:
+        return None
+    return int.from_bytes(rom[addr + 1:addr + 3], "little")
+
+
+def init_target(rom: bytes) -> tuple[int | None, int | None]:
+    entry = jp_target(rom, 0x0101)
+    if entry is None:
+        return None, None
+
+    # International builds jump to the small CGB-detection bridge at $01AB.
+    # Its final instruction is JP Init. Japanese builds jump to Init directly.
+    if entry == 0x01AB and rom[entry + 11] == 0xC3:
+        init = int.from_bytes(rom[entry + 12:entry + 14], "little")
+    else:
+        init = entry
+    return entry, init
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("rom", nargs="+", type=Path)
@@ -76,12 +105,25 @@ def main() -> int:
         print(f"size={len(rom)} sha1={digest(rom, 'sha1')}")
         print(f"bank00_sha1={digest(bank0, 'sha1')}")
         print("header=" + repr(header_info(rom)))
+
         for addr in VECTOR_ADDRS:
             print(f"{addr:04x}: {rom[addr:addr + 8].hex(' ')}")
-        entry = rom[0x100:0x104]
-        if entry[0] == 0x00 and entry[1] == 0xC3:
-            target = int.from_bytes(entry[2:4], "little")
-            print(f"entry_target=0x{target:04x}")
+
+        entry, init = init_target(rom)
+        if entry is not None:
+            print(f"entry_target=0x{entry:04x}")
+        if init is not None:
+            print(f"init_target=0x{init:04x}")
+
+        targets = {name_: jp_target(rom, addr) for name_, addr in INTERRUPT_VECTORS.items()}
+        for label, target in targets.items():
+            if target is not None:
+                print(f"{label}_target=0x{target:04x}")
+
+        serial = targets["serial"]
+        timer = targets["timer"]
+        if serial is not None and timer is not None and timer >= serial:
+            print(f"serial_to_timer_span={timer - serial} bytes")
         print()
 
     print("[pairwise Bank 00 differences]")
