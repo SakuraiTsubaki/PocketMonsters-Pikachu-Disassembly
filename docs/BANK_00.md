@@ -1,6 +1,6 @@
 # Bank 00 Reconstruction Notes
 
-Bank `00` is the fixed ROM0 bank (`$0000-$3FFF`). It contains reset vectors, interrupt vectors, the cartridge entry point, and the high-frequency home routines that remain callable without switching ROM banks.
+Bank `00` is the fixed ROM0 bank (`$0000-$3FFF`). It contains reset vectors, interrupt vectors, the cartridge entry point, and high-frequency home routines callable without switching ROM banks.
 
 ## Verified binary facts
 
@@ -8,21 +8,19 @@ All nine unique reference ROMs were compared directly.
 
 ### Common vectors
 
-The following vector pattern is common to every release except where noted:
-
-- `$0000`, `$0008`, `$0010`, `$0018`, `$0020`, `$0028`, `$0030`: `RST $38` followed by zero padding to the next vector.
+- `$0000`, `$0008`, `$0010`, `$0018`, `$0020`, `$0028`, `$0030`: `RST $38` followed by zero padding.
 - `$0038`: normally `RST $38`; Japanese V1.0 instead contains `JP $F080`, an invalid/unused jump into echo RAM.
-- `$0040`: jump to VBlank handler.
-- `$0048`: jump to LCD STAT handler (`LCDC`).
-- `$0050`: jump to Timer handler.
-- `$0058`: jump to Serial handler.
+- `$0040`: jump to `VBlank`.
+- `$0048`: jump to `LCDC`.
+- `$0050`: jump to `Timer`.
+- `$0058`: jump to `Serial`.
 - `$0060`: `RETI` joypad interrupt stub.
 
-Japanese releases leave `$0061-$0067` unused. International releases immediately place high-frequency home code after `$0060`.
+Japanese releases leave `$0061-$0067` unused. International releases place high-frequency home code immediately after `$0060`.
 
 ### Verified handler/entry addresses
 
-These addresses are extracted directly from the nine reference ROMs. They are also recorded machine-readably in `config/bank00_vectors.json`.
+These addresses are extracted directly from the nine reference ROMs and are recorded machine-readably in `config/bank00_vectors.json`.
 
 | Target | Entry | Init | VBlank | LCDC | Serial | Timer |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -36,89 +34,89 @@ These addresses are extracted directly from the nine reference ROMs. They are al
 | `it` | `$01AB` | `$1D10` | `$1DE5` | `$15AC` | `$1F79` | `$216A` |
 | `es` | `$01AB` | `$1D0F` | `$1DE4` | `$15AC` | `$1F78` | `$2169` |
 
-The `Serial` entry to `Timer` entry span is exactly **497 bytes in every target**. This is a strong cross-release structural invariant even though relocation-sensitive absolute operands differ between builds.
-
-### Entry point at `$0100`
-
-Every release begins with `NOP` + absolute `JP`.
-
-- Japanese V1.0 jumps directly to `$1D60` (`Init`).
-- Japanese V1.1/V1.2/V1.3 jump directly to `$1D66` (`Init`).
-- English/French/German/Italian/Spanish jump to `$01AB`, a short CGB-detection bridge that then jumps to the release-specific `Init` address shown above.
+The `Serial` entry to `Timer` entry span is exactly **497 bytes in every target**.
 
 ## Structural families
 
-Bank 00 is not one byte-identical layout with translated text. It has two structural families.
-
 ### Japanese family
 
-- DMG/SGB cartridge path.
-- MBC3 cartridge type.
-- The `lcd`, `clear_sprites`, and `copy` home routines live in the main Home section.
-- No international `copy2` or `cgb_palettes` home modules.
-- V1.0 has a unique `$0038` vector and a substantially different ROM0 layout from V1.1+.
+- DMG/SGB path, MBC3 cartridge type.
+- `lcd`, `clear_sprites`, and `copy` live in the main Home section.
+- No international `copy2` or `cgb_palettes` modules.
+- V1.0 has the unique `$0038` vector and several ROM0 revision-specific code-generation differences.
 - V1.0 VBlank does not call `ReadJoypad`; V1.1-V1.3 do.
-
-Adjacent revision comparison inside Bank 00:
-
-- V1.0 -> V1.1: 15,610 differing bytes across 435 contiguous difference ranges.
-- V1.1 -> V1.2: 31 differing bytes across 18 ranges.
-- V1.2 -> V1.3: 200 differing bytes across 30 ranges.
+- `TrackPlayTime` calls `CountDownIgnoreInputBitReset` at a different point in V1.0/V1.1 versus V1.2/V1.3.
 
 ### International family
 
-- CGB-aware/SGB path.
-- MBC5 cartridge type.
-- `lcd`, `clear_sprites`, and the first `copy` block are placed in a separate `High Home` section immediately after the joypad vector.
+- CGB-aware/SGB path, MBC5 cartridge type.
+- `lcd`, `clear_sprites`, and the first copy block live in `High Home` directly after the joypad vector.
 - `copy2` and `cgb_palettes` are present later in ROM0.
-- The cartridge entry point is stable at `$01AB` across EN/FR/DE/IT/ES.
-- VBlank preserves `rVBK`, forces VRAM bank 0 while servicing the interrupt, then restores the previous bank.
+- VBlank preserves `rVBK`, forces VRAM bank 0 while servicing the interrupt, then restores it.
+- Palette fades also mirror DMG palette changes into CGB palette update helpers.
 
-## Byte-verified shared routines
+## Reconstruction status
 
-The following routine groups have already been located directly in all nine ROMs:
+Machine-readable module status is maintained in `config/bank00_modules.json`.
 
-| Routine source | International offset | Japanese V1.0 | Japanese V1.1-V1.3 |
-| --- | ---: | ---: | ---: |
-| `home/lcd.asm` | `$0061` | `$1597` | `$159D` |
-| `home/clear_sprites.asm` | `$0082` | `$15B8` | `$15BE` |
-| copy block start | `$009D` | `$15D3` | `$15D9` |
+### Directly byte-verified / address-verified core
 
-`home/lcd.asm` and `home/clear_sprites.asm` are machine-code identical across all nine releases. The copy helpers share semantics but have different grouping/order between the Japanese and international layouts.
+- `home/header.asm`
+- `home/start.asm`
+- `home/lcd.asm`
+- `home/clear_sprites.asm`
+- `home/lcdc.asm`
+- `home/init.asm`
+- `home/vblank.asm`
+- `home/serial.asm`
+- `home/timer.asm`
 
-## Source reconstruction in repository
+`home/lcd.asm`, `home/clear_sprites.asm`, and `home/lcdc.asm` have identical machine-code bodies across all nine releases. `Serial` is also structurally invariant across the nine ROMs, including the 497-byte Serial-to-Timer span.
 
-The active RGBDS source tree now includes:
+### Reconstructed and EN/JP reference-crosschecked
 
-- `home/header.asm` — reset vectors, interrupt vectors, and cartridge entry point.
-- `home/start.asm` — international CGB boot-mode bridge plus the Japanese unused `_Start` stub.
-- `home/lcd.asm` — shared LCD disable/enable routines.
-- `home/clear_sprites.asm` — shared shadow-OAM clearing/hiding routines.
-- `home/copy.asm` — Japanese complete copy group / international High Home subset.
-- `home/copy2.asm` — international continuation of copy and VRAM helpers.
-- `home/init.asm` — unified initialization logic with JP/INTL HRAM/audio-state differences isolated.
-- `home/vblank.asm` — unified VBlank handler with CGB VRAM-bank handling and JP V1.0 joypad behavior isolated.
-- `home/serial.asm` — common serial/link core reconstructed for all releases.
-- `home/timer.asm` — common immediate-return timer interrupt stub.
-- `home.asm` — unified JP/INTL module ordering with narrowly scoped conditionals.
+- `home/copy.asm`
+- `home/copy2.asm`
+- `home/pikachu_cries.asm`
+- `home/joypad.asm`
+- `home/pokemon.asm`
+- `home/print_bcd.asm`
+- `home/pics.asm`
+- `home/pikachu.asm`
+- `home/vcopy.asm`
+- `home/fade.asm`
+- `home/play_time.asm`
+- `home/audio.asm`
+- `home/update_sprites.asm`
 
-The read-only `tools/survey_bank00.py` utility now extracts the ROM0 hashes, header metadata, vector bytes, interrupt targets, entry/Init targets, Serial-to-Timer span, and pairwise Bank 00 differences from local reference files without copying those ROMs into the repository.
+Important family/revision differences are represented narrowly instead of duplicating complete files. Examples include Japanese full-width digit handling in BCD output, Japanese inline status/menu text, CGB palette calls in international fades, JP V1.0 direct bank switching in `DetermineAudioFunction`, and the Japanese V1.0 joypad/VBlank behavior.
 
-## External label/layout cross-checks
+### Still pending in the current Home sequence
 
-Public disassemblies used as comparison references:
+- `home/overworld.asm`
+- `home/text.asm`
+- remaining later Home modules after `update_sprites.asm`
+- constants/macros/charmaps/WRAM/HRAM definitions required for an actual clean RGBDS assembly
+- reconstructed flower graphics referenced by `home/vcopy.asm`
 
-- `pret/pokeyellow` — international/English home layout.
-- `Narishma-gb/pokeyellow-jp` — Japanese home layout and revision conditionals.
+## Verification tooling
+
+`tools/survey_bank00.py` reads local reference ROMs without copying them into the repository. It reports ROM0 hashes, headers, vector bytes, interrupt targets, entry/Init targets, Serial-to-Timer span, and pairwise Bank 00 differences.
+
+The public comparison references currently used are:
+
+- `pret/pokeyellow` — English/international source layout.
+- `Narishma-gb/pokeyellow-jp` — Japanese V1.0-V1.3 source/revision layout.
 - `Narishma-gb/pokeyellow-fr` — French international-family layout.
 - `Brianum/pokeyellow-de` — German international-family layout.
 
-Italian and Spanish are being verified directly from their reference ROMs against the international structure.
+Italian and Spanish continue to be verified from the local reference ROMs against the international structure.
 
 ## Next Bank 00 work
 
-1. Reconstruct the modules before `Init` in ROM order: `pikachu_cries`, `joypad`, `overworld`, `pokemon`, `print_bcd`, `pics`, `pikachu`, `lcdc`, `text`, and `vcopy`.
-2. Reconstruct `fade`, `play_time`, `audio`, and `update_sprites` around the now-restored VBlank/Serial core.
-3. Add hardware/constants/WRAM/HRAM definitions required to assemble the reconstructed Home modules.
-4. Generate per-release RGBDS `.map`/`.sym` files and automatically compare the emitted handler addresses with `config/bank00_vectors.json`.
-5. Mark Bank 00 complete only after all nine targets reproduce `$0000-$3FFF` byte-for-byte.
+1. Reconstruct `home/overworld.asm` and classify its JP revision/localization differences.
+2. Reconstruct `home/text.asm` with separate character/charmap behavior rather than mixing localized strings into engine logic.
+3. Continue the remaining Home modules in ROM order.
+4. Add the required constants, macros, charmaps, WRAM/HRAM symbols, and graphics assets.
+5. Pin a tested RGBDS toolchain, generate per-release `.map`/`.sym`, and compare every emitted Bank 00 byte against all nine references.
+6. Mark Bank 00 complete only when `$0000-$3FFF` is byte-for-byte identical for every target.
