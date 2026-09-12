@@ -23,7 +23,15 @@
     "international_pairwise_differences_are_large": true,
     "international_pairwise_range_observed": "13245-14150 differing bytes",
     "jp_vs_international_range_observed": "15376-15648 differing bytes",
-    "item_prices_sha1_all_targets": "c73f21cb5ddee9c231a6d988f321637513619d0f"
+    "item_prices_sha1_all_targets": "c73f21cb5ddee9c231a6d988f321637513619d0f",
+    "waiting_text": {
+      "en-us-eu": {"offset":"0x4BAB","text":"Waiting...!","box_width":11},
+      "fr": {"offset":"0x4C27","text":"UN MOMENT…","box_width":11},
+      "de": {"offset":"0x4BA6","text":"BITTE WARTEN…","box_width":13},
+      "it": {"offset":"0x4BFB","text":"ATTENDERE!","box_width":11},
+      "es": {"offset":"0x4BE4","text":"¡ESPERA...!","box_width":11},
+      "jp": {"offset":"0x4AF9","text":"つうしんたいきちゅう！","box_width":11,"revisions":"0A/B/C/D identical"}
+    }
   },
   "modules": [
     {"path":"data/sprites/facings.asm","status":"reference-crosschecked"},
@@ -32,9 +40,9 @@
     {"path":"engine/pokemon/load_mon_data.asm","status":"reference-crosschecked"},
     {"path":"data/items/prices.asm","status":"direct-byte-verified"},
     {"path":"data/items/names.asm","status":"reference-crosschecked","evidence":"config/item_names_locale_matrix.json"},
-    {"path":"data/text/unused_names.asm","status":"pending"},
-    {"path":"engine/gfx/sprite_oam.asm","status":"pending"},
-    {"path":"engine/link/print_waiting_text.asm","status":"pending"},
+    {"path":"data/text/unused_names.asm","status":"reference-crosschecked","notes":"Common unused Japanese development-era names retained for later semantic analysis."},
+    {"path":"engine/gfx/sprite_oam.asm","status":"reference-crosschecked"},
+    {"path":"engine/link/print_waiting_text.asm","status":"reference-crosschecked"},
     {"path":"engine/overworld/sprite_collisions.asm","status":"pending"},
     {"path":"engine/events/pick_up_item.asm","status":"pending"},
     {"path":"engine/overworld/movement.asm","status":"pending"},
