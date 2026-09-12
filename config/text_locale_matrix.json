@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "bank": "00",
+  "module": "home/text.asm",
+  "families": {
+    "international": ["en-us-eu", "fr", "de", "it", "es"],
+    "japanese": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"]
+  },
+  "features": {
+    "single_spaced_layout_flag": {
+      "international": true,
+      "japanese": false,
+      "status": "reference-crosschecked"
+    },
+    "page_command_character": {
+      "international": true,
+      "japanese": false,
+      "status": "reference-crosschecked"
+    },
+    "tx_far_handler_in_home_text": {
+      "international": true,
+      "japanese": false,
+      "status": "reference-crosschecked"
+    },
+    "kana_diacritic_renderer": {
+      "international": false,
+      "japanese": true,
+      "status": "reference-crosschecked"
+    },
+    "ga_command_character": {
+      "international": false,
+      "japanese": true,
+      "status": "reference-crosschecked"
+    }
+  },
+  "locale_literals": {
+    "en-us-eu": {
+      "tm": "TM",
+      "trainer": "TRAINER",
+      "pc": "PC",
+      "rocket": "ROCKET",
+      "poke": "POKé",
+      "enemy": "Enemy ",
+      "dex_end": ".",
+      "status": "reference-crosschecked"
+    },
+    "fr": {
+      "tm": "CT",
+      "trainer": "DRES.",
+      "pc": "PC",
+      "rocket": "ROCKET",
+      "poke": "POKé",
+      "enemy": " ennemi",
+      "enemy_phrase_order": "nickname-then-literal",
+      "dex_end": ".",
+      "status": "reference-crosschecked"
+    },
+    "de": {
+      "tm": "TM",
+      "trainer": "TRAINER",
+      "pc": "PC",
+      "rocket": "TEAM ROCKET",
+      "poke": "POKé",
+      "enemy": "Gegn. ",
+      "dex_end": ".",
+      "status": "reference-crosschecked"
+    },
+    "it": {
+      "status": "rom-extraction-pending"
+    },
+    "es": {
+      "status": "rom-extraction-pending"
+    },
+    "jp": {
+      "tm": "わざマシン",
+      "trainer": "トレーナー",
+      "pc": "パソコン",
+      "rocket": "ロケットだん",
+      "poke": "ポケモン",
+      "enemy": "てきの　",
+      "ga": "が　",
+      "dex_end": "。",
+      "blank": "　",
+      "status": "reference-crosschecked"
+    }
+  },
+  "authority": "Reference ROM bytes override public-disassembly source when they differ."
+}
