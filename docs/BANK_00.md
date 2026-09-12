@@ -54,6 +54,7 @@ The `Serial` entry to `Timer` entry span is exactly **497 bytes in every target*
 - `copy2` and `cgb_palettes` are present later in ROM0.
 - VBlank preserves `rVBK`, forces VRAM bank 0 while servicing the interrupt, then restores it.
 - Palette fades also mirror DMG palette changes into CGB palette update helpers.
+- EN/FR/DE/IT/ES share the text-engine family but do **not** have one byte-identical character map; for example `POKé` uses `$BA` for `é` in English and `$BC` in FR/DE/IT/ES.
 
 ## Reconstruction status
 
@@ -73,35 +74,44 @@ Machine-readable module status is maintained in `config/bank00_modules.json`.
 
 `home/lcd.asm`, `home/clear_sprites.asm`, and `home/lcdc.asm` have identical machine-code bodies across all nine releases. `Serial` is also structurally invariant across the nine ROMs, including the 497-byte Serial-to-Timer span.
 
-### Reconstructed and EN/JP reference-crosschecked
+### Reconstructed and reference-crosschecked
 
 - `home/copy.asm`
 - `home/copy2.asm`
 - `home/pikachu_cries.asm`
 - `home/joypad.asm`
+- `home/overworld.asm`
 - `home/pokemon.asm`
 - `home/print_bcd.asm`
 - `home/pics.asm`
 - `home/pikachu.asm`
+- `home/text.asm`
 - `home/vcopy.asm`
 - `home/fade.asm`
 - `home/play_time.asm`
 - `home/audio.asm`
 - `home/update_sprites.asm`
 
-Important family/revision differences are represented narrowly instead of duplicating complete files. Examples include Japanese full-width digit handling in BCD output, Japanese inline status/menu text, CGB palette calls in international fades, JP V1.0 direct bank switching in `DetermineAudioFunction`, and the Japanese V1.0 joypad/VBlank behavior.
+The large `overworld` and `text` modules are split into maintainable include files while preserving original ROM order. `docs/OVERWORLD_ENGINE.md`, `docs/TEXT_ENGINE.md`, `docs/TEXT_LITERAL_SURVEY.md`, and `config/text_locale_matrix.json` record the comparison and byte-evidence decisions.
+
+Text fixed literals are now directly extracted from all nine references. This includes release-specific literal order, Japanese revision relocation, FR/IT enemy-name composition order, and per-locale encoded byte sequences.
+
+Important family/revision differences are represented narrowly instead of duplicating complete files. Examples include Japanese full-width digit handling in BCD output, Japanese kana diacritic rendering, CGB palette calls in international fades, JP V1.0 direct bank switching in `DetermineAudioFunction`, and Japanese V1.0 joypad/VBlank behavior.
 
 ### Still pending in the current Home sequence
 
-- `home/overworld.asm`
-- `home/text.asm`
 - remaining later Home modules after `update_sprites.asm`
-- constants/macros/charmaps/WRAM/HRAM definitions required for an actual clean RGBDS assembly
-- reconstructed flower graphics referenced by `home/vcopy.asm`
+- `data/items/marts.asm` and other Home-included data needed to preserve ROM0 order
+- constants/macros and per-target charmaps
+- WRAM/HRAM definitions and semantic aliases
+- graphics assets referenced from Bank 00, including flower tiles
+- target build definitions for EN/FR/DE/IT/ES and JP V1.0-V1.3
 
 ## Verification tooling
 
 `tools/survey_bank00.py` reads local reference ROMs without copying them into the repository. It reports ROM0 hashes, headers, vector bytes, interrupt targets, entry/Init targets, Serial-to-Timer span, and pairwise Bank 00 differences.
+
+`tools/survey_text_literals.py` identifies a reference ROM by SHA-1, selects the release-specific ROM0 literal range, and verifies the exact fixed text-engine bytes for all nine targets.
 
 The public comparison references currently used are:
 
@@ -110,13 +120,13 @@ The public comparison references currently used are:
 - `Narishma-gb/pokeyellow-fr` — French international-family layout.
 - `Brianum/pokeyellow-de` — German international-family layout.
 
-Italian and Spanish continue to be verified from the local reference ROMs against the international structure.
+Italian and Spanish are reconstructed directly from the verified local reference ROMs where no matching full public disassembly is available.
 
 ## Next Bank 00 work
 
-1. Reconstruct `home/overworld.asm` and classify its JP revision/localization differences.
-2. Reconstruct `home/text.asm` with separate character/charmap behavior rather than mixing localized strings into engine logic.
-3. Continue the remaining Home modules in ROM order.
-4. Add the required constants, macros, charmaps, WRAM/HRAM symbols, and graphics assets.
-5. Pin a tested RGBDS toolchain, generate per-release `.map`/`.sym`, and compare every emitted Bank 00 byte against all nine references.
+1. Continue the remaining Home modules in exact ROM order after `home/update_sprites.asm`.
+2. Reconstruct Home-included data such as mart tables and tileset collision data instead of hiding them in raw ROM chunks.
+3. Reconstruct constants, macros, per-target charmaps, WRAM/HRAM symbols, and referenced graphics assets.
+4. Wire explicit build definitions for all nine unique targets and pin tested RGBDS versions/compatibility.
+5. Generate per-release `.map`/`.sym`, compare every emitted Bank 00 byte against all nine references, and classify every mismatch.
 6. Mark Bank 00 complete only when `$0000-$3FFF` is byte-for-byte identical for every target.
