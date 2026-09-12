@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "bank": "01",
+  "module": "engine/menus/text_box.asm",
+  "status": "source-reconstructed",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "families": {
+    "international_dynamic_field_move_menu": ["en-us-eu", "fr", "de", "it", "es"],
+    "japanese_fixed_field_move_menu": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"],
+    "money_sign_flag": ["en-us-eu", "de", "it"],
+    "currency_string_then_bcd": ["fr", "es", "jp-rev0a", "jp-revb", "jp-revc", "jp-revd"],
+    "seven_column_two_option_backup": ["de"],
+    "six_column_two_option_backup": ["en-us-eu", "fr", "it", "es", "jp-rev0a", "jp-revb", "jp-revc", "jp-revd"]
+  },
+  "shared_text_box_coord_table": [
+    ["MESSAGE_BOX", 0, 12, 19, 17],
+    ["MENU_TEMPLATE_03", 0, 0, 19, 14],
+    ["MENU_TEMPLATE_07", 0, 0, 11, 6],
+    ["LIST_MENU_BOX", 4, 2, 19, 12],
+    ["MENU_TEMPLATE_10", 7, 0, 19, 17],
+    ["MON_SPRITE_POPUP", 6, 4, 14, 13]
+  ],
+  "locale_geometry": {
+    "en-us-eu": {"use_toss_x": 13, "use_toss_text_x": 15, "battle_x": 8, "battle_text_x": 10, "money_text_x": 13},
+    "fr": {"use_toss_x": 12, "use_toss_text_x": 14, "battle_x": 6, "battle_text_x": 8, "money_text_x": 13},
+    "de": {"use_toss_x": 13, "use_toss_text_x": 15, "battle_x": 6, "battle_text_x": 8, "money_text_x": 13},
+    "it": {"use_toss_x": 12, "use_toss_text_x": 14, "battle_x": 6, "battle_text_x": 8, "money_text_x": 13, "verification": "direct-rom"},
+    "es": {"use_toss_x": 12, "use_toss_text_x": 14, "battle_x": 8, "battle_text_x": 10, "money_text_x": 13, "verification": "direct-rom"},
+    "jp": {"use_toss_x": 14, "use_toss_text_x": 16, "battle_x": 9, "battle_text_x": 11, "money_text_x": 14}
+  },
+  "money_rendering": {
+    "en-us-eu": "PrintBCDNumber with MONEY_SIGN",
+    "de": "PrintBCDNumber with MONEY_SIGN",
+    "it": "PrintBCDNumber with MONEY_SIGN; direct ROM verified",
+    "fr": "Place CurrencyString first, then PrintBCDNumber without MONEY_SIGN",
+    "es": "Place CurrencyString first, then PrintBCDNumber without MONEY_SIGN; direct ROM verified",
+    "jp": "Place Japanese yen CurrencyString first, then PrintBCDNumber without MONEY_SIGN"
+  },
+  "two_option_backup_width": {
+    "de": 7,
+    "default": 6
+  },
+  "field_move_engine": {
+    "international": "FieldMoveDisplayData uses three-byte records (move id, localized-name index, leftmost X) and dynamically positions the menu.",
+    "japanese": "FieldMoveDisplayData uses two-byte records (move id, localized-name index) and a fixed right-side seven-column menu."
+  },
+  "field_move_names": {
+    "en-us-eu": ["CUT", "FLY", "", "SURF", "STRENGTH", "FLASH", "DIG", "TELEPORT", "SOFTBOILED"],
+    "fr": ["COUPE", "VOL", "", "SURF", "FORCE", "FLASH", "TUNNEL", "TELEPORT", "E-COQUE"],
+    "de": ["ZERSCHNEIDER", "FLIEGEN", "", "SURFER", "STÄRKE", "BLITZ", "SCHAUFLER", "TELEPORT", "WEICHEI"],
+    "it": ["TAGLIO", "VOLO", "", "SURF", "FORZA", "FLASH", "FOSSA", "TELETRASPOR.", "UOVO SODO"],
+    "es": ["CORTE", "VUELO", "", "SURF", "FUERZA", "DESTELLO", "EXCAVAR", "TELETRANSP.", "AMORTIGUADOR"],
+    "jp": ["いあいぎり", "そらをとぶ", "", "なみのり", "かいりき", "フラッシュ", "あなをほる", "テレポート", "タマゴうみ"]
+  },
+  "field_move_leftmost_x": {
+    "en-us-eu": [12, 12, 12, 12, 10, 12, 12, 10, 8],
+    "fr": [12, 12, 12, 12, 12, 12, 12, 10, 11],
+    "de": [6, 11, 12, 12, 12, 12, 9, 10, 11],
+    "it": {"values": [12, 12, 12, 12, 12, 12, 12, 6, 9], "verification": "direct-rom"},
+    "es": {"values": [12, 12, 12, 12, 12, 10, 11, 7, 6], "verification": "direct-rom"}
+  },
+  "source_files": [
+    "engine/menus/text_box.asm",
+    "data/text_boxes.asm",
+    "data/yes_no_menu_strings.asm",
+    "data/moves/field_move_names.asm",
+    "data/moves/field_moves.asm"
+  ],
+  "reconstruction": {
+    "source_status": "complete",
+    "bank_build_validation": "pending integration and byte-diff verification"
+  },
+  "next_verification": "Assemble each release target when Bank 01 integration is available, compare the reconstructed text-box range with the matching reference ROM, and record any exact mismatch ranges."
+}
