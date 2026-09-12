@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "bank": "01",
+  "module": "engine/menus/naming_screen.asm",
+  "status": "survey-in-progress",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "families": {
+    "international_latin": ["en-us-eu", "fr", "de", "it", "es"],
+    "japanese_kana": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"]
+  },
+  "engine_differences": {
+    "wild_battle_clear_area": {
+      "international":{"origin":[0,0],"size":[4,11]},
+      "japanese":{"origin":[1,0],"size":[4,10]}
+    },
+    "naming_box": {
+      "international":{"size":[9,18],"max_menu_item":7},
+      "japanese":{"size":[11,18],"max_menu_item":8}
+    },
+    "keyboard": {
+      "international":"5x9 Latin upper/lowercase tables; case row index 6; ED row index 5.",
+      "japanese":"6x9 Katakana/Hiragana tables plus KanaInputText; case row index 7; ED row index 6."
+    },
+    "ed_tile_loading": {
+      "international":"MBC5-safe HBlank direct VRAM copy of four doubled tile rows.",
+      "japanese":"CopyVideoDataDouble with BANK(\"Home\")/bank 0; source documents reliance on MBC3 bank-zero behaviour."
+    },
+    "name_length_logic": {
+      "international":"Distinguishes player/rival length from Pokémon nickname length.",
+      "japanese":"Uses NAME_LENGTH path for the displayed input layout."
+    },
+    "dakuten_glyphs": {
+      "international":["ﾞ","ﾟ"],
+      "japanese":["゛","゜"]
+    },
+    "prompt_text": {
+      "international":"DoYouWantToNicknameText is far text.",
+      "japanese":"Nickname question and naming labels are inline in Bank 01."
+    }
+  },
+  "public_source_sha1": {
+    "pret/pokeyellow":"5b4b2415feb8228d9da9bdbd52b2c41050d5c7ab",
+    "Narishma-gb/pokeyellow-jp":"ff370546fc5a46faae16ad0579d4a76eb9d8cd6f"
+  },
+  "next_verification":"Compare FR/DE public Latin tables and extract IT/ES alphabet/string tables directly from the reference ROMs before reconstruction."
+}
