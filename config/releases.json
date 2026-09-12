@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "rom_size_bytes": 1048576,
+  "rom_bank_size_bytes": 16384,
+  "rom_bank_count": 64,
+  "unique_reference_images": 9,
+  "reference_files_observed": 14,
+  "releases": [
+    {
+      "id": "jp-rev0a",
+      "name": "Pocket Monsters Pikachu (Japan) (Rev 0A)",
+      "language": "ja",
+      "region": "Japan",
+      "reference_filenames": ["Pocket Monsters - Pikachu (Japan) (Rev 0A) (SGB Enhanced).gb"],
+      "md5": "aa13e886a47fd473da63b7d5ddf2828d",
+      "sha1": "1fb6c264e950d97ce3fd99b347e485b2150df4ff",
+      "sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436",
+      "header": {"title": "POKEMON YELLOW", "cgb_flag": "0x00", "sgb_flag": "0x03", "cartridge_type": "0x13", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x00", "version": "0x00", "header_checksum": "0x20", "global_checksum": "0x9c29"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "jp-revb",
+      "name": "Pocket Monsters Pikachu (Japan) (Rev B)",
+      "language": "ja",
+      "region": "Japan",
+      "reference_filenames": ["Pocket Monsters - Pikachu (Japan) (Rev B) (SGB Enhanced).gb"],
+      "md5": "96c1f411671b6e1761cf31884dde0dbb",
+      "sha1": "28e4b8531ea4ea1de5a396fccb0cfba51b06b149",
+      "sha256": "1acab20d1aa3e19c081abaac3e303c4cf3e582213937acbf25942b31c28aecfe",
+      "header": {"title": "POKEMON YELLOW", "cgb_flag": "0x00", "sgb_flag": "0x03", "cartridge_type": "0x13", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x00", "version": "0x01", "header_checksum": "0x1f", "global_checksum": "0x8858"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "jp-revc",
+      "name": "Pocket Monsters Pikachu (Japan) (Rev C)",
+      "language": "ja",
+      "region": "Japan",
+      "reference_filenames": ["Pocket Monsters - Pikachu (Japan) (Rev C) (SGB Enhanced).gb"],
+      "md5": "5d9c071cf6eb5f3a697bbcd9311b4d04",
+      "sha1": "91864ecdf26d1c593bde4d9ed615520eb57d5e41",
+      "sha256": "2c67561f6b2de4ca3a1150f04dc736aead4bf7b5a98ce38196cef899a91be2fd",
+      "header": {"title": "POKEMON YELLOW", "cgb_flag": "0x00", "sgb_flag": "0x03", "cartridge_type": "0x13", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x00", "version": "0x02", "header_checksum": "0x1e", "global_checksum": "0xedd9"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "jp-revd",
+      "name": "Pocket Monsters Pikachu (Japan) (Rev D)",
+      "language": "ja",
+      "region": "Japan",
+      "reference_filenames": ["Pocket Monsters - Pikachu (Japan) (Rev D) (SGB Enhanced).gb"],
+      "md5": "90ae2ea218f8e21afa678c6a4e7b6013",
+      "sha1": "a40298a8123613ee60cd7aab204d788b8425976e",
+      "sha256": "1349408f328f633b33e059e654edabd19810530df9c883eda03a85d5bb10161a",
+      "header": {"title": "POKEMON YELLOW", "cgb_flag": "0x00", "sgb_flag": "0x03", "cartridge_type": "0x13", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x00", "version": "0x03", "header_checksum": "0x1d", "global_checksum": "0xd984"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "en-us-eu",
+      "name": "Pokemon Yellow Version (USA, Europe)",
+      "language": "en",
+      "region": "USA-Europe",
+      "reference_filenames": ["Pokemon - Yellow Version (USA, Europe).gbc", "Pokemon - Yellow Version - Special Pikachu Edition (USA, Europe) (GBC,SGB Enhanced).gb"],
+      "md5": "d9290db87b1f0a23b89f99ee4469e34b",
+      "sha1": "cc7d03262ebfaf2f06772c1a480c7d9d5f4a38e1",
+      "sha256": "8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf",
+      "header": {"title": "POKEMON YELLOW", "cgb_flag": "0x80", "sgb_flag": "0x03", "cartridge_type": "0x1b", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x01", "version": "0x00", "header_checksum": "0x97", "global_checksum": "0x047c"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "fr",
+      "name": "Pokemon Version Jaune (France)",
+      "language": "fr",
+      "region": "France",
+      "reference_filenames": ["Pokemon - Version Jaune (France).gbc", "Pokemon - Version Jaune - Edition Speciale Pikachu (France) (GBC,SGB Enhanced).gb"],
+      "md5": "2df6b439a35e0d511d52fa75c6a7849a",
+      "sha1": "0aceec0ef7aa2ca5aa831554598d91f61a925591",
+      "sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa",
+      "header": {"title": "POKEMON YELAPSF", "cgb_flag": "0x80", "sgb_flag": "0x03", "cartridge_type": "0x1b", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x01", "version": "0x00", "header_checksum": "0x5f", "global_checksum": "0xb7c1"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "de",
+      "name": "Pokemon Gelbe Edition (Germany)",
+      "language": "de",
+      "region": "Germany",
+      "reference_filenames": ["Pokemon - Gelbe Edition (Germany).gbc", "Pokemon - Gelbe Edition - Special Pikachu Edition (Germany) (GBC,SGB Enhanced).gb"],
+      "md5": "e93f10168e3c9b9d18e3ad4a1415e1d0",
+      "sha1": "42f3714eec6eca25200d42461ff08d57c98f6d1d",
+      "sha256": "aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9",
+      "header": {"title": "POKEMON YELAPSD", "cgb_flag": "0x80", "sgb_flag": "0x03", "cartridge_type": "0x1b", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x01", "version": "0x00", "header_checksum": "0x61", "global_checksum": "0x66fb"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "it",
+      "name": "Pokemon Versione Gialla (Italy)",
+      "language": "it",
+      "region": "Italy",
+      "reference_filenames": ["Pokemon - Versione Gialla (Italy).gbc", "Pokemon - Versione Gialla - Speciale Edizione Pikachu (Italy) (GBC,SGB Enhanced).gb"],
+      "md5": "3343ceca5dd6586e4774609526167d55",
+      "sha1": "05bb8e99f24d498613930949730afa8024e77d08",
+      "sha256": "e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856",
+      "header": {"title": "POKEMON YELAPSI", "cgb_flag": "0x80", "sgb_flag": "0x03", "cartridge_type": "0x1b", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x01", "version": "0x00", "header_checksum": "0x5c", "global_checksum": "0x4e8f"},
+      "build_status": "not-yet-reconstructed"
+    },
+    {
+      "id": "es",
+      "name": "Pokemon Edicion Amarilla (Spain)",
+      "language": "es",
+      "region": "Spain",
+      "reference_filenames": ["Pokemon - Edicion Amarilla (Spain).gbc", "Pokemon - Edicion Amarilla - Edicion Especial Pikachu (Spain) (GBC,SGB Enhanced).gb"],
+      "md5": "f0da8b1cff3aab898ecde9dcbda6d817",
+      "sha1": "1dc242039218fba50928d1afb66b70565b6b9daf",
+      "sha256": "55d56d6f73225886bfdc0db1ddb754d2f4dfc6ef5ae74ddfa079c23b6ec80039",
+      "header": {"title": "POKEMON YELAPSS", "cgb_flag": "0x80", "sgb_flag": "0x03", "cartridge_type": "0x1b", "rom_size": "0x05", "ram_size": "0x03", "destination": "0x01", "version": "0x00", "header_checksum": "0x52", "global_checksum": "0x5637"},
+      "build_status": "not-yet-reconstructed"
+    }
+  ]
+}
