@@ -42,7 +42,7 @@
     {"path":"home/start_menu.asm","status":"reference-crosschecked"},
     {"path":"home/count_set_bits.asm","status":"reference-crosschecked"},
     {"path":"home/inventory.asm","status":"reference-crosschecked"},
-    {"path":"home/list_menu.asm","status":"pending"},
+    {"path":"home/list_menu.asm","status":"reference-crosschecked"},
     {"path":"home/names.asm","status":"reference-crosschecked"},
     {"path":"home/reload_tiles.asm","status":"reference-crosschecked"},
     {"path":"home/printer.asm","status":"pending"},
