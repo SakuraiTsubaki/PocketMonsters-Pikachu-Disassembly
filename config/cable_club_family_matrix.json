@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "bank": "01",
+  "module": "engine/link/cable_club.asm",
+  "status": "survey-in-progress",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "families": {
+    "international": ["en-us-eu", "fr", "de", "it", "es"],
+    "japanese": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"]
+  },
+  "direct_rom_observations": {
+    "enemy_link_buffer_clear_length": {
+      "international": "0x01A9",
+      "japanese": "0x013B",
+      "difference_bytes": 110,
+      "sequence_note": "Immediately follows the 0xC8-byte serial party patch-list clearing loop.",
+      "international_addresses": {
+        "en-us-eu":"0x5407",
+        "fr":"0x5482",
+        "de":"0x5404",
+        "it":"0x5456",
+        "es":"0x5440"
+      },
+      "japanese_addresses": {
+        "jp-rev0a":"0x535D",
+        "jp-revb":"0x535D",
+        "jp-revc":"0x535D",
+        "jp-revd":"0x535D"
+      }
+    }
+  },
+  "public_source_crosscheck": {
+    "pret/pokeyellow_sha1":"716b144125be7ee58811cf61ebd90d2b1a2dbb85",
+    "Narishma-gb/pokeyellow-fr_sha1":"ddb2fe61cb7e9951148f8489963a0e0562a36c58",
+    "Brianum/pokeyellow-de_sha1":"483009a49df137431fb9cf5ba817145ed849f0d9",
+    "Narishma-gb/pokeyellow-jp_sha1":"d05989fa66fe07e33aa059bc24255eeda1f99fa8"
+  },
+  "ui_observations": {
+    "international_trade_party_layout":"Player/enemy lists are arranged in upper/lower boxes with one-row list spacing in the checked English source.",
+    "japanese_trade_party_layout":"Player/enemy lists are arranged as left/right columns with two-row list spacing.",
+    "german_initial_wait_box_width":13,
+    "default_initial_wait_box_width":12,
+    "note":"Locale strings and exact international layouts must be completed before reconstruction status is advanced."
+  },
+  "potential_bug": {
+    "japanese_short_clear":"The Japanese source itself flags the hard-coded 0x013B clear length as suspicious because it does not reach wTrainerHeaderPtr. Preserve it for exact reconstruction; analyze/fix only in a later modernization target."
+  }
+}
