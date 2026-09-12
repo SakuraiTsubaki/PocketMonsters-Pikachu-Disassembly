@@ -1,0 +1,185 @@
+DisplayPokemonCenterDialogue_::
+	ld a, [wCurMap]
+	cp PEWTER_POKECENTER
+	jr nz, .regularCenter
+	call CheckPikachuFollowingPlayer
+	jr z, .regularCenter
+	ld hl, LooksContentText
+	call PrintText
+	ret
+.regularCenter
+	call SaveScreenTilesToBuffer1
+	ld hl, PokemonCenterWelcomeText
+	call PrintText
+	ld hl, wStatusFlags4
+	bit BIT_USED_POKECENTER, [hl]
+	set BIT_UNKNOWN_4_1, [hl]
+	set BIT_USED_POKECENTER, [hl]
+	jr nz, .skipShallWeHealYourPokemon
+	ld hl, ShallWeHealYourPokemonText
+	call PrintText
+.skipShallWeHealYourPokemon
+	call YesNoChoicePokeCenter
+	call UpdateSprites
+	ld a, [wCurrentMenuItem]
+	and a
+	jp nz, .declinedHealing
+	call SetLastBlackoutMap
+	callfar IsStarterPikachuAliveInOurParty
+	jr nc, .notHealingPlayerPikachu
+	call CheckPikachuFollowingPlayer
+	jr nz, .notHealingPlayerPikachu
+	call LoadCurrentMapView
+	call Delay3
+	call UpdateSprites
+	callfar PikachuWalksToNurseJoy
+.notHealingPlayerPikachu
+	ld hl, NeedYourPokemonText
+	call PrintText
+	ld c, 64
+	call DelayFrames
+	call CheckPikachuFollowingPlayer
+	jr nz, .playerPikachuNotOnScreen
+	call DisablePikachuOverworldSpriteDrawing
+	callfar IsStarterPikachuAliveInOurParty
+	call c, Func_6eaa
+.playerPikachuNotOnScreen
+	lb bc, 1, 8
+	call Func_6ebb
+	ld c, 30
+	call DelayFrames
+	farcall AnimateHealingMachine
+	predef HealParty
+	xor a
+	ld [wAudioFadeOutControl], a
+	ld a, [wAudioSavedROMBank]
+	ld [wAudioROMBank], a
+	ld a, [wMapMusicSoundID]
+	ld [wLastMusicSoundID], a
+	ld [wNewSoundID], a
+	call PlaySound
+	call CheckPikachuFollowingPlayer
+	jr nz, .doNotReturnPikachu
+	callfar IsStarterPikachuAliveInOurParty
+	call c, Func_6eaa
+	ld a, $5
+	ld [wPikachuSpawnState], a
+	call EnablePikachuOverworldSpriteDrawing
+.doNotReturnPikachu
+	lb bc, 1, 0
+	call Func_6ebb
+	ld hl, PokemonFightingFitText
+	call PrintText
+	callfar IsStarterPikachuAliveInOurParty
+	jr nc, .notInParty
+	lb bc, 15, 0
+	call Func_6ebb
+.notInParty
+	call LoadCurrentMapView
+	call Delay3
+	call UpdateSprites
+	callfar ReloadWalkingTilePatterns
+	ld a, $1
+	ldh [hSpriteIndex], a
+	ld a, $1
+	ldh [hSpriteImageIndex], a
+	call SpriteFunc_34a1
+	ld c, 40
+	call DelayFrames
+	call UpdateSprites
+	call LoadFontTilePatterns
+	jr .done
+.declinedHealing
+	call LoadScreenTilesFromBuffer1
+.done
+	ld hl, PokemonCenterFarewellText
+	call PrintText
+	call UpdateSprites
+	ret
+
+Func_6eaa:
+	ld a, $1
+	ldh [hSpriteIndex], a
+	ld a, $4
+	ldh [hSpriteImageIndex], a
+	call SpriteFunc_34a1
+	ld c, 64
+	call DelayFrames
+	ret
+
+Func_6ebb:
+	ld a, b
+	ldh [hSpriteIndex], a
+	ld a, c
+	ldh [hSpriteImageIndex], a
+	push bc
+	call SetSpriteFacingDirectionAndDelay
+	pop bc
+	ld a, b
+	ldh [hSpriteIndex], a
+	ld a, c
+	ldh [hSpriteImageIndex], a
+	call SpriteFunc_34a1
+	ret
+
+IF DEF(_JAPAN)
+PokemonCenterWelcomeText:
+	text "ようこそ！"
+	line "#センターへ"
+	para "ここでは　#の"
+	line "たいりょく　かいふくを　いたします"
+	prompt
+
+ShallWeHealYourPokemonText:
+	text_pause
+	text "モンスターボールを　"
+	line "おあずけに　なりますか？"
+	done
+
+NeedYourPokemonText:
+	text "それでは"
+	line "あずからせて　いただきます！"
+	done
+
+PokemonFightingFitText:
+	text "おまちどうさまでした！"
+	line "おあずかりした　#は"
+	cont "みんな　げんきに　なりましたよ！"
+	prompt
+
+PokemonCenterFarewellText:
+	text_pause
+	text "またの"
+	line "ごりようを　おまちしてます！"
+	done
+
+LooksContentText:
+	text "きもちよさそうに　ねているわね"
+	done
+ELSE
+PokemonCenterWelcomeText:
+	text_far _PokemonCenterWelcomeText
+	text_end
+
+ShallWeHealYourPokemonText:
+	text_pause
+	text_far _ShallWeHealYourPokemonText
+	text_end
+
+NeedYourPokemonText:
+	text_far _NeedYourPokemonText
+	text_end
+
+PokemonFightingFitText:
+	text_far _PokemonFightingFitText
+	text_end
+
+PokemonCenterFarewellText:
+	text_pause
+	text_far _PokemonCenterFarewellText
+	text_end
+
+LooksContentText:
+	text_far _LooksContentText
+	text_end
+ENDC
