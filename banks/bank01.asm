@@ -1,0 +1,40 @@
+; Canonical Bank 01 source order for every supported Pokemon Yellow release.
+; Locale/revision differences live inside the included modules and data files.
+; This order is cross-checked against both pret/pokeyellow and
+; Narishma-gb/pokeyellow-jp main.asm.
+
+SECTION "bank1", ROMX
+
+INCLUDE "data/sprites/facings.asm"
+INCLUDE "engine/battle/safari_zone.asm"
+INCLUDE "engine/movie/title.asm"
+INCLUDE "engine/pokemon/load_mon_data.asm"
+INCLUDE "data/items/prices.asm"
+INCLUDE "data/items/names.asm"
+INCLUDE "data/text/unused_names.asm"
+INCLUDE "engine/gfx/sprite_oam.asm"
+INCLUDE "engine/link/print_waiting_text.asm"
+INCLUDE "engine/overworld/sprite_collisions.asm"
+INCLUDE "engine/events/pick_up_item.asm"
+INCLUDE "engine/overworld/movement.asm"
+INCLUDE "engine/link/cable_club.asm"
+INCLUDE "engine/menus/main_menu.asm"
+INCLUDE "engine/movie/oak_speech/oak_speech.asm"
+INCLUDE "engine/overworld/special_warps.asm"
+INCLUDE "engine/debug/debug_party.asm"
+INCLUDE "engine/menus/naming_screen.asm"
+INCLUDE "engine/movie/oak_speech/oak_speech2.asm"
+INCLUDE "engine/items/subtract_paid_money.asm"
+INCLUDE "engine/menus/swap_items.asm"
+INCLUDE "engine/events/pokemart.asm"
+INCLUDE "engine/pokemon/learn_move.asm"
+INCLUDE "engine/events/pokecenter.asm"
+INCLUDE "engine/events/set_blackout_map.asm"
+INCLUDE "engine/menus/display_text_id_init.asm"
+INCLUDE "engine/menus/draw_start_menu.asm"
+INCLUDE "engine/link/cable_club_npc.asm"
+INCLUDE "engine/menus/text_box.asm"
+INCLUDE "engine/battle/move_effects/drain_hp.asm"
+INCLUDE "engine/menus/players_pc.asm"
+INCLUDE "engine/pokemon/remove_mon.asm"
+INCLUDE "engine/events/display_pokedex.asm"
