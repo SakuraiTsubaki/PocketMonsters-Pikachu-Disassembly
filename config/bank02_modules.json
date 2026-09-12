@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "bank": "02",
+  "range": "0x8000-0xbfff",
+  "status": "survey-started",
+  "role": "Audio Engine 1 bank",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "layout_crosscheck": {
+    "international": "pret/pokeyellow layout.link ROMX $2",
+    "japanese": "Narishma-gb/pokeyellow-jp layout.link ROMX $2",
+    "section_order_identical": true,
+    "sections": [
+      "Sound Effect Headers 1",
+      "Music Headers 1",
+      "Sound Effects 1",
+      "Audio Engine 1",
+      "Music 1"
+    ]
+  },
+  "bank_sha1": {
+    "en-us-eu": "7bf99c6f26d2564275fe192436c137c28f3f7e67",
+    "fr": "a7b2bd43f9345525b6b4e7e95b4a80074e1a67ce",
+    "de": "c9be855e0babdb7c3d8c783e4a7e24dcb3688f6e",
+    "it": "110e9cdccb9dbbdf65ad8b15d222182176762bf7",
+    "es": "c79c1f3481126413764318474348c187e1b37e99",
+    "jp-rev0a": "b6a9291bf0d0e4797fa793ba5a21e03ca0235efb",
+    "jp-revb": "98e6b472cbd925c7ea1ca4271108547e181618bd",
+    "jp-revc": "4596a104d0e5c31862d215158aaee386ccf83eb5",
+    "jp-revd": "c4fb78440bbd7f968814dab270260381c4886d1f"
+  },
+  "direct_rom_observations": {
+    "international_union_differing_offsets_count": 23,
+    "international_union_differing_offsets": [
+      "0x9066", "0x9069", "0x906c", "0x906f", "0x9074", "0x907e", "0x909b",
+      "0x9182", "0x93bb", "0x94b1", "0x9648", "0x980d", "0x9869", "0x98c4",
+      "0x98d0", "0x9975", "0x99c2", "0x99e0", "0x99f7", "0x99fa", "0x99ff",
+      "0x9a04", "0x9a0b"
+    ],
+    "international_pairwise_differing_bytes": {
+      "en-us-eu_vs_fr": 23,
+      "en-us-eu_vs_de": 23,
+      "en-us-eu_vs_it": 11,
+      "en-us-eu_vs_es": 23,
+      "fr_vs_de": 13,
+      "fr_vs_it": 13,
+      "fr_vs_es": 13,
+      "de_vs_it": 13,
+      "de_vs_es": 12,
+      "it_vs_es": 13
+    },
+    "japanese_pairwise_differing_bytes": {
+      "jp-rev0a_vs_jp-revb": 327,
+      "jp-rev0a_vs_jp-revc": 327,
+      "jp-rev0a_vs_jp-revd": 322,
+      "jp-revb_vs_jp-revc": 54,
+      "jp-revb_vs_jp-revd": 297,
+      "jp-revc_vs_jp-revd": 296
+    },
+    "audio_payload_end": {
+      "offset_within_bank": "0x3ec6",
+      "absolute_rom_offset": "0xbec6",
+      "en_fr_de_it_es_jp_revd": "Bytes after this point are zero-filled.",
+      "jp_rev0a_revb_revc": "Garbage 2 begins at 0xbec7 and occupies the remaining bank tail."
+    },
+    "jp_revb_vs_jp_revc": {
+      "differing_bytes": 54,
+      "all_differences_inside_garbage_tail": true,
+      "difference_range": "0xbec8-0xbffe"
+    },
+    "jp_rev0a_pre_garbage_differences_vs_revb": {
+      "count": 14,
+      "absolute_offsets": [
+        "0x906c", "0x906f", "0x909b", "0x93bb", "0x94b1", "0x980d", "0x9869",
+        "0x98c4", "0x98d0", "0x98d1", "0x99c2", "0x99e0", "0x9a04", "0x9a0b"
+      ],
+      "note": "These must be resolved as true Rev 0A audio/header/engine differences or relocation effects before source reconstruction is marked complete."
+    }
+  },
+  "source_families": {
+    "international": {
+      "references": ["pret/pokeyellow", "Narishma-gb/pokeyellow-fr", "Brianum/pokeyellow-de"],
+      "sfx_headers": ["audio/headers/sfxheaders1.asm"],
+      "music_headers": ["audio/headers/musicheaders1.asm"],
+      "sound_effects_1": {
+        "logical_noise_instruments": 19,
+        "logical_noncry_sfx": 34,
+        "logical_cry_entries": 39,
+        "logical_total": 92,
+        "storage_model": "Per-audio-bank suffixed source files such as *_1.asm."
+      },
+      "audio_engine_1": [
+        "audio/play_battle_music.asm",
+        "audio/engine_1.asm",
+        "audio/alternate_tempo.asm"
+      ],
+      "music_1": {
+        "wave_table": "audio/wave_samples.asm",
+        "sequence_or_fanfare_files": 25,
+        "total_includes_with_wave_table": 26
+      }
+    },
+    "japanese": {
+      "reference": "Narishma-gb/pokeyellow-jp",
+      "sfx_headers": [
+        "audio/headers/sfx_headers_common.asm",
+        "audio/headers/sfx_headers_1_3.asm",
+        "audio/headers/sfx_headers_1.asm"
+      ],
+      "music_headers": ["audio/headers/music_headers_1.asm"],
+      "sound_effects_1": {
+        "shared_noise_source": "audio/noise_common.asm",
+        "noncry_sfx_includes": 34,
+        "shared_cry_source": "audio/cry_common.asm",
+        "logical_content_matches_international_categories": true
+      },
+      "audio_engine_1": [
+        "audio/play_battle_music.asm",
+        "audio/engine_1.asm",
+        "audio/alternate_tempo.asm"
+      ],
+      "music_1": {
+        "wave_table": "audio/wave_samples.asm",
+        "sequence_or_fanfare_files": 25,
+        "total_includes_with_wave_table": 26,
+        "note": "JP reference uses normalized underscore-style filenames, e.g. pkmn_healed.asm and routes_1.asm."
+      },
+      "garbage_tail": {
+        "jp-rev0a": true,
+        "jp-revb": true,
+        "jp-revc": true,
+        "jp-revd": false,
+        "start": "0xbec7"
+      }
+    }
+  },
+  "next_phase": [
+    "Enumerate every Bank 02 logical audio record and its exact byte range.",
+    "Cross-compare EN/FR/DE source files and direct-verify IT/ES against their ROMs.",
+    "Resolve the 23 international differing byte positions as symbol relocation versus actual data changes.",
+    "Resolve the 14 JP Rev 0A pre-garbage differences.",
+    "Extract and preserve JP Rev 0A/B/C Garbage 2 as explicitly classified historical leftover data, not as anonymous raw-ROM padding.",
+    "Reconstruct a single locale/revision-aware Bank 02 source tree and only then enable byte-diff build validation."
+  ]
+}
