@@ -1,8 +1,8 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "bank": "01",
   "module": "engine/link/cable_club.asm",
-  "status": "survey-in-progress",
+  "status": "source-reconstructed",
   "authority": "Reference ROM bytes override public disassembly source when they differ.",
   "families": {
     "international": ["en-us-eu", "fr", "de", "it", "es"],
@@ -15,34 +15,97 @@
       "difference_bytes": 110,
       "sequence_note": "Immediately follows the 0xC8-byte serial party patch-list clearing loop.",
       "international_addresses": {
-        "en-us-eu":"0x5407",
-        "fr":"0x5482",
-        "de":"0x5404",
-        "it":"0x5456",
-        "es":"0x5440"
+        "en-us-eu": "0x5407",
+        "fr": "0x5482",
+        "de": "0x5404",
+        "it": "0x5456",
+        "es": "0x5440"
       },
       "japanese_addresses": {
-        "jp-rev0a":"0x535D",
-        "jp-revb":"0x535D",
-        "jp-revc":"0x535D",
-        "jp-revd":"0x535D"
+        "jp-rev0a": "0x535D",
+        "jp-revb": "0x535D",
+        "jp-revc": "0x535D",
+        "jp-revd": "0x535D"
       }
+    },
+    "initial_wait": {
+      "en-us-eu": {"box_width": 12, "text": "PLEASE WAIT!"},
+      "fr": {"box_width": 12, "text": "ATTENDEZ SVP"},
+      "de": {"box_width": 13, "text": "BITTE WARTEN!"},
+      "it": {"box_width": 12, "text": "ATTENDERE!", "verification": "direct-rom"},
+      "es": {"box_width": 12, "text": "¡ESPERA!", "verification": "direct-rom"},
+      "jp": {"box_width": 12, "text": "つうしんじゅんびちゅう！"}
+    },
+    "stats_trade_row": {
+      "en-us-eu": "STATS     TRADE",
+      "fr": "STATS     ECHANGE",
+      "de": "STATUS    TAUSCH",
+      "it": {"text": "STAT.     OK     ", "verification": "direct-rom", "trailing_spaces_preserved": true},
+      "es": {"text": "ESTAD.    TRATO", "verification": "direct-rom"},
+      "jp": "ステイタスをみる　　こうかんにだす"
+    },
+    "cancel_box": {
+      "en-us-eu": {"clear_origin": [11, 15], "clear_length": 49, "box_width": 9, "text": "CANCEL"},
+      "fr": {"clear_origin": [11, 15], "clear_length": 49, "box_width": 9, "text": "ANNULER"},
+      "de": {"clear_origin": [11, 15], "clear_length": 49, "box_width": 12, "text": "ABBRECHEN"},
+      "it": {"clear_origin": [8, 15], "clear_length": 52, "box_width": 6, "text": "ESCI", "verification": "direct-rom"},
+      "es": {"clear_origin": [11, 15], "clear_length": 49, "box_width": 16, "text": "Trato Cancelado", "verification": "direct-rom"},
+      "jp": {"clear_origin": [11, 15], "clear_length": 49, "box_width": 9, "text": "こうかんちゅうし"}
+    },
+    "trade_result_strings": {
+      "en-us-eu": {"completed": "Trade completed!", "canceled_lines": ["Too bad! The trade", "was canceled!"]},
+      "fr": {"completed": "ECHANGE TERMINE!", "canceled_lines": ["Dommage! L'échange", "est annulé!"]},
+      "de": {"completed": "TAUSCH VOLLZOGEN!", "canceled_lines": ["Schade! Der Tausch", "wurde abgebrochen!"]},
+      "it": {"completed": "SCAMBIO TERMINATO", "canceled_lines": ["PECCATO! SCAMBIO", "ANNULLATO!"], "verification": "direct-rom"},
+      "es": {"completed": "Trato completado", "canceled_lines": ["¡Mal! ¡El trato", "está cancelado!"], "verification": "direct-rom"},
+      "jp": {"completed": "こうかんしゅうりょう！", "canceled_lines": ["ざんねんながら", "こうかんは　キャンセルされました"]}
+    }
+  },
+  "engine_differences": {
+    "international_trade_party_layout": {
+      "orientation": "upper-lower",
+      "player_cursor": [1, 1],
+      "enemy_cursor": [1, 9],
+      "list_stride_rows": 1,
+      "menu_input": "BIT_DOUBLE_SPACED_MENU is enabled around HandleMenuInput"
+    },
+    "japanese_trade_party_layout": {
+      "orientation": "left-right",
+      "player_cursor": [2, 3],
+      "enemy_cursor": [12, 3],
+      "list_stride_rows": 2,
+      "menu_input": "plain HandleMenuInput"
+    },
+    "selected_enemy_cursor": {
+      "international": {"origin": [1, 9], "stride": "SCREEN_WIDTH"},
+      "japanese": {"origin": [12, 3], "stride": "2 * SCREEN_WIDTH"}
+    },
+    "stats_selection_clamp": {
+      "international": "Clamps the pseudo-cancel slot back to the last real Pokémon before opening stats/trade.",
+      "japanese": "Uses wCurrentMenuItem directly."
+    },
+    "will_be_traded_text": {
+      "international": "far text",
+      "japanese": "inline Bank 01 text"
+    },
+    "border_blank_glyph": {
+      "international": "ASCII-style game space",
+      "japanese": "full-width Japanese game space"
     }
   },
   "public_source_crosscheck": {
-    "pret/pokeyellow_sha1":"716b144125be7ee58811cf61ebd90d2b1a2dbb85",
-    "Narishma-gb/pokeyellow-fr_sha1":"ddb2fe61cb7e9951148f8489963a0e0562a36c58",
-    "Brianum/pokeyellow-de_sha1":"483009a49df137431fb9cf5ba817145ed849f0d9",
-    "Narishma-gb/pokeyellow-jp_sha1":"d05989fa66fe07e33aa059bc24255eeda1f99fa8"
-  },
-  "ui_observations": {
-    "international_trade_party_layout":"Player/enemy lists are arranged in upper/lower boxes with one-row list spacing in the checked English source.",
-    "japanese_trade_party_layout":"Player/enemy lists are arranged as left/right columns with two-row list spacing.",
-    "german_initial_wait_box_width":13,
-    "default_initial_wait_box_width":12,
-    "note":"Locale strings and exact international layouts must be completed before reconstruction status is advanced."
+    "pret/pokeyellow_sha1": "716b144125be7ee58811cf61ebd90d2b1a2dbb85",
+    "Narishma-gb/pokeyellow-fr_sha1": "ddb2fe61cb7e9951148f8489963a0e0562a36c58",
+    "Brianum/pokeyellow-de_sha1": "483009a49df137431fb9cf5ba817145ed849f0d9",
+    "Narishma-gb/pokeyellow-jp_sha1": "d05989fa66fe07e33aa059bc24255eeda1f99fa8"
   },
   "potential_bug": {
-    "japanese_short_clear":"The Japanese source itself flags the hard-coded 0x013B clear length as suspicious because it does not reach wTrainerHeaderPtr. Preserve it for exact reconstruction; analyze/fix only in a later modernization target."
-  }
+    "japanese_short_clear": "The Japanese source itself flags the hard-coded 0x013B clear length as suspicious because it does not reach wTrainerHeaderPtr. It is deliberately preserved in the historical reconstruction and must only be fixed in a downstream modernization target."
+  },
+  "reconstruction": {
+    "source_file": "engine/link/cable_club.asm",
+    "source_status": "complete",
+    "bank_build_validation": "pending integration and byte-diff verification"
+  },
+  "next_verification": "Assemble each release target when Bank 01 build integration is available, compare the reconstructed Bank 01 bytes with the corresponding reference ROM, and record exact mismatch ranges if any."
 }
