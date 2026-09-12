@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "bank": "01",
+  "module": "engine/menus/main_menu.asm",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "menu_strings": {
+    "en-us-eu":{"continue":"CONTINUE","new_game":"NEW GAME","option":"OPTION"},
+    "fr":{"continue":"CONTINUER","new_game":"NOUVEAU JEU","option":"OPTIONS"},
+    "de":{"continue":"WEITER","new_game":"NEUES SPIEL","option":"OPTIONEN"},
+    "it":{"continue":"CONTINUA","new_game":"NUOVO GIOCO","option":"OPZIONI","source":"reference ROM direct extraction"},
+    "es":{"continue":"CONTINUAR","new_game":"JUEGO NUEVO","option":"OPCIONES","source":"reference ROM direct extraction"},
+    "jp":{"continue":"つづきからはじめる","new_game":"さいしょからはじめる","option":"せっていを　かえる"}
+  },
+  "save_info_layout": {
+    "en-fr-it-es":{"box_origin":[4,7],"box_size":[8,14]},
+    "de":{"box_origin":[3,7],"box_size":[8,15]},
+    "jp":{"box_origin":[4,7],"box_size":[8,13]}
+  },
+  "save_info_text": {
+    "en-us-eu":["PLAYER","BADGES    ","#DEX    ","TIME"],
+    "fr":["JOUEUR","BADGES        ","#DEX       ","TEMPS"],
+    "de":["SPIELER","ORDEN          ","#DEX        ","ZEIT"],
+    "it":["GIOCA.","MEDAGLIE    ","#DEX    ","TEMPO"],
+    "es":["JUGAD.","MEDALLAS    ","#DEX    ","TIEMPO"],
+    "jp":["しゅじんこう","もっているバッジ　　　　こ","#ずかん　　　　ひき","プレイじかん"]
+  },
+  "japanese_only_bank01_data":["CableClubOptionsText","inline NotEnoughMemoryText"],
+  "direct_rom_notes":"IT/ES 8x14 save-info dimensions and surrounding coordinate instruction sequences match the EN/FR layout family; DE is 8x15 and JP is 8x13."
+}
