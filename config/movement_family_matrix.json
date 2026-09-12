@@ -12,15 +12,8 @@
       "international": "Calls InitializeSpriteScreenPosition before returning.",
       "japanese": "Returns immediately after initializing Y/X displacement.",
       "addresses": {
-        "en-us-eu":"0x4FFF",
-        "fr":"0x507A",
-        "de":"0x4FFC",
-        "it":"0x504E",
-        "es":"0x5038",
-        "jp-rev0a":"0x4F62",
-        "jp-revb":"0x4F62",
-        "jp-revc":"0x4F62",
-        "jp-revd":"0x4F62"
+        "en-us-eu":"0x4FFF", "fr":"0x507A", "de":"0x4FFC", "it":"0x504E", "es":"0x5038",
+        "jp-rev0a":"0x4F62", "jp-revb":"0x4F62", "jp-revc":"0x4F62", "jp-revd":"0x4F62"
       }
     },
     "relative_screen_coordinate_conversion": {
@@ -31,26 +24,20 @@
       "international": "The cp $05 checks do not branch to .impassable; the old lower-bound restriction is disabled.",
       "japanese": "Both vertical and horizontal cp $05 checks branch carry to .impassable.",
       "vertical_addresses": {
-        "en-us-eu":"0x512C",
-        "fr":"0x51A7",
-        "de":"0x5129",
-        "it":"0x517B",
-        "es":"0x5165",
-        "jp-rev0a":"0x507E",
-        "jp-revb":"0x507E",
-        "jp-revc":"0x507E",
-        "jp-revd":"0x507E"
+        "en-us-eu":"0x512C", "fr":"0x51A7", "de":"0x5129", "it":"0x517B", "es":"0x5165",
+        "jp-rev0a":"0x507E", "jp-revb":"0x507E", "jp-revc":"0x507E", "jp-revd":"0x507E"
       },
       "horizontal_addresses": {
-        "en-us-eu":"0x513B",
-        "fr":"0x51B6",
-        "de":"0x5138",
-        "it":"0x518A",
-        "es":"0x5174",
-        "jp-rev0a":"0x508F",
-        "jp-revb":"0x508F",
-        "jp-revc":"0x508F",
-        "jp-revd":"0x508F"
+        "en-us-eu":"0x513B", "fr":"0x51B6", "de":"0x5138", "it":"0x518A", "es":"0x5174",
+        "jp-rev0a":"0x508F", "jp-revb":"0x508F", "jp-revc":"0x508F", "jp-revd":"0x508F"
+      }
+    },
+    "tile_pointer_alignment_mask": {
+      "international":"AND $F8, preserving half-tile movement position while selecting the standing tile.",
+      "japanese":"AND $F0, snapping to the 16-pixel grid.",
+      "addresses": {
+        "en-us-eu":"0x5172", "fr":"0x51ED", "de":"0x516F", "it":"0x51C1", "es":"0x51AB",
+        "jp-rev0a":"0x50C8", "jp-revb":"0x50C8", "jp-revc":"0x50C8", "jp-revd":"0x50C8"
       }
     }
   },
