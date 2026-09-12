@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "bank": "00",
+  "range": "0x0000-0x3fff",
+  "verification_levels": {
+    "direct-byte-verified": "Located and compared directly against all applicable reference ROMs.",
+    "address-verified": "Entry/handler address extracted from reference ROMs; source structure cross-checked.",
+    "reference-crosschecked": "EN/JP public disassembly sources compared and merged; direct all-ROM byte verification pending.",
+    "pending": "Not yet reconstructed in this repository."
+  },
+  "modules": [
+    {"path":"home/header.asm","status":"direct-byte-verified"},
+    {"path":"home/start.asm","status":"direct-byte-verified"},
+    {"path":"home/lcd.asm","status":"direct-byte-verified"},
+    {"path":"home/clear_sprites.asm","status":"direct-byte-verified"},
+    {"path":"home/copy.asm","status":"reference-crosschecked"},
+    {"path":"home/copy2.asm","status":"reference-crosschecked"},
+    {"path":"home/pikachu_cries.asm","status":"reference-crosschecked"},
+    {"path":"home/joypad.asm","status":"reference-crosschecked"},
+    {"path":"home/overworld.asm","status":"pending"},
+    {"path":"home/pokemon.asm","status":"reference-crosschecked"},
+    {"path":"home/print_bcd.asm","status":"reference-crosschecked"},
+    {"path":"home/pics.asm","status":"reference-crosschecked"},
+    {"path":"home/pikachu.asm","status":"reference-crosschecked"},
+    {"path":"home/lcdc.asm","status":"direct-byte-verified"},
+    {"path":"home/text.asm","status":"pending"},
+    {"path":"home/vcopy.asm","status":"reference-crosschecked"},
+    {"path":"home/init.asm","status":"address-verified"},
+    {"path":"home/vblank.asm","status":"address-verified"},
+    {"path":"home/fade.asm","status":"reference-crosschecked"},
+    {"path":"home/play_time.asm","status":"reference-crosschecked"},
+    {"path":"home/serial.asm","status":"direct-byte-verified"},
+    {"path":"home/timer.asm","status":"direct-byte-verified"},
+    {"path":"home/audio.asm","status":"reference-crosschecked"},
+    {"path":"home/update_sprites.asm","status":"reference-crosschecked"}
+  ]
+}
