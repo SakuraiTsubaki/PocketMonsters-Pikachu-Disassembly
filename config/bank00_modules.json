@@ -32,6 +32,11 @@
     {"path":"home/serial.asm","status":"direct-byte-verified"},
     {"path":"home/timer.asm","status":"direct-byte-verified"},
     {"path":"home/audio.asm","status":"reference-crosschecked"},
-    {"path":"home/update_sprites.asm","status":"reference-crosschecked"}
+    {"path":"home/update_sprites.asm","status":"reference-crosschecked"},
+    {"path":"data/items/marts.asm","status":"reference-crosschecked"},
+    {"path":"home/overworld_text.asm","status":"reference-crosschecked"},
+    {"path":"home/uncompress.asm","status":"reference-crosschecked"},
+    {"path":"home/reset_player_sprite.asm","status":"reference-crosschecked"},
+    {"path":"home/fade_audio.asm","status":"reference-crosschecked"}
   ]
 }
