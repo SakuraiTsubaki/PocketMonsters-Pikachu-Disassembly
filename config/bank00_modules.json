@@ -5,7 +5,7 @@
   "verification_levels": {
     "direct-byte-verified": "Located and compared directly against all applicable reference ROMs.",
     "address-verified": "Entry/handler address extracted from reference ROMs; source structure cross-checked.",
-    "reference-crosschecked": "EN/JP public disassembly sources compared and merged; direct all-ROM byte verification pending.",
+    "reference-crosschecked": "Public disassembly sources compared/merged and local ROM evidence incorporated; full assembled all-ROM byte verification pending.",
     "pending": "Not yet reconstructed in this repository."
   },
   "modules": [
@@ -23,7 +23,7 @@
     {"path":"home/pics.asm","status":"reference-crosschecked"},
     {"path":"home/pikachu.asm","status":"reference-crosschecked"},
     {"path":"home/lcdc.asm","status":"direct-byte-verified"},
-    {"path":"home/text.asm","status":"pending"},
+    {"path":"home/text.asm","status":"reference-crosschecked"},
     {"path":"home/vcopy.asm","status":"reference-crosschecked"},
     {"path":"home/init.asm","status":"address-verified"},
     {"path":"home/vblank.asm","status":"address-verified"},
