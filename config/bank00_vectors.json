@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "bank": "00",
+  "addresses": {
+    "jp-rev0a": {"entry": "0x1d60", "init": "0x1d60", "vblank": "0x1e35", "lcdc": "0x1580", "serial": "0x1fa2", "timer": "0x2193", "serial_span_bytes": 497},
+    "jp-revb": {"entry": "0x1d66", "init": "0x1d66", "vblank": "0x1e3b", "lcdc": "0x1586", "serial": "0x1fab", "timer": "0x219c", "serial_span_bytes": 497},
+    "jp-revc": {"entry": "0x1d66", "init": "0x1d66", "vblank": "0x1e3b", "lcdc": "0x1586", "serial": "0x1fab", "timer": "0x219c", "serial_span_bytes": 497},
+    "jp-revd": {"entry": "0x1d66", "init": "0x1d66", "vblank": "0x1e3b", "lcdc": "0x1586", "serial": "0x1fab", "timer": "0x219c", "serial_span_bytes": 497},
+    "en-us-eu": {"entry": "0x01ab", "init": "0x1d10", "vblank": "0x1de5", "lcdc": "0x15ac", "serial": "0x1f79", "timer": "0x216a", "serial_span_bytes": 497},
+    "fr": {"entry": "0x01ab", "init": "0x1d0c", "vblank": "0x1de1", "lcdc": "0x15a9", "serial": "0x1f75", "timer": "0x2166", "serial_span_bytes": 497},
+    "de": {"entry": "0x01ab", "init": "0x1d15", "vblank": "0x1dea", "lcdc": "0x15ac", "serial": "0x1f7e", "timer": "0x216f", "serial_span_bytes": 497},
+    "it": {"entry": "0x01ab", "init": "0x1d10", "vblank": "0x1de5", "lcdc": "0x15ac", "serial": "0x1f79", "timer": "0x216a", "serial_span_bytes": 497},
+    "es": {"entry": "0x01ab", "init": "0x1d0f", "vblank": "0x1de4", "lcdc": "0x15ac", "serial": "0x1f78", "timer": "0x2169", "serial_span_bytes": 497}
+  }
+}
