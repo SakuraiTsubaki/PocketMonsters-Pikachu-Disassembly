@@ -150,16 +150,34 @@
       "status": "direct-rom-extracted"
     },
     "jp": {
+      "revision_ranges": {
+        "jp-rev0a": "0x18cd-0x18f4",
+        "jp-revb": "0x18d3-0x18fa",
+        "jp-revc": "0x18d3-0x18fa",
+        "jp-revd": "0x18d3-0x18fa"
+      },
+      "literal_order": ["tm", "trainer", "pc", "rocket", "poke", "six_dots", "enemy", "ga"],
       "tm": "わざマシン",
       "trainer": "トレーナー",
       "pc": "パソコン",
       "rocket": "ロケットだん",
       "poke": "ポケモン",
+      "six_dots": "⋯⋯",
       "enemy": "てきの　",
       "ga": "が　",
       "dex_end": "。",
       "blank": "　",
-      "status": "reference-crosschecked"
+      "raw_literals": {
+        "tm": "dc 2b 9d 8b ab 50",
+        "trainer": "93 a7 e3 94 e3 50",
+        "pc": "40 8e 89 ab 50",
+        "rocket": "a8 88 ac 93 30 de 50",
+        "poke": "43 88 a1 ab 50",
+        "six_dots": "75 75 50",
+        "enemy": "c3 b7 c9 7f 50",
+        "ga": "26 7f 50"
+      },
+      "status": "direct-rom-extracted"
     }
   },
   "encoding_notes": {
