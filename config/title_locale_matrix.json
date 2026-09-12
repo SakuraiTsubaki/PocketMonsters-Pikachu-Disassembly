@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "bank": "01",
+  "module": "engine/movie/title.asm",
+  "copyright_tile_sequences": {
+    "english": {
+      "targets": ["en-us-eu"],
+      "rom_offset": "0x424f",
+      "raw": "e0 e1 e2 e3 e1 e2 ee e5 e6 e7 e8 e9 ea eb ec ed ff",
+      "year_tile_count": 1,
+      "status": "direct-rom-extracted"
+    },
+    "international-2000-style": {
+      "targets": ["fr", "de", "it", "es"],
+      "rom_offset": "0x424f",
+      "raw": "e0 e1 e2 e3 e4 ee ef 7f e5 e6 e7 e8 e9 ea eb ec ed ff",
+      "year_tile_count": 2,
+      "status": "direct-rom-extracted"
+    },
+    "japanese": {
+      "targets": ["jp-rev0a", "jp-revb", "jp-revc", "jp-revd"],
+      "rom_offset": "0x425d",
+      "raw": "e0 e1 e2 e1 e3 e1 e4 e5 e6 e7 e8 e9 ea eb ec ed ff",
+      "year_tile_count": 0,
+      "status": "direct-rom-extracted"
+    }
+  },
+  "copyright_text": {
+    "en-us-eu": {
+      "offset": "0x4355",
+      "family": "english-1995-1999",
+      "status": "direct-rom-extracted"
+    },
+    "fr": {"offset":"0x4356","family":"international-2000-style","status":"direct-rom-extracted"},
+    "de": {"offset":"0x4356","family":"international-2000-style","status":"direct-rom-extracted"},
+    "it": {"offset":"0x4356","family":"international-2000-style","status":"direct-rom-extracted"},
+    "es": {"offset":"0x4356","family":"international-2000-style","status":"direct-rom-extracted"},
+    "jp-rev0a": {"offset":"0x4363","family":"japanese-1995-1996-1998","status":"direct-rom-extracted"},
+    "jp-revb": {"offset":"0x4363","family":"japanese-1995-1996-1998","status":"direct-rom-extracted"},
+    "jp-revc": {"offset":"0x4363","family":"japanese-1995-1996-1998","status":"direct-rom-extracted"},
+    "jp-revd": {"offset":"0x4363","family":"japanese-1995-1996-1998","status":"direct-rom-extracted"}
+  },
+  "load_copyright_tiles": {
+    "international_tile_count": 30,
+    "japanese_tile_count": 29,
+    "international_machine_bc": "0x041e",
+    "japanese_machine_bc": "0x041d",
+    "status": "direct-rom-extracted"
+  },
+  "debug_names": {
+    "international": {"player":"NINTEN","rival":"SONY","status":"direct-rom-extracted"},
+    "japanese": {"player":"ゲーフリ１","rival":"クリチャ","status":"reference-crosschecked"}
+  },
+  "cgb_title_palette_update": {
+    "international": true,
+    "japanese": false,
+    "status": "reference-crosschecked"
+  },
+  "authority": "Reference ROM bytes override public-disassembly source when they differ."
+}
