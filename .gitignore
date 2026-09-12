@@ -1,0 +1,34 @@
+# Generated ROM images and emulator state
+*.gb
+*.gbc
+*.sav
+*.srm
+*.state
+*.state*
+
+# RGBDS/build outputs
+*.o
+*.obj
+*.sym
+*.map
+*.link
+build/
+dist/
+
+# Local reference ROM directories
+baserom/
+baseroms/
+rom/
+roms/
+reference-roms/
+
+# Python/tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*~
