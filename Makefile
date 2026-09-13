@@ -1,6 +1,6 @@
 PYTHON ?= python3
 
-.PHONY: help check-policy bank01-check bank02-check bank03-check bank04-check releases targets status
+.PHONY: help check-policy bank01-check bank02-check bank03-check bank04-check bank05-check releases targets status
 
 help:
 	@echo "Pocket Monsters Pikachu / Pokemon Yellow disassembly"
@@ -11,6 +11,7 @@ help:
 	@echo "  make bank02-check  Validate Bank 02 audio source reconstruction, Music 1 blobs, and revision tails"
 	@echo "  make bank03-check  Validate Bank 03 survey, 28-module source population, provenance, and tail wiring"
 	@echo "  make bank04-check  Validate Bank 04 survey, 14-source family population, provenance, placement, and tails"
+	@echo "  make bank05-check  Validate Bank 05 family layout, nine hashes, revision ledger, and Garbage 5 tails"
 	@echo "  make releases      List verified reference releases"
 	@echo "  make targets       List the nine planned source-build targets and defines"
 	@echo "  make status        Show current reconstruction status"
@@ -34,6 +35,9 @@ bank03-check:
 bank04-check:
 	@$(PYTHON) tools/check_bank04_survey.py
 	@$(PYTHON) tools/check_bank04_sources.py
+
+bank05-check:
+	@$(PYTHON) tools/check_bank05_survey.py
 
 releases:
 	@$(PYTHON) -c 'import json; d=json.load(open("config/releases.json", encoding="utf-8")); [print("{:12} {}  {}".format(r["id"], r["sha1"], r["name"])) for r in d["releases"]]'
