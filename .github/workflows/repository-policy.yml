@@ -27,3 +27,6 @@ jobs:
 
       - name: Validate Bank 02 audio survey
         run: make bank02-check
+
+      - name: Validate Bank 03 survey
+        run: make bank03-check

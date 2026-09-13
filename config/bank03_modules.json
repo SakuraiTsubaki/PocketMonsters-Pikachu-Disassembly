@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "bank": "03",
+  "range": "0xc000-0xffff",
+  "status": "survey-complete",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "role": "Overworld, item, party, utility, and hidden-event engine bank",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "layout_crosscheck": {
+    "international": "pret/pokeyellow main.asm SECTION \"bank3\"",
+    "japanese": "Narishma-gb/pokeyellow-jp main.asm SECTION \"bank3\"",
+    "section_order_identical": true,
+    "section_name": "bank3",
+    "module_count": 28,
+    "modules": [
+      "engine/joypad.asm",
+      "engine/overworld/clear_variables.asm",
+      "engine/overworld/player_state.asm",
+      "engine/events/poison.asm",
+      "engine/overworld/tilesets.asm",
+      "engine/overworld/daycare_exp.asm",
+      "data/maps/toggleable_objects.asm",
+      "engine/overworld/wild_mons.asm",
+      "engine/items/item_effects.asm",
+      "engine/menus/draw_badges.asm",
+      "engine/overworld/update_map.asm",
+      "engine/overworld/cut.asm",
+      "engine/overworld/toggleable_objects.asm",
+      "engine/overworld/push_boulder.asm",
+      "engine/pokemon/add_mon.asm",
+      "engine/flag_action.asm",
+      "engine/events/heal_party.asm",
+      "engine/math/bcd.asm",
+      "engine/movie/oak_speech/init_player_data.asm",
+      "engine/items/get_bag_item_quantity.asm",
+      "engine/overworld/pathfinding.asm",
+      "engine/gfx/hp_bar.asm",
+      "engine/events/hidden_events/bookshelves.asm",
+      "engine/events/hidden_events/indigo_plateau_statues.asm",
+      "engine/events/hidden_events/book_or_sculpture.asm",
+      "engine/events/hidden_events/elevator.asm",
+      "engine/events/hidden_events/town_map.asm",
+      "engine/events/hidden_events/pokemon_stuff.asm"
+    ]
+  },
+  "bank_sha1": {
+    "en-us-eu": "49024578d9ad3816d7acc1d921685b0daa2b79c8",
+    "fr": "5770ebb30737767db418a9055aebbc04e8c2ba31",
+    "de": "c0beb1a2c1646d16a4d37438e540eb5c38e25037",
+    "it": "a60199353eff49c41fe0df43a48a8c286133238d",
+    "es": "137f63c013ddb6579ee070b86d994f2a37a720f0",
+    "jp-rev0a": "ee2db89d439248c565a52ba9caf933c9bedafa12",
+    "jp-revb": "79fd893281fdb0f13861f4eae9e049d66f011bd5",
+    "jp-revc": "d5f0a6223ab86f7c8fc55076404c3317213fcef1",
+    "jp-revd": "125942c06a0b9ed70fb2d150f8b5d550475c4053"
+  },
+  "direct_rom_observations": {
+    "unique_targets": 9,
+    "international_duplicate_container_pairs": {
+      "en-us-eu": "The .gb and .gbc source files are byte-identical.",
+      "fr": "The .gb and .gbc source files are byte-identical.",
+      "de": "The .gb and .gbc source files are byte-identical.",
+      "it": "The .gb and .gbc source files are byte-identical.",
+      "es": "The .gb and .gbc source files are byte-identical."
+    },
+    "japanese_whole_bank_pairwise_differing_bytes": {
+      "jp-rev0a_vs_jp-revb": 15776,
+      "jp-rev0a_vs_jp-revc": 15775,
+      "jp-rev0a_vs_jp-revd": 15775,
+      "jp-revb_vs_jp-revc": 68,
+      "jp-revb_vs_jp-revd": 454,
+      "jp-revc_vs_jp-revd": 456
+    },
+    "international_last_nonzero_byte": {
+      "en-us-eu": {"physical_offset": "0xfad7", "trailing_zero_bytes": 1320},
+      "fr": {"physical_offset": "0xfac7", "trailing_zero_bytes": 1336},
+      "de": {"physical_offset": "0xfacc", "trailing_zero_bytes": 1331},
+      "it": {"physical_offset": "0xfadb", "trailing_zero_bytes": 1316},
+      "es": {"physical_offset": "0xfada", "trailing_zero_bytes": 1317}
+    },
+    "international_boundary_note": "Last-nonzero observations are not treated as source-section boundaries; international active-layout normalization remains pending."
+  },
+  "japanese_revision_analysis": {
+    "jp-rev0a": {
+      "active_range": "0xc000-0xfe2f",
+      "active_length": 15920,
+      "size_delta_vs_rev1_plus": 9,
+      "cause": "Revision-conditional engine/joypad.asm code expands Rev 0 by 9 bytes and shifts later Bank 03 addresses.",
+      "public_source_conditionals": "_REV0 versus _REV1/_REV2/_REV3 in engine/joypad.asm"
+    },
+    "jp-revb": {"active_range": "0xc000-0xfe26", "active_length": 15911},
+    "jp-revc": {"active_range": "0xc000-0xfe26", "active_length": 15911, "active_payload_identical_to_jp_revb": true},
+    "jp-revd": {
+      "active_range": "0xc000-0xfe26",
+      "active_length": 15911,
+      "active_differences_vs_jp_revb_revc": 1,
+      "difference": {
+        "bank_offset": "0x3d06",
+        "physical_offset": "0xfd06",
+        "jp-revb_revc": "0xf3",
+        "jp-revd": "0xfa",
+        "instruction_operand": "ld hl,$77f3 -> ld hl,$77fa",
+        "source_site": "engine/events/hidden_events/bookshelves.asm farjp PrintCardKeyText",
+        "classification": "external-symbol relocation only",
+        "target_shift": 7
+      }
+    }
+  },
+  "garbage_3": {
+    "classification": "historical leftover data",
+    "jp-rev0a": {
+      "present": true,
+      "range": "0xfe30-0xffff",
+      "length": 464,
+      "source": "data/garbage/jp/rev0a/bank03_tail.asm",
+      "raw_sha1": "79ac92a4cee3c1b9ed0d8a472aaa50dadf618085",
+      "git_blob_sha1": "d20b7466490d31a6b1203562c277fc3ba93f065c",
+      "public_crosscheck": "Narishma-gb/pokeyellow-jp garbage/rev_0/garbage_3.bin exact content"
+    },
+    "jp-revb": {
+      "present": true,
+      "range": "0xfe27-0xffff",
+      "length": 473,
+      "source": "data/garbage/jp/revb/bank03_tail.asm",
+      "raw_sha1": "54ba5ff8ca15bd7930827b1f8ee1b358d70cb97d",
+      "git_blob_sha1": "c68d8247633afa84ce53c4a82a18bdd2df725787",
+      "public_crosscheck": "Narishma-gb/pokeyellow-jp garbage/rev_1/garbage_3.bin exact content"
+    },
+    "jp-revc": {
+      "present": true,
+      "range": "0xfe27-0xffff",
+      "length": 473,
+      "source": "data/garbage/jp/revc/bank03_tail.asm",
+      "raw_sha1": "137053b3679654889b17fd5f0c42fd906fabc76b",
+      "git_blob_sha1": "1b8ccc4a797481fee0c25b9709d419357764bcee",
+      "public_crosscheck": "Narishma-gb/pokeyellow-jp garbage/rev_2/garbage_3.bin exact content"
+    },
+    "jp-revd": {
+      "present": false,
+      "range": "0xfe27-0xffff",
+      "length": 473,
+      "raw_sha1_of_zero_tail": "693e31dc362426bc4d7a6b2954f7c80267476d66",
+      "nonzero_bytes": 0
+    },
+    "preservation_rule": "Preserve Rev 0A/B/C Garbage 3 explicitly as revision data; do not reinterpret it as active code or silently delete it from exact historical rebuilds."
+  },
+  "reconstruction_strategy": {
+    "module_source": "Reconstruct one canonical 28-module Bank 03 source order, retaining revision conditionals where source/ROM evidence requires them.",
+    "jp_revisions": "Use joypad revision conditionals for the Rev 0A size difference. Let linked PrintCardKeyText symbol placement generate the Rev D relocation byte naturally.",
+    "garbage": "Append revision-specific Garbage 3 source only for JP Rev 0A/B/C; Rev D uses zero fill for the corresponding tail.",
+    "international": "Do not assume byte identity across locales. Import the same logical 28-module order, then classify locale differences as source-content versus relocation before deduplication."
+  },
+  "next_phase": [
+    "Import/reconstruct the 28 Bank 03 modules as editable RGBDS source.",
+    "Create banks/bank03.asm with the canonical include order and target/revision tail wiring.",
+    "Build a relocation/content-difference matrix for the five international targets and JP revisions.",
+    "Enable byte-diff validation once all cross-bank symbol dependencies needed by Bank 03 are available."
+  ]
+}
