@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "bank": "03",
+  "module": "engine/joypad.asm",
+  "strategy": "manual-semantic-family-revision-merge",
+  "reason_manual": "Naive line-opcode wrapping crosses Japanese revision IF/ELSE/ENDC structure and produces an invalid duplicate ELSE.",
+  "japanese_raw_sha1": "e3483803552984f2ca937becab953d6b39d2b850",
+  "international_raw_sha1": "0f1aac50e90dab90a80ac850930c932207e99134",
+  "merged_raw_sha1": "b27fb9e818d0438098521a43a35edc29c33fbbaf",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "checks": [
+    {
+      "target": "rev0a",
+      "family": "japanese",
+      "token_count": 294,
+      "equivalent": true
+    },
+    {
+      "target": "revb",
+      "family": "japanese",
+      "token_count": 297,
+      "equivalent": true
+    },
+    {
+      "target": "revc",
+      "family": "japanese",
+      "token_count": 297,
+      "equivalent": true
+    },
+    {
+      "target": "revd",
+      "family": "japanese",
+      "token_count": 297,
+      "equivalent": true
+    },
+    {
+      "target": "international",
+      "family": "international",
+      "token_count": 289,
+      "equivalent": true
+    }
+  ]
+}

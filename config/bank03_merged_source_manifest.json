@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "bank": "03",
-  "status": "fine-grained-source-populated-except-manual-joypad",
+  "status": "all-substantive-modules-fine-grained-source-populated",
   "source_reconstruction_complete": false,
   "byte_perfect_rebuild_claim": false,
   "strategy": "Preserve pinned Japanese and international source bodies byte-for-byte inside a family conditional; refactor only after target builds can prove equivalence.",
@@ -19,15 +19,20 @@
   "modules": [
     {
       "path": "engine/joypad.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "manual semantic family/revision conditionals preserving JP Rev 0 polling path and shared normal path",
       "japanese_raw_sha1": "e3483803552984f2ca937becab953d6b39d2b850",
       "japanese_git_blob_sha1": "78557acf9af5c7d2894c407cf32d96285e85a8ed",
       "international_raw_sha1": "0f1aac50e90dab90a80ac850930c932207e99134",
       "international_git_blob_sha1": "7ebb88efe6c7720cf078ea4340690f47562a205f",
-      "merged_raw_sha1": "3be0bda73f6a283c5d4efb10fe4b5dd1f6a1a506",
-      "merged_git_blob_sha1": "ce9b4e1dd39dcb0d371f5a0e52197060bd0d273d",
-      "merged_length": 3414
+      "merged_raw_sha1": "b27fb9e818d0438098521a43a35edc29c33fbbaf",
+      "merged_git_blob_sha1": "1e64de3eb3fc74c178dce446fe0c5fa048290e1d",
+      "merged_length": 2320,
+      "selector_count": 6,
+      "branch_source_reconstruction_verified": true,
+      "automatic_merge_safety_verified": false,
+      "manual_merge_structure_verified": true,
+      "target_branch_token_equivalence_verified": true
     },
     {
       "path": "engine/overworld/clear_variables.asm",
@@ -218,6 +223,6 @@
       "branch_source_reconstruction_verified": true
     }
   ],
-  "fine_grained_module_count": 13,
-  "whole_family_module_count": 1
+  "fine_grained_module_count": 14,
+  "whole_family_module_count": 0
 }
