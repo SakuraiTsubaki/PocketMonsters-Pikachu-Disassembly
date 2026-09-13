@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "bank": "05",
+  "audit_status": "complete-safe-shared-files-copied",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "pinned_references": {
+    "international": {
+      "repository": "pret/pokeyellow",
+      "commit": "e89ead154b9968aa50eed9328ff2b38b6c194382"
+    },
+    "japanese": {
+      "repository": "Narishma-gb/pokeyellow-jp",
+      "commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572"
+    }
+  },
+  "unique_source_path_count": 8,
+  "classification_counts": {
+    "exact-shared": 5,
+    "cosmetic-only": 0,
+    "substantive": 3
+  },
+  "safe_copied_paths": [
+    "engine/gfx/load_pokedex_tiles.asm",
+    "engine/overworld/map_sprites.asm",
+    "engine/events/pewter_guys.asm",
+    "engine/overworld/doors.asm",
+    "engine/overworld/ledges.asm"
+  ],
+  "placement_note": "pewter_guys.asm is top-level in JP Doors and Ledges but nested from international auto_movement.asm.",
+  "modules": [
+    {
+      "path": "engine/gfx/load_pokedex_tiles.asm",
+      "classification": "exact-shared",
+      "placement_class": "common-bank05",
+      "international_raw_sha1": "32f5d4a4c201193ccd2502c79f2c33f2e4e06312",
+      "japanese_raw_sha1": "32f5d4a4c201193ccd2502c79f2c33f2e4e06312",
+      "international_git_blob_sha1": "b0857137f94afb6db2f06a2b8ee49cdff2f9bc9f",
+      "japanese_git_blob_sha1": "b0857137f94afb6db2f06a2b8ee49cdff2f9bc9f",
+      "international_length": 437,
+      "japanese_length": 437
+    },
+    {
+      "path": "engine/overworld/map_sprites.asm",
+      "classification": "exact-shared",
+      "placement_class": "common-bank05",
+      "international_raw_sha1": "775a3be72e4b67d580279d7fbeee8543f9389b2a",
+      "japanese_raw_sha1": "775a3be72e4b67d580279d7fbeee8543f9389b2a",
+      "international_git_blob_sha1": "7e807c65d0033ec68e8ee8798f4f5c4bb4ed7646",
+      "japanese_git_blob_sha1": "7e807c65d0033ec68e8ee8798f4f5c4bb4ed7646",
+      "international_length": 9457,
+      "japanese_length": 9457
+    },
+    {
+      "path": "engine/battle/move_effects/substitute.asm",
+      "classification": "substantive",
+      "placement_class": "common-bank05",
+      "international_raw_sha1": "53780e2921e8d631544fdb789a17e5b3aca06225",
+      "japanese_raw_sha1": "2b118d16faed26d04581e05ad9a44784efcd9207",
+      "international_git_blob_sha1": "01d5a8a3e0dfdee398ff9a9e6c566db408d73e57",
+      "japanese_git_blob_sha1": "14f3403440e0c04892dfd717a09f77d291b41fe3",
+      "international_length": 1784,
+      "japanese_length": 1936
+    },
+    {
+      "path": "engine/menus/pc.asm",
+      "classification": "substantive",
+      "placement_class": "common-bank05",
+      "international_raw_sha1": "b5e08d3fd6476faa2fb4dfd8598278916a4cf339",
+      "japanese_raw_sha1": "8752b44e524fab31e8faa008c68fa2dee99d7ab7",
+      "international_git_blob_sha1": "b4571ac38ea70f57fe0eb89000f025fe48e974c6",
+      "japanese_git_blob_sha1": "9d1a2efcc703437ca2240013f6b2a55d6b7f2617",
+      "international_length": 3361,
+      "japanese_length": 3688
+    },
+    {
+      "path": "engine/overworld/auto_movement.asm",
+      "classification": "substantive",
+      "placement_class": "common-bank05",
+      "international_raw_sha1": "79edaf4384d06bfdfd4fa59de663a285a9b08ec7",
+      "japanese_raw_sha1": "6f16c4622be0c0483db5d949e416812e24a5de50",
+      "international_git_blob_sha1": "2266e866f902568c4e913ad1c6fe5d2e514dd8aa",
+      "japanese_git_blob_sha1": "70795ffe033715aedc973e6ec9cdcf62aa00317b",
+      "international_length": 6431,
+      "japanese_length": 6389
+    },
+    {
+      "path": "engine/events/pewter_guys.asm",
+      "classification": "exact-shared",
+      "placement_class": "japanese-top-level-international-nested-in-auto_movement",
+      "international_raw_sha1": "2d4120e3afa076d2edfcdf331418d2058e93fd94",
+      "japanese_raw_sha1": "2d4120e3afa076d2edfcdf331418d2058e93fd94",
+      "international_git_blob_sha1": "029157e676cc8cac9e4840fd23e8dff15e3c7889",
+      "japanese_git_blob_sha1": "029157e676cc8cac9e4840fd23e8dff15e3c7889",
+      "international_length": 1982,
+      "japanese_length": 1982
+    },
+    {
+      "path": "engine/overworld/doors.asm",
+      "classification": "exact-shared",
+      "placement_class": "common-bank05",
+      "international_raw_sha1": "2aaf10eaff835e6a66e34c322127e6d93d5f6616",
+      "japanese_raw_sha1": "2aaf10eaff835e6a66e34c322127e6d93d5f6616",
+      "international_git_blob_sha1": "d38818fa844b121f96919ebc15e263a0d4768eef",
+      "japanese_git_blob_sha1": "d38818fa844b121f96919ebc15e263a0d4768eef",
+      "international_length": 493,
+      "japanese_length": 493
+    },
+    {
+      "path": "engine/overworld/ledges.asm",
+      "classification": "exact-shared",
+      "placement_class": "common-bank05",
+      "international_raw_sha1": "3f542c045c08a188d6e07173d8aa4018aafde401",
+      "japanese_raw_sha1": "3f542c045c08a188d6e07173d8aa4018aafde401",
+      "international_git_blob_sha1": "5cb2d5fcccd836b3f87f4abadfda39f951b971f1",
+      "japanese_git_blob_sha1": "5cb2d5fcccd836b3f87f4abadfda39f951b971f1",
+      "international_length": 1614,
+      "japanese_length": 1614
+    }
+  ]
+}

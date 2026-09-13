@@ -1,0 +1,16 @@
+--- intl/engine/overworld/auto_movement.asm
++++ jp/engine/overworld/auto_movement.asm
+@@ -131,7 +131,6 @@
+ 	ld [wNPCMovementScriptFunctionNum], a
+ 	ret
+ 
+-
+ RLEList_ProfOakWalkToLab:
+ 	db NPC_MOVEMENT_DOWN, 6 ; differs from red
+ 	db NPC_MOVEMENT_LEFT, 1
+@@ -266,5 +265,3 @@
+ 	db NPC_MOVEMENT_DOWN, 5
+ 	db NPC_MOVEMENT_RIGHT, 3
+ 	db -1 ; end
+-
+-INCLUDE "engine/events/pewter_guys.asm"
