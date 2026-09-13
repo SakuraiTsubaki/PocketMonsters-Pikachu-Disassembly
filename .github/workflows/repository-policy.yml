@@ -24,3 +24,6 @@ jobs:
 
       - name: Validate Bank 01 source reconstruction
         run: make bank01-check
+
+      - name: Validate Bank 02 audio survey
+        run: make bank02-check
