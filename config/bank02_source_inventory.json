@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "bank": "02",
   "strategy": "single-shared-audio-source",
   "status": "reconstruction-in-progress",
@@ -42,7 +42,7 @@
         "audio/sfx/ss_anne_horn.asm", "audio/sfx/withdraw_deposit.asm", "audio/sfx/safari_zone_pa.asm"
       ],
       "logical_records": 34,
-      "status": "pending"
+      "status": "source-reconstructed"
     },
     {
       "name": "shared-cries",
@@ -76,13 +76,30 @@
     },
     {
       "name": "revision-tail",
-      "planned_files": [
+      "files": [
         "data/garbage/jp/rev0a/bank02_tail.asm",
         "data/garbage/jp/revb/bank02_tail.asm",
         "data/garbage/jp/revc/bank02_tail.asm"
       ],
-      "status": "metadata-verified-source-data-pending",
-      "note": "Use editable db source generated from each 313-byte historical tail rather than opaque ROM slices. Rev D and international targets remain zero-filled."
+      "status": "source-reconstructed",
+      "range": "0xbec7-0xbfff",
+      "length": 313,
+      "representation": "Editable RGBDS db source; no opaque ROM slice is tracked.",
+      "verification": {
+        "jp-rev0a": {
+          "raw_sha1": "8b7ee3d3c414c9b31c846f39c5f83dd2324486cb",
+          "git_blob_sha1": "72dd62ff37238e91d7b5e990b248c42b84d11a55"
+        },
+        "jp-revb": {
+          "raw_sha1": "6bd1fed0b4151c0a4a47ac75dcea5850002f813f",
+          "git_blob_sha1": "527ecf5802e41e223919bd4233f425bc37403802"
+        },
+        "jp-revc": {
+          "raw_sha1": "b155e1d0401566065e442e35bb09526f7d5de304",
+          "git_blob_sha1": "3303ea5d42ecbe546588ba1801409bf791b2152e"
+        }
+      },
+      "note": "Rev D and international targets remain zero-filled after the active payload."
     }
   ],
   "logical_audio_records": {
