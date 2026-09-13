@@ -1,0 +1,189 @@
+{
+  "schema_version": 1,
+  "bank": "03",
+  "status": "family-conditional-source-populated",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "strategy": "Preserve pinned Japanese and international source bodies byte-for-byte inside a family conditional; refactor only after target builds can prove equivalence.",
+  "references": {
+    "international": {
+      "repository": "pret/pokeyellow",
+      "commit": "e89ead154b9968aa50eed9328ff2b38b6c194382"
+    },
+    "japanese": {
+      "repository": "Narishma-gb/pokeyellow-jp",
+      "commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572"
+    }
+  },
+  "module_count": 14,
+  "modules": [
+    {
+      "path": "engine/joypad.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "e3483803552984f2ca937becab953d6b39d2b850",
+      "japanese_git_blob_sha1": "78557acf9af5c7d2894c407cf32d96285e85a8ed",
+      "international_raw_sha1": "0f1aac50e90dab90a80ac850930c932207e99134",
+      "international_git_blob_sha1": "7ebb88efe6c7720cf078ea4340690f47562a205f",
+      "merged_raw_sha1": "3be0bda73f6a283c5d4efb10fe4b5dd1f6a1a506",
+      "merged_git_blob_sha1": "ce9b4e1dd39dcb0d371f5a0e52197060bd0d273d",
+      "merged_length": 3414
+    },
+    {
+      "path": "engine/overworld/clear_variables.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "cd256f763c2d74aac14d0cafa425437dd4013db0",
+      "japanese_git_blob_sha1": "82749cab00177798e6f908d66b728ccaa804ca1b",
+      "international_raw_sha1": "51188c45c37d819d9bfa48dfca2cc865029df253",
+      "international_git_blob_sha1": "6bd4496367c9505a04359aa925032c184c8306ae",
+      "merged_raw_sha1": "ce817fa78fa951fad6525c208b7b9804a8da4134",
+      "merged_git_blob_sha1": "c841a69f69db4eec01ffb7c0421598da4853cf71",
+      "merged_length": 1218
+    },
+    {
+      "path": "engine/overworld/player_state.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "22fc805e1b21cb5c6d073d3ca86a23c123c68089",
+      "japanese_git_blob_sha1": "4b1ec542e077a0a7347f87c9e772c5ec57e4170c",
+      "international_raw_sha1": "ccf1071b815729223ba3c940e36dc74673ed6679",
+      "international_git_blob_sha1": "3f642dc024df13f6a652536e7ebaa55bfffff2e4",
+      "merged_raw_sha1": "f7254e2eb928d55c412d2dcad351dac3941f5047",
+      "merged_git_blob_sha1": "5e9ea61a2a7ff162819229adf83e1dbb31ebda64",
+      "merged_length": 15669
+    },
+    {
+      "path": "engine/events/poison.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "88cc74e0f196232102444f4f6d0340c1ac459c9e",
+      "japanese_git_blob_sha1": "3a26df8fcb7915d34814c1647b79dd68aaf60ae6",
+      "international_raw_sha1": "613326f1717d2f405c14dff848baf91dfd5399d3",
+      "international_git_blob_sha1": "a518f82d40035dbcc12df01d343ac33625ae957c",
+      "merged_raw_sha1": "09ca990deebad10b504a7f3b52a0647b7321bf02",
+      "merged_git_blob_sha1": "63d18918a59bb50f2d9e39f734add8cc9f0f5ac2",
+      "merged_length": 6804
+    },
+    {
+      "path": "engine/items/item_effects.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "46ca04889d5c7ef96f602f3507692e8834f08597",
+      "japanese_git_blob_sha1": "bb2dffbbc59733b0bb3f39a12cfa268f168284b0",
+      "international_raw_sha1": "fc2718a794962dc21e3d922cc5c25d69a1ca6067",
+      "international_git_blob_sha1": "a6bdf857b15f73609c15f2f22511ea816eb2fd7f",
+      "merged_raw_sha1": "bf9cdef5bff4ed7a32709b953ab0c18331f8017d",
+      "merged_git_blob_sha1": "1a3b56af089db4b92c707c2718977670a5bc971d",
+      "merged_length": 135499
+    },
+    {
+      "path": "engine/menus/draw_badges.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "71b2938aa4b89163c3d1dad48def1785b92f7778",
+      "japanese_git_blob_sha1": "64fa77e848f8b554be3899c450100729bbfde82d",
+      "international_raw_sha1": "960a1ea6848f8eb631afc6a4522a2b8c26eb3e2a",
+      "international_git_blob_sha1": "5e00a34e9085068601db4b9550f2e2d001694b9a",
+      "merged_raw_sha1": "bb023324ab95f3fe3844f0e66da550dd9c3a659a",
+      "merged_git_blob_sha1": "ad6016b89353696ff9ed359e86645225a1040dc8",
+      "merged_length": 4224
+    },
+    {
+      "path": "engine/overworld/cut.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "dd676d51a17566599635b9313293b96c7b97d79e",
+      "japanese_git_blob_sha1": "bfb8e5eefae6e62bb7c54cd5b65a7528c3c41de2",
+      "international_raw_sha1": "23b70acac4b2763c0745a27bfc9db845f75845b6",
+      "international_git_blob_sha1": "dea23cc5170df16cc4244f11568bbc77c35aa8b9",
+      "merged_raw_sha1": "152c07c8bd61cb7ec213a0bc2d7159db5e92a72d",
+      "merged_git_blob_sha1": "f513b956e6014ca92f4cc74a11c8f494d42a2951",
+      "merged_length": 11144
+    },
+    {
+      "path": "engine/pokemon/add_mon.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "6c5042b80fba59235e4bbb7a6009c784cee9fb12",
+      "japanese_git_blob_sha1": "427047e778a6bab045b80adf8367c3ab199ddd31",
+      "international_raw_sha1": "6568a45cbc8560e1c539d9e3ee6644915482b8e1",
+      "international_git_blob_sha1": "24d360b25c3b3b041258249ca68d6a1f27d73ac2",
+      "merged_raw_sha1": "1ce854592d05aa59b77a33e26ac6d1380cf55193",
+      "merged_git_blob_sha1": "8b0b37cd3e146c80a9ba3255ff135db84757c72c",
+      "merged_length": 20015
+    },
+    {
+      "path": "engine/gfx/hp_bar.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "bde70308cd26168d99207ccabeb5536f2168e1a3",
+      "japanese_git_blob_sha1": "d3e6b6a32eb746db8dc384fe9e13a74d856f40eb",
+      "international_raw_sha1": "536225eb659bda6bdb7d86db129131a10f74eeaa",
+      "international_git_blob_sha1": "04a3251a49a338cab8d2cdbfdf8e129b05b188ad",
+      "merged_raw_sha1": "610b9521c5ca62846ae033123e1a34c28bfa9ad3",
+      "merged_git_blob_sha1": "30a3595fceb92714bae21334656490d800394f8f",
+      "merged_length": 9411
+    },
+    {
+      "path": "engine/events/hidden_events/indigo_plateau_statues.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "442c8a48029b9be1b14391f0ff629bf77334e6fc",
+      "japanese_git_blob_sha1": "9e43675ab3e382db9e475bd6312d05b5782a1361",
+      "international_raw_sha1": "d12feeb482085a91e5ec37fe2247b6699431e12e",
+      "international_git_blob_sha1": "f78a5a727efed170ef26a1c40732262099a62b49",
+      "merged_raw_sha1": "25223f3531f845fe57c0b6c0465057e427929bd1",
+      "merged_git_blob_sha1": "116788daf3bd59cd067ac974c4f5e524b5b5092b",
+      "merged_length": 1387
+    },
+    {
+      "path": "engine/events/hidden_events/book_or_sculpture.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "0ac72d7ff27f0aef9e13b19e205def9711ced213",
+      "japanese_git_blob_sha1": "f5682837f10f71ae5b47f9e4bf2fc724135699a4",
+      "international_raw_sha1": "147bed534a551ea0299b403cbd9c0506959b15af",
+      "international_git_blob_sha1": "e04f4047f88c199fa0d1fbc67b89e03b382a9a26",
+      "merged_raw_sha1": "93a9887170fb0153282bbdb472ff5289328aa30a",
+      "merged_git_blob_sha1": "3fd0b979fddfd77a1be9a608807961ffe2661ab1",
+      "merged_length": 1089
+    },
+    {
+      "path": "engine/events/hidden_events/elevator.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "615e3052dc37df5648ebd4e726e08e687a6a97f7",
+      "japanese_git_blob_sha1": "9702e68573d8098ab3a6fc9f127536fa35d952f5",
+      "international_raw_sha1": "2263a2ce834fc7380e88f2bd26c5a48a4b888f6c",
+      "international_git_blob_sha1": "ab0f731fc22936c8534a96e718560417bc8affa8",
+      "merged_raw_sha1": "1d4def7ef2c6151eae8a0fd5d68d471dd301ed52",
+      "merged_git_blob_sha1": "32421c2fb506aa607c1dd1fe832b73545b0f9f10",
+      "merged_length": 485
+    },
+    {
+      "path": "engine/events/hidden_events/town_map.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "9b7d85a44651baf2d01edcba4af80e977b930261",
+      "japanese_git_blob_sha1": "b153399f79d354727f41ca8efca4b848ae65f63d",
+      "international_raw_sha1": "c819a6b8957c3f0f9a5165ce6ab01794e4d106c0",
+      "international_git_blob_sha1": "11f7cbc7d0d429b148bfa1df54a694892e418f0c",
+      "merged_raw_sha1": "7364e59f244d59118045176c49c204d5355f8324",
+      "merged_git_blob_sha1": "795533b0da3e255c8167fc1381e7cc8d1bc87931",
+      "merged_length": 1299
+    },
+    {
+      "path": "engine/events/hidden_events/pokemon_stuff.asm",
+      "strategy": "family-whole-file-conditional",
+      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "japanese_raw_sha1": "c264a891146098108bb36849496a3a700cdeba33",
+      "japanese_git_blob_sha1": "b164aa9a9a600cb0d705cc100d31b36a97ef6604",
+      "international_raw_sha1": "e73e9e9d4af60fe112586b8a8c4731cbee61195f",
+      "international_git_blob_sha1": "267a191a8d3b7e2fc06d1fd1d7edcd3053d5f9b9",
+      "merged_raw_sha1": "ffb54f74ed199c868223bd249936251b9bfc919b",
+      "merged_git_blob_sha1": "b251b9c36bf36a612b348e35026b3c5476e02893",
+      "merged_length": 531
+    }
+  ]
+}
