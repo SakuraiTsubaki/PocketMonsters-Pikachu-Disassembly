@@ -1,16 +1,20 @@
-# Bank 03 survey
+# Bank 03 survey and source reconstruction ledger
 
-Bank 03 covers physical ROM range `0xC000-0xFFFF` and is the next reconstruction target after Bank 02.
+Bank 03 covers physical ROM range `0xC000-0xFFFF`.
 
 ## Current status
 
 - Survey status: **complete**
-- Source reconstruction: **not yet complete**
+- Canonical source population: **28/28 modules present**
+- JP/international source deduplication: **complete at the pinned-source level**
+- Source classes: **10 exact shared + 4 cosmetic-normalized + 14 fine-grained family-conditional**
+- Whole-file JP/international duplication: **0 modules**
+- Bank entrypoint and Japanese revision-tail wiring: **present and CI-checked**
+- Linked source reconstruction: **not yet complete**
 - Byte-perfect rebuild claim: **not yet made**
-- Canonical logical layout: one `bank3` section containing **28 top-level modules**
 - Reference authority: uploaded/reference ROM bytes take precedence over public disassembly source when any conflict exists.
 
-The 28-module order is shared by the checked international `pret/pokeyellow` layout and the Japanese `Narishma-gb/pokeyellow-jp` layout. The machine-code bytes are not assumed to be identical across languages or revisions merely because the logical include order is the same.
+The important distinction is that Bank 03 now has a complete editable source population and a deduplicated JP/international source model, but this is **not** yet a claim that RGBDS can link the complete repository and reproduce every Bank 03 reference byte. Cross-bank symbol/data dependencies still have to be reconstructed and the nine target builds have to be assembled, linked, and byte-compared.
 
 ## Canonical module order
 
@@ -43,13 +47,62 @@ The 28-module order is shared by the checked international `pret/pokeyellow` lay
 27. `engine/events/hidden_events/town_map.asm`
 28. `engine/events/hidden_events/pokemon_stuff.asm`
 
-The machine-readable source of truth is `config/bank03_modules.json`.
+The machine-readable source of truth for the logical bank layout remains `config/bank03_modules.json`; `banks/bank03.asm` is the executable include-order representation.
+
+## Source population and deduplication
+
+The Bank 03 source audit is pinned to:
+
+- international: `pret/pokeyellow` commit `e89ead154b9968aa50eed9328ff2b38b6c194382`
+- Japanese: `Narishma-gb/pokeyellow-jp` commit `f282e72ae26232790fdb780aa5a5db7ec8ebf572`
+
+The 28 modules were classified before source merging:
+
+- **10 exact shared modules**: public JP and international source files are byte-identical and one shared source file is retained.
+- **4 cosmetic-normalized modules**: comments/whitespace differ but assembly-relevant token streams are identical; the pinned international spelling is retained as the common source.
+- **14 substantive modules**: assembly-relevant tokens differ. All fourteen are now represented as fine-grained family conditionals, with common lines emitted once and only genuine JP/international differences guarded.
+
+The provenance and reconstruction ledgers are:
+
+- `config/bank03_source_inventory.json`
+- `config/bank03_variant_analysis.json`
+- `config/bank03_merged_source_manifest.json`
+- `config/bank03_fine_merge_batch1.json`
+- `config/bank03_fine_merge_batch2.json`
+- `config/bank03_large_variant_safety.json`
+- `config/bank03_joypad_manual_merge.json`
+- `analysis/bank03/source_diffs/`
+
+`tools/check_bank03_sources.py` locks the source hashes, the 10/4/14 classification, the all-fine-grained final state, canonical include order, joypad verification ledger, and Japanese tail wiring.
+
+## Joypad revision reconstruction
+
+`engine/joypad.asm` is the exceptional substantive module. A naive JP/international line-diff wrapper is invalid because the changed Japanese spans cross existing `_REV0`/`_REV1`/`_REV2`/`_REV3` `IF/ELSE/ENDC` structure and create a duplicate `ELSE`.
+
+The final source therefore uses a manually structured semantic merge:
+
+- Japanese Rev 0A preserves its extra JOYP reads and alternate polling/soft-reset path.
+- Japanese Rev B/C/D preserve the later Japanese polling guard and normal input path.
+- International targets preserve the international normal path.
+- Common instructions are emitted once wherever the selected source paths are assembly-equivalent.
+
+Before the merge was accepted, a target-aware conditional evaluator compared assembly-relevant token streams against the pinned upstream source for each logical path:
+
+| Path | Verified token count |
+| --- | ---: |
+| JP Rev 0A | 294 |
+| JP Rev B | 297 |
+| JP Rev C | 297 |
+| JP Rev D | 297 |
+| International | 289 |
+
+All five comparisons passed. This is **source-branch equivalence validation**, not a substitute for the later RGBDS linked-byte comparison.
 
 ## Nine reference targets
 
 The observed `.gb`/`.gbc` container pairs for EN/FR/DE/IT/ES are byte-identical within each language, so they collapse to five unique international images. Together with four Japanese revisions, Bank 03 therefore has nine unique reference targets.
 
-Each target currently has a distinct full Bank 03 SHA-1. This is evidence that Bank 03 cannot be treated as a single byte-identical payload before relocation/content normalization.
+Each target has a distinct full Bank 03 SHA-1. Logical module order is shared, but byte identity is not assumed across languages or revisions.
 
 ## Japanese revision structure
 
@@ -57,7 +110,7 @@ Each target currently has a distinct full Bank 03 SHA-1. This is evidence that B
 
 Rev 0A active Bank 03 code/data occupies `0xC000-0xFE2F` (15,920 bytes). Its active payload is **9 bytes longer** than Rev B/C/D.
 
-Public source cross-checking identifies the cause in `engine/joypad.asm`: `_REV0` has extra JOYP reads and a different polling/reset path, while `_REV1`, `_REV2`, and `_REV3` use the later guard/polling path. The 9-byte size delta shifts subsequent Bank 03 addresses.
+The cause is the `_REV0` path in `engine/joypad.asm`: it performs extra JOYP reads and uses a different polling/reset path. The resulting 9-byte size delta shifts subsequent Bank 03 addresses.
 
 Rev 0A then carries a 464-byte historical `Garbage 3` tail at `0xFE30-0xFFFF`.
 
@@ -75,11 +128,11 @@ Compared with Rev B/C, Rev D has exactly one active-region byte difference at ph
 - Rev D: `$FA`
 - operand: `ld hl,$77F3` -> `ld hl,$77FA`
 
-The source site is the `farjp PrintCardKeyText` in `engine/events/hidden_events/bookshelves.asm`. The semantic Bank 03 logic is unchanged; the byte difference is classified as an **external-symbol relocation** caused by the referenced target moving by 7 bytes in Rev D.
+The source site is the `farjp PrintCardKeyText` in `engine/events/hidden_events/bookshelves.asm`. The semantic Bank 03 logic is unchanged; this is classified as an **external-symbol relocation** caused by the referenced target moving by 7 bytes in Rev D.
 
 ## Garbage 3 preservation
 
-Historical tails are stored as editable RGBDS `db` source, not as ROM or `.bin` files:
+Historical tails are stored as editable RGBDS `db` source, not ROM or `.bin` files:
 
 | Revision | Range | Length | Raw SHA-1 | Public Git blob SHA-1 |
 | --- | --- | ---: | --- | --- |
@@ -88,18 +141,20 @@ Historical tails are stored as editable RGBDS `db` source, not as ROM or `.bin` 
 | JP Rev C | `0xFE27-0xFFFF` | 473 | `137053b3679654889b17fd5f0c42fd906fabc76b` | `1b8ccc4a797481fee0c25b9709d419357764bcee` |
 | JP Rev D | `0xFE27-0xFFFF` | 473 zero bytes | `693e31dc362426bc4d7a6b2954f7c80267476d66` | n/a |
 
-These bytes are classified as historical leftover data. They must be preserved for exact historical reconstruction, but they must not be reinterpreted as active engine code.
+These bytes remain classified as historical leftover data. They are preserved for exact historical reconstruction but are not reinterpreted as active engine code.
 
 ## International boundary caution
 
-For the five international targets, the final non-zero byte occurs at different physical offsets (`0xFAC7`-`0xFADB` range). These observations are useful for surveying padding, but **last non-zero byte is not a source-section boundary**. The exact active-layout boundary and all locale-specific relocation/content differences will be established during source reconstruction.
+For the five international targets, the final non-zero byte occurs at different physical offsets (`0xFAC7`-`0xFADB` range). A last-nonzero observation is not a source-section boundary. Exact locale-specific placement must be established from the eventual linked builds and byte comparisons.
 
-## Next reconstruction phase
+## Remaining completion gate
 
-1. Import/reconstruct the 28 modules as editable RGBDS source.
-2. Create `banks/bank03.asm` using the canonical include order.
-3. Encode the JP Rev 0A joypad conditional and JP Rev 0A/B/C Garbage 3 wiring without duplicating common logic.
-4. Build an international/JP relocation and content-difference matrix.
-5. Enable per-target byte-diff validation when Bank 03 cross-bank symbol dependencies are available.
+Bank 03 is now ready for the next stage rather than another source-import pass:
 
-`make bank03-check` validates this survey, the exact module order, all nine recorded bank hashes, and all three reconstructed Japanese Garbage 3 tails without requiring any ROM file.
+1. Reconstruct the cross-bank symbols, constants, macros, data, text and other dependencies needed to assemble/link Bank 03 in the repository's unified build.
+2. Enable RGBDS assembly/linking for each of the nine target definitions.
+3. Compare physical Bank 03 bytes (`0xC000-0xFFFF`) against all nine reference hashes/ranges.
+4. Classify any mismatches as local source content, linked-symbol relocation, padding/fill, or historical tail data and correct the source model.
+5. Only after all nine linked Bank 03 outputs match may `source_reconstruction_complete` and any byte-perfect claim be promoted.
+
+`make bank03-check` currently validates the survey, all nine recorded reference-bank hashes, 28-module source population, fine-grained source provenance, joypad target-branch equivalence ledger, canonical include order, and JP Rev 0A/B/C Garbage 3 tails without requiring a ROM file.
