@@ -62,7 +62,7 @@ These bytes are historical leftover data, not active audio. Exact historical reb
 
 ## Canonical reconstruction strategy
 
-Bank 02 should use one shared editable audio source tree for all nine targets:
+Bank 02 uses one shared editable audio source tree for all nine targets:
 
 - shared SFX/music headers where byte equivalence allows it;
 - shared noise instruments and cry definitions;
@@ -72,12 +72,28 @@ Bank 02 should use one shared editable audio source tree for all nine targets:
 - shared Music 1 sequences and fanfares;
 - revision-specific `Garbage 2` only for JP Rev 0A/B/C.
 
-Public repositories are comparison references, not the repository architecture contract. Where one public project stores separate `*_1.asm` copies and another deduplicates them into common files, this project should prefer the deduplicated representation when direct ROM evidence proves equivalence.
+Public repositories are comparison references, not the repository architecture contract. Where one public project stores separate `*_1.asm` copies and another deduplicates them into common files, this project prefers the deduplicated representation when direct ROM evidence proves equivalence.
+
+## Source reconstruction result
+
+The Bank 02 source population phase is complete:
+
+- `banks/bank02.asm` fixes the canonical section and include order.
+- 19 noise-instrument records are reconstructed.
+- 34 non-cry SFX sources are reconstructed.
+- 39 cry sources are reconstructed in canonical ROM order.
+- Audio Engine 1 and its internal note table dependency are reconstructed.
+- Music 1 contains the wave table plus all 25 sequence/fanfare sources (`26/26` files total).
+- `config/bank02_music1_blobs.json` pins every Music 1 source to the verified Git blob SHA-1 from the fixed Japanese reference commit.
+- JP Rev 0A/B/C historical tails are represented as editable RGBDS `db` source and wired at bank-local `$7EC7`.
+- Repository CI validates all of the above without requiring a ROM image.
 
 ## Current completion boundary
 
 **Survey / equivalence verification: complete.**
 
-**Source reconstruction: not yet complete.** The canonical Audio Bank 1 source files still need to be populated in this repository.
+**Bank-local source population and source ordering: complete.** All Bank 02 code/data/audio source needed for the canonical bank representation is present and CI-validated.
 
-**Byte-perfect rebuild claim: false.** Full RGBDS target builds are still blocked by unreconstructed cross-bank dependencies. Once the source tree is complete and builds are enabled, each generated Bank 02 must be compared byte-for-byte against its matching reference ROM.
+**Repository-wide source reconstruction flag: intentionally still false.** Bank 02 depends on global constants, RAM symbols, Home routines, linker placement, and other cross-bank source that is still being reconstructed. The flag will be promoted only when the shared RGBDS build graph can actually assemble and link the supported target.
+
+**Byte-perfect rebuild claim: false.** No byte-perfect claim is made until generated Bank 02 output is compared byte-for-byte against each matching reference ROM. This distinction prevents source presence from being confused with a completed reproducible build.
