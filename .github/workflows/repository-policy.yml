@@ -30,3 +30,6 @@ jobs:
 
       - name: Validate Bank 03 survey
         run: make bank03-check
+
+      - name: Validate Bank 04 survey
+        run: make bank04-check
