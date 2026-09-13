@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "bank": "02",
+  "active_payload_range": "0x8000-0xbec6",
+  "status": "direct-byte-verified",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "result": {
+    "normalized_active_audio_identical_across_all_targets": true,
+    "remaining_payload_differences_after_relocation_normalization": 0,
+    "interpretation": "All observed active-region differences are linked WRAM/Home symbol operands. No music, SFX, cry, wave, header, or audio-command payload difference remains after those relocations are normalized."
+  },
+  "international_union": {
+    "differing_byte_count": 23,
+    "offsets": [
+      {"offset":"0x9066","symbol":"wAudioFadeOutControl","kind":"wram-address"},
+      {"offset":"0x9069","symbol":"wLowHealthAlarm","kind":"wram-address"},
+      {"offset":"0x906c","symbol":"StopAllMusic","kind":"home-call-target"},
+      {"offset":"0x906f","symbol":"DelayFrame","kind":"home-call-target"},
+      {"offset":"0x9074","symbol":"wGymLeaderNo","kind":"wram-address"},
+      {"offset":"0x907e","symbol":"wCurOpponent","kind":"wram-address"},
+      {"offset":"0x909b","symbol":"PlayMusic","kind":"home-jump-target"},
+      {"offset":"0x9182","symbol":"wLowHealthAlarm","kind":"wram-address"},
+      {"offset":"0x93bb","symbol":"DetermineAudioFunction","kind":"home-call-target"},
+      {"offset":"0x94b1","symbol":"DetermineAudioFunction","kind":"home-call-target"},
+      {"offset":"0x9648","symbol":"wLowHealthAlarm","kind":"wram-address"},
+      {"offset":"0x980d","symbol":"GetNextMusicByte","kind":"home-call-target"},
+      {"offset":"0x9869","symbol":"InitMusicVariables","kind":"home-call-target"},
+      {"offset":"0x98c4","symbol":"InitSFXVariables","kind":"home-call-target"},
+      {"offset":"0x98d0","symbol":"StopAllAudio","kind":"home-call-target"},
+      {"offset":"0x9975","symbol":"wOptions","kind":"wram-address"},
+      {"offset":"0x99c2","symbol":"PlayMusic","kind":"home-call-target"},
+      {"offset":"0x99e0","symbol":"PlayMusic","kind":"home-call-target"},
+      {"offset":"0x99f7","symbol":"wAudioFadeOutCounterReloadValue","kind":"wram-address"},
+      {"offset":"0x99fa","symbol":"wAudioFadeOutCounter","kind":"wram-address"},
+      {"offset":"0x99ff","symbol":"wAudioFadeOutControl","kind":"wram-address"},
+      {"offset":"0x9a04","symbol":"DelayFrames","kind":"home-call-target"},
+      {"offset":"0x9a0b","symbol":"PlayMusic","kind":"home-call-target"}
+    ]
+  },
+  "english_vs_japanese_revd": {
+    "active_region_differing_byte_count": 27,
+    "offsets": [
+      "0x9066", "0x9069", "0x906c", "0x906f", "0x9074", "0x907e", "0x909b",
+      "0x9182", "0x93bb", "0x93bc", "0x94b1", "0x94b2", "0x9648", "0x980d",
+      "0x9869", "0x98c4", "0x98d0", "0x98d1", "0x9975", "0x9976", "0x99c2",
+      "0x99e0", "0x99f7", "0x99fa", "0x99ff", "0x9a04", "0x9a0b"
+    ],
+    "extra_second_operand_bytes_vs_international_union": [
+      {"offset":"0x93bc","symbol":"DetermineAudioFunction"},
+      {"offset":"0x94b2","symbol":"DetermineAudioFunction"},
+      {"offset":"0x98d1","symbol":"StopAllAudio"},
+      {"offset":"0x9976","symbol":"wOptions"}
+    ]
+  },
+  "japanese_rev0a_vs_revb": {
+    "active_region_differing_byte_count": 14,
+    "resolution": "relocation-only",
+    "offsets": [
+      {"offset":"0x906c","symbol":"StopAllMusic"},
+      {"offset":"0x906f","symbol":"DelayFrame"},
+      {"offset":"0x909b","symbol":"PlayMusic"},
+      {"offset":"0x93bb","symbol":"DetermineAudioFunction"},
+      {"offset":"0x94b1","symbol":"DetermineAudioFunction"},
+      {"offset":"0x980d","symbol":"GetNextMusicByte"},
+      {"offset":"0x9869","symbol":"InitMusicVariables"},
+      {"offset":"0x98c4","symbol":"InitSFXVariables"},
+      {"offset":"0x98d0","symbol":"StopAllAudio"},
+      {"offset":"0x98d1","symbol":"StopAllAudio"},
+      {"offset":"0x99c2","symbol":"PlayMusic"},
+      {"offset":"0x99e0","symbol":"PlayMusic"},
+      {"offset":"0x9a04","symbol":"DelayFrames"},
+      {"offset":"0x9a0b","symbol":"PlayMusic"}
+    ]
+  },
+  "source_crosscheck": {
+    "play_battle_music": "pret/pokeyellow audio/play_battle_music.asm",
+    "engine": "pret/pokeyellow audio/engine_1.asm",
+    "alternate_tempo": "pret/pokeyellow audio/alternate_tempo.asm"
+  }
+}
