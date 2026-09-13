@@ -1,0 +1,159 @@
+name: Audit Bank 05 sources
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/audit-bank05-sources.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: target
+
+      - name: Checkout pinned international reference
+        uses: actions/checkout@v4
+        with:
+          repository: pret/pokeyellow
+          ref: e89ead154b9968aa50eed9328ff2b38b6c194382
+          path: intl
+
+      - name: Checkout pinned Japanese reference
+        uses: actions/checkout@v4
+        with:
+          repository: Narishma-gb/pokeyellow-jp
+          ref: f282e72ae26232790fdb780aa5a5db7ec8ebf572
+          path: jp
+
+      - name: Classify Bank 05 source union
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import difflib
+          import hashlib
+          import json
+          import re
+
+          target = Path('target')
+          modules = [
+              'engine/gfx/load_pokedex_tiles.asm',
+              'engine/overworld/map_sprites.asm',
+              'engine/battle/move_effects/substitute.asm',
+              'engine/menus/pc.asm',
+              'engine/overworld/auto_movement.asm',
+              'engine/events/pewter_guys.asm',
+              'engine/overworld/doors.asm',
+              'engine/overworld/ledges.asm',
+          ]
+
+          def sha1(data: bytes) -> str:
+              return hashlib.sha1(data).hexdigest()
+
+          def blob_sha1(data: bytes) -> str:
+              return hashlib.sha1(f'blob {len(data)}\0'.encode('ascii') + data).hexdigest()
+
+          def strip_comment(line: str) -> str:
+              out=[]; quote=None; escaped=False
+              for ch in line:
+                  if escaped:
+                      out.append(ch); escaped=False; continue
+                  if ch == '\\':
+                      out.append(ch); escaped=True; continue
+                  if quote:
+                      out.append(ch)
+                      if ch == quote: quote=None
+                      continue
+                  if ch in ('"', "'"):
+                      quote=ch; out.append(ch); continue
+                  if ch == ';': break
+                  out.append(ch)
+              return ''.join(out)
+
+          def semantic_tokens(data: bytes):
+              text=data.decode('utf-8')
+              clean='\n'.join(strip_comment(line) for line in text.splitlines())
+              return re.findall(r'\$[0-9A-Fa-f]+|%[01]+|[A-Za-z_][A-Za-z0-9_@.#?]*|\d+|"(?:\\.|[^"\\])*"|\S', clean)
+
+          records=[]
+          diff_dir=target/'analysis/bank05/source_diffs'
+          diff_dir.mkdir(parents=True, exist_ok=True)
+          copied=[]
+          for rel in modules:
+              ib=(Path('intl')/rel).read_bytes()
+              jb=(Path('jp')/rel).read_bytes()
+              if ib == jb:
+                  cls='exact-shared'
+              elif semantic_tokens(ib) == semantic_tokens(jb):
+                  cls='cosmetic-only'
+              else:
+                  cls='substantive'
+
+              placement = 'common-bank05'
+              if rel == 'engine/events/pewter_guys.asm':
+                  placement = 'japanese-top-level-international-nested-in-auto_movement'
+
+              rec={
+                  'path': rel,
+                  'classification': cls,
+                  'placement_class': placement,
+                  'international_raw_sha1': sha1(ib),
+                  'japanese_raw_sha1': sha1(jb),
+                  'international_git_blob_sha1': blob_sha1(ib),
+                  'japanese_git_blob_sha1': blob_sha1(jb),
+                  'international_length': len(ib),
+                  'japanese_length': len(jb),
+              }
+              records.append(rec)
+
+              il=ib.decode('utf-8').splitlines(keepends=True)
+              jl=jb.decode('utf-8').splitlines(keepends=True)
+              diff=''.join(difflib.unified_diff(il,jl,fromfile=f'intl/{rel}',tofile=f'jp/{rel}'))
+              safe=rel.replace('/','__')+'.diff'
+              (diff_dir/safe).write_text(diff,encoding='utf-8')
+
+              if cls in ('exact-shared','cosmetic-only'):
+                  dst=target/rel
+                  dst.parent.mkdir(parents=True,exist_ok=True)
+                  dst.write_bytes(ib)
+                  copied.append(rel)
+
+          counts={k:sum(r['classification']==k for r in records) for k in ('exact-shared','cosmetic-only','substantive')}
+          inventory={
+              'schema_version':1,
+              'bank':'05',
+              'audit_status':'complete-safe-shared-files-copied',
+              'source_reconstruction_complete':False,
+              'byte_perfect_rebuild_claim':False,
+              'pinned_references':{
+                  'international':{'repository':'pret/pokeyellow','commit':'e89ead154b9968aa50eed9328ff2b38b6c194382'},
+                  'japanese':{'repository':'Narishma-gb/pokeyellow-jp','commit':'f282e72ae26232790fdb780aa5a5db7ec8ebf572'},
+              },
+              'unique_source_path_count':len(modules),
+              'classification_counts':counts,
+              'safe_copied_paths':copied,
+              'placement_note':'pewter_guys.asm is top-level in JP Doors and Ledges but nested from international auto_movement.asm.',
+              'modules':records,
+          }
+          (target/'config/bank05_source_inventory.json').write_text(json.dumps(inventory,indent=2)+'\n',encoding='utf-8')
+          print('Bank 05 source classes:', counts)
+          for r in records:
+              print(r['classification'], r['path'])
+          PY
+
+      - name: Commit audit outputs
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add config/bank05_source_inventory.json analysis/bank05 engine gfx
+          git commit -m 'bank05: audit pinned family sources'
+          git push origin HEAD:main
