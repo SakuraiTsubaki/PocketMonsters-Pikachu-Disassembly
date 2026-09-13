@@ -1,16 +1,22 @@
-# Bank 04 survey
+# Bank 04 survey and source reconstruction
 
 Bank 04 covers physical ROM range `0x10000-0x13FFF` and contains two logical RGBDS sections in the pinned public references: `bank4` and `Battle Engine 1`.
 
 ## Current status
 
 - Survey status: **complete**
-- Source reconstruction: **not yet complete**
+- Family-source population: **complete for all 14 unique source paths**
+- Source classes: **4 exact-shared + 1 cosmetic-normalized + 9 fine-grained family-conditional**
+- Substantive merge state: **9/9 fine-grained; 0 manual-pending**
+- Family-aware entrypoint: `banks/bank04.asm`
+- Linked per-target source reconstruction: **not yet complete**
 - Byte-perfect rebuild claim: **not yet made**
 - Nine unique reference targets recorded
 - Japanese `Garbage 4` tails reconstructed as editable ASM for Rev 0A/B/C
 - JP Rev D uses a 62-byte zero-filled tail
 - Reference authority: uploaded/reference ROM bytes take precedence over public disassembly source.
+
+The distinction above is intentional: all known Bank 04 top-level source material is now represented in the repository, but `source_reconstruction_complete` remains false until the source can be linked with all required cross-bank dependencies and validated against the nine reference ROM images.
 
 ## Family-specific layout
 
@@ -57,13 +63,48 @@ Unlike Bank 03, Bank 04 does **not** have an identical top-level module layout b
 13. `engine/battle/move_effects/haze.asm`
 14. `engine/overworld/npc_movement_2.asm`
 
-The three Japanese-only Bank 04 placements are not automatically treated as Japanese-only content:
+The three Japanese-only Bank 04 placements are not Japanese-only content:
 
 - `data/moves/names.asm` is placed in the international `text.asm` `Move Names` section.
 - `engine/overworld/is_player_just_outside_map.asm` is placed in international `bank3A`.
 - `engine/overworld/npc_movement_2.asm` is also placed in international `bank3A`.
 
-They therefore represent **family-specific bank placement** until source/content comparison proves otherwise.
+They therefore represent **family-specific bank placement**. `banks/bank04.asm` preserves those placements with `_JAPAN` guards while keeping each unique source path represented only once in the Bank 04 entrypoint.
+
+## Source population and merge classification
+
+The pinned international and Japanese source trees were compared over the union of the 14 Bank 04 paths. The permanent source inventory is `config/bank04_source_inventory.json`; merge-safety evidence is `config/bank04_variant_safety.json`; merged-source provenance is `config/bank04_merged_source_manifest.json`.
+
+### Exact-shared — 4
+
+- `engine/overworld/is_player_just_outside_map.asm`
+- `gfx/player.asm`
+- `engine/items/tms.asm`
+- `engine/overworld/npc_movement_2.asm`
+
+These files have matching pinned upstream Git blobs and are stored once.
+
+### Cosmetic-normalized — 1
+
+- `engine/battle/wild_encounters.asm`
+
+The semantic source is shared; the repository retains the normalized international representation while preserving the upstream comparison hashes in the inventory.
+
+### Fine-grained family-conditional — 9
+
+- `data/moves/names.asm`
+- `gfx/font.asm`
+- `engine/pokemon/status_screen.asm`
+- `engine/menus/party_menu.asm`
+- `engine/menus/start_sub_menus.asm`
+- `engine/battle/end_of_battle.asm`
+- `engine/battle/move_effects/recoil.asm`
+- `engine/battle/move_effects/conversion.asm`
+- `engine/battle/move_effects/haze.asm`
+
+All nine substantive files passed the automatic merge-safety rule: none of the changed SequenceMatcher regions intersects an existing RGBDS `IF`/`ELIF`/`ELSE`/`ENDC`, and every generated conditional stack is balanced. Common lines are emitted once and only actual JP/international differences are wrapped in localized `IF DEF(_JAPAN) / ELSE / ENDC` blocks.
+
+The source checker permanently requires this state to remain **9 safe / 0 manual-pending**.
 
 ## Bank SHA-1 values
 
@@ -95,7 +136,7 @@ Direct ROM comparison shows:
 
 Therefore **Rev B, Rev C, and Rev D have byte-identical active Bank 04 payloads**. Their observed whole-bank differences are entirely in the 62-byte tail.
 
-Rev 0A differs from Rev B at 260 active bytes across 256 contiguous difference ranges. A pinned-source search for `DEF(_REV0)` finds no direct revision conditional in the Japanese Bank 04 top-level modules. These active differences are therefore **not yet classified as local Bank 04 code changes**; external-symbol relocation is a strong candidate, but classification remains pending until symbol-aware assembly/link validation.
+Rev 0A differs from Rev B at 260 active bytes across 256 contiguous difference ranges. A pinned-source search for `DEF(_REV0)` finds no direct revision conditional in the Japanese Bank 04 top-level modules. These active differences are therefore **not yet classified as local Bank 04 code changes**; external-symbol relocation is a strong candidate, but attribution remains `pending-symbol-aware-link-validation` until symbol-aware assembly/link validation is available.
 
 ## Garbage 4 preservation
 
@@ -108,7 +149,7 @@ The pinned Japanese `garbage.asm` places `Garbage 4` in Bank 4 for `_REV0`, `_RE
 | JP Rev C | `0x13FC2-0x13FFF` | 62 | `5d1943617c7a4bb19b829a7c942663baf70e40de` | `5ce7e4dd53b9a0c47630e069aff9c27c5fca0eea` |
 | JP Rev D | `0x13FC2-0x13FFF` | 62 zero bytes | `566538c1539e2db072bd6dd57dbaae4e470ad831` | n/a |
 
-Rev 0A/B/C tails are preserved under `data/garbage/jp/<revision>/bank04_tail.asm`; Rev D intentionally has no tail source and uses zero fill.
+Rev 0A/B/C tails are preserved under `data/garbage/jp/<revision>/bank04_tail.asm`; Rev D intentionally has no tail source and uses zero fill. `banks/bank04.asm` fixes those historical tails at `$7FC2` for the applicable Japanese revisions.
 
 These bytes are historical leftover data and must not be reinterpreted as active engine code.
 
@@ -124,14 +165,23 @@ The last non-zero byte differs by locale:
 | IT | `0x13A4A` | 1461 |
 | ES | `0x13A45` | 1466 |
 
-The **last non-zero byte is not a source-section boundary**. These values are padding survey observations only; exact section placement must come from source reconstruction and linked-byte validation.
+The **last non-zero byte is not a source-section boundary**. These values are padding survey observations only; exact section placement must come from linked-byte validation.
+
+## Permanent validation
+
+`make bank04-check` now runs both:
+
+1. `tools/check_bank04_survey.py` — nine reference bank hashes, family layouts, JP active/tail observations, and all three 62-byte Garbage 4 sources.
+2. `tools/check_bank04_sources.py` — the complete 14-path source population, exact/cosmetic/substantive provenance, 9/9 fine-grained merge safety, family-specific entrypoint order, and revision-tail wiring.
+
+The one-shot source audit and merge workflows have been removed after their outputs were committed. The permanent Repository Policy workflow calls `make bank04-check` on every push and pull request.
 
 ## Next reconstruction phase
 
-1. Audit the 11 common Bank 04 modules against both pinned source families.
-2. Classify exact-shared, cosmetic-only, and substantive source differences.
-3. Preserve the three Japanese-specific placements while avoiding duplicate content in international banks.
-4. Build `banks/bank04.asm` with family-specific section order and JP Garbage 4 wiring.
-5. Defer any byte-perfect claim until all required cross-bank dependencies can be linked and Bank 04 is compared against all nine reference images.
+1. Supply the remaining cross-bank constants, labels, macros, graphics/data dependencies needed to assemble the Bank 04 sections in the repository's eventual complete source tree.
+2. Perform symbol-aware linking for JP Rev 0A/B/C/D and determine whether the 260 Rev0A active-byte differences are entirely external-symbol relocation or include any source-semantic difference.
+3. Extend locale-specific data/text dependencies needed by EN/FR/DE/IT/ES.
+4. Compare linked Bank 04 bytes against all nine reference bank SHA-1 values.
+5. Only after those checks pass may `source_reconstruction_complete` and the byte-perfect claim be changed.
 
 The machine-readable survey is `config/bank04_modules.json`.
