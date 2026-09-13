@@ -53,10 +53,9 @@
     },
     {
       "name": "audio-engine-1",
-      "files": ["audio/play_battle_music.asm", "audio/engine_1.asm", "audio/alternate_tempo.asm"],
-      "status": "partial",
-      "completed": ["audio/play_battle_music.asm", "audio/alternate_tempo.asm"],
-      "pending": ["audio/engine_1.asm"]
+      "files": ["audio/play_battle_music.asm", "audio/engine_1.asm", "audio/alternate_tempo.asm", "audio/notes.asm"],
+      "status": "source-reconstructed",
+      "verification": "Public normalized JP source crosschecked; final byte-perfect validation waits for the full RGBDS build graph."
     },
     {
       "name": "music-1",
