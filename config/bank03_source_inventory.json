@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "bank": "03",
+  "status": "upstream-source-audited",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "references": {
+    "international": {
+      "repository": "pret/pokeyellow",
+      "commit": "e89ead154b9968aa50eed9328ff2b38b6c194382"
+    },
+    "japanese": {
+      "repository": "Narishma-gb/pokeyellow-jp",
+      "commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572"
+    }
+  },
+  "policy": "Only missing files whose pinned JP and international source bytes are identical are auto-imported. Existing files are never overwritten; divergent upstream files are deferred for explicit merge/classification.",
+  "module_count": 28,
+  "counts": {
+    "upstream_identical": 10,
+    "upstream_different": 18,
+    "imported_shared": 10,
+    "existing_matches_shared": 0,
+    "existing_matches_international": 0,
+    "existing_matches_japanese": 0,
+    "existing_custom": 0,
+    "deferred_missing_variant": 18
+  },
+  "modules": [
+    {
+      "path": "engine/joypad.asm",
+      "international_git_blob_sha1": "7ebb88efe6c7720cf078ea4340690f47562a205f",
+      "japanese_git_blob_sha1": "78557acf9af5c7d2894c407cf32d96285e85a8ed",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/overworld/clear_variables.asm",
+      "international_git_blob_sha1": "6bd4496367c9505a04359aa925032c184c8306ae",
+      "japanese_git_blob_sha1": "82749cab00177798e6f908d66b728ccaa804ca1b",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/overworld/player_state.asm",
+      "international_git_blob_sha1": "3f642dc024df13f6a652536e7ebaa55bfffff2e4",
+      "japanese_git_blob_sha1": "4b1ec542e077a0a7347f87c9e772c5ec57e4170c",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/events/poison.asm",
+      "international_git_blob_sha1": "a518f82d40035dbcc12df01d343ac33625ae957c",
+      "japanese_git_blob_sha1": "3a26df8fcb7915d34814c1647b79dd68aaf60ae6",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/overworld/tilesets.asm",
+      "international_git_blob_sha1": "11c2bef6910fb081d4f6930e753fa9fc5dfe4d1a",
+      "japanese_git_blob_sha1": "11c2bef6910fb081d4f6930e753fa9fc5dfe4d1a",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "11c2bef6910fb081d4f6930e753fa9fc5dfe4d1a",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/overworld/daycare_exp.asm",
+      "international_git_blob_sha1": "dbe4023a0f2cc021ec1b7f0e315fd5a8286ee22b",
+      "japanese_git_blob_sha1": "dbe4023a0f2cc021ec1b7f0e315fd5a8286ee22b",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "dbe4023a0f2cc021ec1b7f0e315fd5a8286ee22b",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "data/maps/toggleable_objects.asm",
+      "international_git_blob_sha1": "c628bd88d8e4fb3bce22028115f7f1b6bee23fe4",
+      "japanese_git_blob_sha1": "c628bd88d8e4fb3bce22028115f7f1b6bee23fe4",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "c628bd88d8e4fb3bce22028115f7f1b6bee23fe4",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/overworld/wild_mons.asm",
+      "international_git_blob_sha1": "2b186e75239ce66ce82bd9e38dab5769fa0ebd08",
+      "japanese_git_blob_sha1": "2b186e75239ce66ce82bd9e38dab5769fa0ebd08",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "2b186e75239ce66ce82bd9e38dab5769fa0ebd08",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/items/item_effects.asm",
+      "international_git_blob_sha1": "a6bdf857b15f73609c15f2f22511ea816eb2fd7f",
+      "japanese_git_blob_sha1": "bb2dffbbc59733b0bb3f39a12cfa268f168284b0",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/menus/draw_badges.asm",
+      "international_git_blob_sha1": "5e00a34e9085068601db4b9550f2e2d001694b9a",
+      "japanese_git_blob_sha1": "64fa77e848f8b554be3899c450100729bbfde82d",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/overworld/update_map.asm",
+      "international_git_blob_sha1": "d98a094196ab55e72af6fc0e9e5576c2d617d40e",
+      "japanese_git_blob_sha1": "d98a094196ab55e72af6fc0e9e5576c2d617d40e",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "d98a094196ab55e72af6fc0e9e5576c2d617d40e",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/overworld/cut.asm",
+      "international_git_blob_sha1": "dea23cc5170df16cc4244f11568bbc77c35aa8b9",
+      "japanese_git_blob_sha1": "bfb8e5eefae6e62bb7c54cd5b65a7528c3c41de2",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/overworld/toggleable_objects.asm",
+      "international_git_blob_sha1": "a97f2bd22550f150f669a098853630ec2f37dac7",
+      "japanese_git_blob_sha1": "ee14937316bdc83087df4f86c1a04924da9a1ebb",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/overworld/push_boulder.asm",
+      "international_git_blob_sha1": "5e7393d245973236d15abe2ecce257609d002e4e",
+      "japanese_git_blob_sha1": "840ce7831462975102b2f2eb3b9532e831c91241",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/pokemon/add_mon.asm",
+      "international_git_blob_sha1": "24d360b25c3b3b041258249ca68d6a1f27d73ac2",
+      "japanese_git_blob_sha1": "427047e778a6bab045b80adf8367c3ab199ddd31",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/flag_action.asm",
+      "international_git_blob_sha1": "150bebabb9459d06af06817c2b8ac6f2c246edcf",
+      "japanese_git_blob_sha1": "1b915ad4d00b956ef84987d5fa83f9a59eb1c890",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/events/heal_party.asm",
+      "international_git_blob_sha1": "5532fd920f077a83a7c7a1ea7802f350f6d8bfd5",
+      "japanese_git_blob_sha1": "5532fd920f077a83a7c7a1ea7802f350f6d8bfd5",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "5532fd920f077a83a7c7a1ea7802f350f6d8bfd5",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/math/bcd.asm",
+      "international_git_blob_sha1": "5747a6840b0950e1608946c534d9c090f6a4382e",
+      "japanese_git_blob_sha1": "bfc6cbf496f113f79c1b1008ab2b658212c2aad6",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/movie/oak_speech/init_player_data.asm",
+      "international_git_blob_sha1": "90fb8f0e22308528864cae6f92d969a1e41ebb03",
+      "japanese_git_blob_sha1": "90fb8f0e22308528864cae6f92d969a1e41ebb03",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "90fb8f0e22308528864cae6f92d969a1e41ebb03",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/items/get_bag_item_quantity.asm",
+      "international_git_blob_sha1": "f10df1a0a9c465ff854657cc5d3a3cded4b882f0",
+      "japanese_git_blob_sha1": "f10df1a0a9c465ff854657cc5d3a3cded4b882f0",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "f10df1a0a9c465ff854657cc5d3a3cded4b882f0",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/overworld/pathfinding.asm",
+      "international_git_blob_sha1": "d6e0d009c8e3c7a13f7a93efcc2a0028a9877feb",
+      "japanese_git_blob_sha1": "d6e0d009c8e3c7a13f7a93efcc2a0028a9877feb",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "d6e0d009c8e3c7a13f7a93efcc2a0028a9877feb",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/gfx/hp_bar.asm",
+      "international_git_blob_sha1": "04a3251a49a338cab8d2cdbfdf8e129b05b188ad",
+      "japanese_git_blob_sha1": "d3e6b6a32eb746db8dc384fe9e13a74d856f40eb",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/events/hidden_events/bookshelves.asm",
+      "international_git_blob_sha1": "813cfc49a48b12182fd38d3ca432e3a369391c13",
+      "japanese_git_blob_sha1": "813cfc49a48b12182fd38d3ca432e3a369391c13",
+      "upstream_relation": "identical",
+      "target_before": "missing",
+      "target_git_blob_sha1": "813cfc49a48b12182fd38d3ca432e3a369391c13",
+      "action": "imported-shared-identical"
+    },
+    {
+      "path": "engine/events/hidden_events/indigo_plateau_statues.asm",
+      "international_git_blob_sha1": "f78a5a727efed170ef26a1c40732262099a62b49",
+      "japanese_git_blob_sha1": "9e43675ab3e382db9e475bd6312d05b5782a1361",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/events/hidden_events/book_or_sculpture.asm",
+      "international_git_blob_sha1": "e04f4047f88c199fa0d1fbc67b89e03b382a9a26",
+      "japanese_git_blob_sha1": "f5682837f10f71ae5b47f9e4bf2fc724135699a4",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/events/hidden_events/elevator.asm",
+      "international_git_blob_sha1": "ab0f731fc22936c8534a96e718560417bc8affa8",
+      "japanese_git_blob_sha1": "9702e68573d8098ab3a6fc9f127536fa35d952f5",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/events/hidden_events/town_map.asm",
+      "international_git_blob_sha1": "11f7cbc7d0d429b148bfa1df54a694892e418f0c",
+      "japanese_git_blob_sha1": "b153399f79d354727f41ca8efca4b848ae65f63d",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    },
+    {
+      "path": "engine/events/hidden_events/pokemon_stuff.asm",
+      "international_git_blob_sha1": "267a191a8d3b7e2fc06d1fd1d7edcd3053d5f9b9",
+      "japanese_git_blob_sha1": "b164aa9a9a600cb0d705cc100d31b36a97ef6604",
+      "upstream_relation": "different",
+      "target_before": "missing",
+      "target_git_blob_sha1": null,
+      "action": "deferred-upstream-variant"
+    }
+  ]
+}
