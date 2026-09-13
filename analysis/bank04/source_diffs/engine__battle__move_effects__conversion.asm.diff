@@ -1,0 +1,14 @@
+--- international/engine/battle/move_effects/conversion.asm
++++ japanese/engine/battle/move_effects/conversion.asm
+@@ -25,8 +25,9 @@
+ 	jp PrintText
+ 
+ ConvertedTypeText:
+-	text_far _ConvertedTypeText
+-	text_end
++	text "<TARGET>の　ぞくせいを"
++	line "じぶんに　はりつけた！"
++	prompt
+ 
+ PrintButItFailedText:
+ 	ld hl, PrintButItFailedText_

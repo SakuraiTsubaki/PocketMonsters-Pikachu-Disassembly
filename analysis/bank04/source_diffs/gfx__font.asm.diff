@@ -1,0 +1,17 @@
+--- international/gfx/font.asm
++++ japanese/gfx/font.asm
+@@ -1,4 +1,4 @@
+-PokemonLogoJapanGraphics: INCBIN "gfx/title/pokemon_logo_japan.2bpp"
++PokemonLogoGraphicsUnused: INCBIN "gfx/title/pokemon_logo_unused.2bpp" ; Unreferenced
+ FontGraphics:: INCBIN "gfx/font/font.1bpp"
+ FontGraphicsEnd::
+ 
+@@ -18,8 +18,6 @@
+ GameFreakLogoGraphics: INCBIN "gfx/title/gamefreak_inc.2bpp"
+ GameFreakLogoGraphicsEnd:
+ 
+-NineTile: INCBIN "gfx/title/nine.2bpp"
+-
+ TextBoxGraphics:: INCBIN "gfx/font/font_extra.2bpp"
+ TextBoxGraphicsEnd::
+ 
