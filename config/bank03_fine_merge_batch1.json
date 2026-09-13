@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "bank": "03",
+  "batch": "small-substantive-1",
+  "module_count": 7,
+  "strategy": "line-level SequenceMatcher opcodes; common lines emitted once; divergent line spans guarded by _JAPAN",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "modules": [
+    {
+      "path": "engine/events/hidden_events/elevator.asm",
+      "selector_count": 1,
+      "international_raw_sha1": "2263a2ce834fc7380e88f2bd26c5a48a4b888f6c",
+      "japanese_raw_sha1": "615e3052dc37df5648ebd4e726e08e687a6a97f7",
+      "merged_raw_sha1": "7789987864abf95035f06bc1d0cc4801bb3fb981",
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            2,
+            3
+          ],
+          "japanese": [
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "path": "engine/events/hidden_events/pokemon_stuff.asm",
+      "selector_count": 1,
+      "international_raw_sha1": "e73e9e9d4af60fe112586b8a8c4731cbee61195f",
+      "japanese_raw_sha1": "c264a891146098108bb36849496a3a700cdeba33",
+      "merged_raw_sha1": "c9ae4dd029cbb75112356b13e45685b55f27ea17",
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            2,
+            3
+          ],
+          "japanese": [
+            2,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "path": "engine/events/hidden_events/town_map.asm",
+      "selector_count": 1,
+      "international_raw_sha1": "c819a6b8957c3f0f9a5165ce6ab01794e4d106c0",
+      "japanese_raw_sha1": "9b7d85a44651baf2d01edcba4af80e977b930261",
+      "merged_raw_sha1": "d549374f614040818c591d925d0bc24055cf6a8d",
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            2,
+            2
+          ],
+          "japanese": [
+            2,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "path": "engine/overworld/clear_variables.asm",
+      "selector_count": 1,
+      "international_raw_sha1": "51188c45c37d819d9bfa48dfca2cc865029df253",
+      "japanese_raw_sha1": "cd256f763c2d74aac14d0cafa425437dd4013db0",
+      "merged_raw_sha1": "e00f75c8882e66348a41b02d432ea9379580dbd3",
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            18,
+            18
+          ],
+          "japanese": [
+            18,
+            18
+          ]
+        }
+      ]
+    },
+    {
+      "path": "engine/events/hidden_events/book_or_sculpture.asm",
+      "selector_count": 2,
+      "international_raw_sha1": "147bed534a551ea0299b403cbd9c0506959b15af",
+      "japanese_raw_sha1": "0ac72d7ff27f0aef9e13b19e205def9711ced213",
+      "merged_raw_sha1": "83631178b8c45ec6e27553d564dbb695f214b535",
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            16,
+            17
+          ],
+          "japanese": [
+            16,
+            17
+          ]
+        },
+        {
+          "tag": "replace",
+          "international": [
+            20,
+            21
+          ],
+          "japanese": [
+            20,
+            21
+          ]
+        }
+      ]
+    },
+    {
+      "path": "engine/events/hidden_events/indigo_plateau_statues.asm",
+      "selector_count": 3,
+      "international_raw_sha1": "d12feeb482085a91e5ec37fe2247b6699431e12e",
+      "japanese_raw_sha1": "442c8a48029b9be1b14391f0ff629bf77334e6fc",
+      "merged_raw_sha1": "6cff7dec84f61677ed42f4c31fff9db0103bbd07",
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            15,
+            16
+          ],
+          "japanese": [
+            15,
+            16
+          ]
+        },
+        {
+          "tag": "replace",
+          "international": [
+            19,
+            20
+          ],
+          "japanese": [
+            19,
+            21
+          ]
+        },
+        {
+          "tag": "replace",
+          "international": [
+            23,
+            24
+          ],
+          "japanese": [
+            24,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/draw_badges.asm",
+      "selector_count": 2,
+      "international_raw_sha1": "960a1ea6848f8eb631afc6a4522a2b8c26eb3e2a",
+      "japanese_raw_sha1": "71b2938aa4b89163c3d1dad48def1785b92f7778",
+      "merged_raw_sha1": "834c1a54465db52470d23994f0628dcd4fcc585c",
+      "opcodes": [
+        {
+          "tag": "delete",
+          "international": [
+            6,
+            6
+          ],
+          "japanese": [
+            6,
+            5
+          ]
+        },
+        {
+          "tag": "replace",
+          "international": [
+            42,
+            42
+          ],
+          "japanese": [
+            41,
+            41
+          ]
+        }
+      ]
+    }
+  ]
+}

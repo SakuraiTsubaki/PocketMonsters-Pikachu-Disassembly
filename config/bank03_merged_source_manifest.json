@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "bank": "03",
-  "status": "family-conditional-source-populated",
+  "status": "mixed-fine-grained-and-family-conditional-source-populated",
   "source_reconstruction_complete": false,
   "byte_perfect_rebuild_claim": false,
   "strategy": "Preserve pinned Japanese and international source bodies byte-for-byte inside a family conditional; refactor only after target builds can prove equivalence.",
@@ -31,15 +31,17 @@
     },
     {
       "path": "engine/overworld/clear_variables.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
       "japanese_raw_sha1": "cd256f763c2d74aac14d0cafa425437dd4013db0",
       "japanese_git_blob_sha1": "82749cab00177798e6f908d66b728ccaa804ca1b",
       "international_raw_sha1": "51188c45c37d819d9bfa48dfca2cc865029df253",
       "international_git_blob_sha1": "6bd4496367c9505a04359aa925032c184c8306ae",
-      "merged_raw_sha1": "ce817fa78fa951fad6525c208b7b9804a8da4134",
-      "merged_git_blob_sha1": "c841a69f69db4eec01ffb7c0421598da4853cf71",
-      "merged_length": 1218
+      "merged_raw_sha1": "e00f75c8882e66348a41b02d432ea9379580dbd3",
+      "merged_git_blob_sha1": "c207f874b785537a81d7ba8ca116f7342d3fdaab",
+      "merged_length": 765,
+      "selector_count": 1,
+      "branch_source_reconstruction_verified": true
     },
     {
       "path": "engine/overworld/player_state.asm",
@@ -79,15 +81,17 @@
     },
     {
       "path": "engine/menus/draw_badges.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
       "japanese_raw_sha1": "71b2938aa4b89163c3d1dad48def1785b92f7778",
       "japanese_git_blob_sha1": "64fa77e848f8b554be3899c450100729bbfde82d",
       "international_raw_sha1": "960a1ea6848f8eb631afc6a4522a2b8c26eb3e2a",
       "international_git_blob_sha1": "5e00a34e9085068601db4b9550f2e2d001694b9a",
-      "merged_raw_sha1": "bb023324ab95f3fe3844f0e66da550dd9c3a659a",
-      "merged_git_blob_sha1": "ad6016b89353696ff9ed359e86645225a1040dc8",
-      "merged_length": 4224
+      "merged_raw_sha1": "834c1a54465db52470d23994f0628dcd4fcc585c",
+      "merged_git_blob_sha1": "5939a2de747cbd3fb807f7a3d1bbfc4cc55176c4",
+      "merged_length": 2301,
+      "selector_count": 2,
+      "branch_source_reconstruction_verified": true
     },
     {
       "path": "engine/overworld/cut.asm",
@@ -127,63 +131,75 @@
     },
     {
       "path": "engine/events/hidden_events/indigo_plateau_statues.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
       "japanese_raw_sha1": "442c8a48029b9be1b14391f0ff629bf77334e6fc",
       "japanese_git_blob_sha1": "9e43675ab3e382db9e475bd6312d05b5782a1361",
       "international_raw_sha1": "d12feeb482085a91e5ec37fe2247b6699431e12e",
       "international_git_blob_sha1": "f78a5a727efed170ef26a1c40732262099a62b49",
-      "merged_raw_sha1": "25223f3531f845fe57c0b6c0465057e427929bd1",
-      "merged_git_blob_sha1": "116788daf3bd59cd067ac974c4f5e524b5b5092b",
-      "merged_length": 1387
+      "merged_raw_sha1": "6cff7dec84f61677ed42f4c31fff9db0103bbd07",
+      "merged_git_blob_sha1": "f60ae7813d874522053358426a966626d9f894a3",
+      "merged_length": 1041,
+      "selector_count": 3,
+      "branch_source_reconstruction_verified": true
     },
     {
       "path": "engine/events/hidden_events/book_or_sculpture.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
       "japanese_raw_sha1": "0ac72d7ff27f0aef9e13b19e205def9711ced213",
       "japanese_git_blob_sha1": "f5682837f10f71ae5b47f9e4bf2fc724135699a4",
       "international_raw_sha1": "147bed534a551ea0299b403cbd9c0506959b15af",
       "international_git_blob_sha1": "e04f4047f88c199fa0d1fbc67b89e03b382a9a26",
-      "merged_raw_sha1": "93a9887170fb0153282bbdb472ff5289328aa30a",
-      "merged_git_blob_sha1": "3fd0b979fddfd77a1be9a608807961ffe2661ab1",
-      "merged_length": 1089
+      "merged_raw_sha1": "83631178b8c45ec6e27553d564dbb695f214b535",
+      "merged_git_blob_sha1": "7790c519db26ad187ae2236b4ba327bb63978f2a",
+      "merged_length": 769,
+      "selector_count": 2,
+      "branch_source_reconstruction_verified": true
     },
     {
       "path": "engine/events/hidden_events/elevator.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
       "japanese_raw_sha1": "615e3052dc37df5648ebd4e726e08e687a6a97f7",
       "japanese_git_blob_sha1": "9702e68573d8098ab3a6fc9f127536fa35d952f5",
       "international_raw_sha1": "2263a2ce834fc7380e88f2bd26c5a48a4b888f6c",
       "international_git_blob_sha1": "ab0f731fc22936c8534a96e718560417bc8affa8",
-      "merged_raw_sha1": "1d4def7ef2c6151eae8a0fd5d68d471dd301ed52",
-      "merged_git_blob_sha1": "32421c2fb506aa607c1dd1fe832b73545b0f9f10",
-      "merged_length": 485
+      "merged_raw_sha1": "7789987864abf95035f06bc1d0cc4801bb3fb981",
+      "merged_git_blob_sha1": "f203421823ed4c2c773457d06d45a77b85f7ea74",
+      "merged_length": 401,
+      "selector_count": 1,
+      "branch_source_reconstruction_verified": true
     },
     {
       "path": "engine/events/hidden_events/town_map.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
       "japanese_raw_sha1": "9b7d85a44651baf2d01edcba4af80e977b930261",
       "japanese_git_blob_sha1": "b153399f79d354727f41ca8efca4b848ae65f63d",
       "international_raw_sha1": "c819a6b8957c3f0f9a5165ce6ab01794e4d106c0",
       "international_git_blob_sha1": "11f7cbc7d0d429b148bfa1df54a694892e418f0c",
-      "merged_raw_sha1": "7364e59f244d59118045176c49c204d5355f8324",
-      "merged_git_blob_sha1": "795533b0da3e255c8167fc1381e7cc8d1bc87931",
-      "merged_length": 1299
+      "merged_raw_sha1": "d549374f614040818c591d925d0bc24055cf6a8d",
+      "merged_git_blob_sha1": "7831f21e2ac7eebe3204737c6f56f5ba39bbbba8",
+      "merged_length": 794,
+      "selector_count": 1,
+      "branch_source_reconstruction_verified": true
     },
     {
       "path": "engine/events/hidden_events/pokemon_stuff.asm",
-      "strategy": "family-whole-file-conditional",
-      "selector": "IF DEF(_JAPAN) / ELSE / ENDC",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
       "japanese_raw_sha1": "c264a891146098108bb36849496a3a700cdeba33",
       "japanese_git_blob_sha1": "b164aa9a9a600cb0d705cc100d31b36a97ef6604",
       "international_raw_sha1": "e73e9e9d4af60fe112586b8a8c4731cbee61195f",
       "international_git_blob_sha1": "267a191a8d3b7e2fc06d1fd1d7edcd3053d5f9b9",
-      "merged_raw_sha1": "ffb54f74ed199c868223bd249936251b9bfc919b",
-      "merged_git_blob_sha1": "b251b9c36bf36a612b348e35026b3c5476e02893",
-      "merged_length": 531
+      "merged_raw_sha1": "c9ae4dd029cbb75112356b13e45685b55f27ea17",
+      "merged_git_blob_sha1": "7a90bb445ecb31d0151ca66a98f36124c843cc6f",
+      "merged_length": 443,
+      "selector_count": 1,
+      "branch_source_reconstruction_verified": true
     }
-  ]
+  ],
+  "fine_grained_module_count": 7,
+  "whole_family_module_count": 7
 }
