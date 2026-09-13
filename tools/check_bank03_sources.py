@@ -20,6 +20,11 @@ ONE_SHOT_WORKFLOWS = (
     Path(".github/workflows/merge-bank03-family-sources.yml"),
 )
 
+ALLOWED_SUBSTANTIVE_STRATEGIES = {
+    "family-whole-file-conditional",
+    "fine-grained-family-conditional",
+}
+
 
 def fail(message: str) -> None:
     raise SystemExit(f"Bank 03 source check FAILED: {message}")
@@ -92,7 +97,6 @@ def main() -> None:
     if shared | cosmetic | substantive != set(canonical):
         fail("Bank 03 source classes do not cover the canonical 28 modules")
 
-    # Ten exact shared files must still be byte-identical to both pinned source families.
     for path in sorted(shared):
         source = Path(path)
         if not source.is_file():
@@ -107,7 +111,6 @@ def main() -> None:
         if actual_blob != intl_blob:
             fail(f"shared source blob changed: {path} -> {actual_blob}")
 
-    # Four token-identical files were deliberately normalized to the pinned international text.
     for path in sorted(cosmetic):
         source = Path(path)
         if not source.is_file():
@@ -117,26 +120,32 @@ def main() -> None:
         if actual != expected:
             fail(f"cosmetic-normalized source changed: {path} -> {actual}")
 
-    # Fourteen substantive files preserve both source families inside a whole-file selector.
-    wrapper_start = b"IF DEF(_JAPAN)\n\n"
-    wrapper_else = b"\n\nELSE\n\n"
-    wrapper_end = b"\n\nENDC\n"
+    whole_start = b"IF DEF(_JAPAN)\n\n"
+    whole_else = b"\n\nELSE\n\n"
+    whole_end = b"\n\nENDC\n"
     for path in sorted(substantive):
         source = Path(path)
         if not source.is_file():
             fail(f"missing family-conditional source {path}")
         data = source.read_bytes()
         record = merged_modules[path]
-        if record.get("strategy") != "family-whole-file-conditional":
-            fail(f"unexpected merge strategy for {path}")
+        strategy = record.get("strategy")
+        if strategy not in ALLOWED_SUBSTANTIVE_STRATEGIES:
+            fail(f"unexpected merge strategy for {path}: {strategy}")
         if raw_sha1(data) != record.get("merged_raw_sha1"):
             fail(f"merged raw SHA-1 changed: {path}")
         if git_blob_sha1(data) != record.get("merged_git_blob_sha1"):
             fail(f"merged Git blob SHA-1 changed: {path}")
         if len(data) != record.get("merged_length"):
             fail(f"merged source length changed: {path}")
-        if wrapper_start not in data or wrapper_else not in data or not data.endswith(wrapper_end):
-            fail(f"family selector wrapper damaged: {path}")
+
+        if strategy == "family-whole-file-conditional":
+            if whole_start not in data or whole_else not in data or not data.endswith(whole_end):
+                fail(f"whole-family selector wrapper damaged: {path}")
+        else:
+            text = data.decode("utf-8")
+            if "IF DEF(_JAPAN)" not in text or "ELSE" not in text or "ENDC" not in text:
+                fail(f"fine-grained family selector missing: {path}")
 
         variant = variant_modules[path]
         if record.get("japanese_raw_sha1") != variant.get("japanese_raw_sha1"):
@@ -164,9 +173,14 @@ def main() -> None:
     if 'INCLUDE "data/garbage/jp/revd/' in text:
         fail("JP Rev D must use linker zero fill rather than a Garbage 3 source")
 
+    fine = sum(
+        1 for record in merged_modules.values()
+        if record.get("strategy") == "fine-grained-family-conditional"
+    )
+    whole = len(substantive) - fine
     print(
         "Bank 03 source check passed: 28/28 modules present "
-        "(10 exact shared + 4 cosmetic-normalized + 14 family-conditional), "
+        f"(10 exact shared + 4 cosmetic-normalized + {fine} fine-grained + {whole} whole-family), "
         "provenance hashes intact, canonical include order intact, JP tails wired."
     )
 
