@@ -1,0 +1,157 @@
+{
+  "schema_version": 1,
+  "bank": "05",
+  "rule": "Automatic fine-grained merge requires zero changed RGBDS conditional-directive hits and a balanced generated conditional stack.",
+  "substantive_module_count": 3,
+  "safe_count": 3,
+  "manual_count": 0,
+  "safe_paths": [
+    "engine/battle/move_effects/substitute.asm",
+    "engine/menus/pc.asm",
+    "engine/overworld/auto_movement.asm"
+  ],
+  "manual_paths": [],
+  "modules": [
+    {
+      "path": "engine/battle/move_effects/substitute.asm",
+      "selector_count": 3,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            68,
+            69
+          ],
+          "japanese": [
+            68,
+            70
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            72,
+            73
+          ],
+          "japanese": [
+            73,
+            75
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            76,
+            77
+          ],
+          "japanese": [
+            78,
+            80
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/pc.asm",
+      "selector_count": 4,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            102,
+            103
+          ],
+          "japanese": [
+            102,
+            104
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            106,
+            107
+          ],
+          "japanese": [
+            107,
+            111
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            110,
+            111
+          ],
+          "japanese": [
+            114,
+            118
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            114,
+            115
+          ],
+          "japanese": [
+            121,
+            125
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/overworld/auto_movement.asm",
+      "selector_count": 2,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "delete",
+          "international": [
+            133,
+            133
+          ],
+          "japanese": [
+            133,
+            132
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            269,
+            270
+          ],
+          "japanese": [
+            268,
+            267
+          ],
+          "directive_hits": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "bank": "05",
+  "status": "all-safe-substantive-modules-fine-grained-source-populated",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "safe_fine_grained_count": 3,
+  "manual_pending_count": 0,
+  "manual_pending_paths": [],
+  "modules": [
+    {
+      "path": "engine/battle/move_effects/substitute.asm",
+      "placement_class": "common-bank05",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
+      "selector_count": 3,
+      "international_raw_sha1": "53780e2921e8d631544fdb789a17e5b3aca06225",
+      "japanese_raw_sha1": "2b118d16faed26d04581e05ad9a44784efcd9207",
+      "merged_raw_sha1": "0cc2fff23b34ca73c0d9ffe7523bad5ad3a4222c",
+      "merged_git_blob_sha1": "21fe132e68c9d54c9a4044f7507ea9183a9f0be0",
+      "merged_length": 2405,
+      "automatic_merge_safety_verified": true,
+      "branch_source_reconstruction_verified": true
+    },
+    {
+      "path": "engine/menus/pc.asm",
+      "placement_class": "common-bank05",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
+      "selector_count": 4,
+      "international_raw_sha1": "b5e08d3fd6476faa2fb4dfd8598278916a4cf339",
+      "japanese_raw_sha1": "8752b44e524fab31e8faa008c68fa2dee99d7ab7",
+      "merged_raw_sha1": "a3c2cbb16cf0bc66403b1967efc20ef9d92469d5",
+      "merged_git_blob_sha1": "2a5e95396d2ccb8eff281cadd6450898ff2e4cc1",
+      "merged_length": 4224,
+      "automatic_merge_safety_verified": true,
+      "branch_source_reconstruction_verified": true
+    },
+    {
+      "path": "engine/overworld/auto_movement.asm",
+      "placement_class": "common-bank05",
+      "strategy": "fine-grained-family-conditional",
+      "selector": "localized IF DEF(_JAPAN) / ELSE / ENDC line-opcode blocks",
+      "selector_count": 2,
+      "international_raw_sha1": "79edaf4384d06bfdfd4fa59de663a285a9b08ec7",
+      "japanese_raw_sha1": "6f16c4622be0c0483db5d949e416812e24a5de50",
+      "merged_raw_sha1": "7ba6ef09f99223c4610f6163f9c3e2c8d06294ba",
+      "merged_git_blob_sha1": "516764f11ffe44c83ee734ca23b66c72885934f6",
+      "merged_length": 6757,
+      "automatic_merge_safety_verified": true,
+      "branch_source_reconstruction_verified": true
+    }
+  ]
+}
