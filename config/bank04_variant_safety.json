@@ -1,0 +1,1354 @@
+{
+  "schema_version": 1,
+  "bank": "04",
+  "rule": "Automatic fine-grained merge is allowed only when no changed opcode contains RGBDS IF/ELIF/ELSE/ENDC directives and the generated conditional stack is balanced.",
+  "substantive_module_count": 9,
+  "safe_count": 9,
+  "manual_count": 0,
+  "safe_paths": [
+    "gfx/font.asm",
+    "engine/pokemon/status_screen.asm",
+    "engine/menus/party_menu.asm",
+    "engine/menus/start_sub_menus.asm",
+    "engine/battle/end_of_battle.asm",
+    "engine/battle/move_effects/recoil.asm",
+    "engine/battle/move_effects/conversion.asm",
+    "engine/battle/move_effects/haze.asm",
+    "data/moves/names.asm"
+  ],
+  "manual_paths": [],
+  "modules": [
+    {
+      "path": "gfx/font.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 2,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            1,
+            1
+          ],
+          "japanese": [
+            1,
+            1
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            21,
+            22
+          ],
+          "japanese": [
+            21,
+            20
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/pokemon/status_screen.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 31,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "delete",
+          "international": [
+            43,
+            48
+          ],
+          "japanese": [
+            43,
+            42
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            50,
+            50
+          ],
+          "japanese": [
+            44,
+            43
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            55,
+            55
+          ],
+          "japanese": [
+            48,
+            48
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            111,
+            111
+          ],
+          "japanese": [
+            104,
+            104
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            117,
+            117
+          ],
+          "japanese": [
+            110,
+            110
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            132,
+            132
+          ],
+          "japanese": [
+            125,
+            125
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            134,
+            134
+          ],
+          "japanese": [
+            127,
+            127
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            136,
+            137
+          ],
+          "japanese": [
+            129,
+            130
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            147,
+            147
+          ],
+          "japanese": [
+            140,
+            140
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            153,
+            153
+          ],
+          "japanese": [
+            146,
+            146
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            159,
+            159
+          ],
+          "japanese": [
+            152,
+            152
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            161,
+            161
+          ],
+          "japanese": [
+            154,
+            154
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            223,
+            226
+          ],
+          "japanese": [
+            216,
+            219
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            230,
+            230
+          ],
+          "japanese": [
+            223,
+            223
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            233,
+            233
+          ],
+          "japanese": [
+            226,
+            226
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            263,
+            264
+          ],
+          "japanese": [
+            256,
+            257
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            270,
+            271
+          ],
+          "japanese": [
+            263,
+            264
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            299,
+            302
+          ],
+          "japanese": [
+            292,
+            295
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            322,
+            322
+          ],
+          "japanese": [
+            315,
+            315
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            326,
+            326
+          ],
+          "japanese": [
+            319,
+            319
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            337,
+            338
+          ],
+          "japanese": [
+            330,
+            331
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            343,
+            344
+          ],
+          "japanese": [
+            336,
+            337
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            380,
+            380
+          ],
+          "japanese": [
+            373,
+            373
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "insert",
+          "international": [
+            407,
+            406
+          ],
+          "japanese": [
+            400,
+            401
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            408,
+            408
+          ],
+          "japanese": [
+            403,
+            403
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            423,
+            425
+          ],
+          "japanese": [
+            418,
+            418
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            427,
+            428
+          ],
+          "japanese": [
+            420,
+            420
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            433,
+            433
+          ],
+          "japanese": [
+            425,
+            425
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            475,
+            476
+          ],
+          "japanese": [
+            467,
+            468
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            480,
+            480
+          ],
+          "japanese": [
+            472,
+            472
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            484,
+            484
+          ],
+          "japanese": [
+            476,
+            476
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/party_menu.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 25,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            14,
+            14
+          ],
+          "japanese": [
+            14,
+            14
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            73,
+            73
+          ],
+          "japanese": [
+            73,
+            73
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            79,
+            82
+          ],
+          "japanese": [
+            79,
+            79
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            85,
+            87
+          ],
+          "japanese": [
+            82,
+            81
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            102,
+            102
+          ],
+          "japanese": [
+            96,
+            96
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            107,
+            107
+          ],
+          "japanese": [
+            101,
+            101
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            119,
+            119
+          ],
+          "japanese": [
+            113,
+            113
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            121,
+            121
+          ],
+          "japanese": [
+            115,
+            115
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            170,
+            170
+          ],
+          "japanese": [
+            164,
+            164
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            176,
+            176
+          ],
+          "japanese": [
+            170,
+            170
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            178,
+            178
+          ],
+          "japanese": [
+            172,
+            172
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            246,
+            247
+          ],
+          "japanese": [
+            240,
+            241
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            250,
+            251
+          ],
+          "japanese": [
+            244,
+            245
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            254,
+            255
+          ],
+          "japanese": [
+            248,
+            249
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            258,
+            259
+          ],
+          "japanese": [
+            252,
+            253
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            262,
+            263
+          ],
+          "japanese": [
+            256,
+            257
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            266,
+            267
+          ],
+          "japanese": [
+            260,
+            265
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            270,
+            271
+          ],
+          "japanese": [
+            268,
+            271
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            274,
+            275
+          ],
+          "japanese": [
+            274,
+            277
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            278,
+            279
+          ],
+          "japanese": [
+            280,
+            283
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            282,
+            283
+          ],
+          "japanese": [
+            286,
+            289
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            286,
+            287
+          ],
+          "japanese": [
+            292,
+            295
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            290,
+            291
+          ],
+          "japanese": [
+            298,
+            301
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            294,
+            295
+          ],
+          "japanese": [
+            304,
+            307
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            298,
+            298
+          ],
+          "japanese": [
+            310,
+            313
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/start_sub_menus.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 27,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            53,
+            53
+          ],
+          "japanese": [
+            53,
+            53
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            209,
+            210
+          ],
+          "japanese": [
+            209,
+            211
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            245,
+            246
+          ],
+          "japanese": [
+            246,
+            248
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            248,
+            249
+          ],
+          "japanese": [
+            250,
+            254
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            251,
+            252
+          ],
+          "japanese": [
+            256,
+            260
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            290,
+            291
+          ],
+          "japanese": [
+            298,
+            299
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            300,
+            301
+          ],
+          "japanese": [
+            308,
+            310
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            309,
+            309
+          ],
+          "japanese": [
+            318,
+            318
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            349,
+            349
+          ],
+          "japanese": [
+            358,
+            358
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            367,
+            367
+          ],
+          "japanese": [
+            376,
+            376
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            459,
+            460
+          ],
+          "japanese": [
+            468,
+            470
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            463,
+            464
+          ],
+          "japanese": [
+            473,
+            474
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            489,
+            489
+          ],
+          "japanese": [
+            499,
+            498
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            493,
+            493
+          ],
+          "japanese": [
+            502,
+            502
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            502,
+            502
+          ],
+          "japanese": [
+            511,
+            511
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            515,
+            515
+          ],
+          "japanese": [
+            524,
+            524
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            521,
+            521
+          ],
+          "japanese": [
+            530,
+            530
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            531,
+            531
+          ],
+          "japanese": [
+            540,
+            540
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            538,
+            538
+          ],
+          "japanese": [
+            547,
+            547
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            558,
+            558
+          ],
+          "japanese": [
+            567,
+            567
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            568,
+            568
+          ],
+          "japanese": [
+            577,
+            577
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            573,
+            573
+          ],
+          "japanese": [
+            582,
+            582
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "insert",
+          "international": [
+            575,
+            574
+          ],
+          "japanese": [
+            584,
+            584
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            579,
+            579
+          ],
+          "japanese": [
+            589,
+            589
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            590,
+            592
+          ],
+          "japanese": [
+            600,
+            602
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            596,
+            596
+          ],
+          "japanese": [
+            606,
+            606
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            692,
+            692
+          ],
+          "japanese": [
+            702,
+            702
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/end_of_battle.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 4,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            82,
+            82
+          ],
+          "japanese": [
+            82,
+            82
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            85,
+            85
+          ],
+          "japanese": [
+            85,
+            85
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            88,
+            88
+          ],
+          "japanese": [
+            88,
+            88
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            91,
+            92
+          ],
+          "japanese": [
+            91,
+            95
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/move_effects/recoil.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 5,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            30,
+            30
+          ],
+          "japanese": [
+            30,
+            30
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            43,
+            43
+          ],
+          "japanese": [
+            43,
+            43
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            46,
+            46
+          ],
+          "japanese": [
+            46,
+            46
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "insert",
+          "international": [
+            68,
+            67
+          ],
+          "japanese": [
+            68,
+            68
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            69,
+            70
+          ],
+          "japanese": [
+            70,
+            72
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/move_effects/conversion.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 1,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            28,
+            29
+          ],
+          "japanese": [
+            28,
+            30
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/move_effects/haze.asm",
+      "placement_class": "common-bank04",
+      "selector_count": 6,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            4,
+            4
+          ],
+          "japanese": [
+            4,
+            4
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            6,
+            6
+          ],
+          "japanese": [
+            6,
+            6
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            39,
+            39
+          ],
+          "japanese": [
+            39,
+            39
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            51,
+            52
+          ],
+          "japanese": [
+            51,
+            52
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            55,
+            57
+          ],
+          "japanese": [
+            55,
+            58
+          ],
+          "directive_hits": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            80,
+            81
+          ],
+          "japanese": [
+            81,
+            83
+          ],
+          "directive_hits": []
+        }
+      ]
+    },
+    {
+      "path": "data/moves/names.asm",
+      "placement_class": "japanese-bank04-international-other-bank",
+      "selector_count": 1,
+      "changed_opcode_directive_hit_count": 0,
+      "generated_conditionals_balanced": true,
+      "balance_errors": [],
+      "safe_for_automatic_line_merge": true,
+      "directive_hits": [],
+      "opcodes": [
+        {
+          "tag": "replace",
+          "international": [
+            2,
+            168
+          ],
+          "japanese": [
+            2,
+            167
+          ],
+          "directive_hits": []
+        }
+      ]
+    }
+  ]
+}

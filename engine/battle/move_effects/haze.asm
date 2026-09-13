@@ -1,0 +1,116 @@
+; Bank 04 fine-grained family reconstruction.
+; Common source lines are emitted once; only source-family differences are conditional.
+; JP: Narishma-gb/pokeyellow-jp @ f282e72ae26232790fdb780aa5a5db7ec8ebf572
+; INT: pret/pokeyellow @ e89ead154b9968aa50eed9328ff2b38b6c194382
+
+HazeEffect_:
+	ld a, $7
+; store 7 on every stat mod
+IF DEF(_JAPAN)
+	ld hl, wPlayerMonStatMods
+ELSE
+	ld hl, wPlayerMonAttackMod
+ENDC
+	call ResetStatMods
+IF DEF(_JAPAN)
+	ld hl, wEnemyMonStatMods
+ELSE
+	ld hl, wEnemyMonAttackMod
+ENDC
+	call ResetStatMods
+; copy unmodified stats to battle stats
+	ld hl, wPlayerMonUnmodifiedAttack
+	ld de, wBattleMonAttack
+	call ResetStats
+	ld hl, wEnemyMonUnmodifiedAttack
+	ld de, wEnemyMonAttack
+	call ResetStats
+; cure non-volatile status, but only for the target
+	ld hl, wEnemyMonStatus
+	ld de, wEnemySelectedMove
+	ldh a, [hWhoseTurn]
+	and a
+	jr z, .cureStatuses
+	ld hl, wBattleMonStatus
+	dec de ; wPlayerSelectedMove
+
+.cureStatuses
+	ld a, [hl]
+	ld [hl], $0
+	and (1 << FRZ) | SLP_MASK
+	jr z, .cureVolatileStatuses
+; prevent the Pokemon from executing a move if it was asleep or frozen
+	ld a, $ff
+	ld [de], a
+
+.cureVolatileStatuses
+	xor a
+	ld [wPlayerDisabledMove], a
+	ld [wEnemyDisabledMove], a
+	ld hl, wPlayerDisabledMoveNumber
+	ld [hli], a
+IF DEF(_JAPAN)
+	ld [hl], a ; wEnemyDisabledMoveNumber
+ELSE
+	ld [hl], a
+ENDC
+	ld hl, wPlayerBattleStatus1
+	call CureVolatileStatuses
+	ld hl, wEnemyBattleStatus1
+	call CureVolatileStatuses
+	ld hl, PlayCurrentMoveAnimation
+	call CallBankF
+	ld hl, StatusChangesEliminatedText
+	jp PrintText
+
+CureVolatileStatuses:
+	res CONFUSED, [hl]
+IF DEF(_JAPAN)
+	inc hl
+	ld a, [hl] ; wPlayerBattleStatus2 or wEnemyBattleStatus2
+ELSE
+	inc hl ; BATTSTATUS2
+	ld a, [hl]
+ENDC
+	; clear USING_X_ACCURACY, PROTECTED_BY_MIST, GETTING_PUMPED, and SEEDED statuses
+	and ~((1 << USING_X_ACCURACY) | (1 << PROTECTED_BY_MIST) | (1 << GETTING_PUMPED) | (1 << SEEDED))
+IF DEF(_JAPAN)
+	ld [hli], a
+	ld a, [hl] ; wPlayerBattleStatus3 or wEnemyBattleStatus3
+	; clear Bad Poison, Reflect and Light Screen statuses
+	and ~((1 << BADLY_POISONED) | (1 << HAS_LIGHT_SCREEN_UP) | (1 << HAS_REFLECT_UP))
+ELSE
+	ld [hli], a ; BATTSTATUS3
+	ld a, [hl]
+	and %11110000 | (1 << TRANSFORMED) ; clear Bad Poison, Reflect and Light Screen statuses
+ENDC
+	ld [hl], a
+	ret
+
+ResetStatMods:
+	ld b, NUM_STAT_MODS
+.loop
+	ld [hli], a
+	dec b
+	jr nz, .loop
+	ret
+
+ResetStats:
+	ld b, (NUM_STATS - 1) * 2 ; doesn't reset STAT_HEALTH
+.loop
+	ld a, [hli]
+	ld [de], a
+	inc de
+	dec b
+	jr nz, .loop
+	ret
+
+StatusChangesEliminatedText:
+IF DEF(_JAPAN)
+	text "すべての　ステータスが"
+	line "もとに　もどった！"
+	prompt
+ELSE
+	text_far _StatusChangesEliminatedText
+	text_end
+ENDC
