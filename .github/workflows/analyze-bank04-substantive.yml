@@ -1,0 +1,143 @@
+name: Analyze Bank 04 substantive source variants
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/analyze-bank04-substantive.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: target
+
+      - name: Checkout pinned international reference
+        uses: actions/checkout@v4
+        with:
+          repository: pret/pokeyellow
+          ref: e89ead154b9968aa50eed9328ff2b38b6c194382
+          path: intl
+
+      - name: Checkout pinned Japanese reference
+        uses: actions/checkout@v4
+        with:
+          repository: Narishma-gb/pokeyellow-jp
+          ref: f282e72ae26232790fdb780aa5a5db7ec8ebf572
+          path: jp
+
+      - name: Analyze conditional safety
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import difflib
+          import hashlib
+          import json
+          import re
+
+          target = Path('target')
+          inv = json.loads((target / 'config/bank04_source_inventory.json').read_text(encoding='utf-8'))
+          substantive = [m for m in inv['modules'] if m['classification'] == 'substantive']
+          if len(substantive) != 9:
+              raise SystemExit(f'expected 9 substantive modules, got {len(substantive)}')
+
+          cond_re = re.compile(r'^\s*(IF\b|ELIF\b|ELSE\b|ENDC\b)')
+
+          def raw_sha(data: bytes) -> str:
+              return hashlib.sha1(data).hexdigest()
+
+          def changed_ranges(a_lines, b_lines):
+              sm = difflib.SequenceMatcher(a=a_lines, b=b_lines, autojunk=False)
+              return [op for op in sm.get_opcodes() if op[0] != 'equal']
+
+          records = []
+          safe = 0
+          manual = 0
+          for m in substantive:
+              rel = m['path']
+              i_text = (Path('intl') / rel).read_text(encoding='utf-8')
+              j_text = (Path('jp') / rel).read_text(encoding='utf-8')
+              i_lines = i_text.splitlines()
+              j_lines = j_text.splitlines()
+              ops = changed_ranges(i_lines, j_lines)
+
+              i_cond_lines = {idx for idx, line in enumerate(i_lines) if cond_re.match(line)}
+              j_cond_lines = {idx for idx, line in enumerate(j_lines) if cond_re.match(line)}
+
+              touches_conditional = False
+              hunk_details = []
+              for tag, i1, i2, j1, j2 in ops:
+                  margin_i = set(range(max(0, i1 - 1), min(len(i_lines), i2 + 1)))
+                  margin_j = set(range(max(0, j1 - 1), min(len(j_lines), j2 + 1)))
+                  hit_i = sorted(margin_i & i_cond_lines)
+                  hit_j = sorted(margin_j & j_cond_lines)
+                  if hit_i or hit_j:
+                      touches_conditional = True
+                  hunk_details.append({
+                      'tag': tag,
+                      'international': [i1 + 1, i2],
+                      'japanese': [j1 + 1, j2],
+                      'touches_existing_conditional': bool(hit_i or hit_j),
+                      'international_conditional_lines': [x + 1 for x in hit_i],
+                      'japanese_conditional_lines': [x + 1 for x in hit_j],
+                  })
+
+              strategy = 'automatic-fine-grained-safe' if not touches_conditional else 'manual-semantic-merge-required'
+              if touches_conditional:
+                  manual += 1
+              else:
+                  safe += 1
+              records.append({
+                  'path': rel,
+                  'placement_class': m['placement_class'],
+                  'international_raw_sha1': m['international_raw_sha1'],
+                  'japanese_raw_sha1': m['japanese_raw_sha1'],
+                  'international_lines': len(i_lines),
+                  'japanese_lines': len(j_lines),
+                  'change_hunk_count': len(ops),
+                  'existing_conditional_line_count_international': len(i_cond_lines),
+                  'existing_conditional_line_count_japanese': len(j_cond_lines),
+                  'touches_existing_conditional': touches_conditional,
+                  'recommended_strategy': strategy,
+                  'hunks': hunk_details,
+              })
+
+          out = {
+              'schema_version': 1,
+              'bank': '04',
+              'status': 'substantive-conditional-safety-analyzed',
+              'reference_commits': {
+                  'international': 'e89ead154b9968aa50eed9328ff2b38b6c194382',
+                  'japanese': 'f282e72ae26232790fdb780aa5a5db7ec8ebf572',
+              },
+              'counts': {
+                  'substantive': len(records),
+                  'automatic_fine_grained_safe': safe,
+                  'manual_semantic_merge_required': manual,
+              },
+              'modules': records,
+          }
+          (target / 'config/bank04_substantive_safety.json').write_text(json.dumps(out, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(out['counts'], indent=2))
+          PY
+
+      - name: Commit analysis
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add config/bank04_substantive_safety.json
+          if git diff --cached --quiet; then
+            echo 'No Bank 04 substantive safety changes to commit.'
+            exit 0
+          fi
+          git commit -m 'bank04: analyze substantive merge safety'
+          git push origin HEAD:main
