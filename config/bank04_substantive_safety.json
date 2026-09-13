@@ -1,0 +1,1579 @@
+{
+  "schema_version": 1,
+  "bank": "04",
+  "status": "substantive-conditional-safety-analyzed",
+  "reference_commits": {
+    "international": "e89ead154b9968aa50eed9328ff2b38b6c194382",
+    "japanese": "f282e72ae26232790fdb780aa5a5db7ec8ebf572"
+  },
+  "counts": {
+    "substantive": 9,
+    "automatic_fine_grained_safe": 9,
+    "manual_semantic_merge_required": 0
+  },
+  "modules": [
+    {
+      "path": "gfx/font.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "a15ae94957e7ed92ceeccf150ed046e5a92b4d1a",
+      "japanese_raw_sha1": "387b0c6da359968eb0aa3334d6c920b1f91d5fe1",
+      "international_lines": 33,
+      "japanese_lines": 31,
+      "change_hunk_count": 2,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            1,
+            1
+          ],
+          "japanese": [
+            1,
+            1
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            21,
+            22
+          ],
+          "japanese": [
+            21,
+            20
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "engine/pokemon/status_screen.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "687d01f74382112d831173d54b52197a02251625",
+      "japanese_raw_sha1": "1b6a9f657d52b9b13466542593de7407399fa38e",
+      "international_lines": 490,
+      "japanese_lines": 482,
+      "change_hunk_count": 31,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "delete",
+          "international": [
+            43,
+            48
+          ],
+          "japanese": [
+            43,
+            42
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            50,
+            50
+          ],
+          "japanese": [
+            44,
+            43
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            55,
+            55
+          ],
+          "japanese": [
+            48,
+            48
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            111,
+            111
+          ],
+          "japanese": [
+            104,
+            104
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            117,
+            117
+          ],
+          "japanese": [
+            110,
+            110
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            132,
+            132
+          ],
+          "japanese": [
+            125,
+            125
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            134,
+            134
+          ],
+          "japanese": [
+            127,
+            127
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            136,
+            137
+          ],
+          "japanese": [
+            129,
+            130
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            147,
+            147
+          ],
+          "japanese": [
+            140,
+            140
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            153,
+            153
+          ],
+          "japanese": [
+            146,
+            146
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            159,
+            159
+          ],
+          "japanese": [
+            152,
+            152
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            161,
+            161
+          ],
+          "japanese": [
+            154,
+            154
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            223,
+            226
+          ],
+          "japanese": [
+            216,
+            219
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            230,
+            230
+          ],
+          "japanese": [
+            223,
+            223
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            233,
+            233
+          ],
+          "japanese": [
+            226,
+            226
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            263,
+            264
+          ],
+          "japanese": [
+            256,
+            257
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            270,
+            271
+          ],
+          "japanese": [
+            263,
+            264
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            299,
+            302
+          ],
+          "japanese": [
+            292,
+            295
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            322,
+            322
+          ],
+          "japanese": [
+            315,
+            315
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            326,
+            326
+          ],
+          "japanese": [
+            319,
+            319
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            337,
+            338
+          ],
+          "japanese": [
+            330,
+            331
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            343,
+            344
+          ],
+          "japanese": [
+            336,
+            337
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            380,
+            380
+          ],
+          "japanese": [
+            373,
+            373
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "insert",
+          "international": [
+            407,
+            406
+          ],
+          "japanese": [
+            400,
+            401
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            408,
+            408
+          ],
+          "japanese": [
+            403,
+            403
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            423,
+            425
+          ],
+          "japanese": [
+            418,
+            418
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            427,
+            428
+          ],
+          "japanese": [
+            420,
+            420
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            433,
+            433
+          ],
+          "japanese": [
+            425,
+            425
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            475,
+            476
+          ],
+          "japanese": [
+            467,
+            468
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            480,
+            480
+          ],
+          "japanese": [
+            472,
+            472
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            484,
+            484
+          ],
+          "japanese": [
+            476,
+            476
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/party_menu.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "27252ee5c60712a0aa47663368e01cee43b86225",
+      "japanese_raw_sha1": "f3cf32cc593ba122faaec7cc52dabf36f6b91fbe",
+      "international_lines": 314,
+      "japanese_lines": 329,
+      "change_hunk_count": 25,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            14,
+            14
+          ],
+          "japanese": [
+            14,
+            14
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            73,
+            73
+          ],
+          "japanese": [
+            73,
+            73
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            79,
+            82
+          ],
+          "japanese": [
+            79,
+            79
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            85,
+            87
+          ],
+          "japanese": [
+            82,
+            81
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            102,
+            102
+          ],
+          "japanese": [
+            96,
+            96
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            107,
+            107
+          ],
+          "japanese": [
+            101,
+            101
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            119,
+            119
+          ],
+          "japanese": [
+            113,
+            113
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            121,
+            121
+          ],
+          "japanese": [
+            115,
+            115
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            170,
+            170
+          ],
+          "japanese": [
+            164,
+            164
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            176,
+            176
+          ],
+          "japanese": [
+            170,
+            170
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            178,
+            178
+          ],
+          "japanese": [
+            172,
+            172
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            246,
+            247
+          ],
+          "japanese": [
+            240,
+            241
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            250,
+            251
+          ],
+          "japanese": [
+            244,
+            245
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            254,
+            255
+          ],
+          "japanese": [
+            248,
+            249
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            258,
+            259
+          ],
+          "japanese": [
+            252,
+            253
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            262,
+            263
+          ],
+          "japanese": [
+            256,
+            257
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            266,
+            267
+          ],
+          "japanese": [
+            260,
+            265
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            270,
+            271
+          ],
+          "japanese": [
+            268,
+            271
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            274,
+            275
+          ],
+          "japanese": [
+            274,
+            277
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            278,
+            279
+          ],
+          "japanese": [
+            280,
+            283
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            282,
+            283
+          ],
+          "japanese": [
+            286,
+            289
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            286,
+            287
+          ],
+          "japanese": [
+            292,
+            295
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            290,
+            291
+          ],
+          "japanese": [
+            298,
+            301
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            294,
+            295
+          ],
+          "japanese": [
+            304,
+            307
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            298,
+            298
+          ],
+          "japanese": [
+            310,
+            313
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "engine/menus/start_sub_menus.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "a693b22e5bdec63cf2a69ac315e2a72546261ba0",
+      "japanese_raw_sha1": "39536810c2858aa30f0f53093f6b1b99fd9f9755",
+      "international_lines": 826,
+      "japanese_lines": 836,
+      "change_hunk_count": 27,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            53,
+            53
+          ],
+          "japanese": [
+            53,
+            53
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            209,
+            210
+          ],
+          "japanese": [
+            209,
+            211
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            245,
+            246
+          ],
+          "japanese": [
+            246,
+            248
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            248,
+            249
+          ],
+          "japanese": [
+            250,
+            254
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            251,
+            252
+          ],
+          "japanese": [
+            256,
+            260
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            290,
+            291
+          ],
+          "japanese": [
+            298,
+            299
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            300,
+            301
+          ],
+          "japanese": [
+            308,
+            310
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            309,
+            309
+          ],
+          "japanese": [
+            318,
+            318
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            349,
+            349
+          ],
+          "japanese": [
+            358,
+            358
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            367,
+            367
+          ],
+          "japanese": [
+            376,
+            376
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            459,
+            460
+          ],
+          "japanese": [
+            468,
+            470
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            463,
+            464
+          ],
+          "japanese": [
+            473,
+            474
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "delete",
+          "international": [
+            489,
+            489
+          ],
+          "japanese": [
+            499,
+            498
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            493,
+            493
+          ],
+          "japanese": [
+            502,
+            502
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            502,
+            502
+          ],
+          "japanese": [
+            511,
+            511
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            515,
+            515
+          ],
+          "japanese": [
+            524,
+            524
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            521,
+            521
+          ],
+          "japanese": [
+            530,
+            530
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            531,
+            531
+          ],
+          "japanese": [
+            540,
+            540
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            538,
+            538
+          ],
+          "japanese": [
+            547,
+            547
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            558,
+            558
+          ],
+          "japanese": [
+            567,
+            567
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            568,
+            568
+          ],
+          "japanese": [
+            577,
+            577
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            573,
+            573
+          ],
+          "japanese": [
+            582,
+            582
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "insert",
+          "international": [
+            575,
+            574
+          ],
+          "japanese": [
+            584,
+            584
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            579,
+            579
+          ],
+          "japanese": [
+            589,
+            589
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            590,
+            592
+          ],
+          "japanese": [
+            600,
+            602
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            596,
+            596
+          ],
+          "japanese": [
+            606,
+            606
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            692,
+            692
+          ],
+          "japanese": [
+            702,
+            702
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/end_of_battle.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "2b6bd287be885d25b0580a5de7691f5f9f1f8232",
+      "japanese_raw_sha1": "c7073b37840199c234201062e00fa1f8e184a479",
+      "international_lines": 92,
+      "japanese_lines": 95,
+      "change_hunk_count": 4,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            82,
+            82
+          ],
+          "japanese": [
+            82,
+            82
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            85,
+            85
+          ],
+          "japanese": [
+            85,
+            85
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            88,
+            88
+          ],
+          "japanese": [
+            88,
+            88
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            91,
+            92
+          ],
+          "japanese": [
+            91,
+            95
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/move_effects/recoil.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "74b297d61c3f32c3cc1a4f152c5841bd18c89498",
+      "japanese_raw_sha1": "02ae630d8db2ae86995a0cec21332ab8a91f1105",
+      "international_lines": 70,
+      "japanese_lines": 72,
+      "change_hunk_count": 5,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            30,
+            30
+          ],
+          "japanese": [
+            30,
+            30
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            43,
+            43
+          ],
+          "japanese": [
+            43,
+            43
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            46,
+            46
+          ],
+          "japanese": [
+            46,
+            46
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "insert",
+          "international": [
+            68,
+            67
+          ],
+          "japanese": [
+            68,
+            68
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            69,
+            70
+          ],
+          "japanese": [
+            70,
+            72
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/move_effects/conversion.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "86e3229ad62defe0c666015489b76795b64b521d",
+      "japanese_raw_sha1": "ce5b378c07fa66bcf2fa0b261e3bd45fedab70d1",
+      "international_lines": 35,
+      "japanese_lines": 36,
+      "change_hunk_count": 1,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            28,
+            29
+          ],
+          "japanese": [
+            28,
+            30
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "engine/battle/move_effects/haze.asm",
+      "placement_class": "common-bank04",
+      "international_raw_sha1": "a10c93f97b02f95a6e6a70fab3a414abda5c6825",
+      "japanese_raw_sha1": "d401fee8ec7e7f6ef5dfe4861365da6d90ff7dae",
+      "international_lines": 81,
+      "japanese_lines": 83,
+      "change_hunk_count": 6,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            4,
+            4
+          ],
+          "japanese": [
+            4,
+            4
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            6,
+            6
+          ],
+          "japanese": [
+            6,
+            6
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            39,
+            39
+          ],
+          "japanese": [
+            39,
+            39
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            51,
+            52
+          ],
+          "japanese": [
+            51,
+            52
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            55,
+            57
+          ],
+          "japanese": [
+            55,
+            58
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        },
+        {
+          "tag": "replace",
+          "international": [
+            80,
+            81
+          ],
+          "japanese": [
+            81,
+            83
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    },
+    {
+      "path": "data/moves/names.asm",
+      "placement_class": "japanese-bank04-international-other-bank",
+      "international_raw_sha1": "95181803f61662384e94b7ecf9698b403e0085ff",
+      "japanese_raw_sha1": "52fccbc21458557e472479360f6012b289f0e9f1",
+      "international_lines": 169,
+      "japanese_lines": 168,
+      "change_hunk_count": 1,
+      "existing_conditional_line_count_international": 0,
+      "existing_conditional_line_count_japanese": 0,
+      "touches_existing_conditional": false,
+      "recommended_strategy": "automatic-fine-grained-safe",
+      "hunks": [
+        {
+          "tag": "replace",
+          "international": [
+            2,
+            168
+          ],
+          "japanese": [
+            2,
+            167
+          ],
+          "touches_existing_conditional": false,
+          "international_conditional_lines": [],
+          "japanese_conditional_lines": []
+        }
+      ]
+    }
+  ]
+}
