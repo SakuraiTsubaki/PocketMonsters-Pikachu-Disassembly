@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "bank": "05",
+  "range": "0x14000-0x17fff",
+  "status": "survey-complete",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "role": "Pokedex graphics, overworld sprites, battle utilities, PC, doors and ledges",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "bank_sha1": {
+    "jp-rev0a": "f24cc30bb77a5dd7dddc06d729d5bd234a10dfcc",
+    "jp-revb": "53d7ca866e4ec23c658bfe46adfcac5eaab10d04",
+    "jp-revc": "1f196bf33674ce76bbdc320ff0dd4ccc1b65782f",
+    "jp-revd": "006cc54ac31cea12c37b7013e38b6c78c5af932d",
+    "en-us-eu": "14cb943d332b8b777b46a2d4ddd6c9660679c733",
+    "fr": "2e94d15e1ccb5f388c7fe79d91940b0457a1ed9a",
+    "de": "f134289aedca6a566565129507457a9dfb1ca793",
+    "it": "b1230d9b47d4cfac4739914f6d978370638d52cd",
+    "es": "8a32f1fc027b164a7f9aeb4afedc57d340781209"
+  },
+  "layout_crosscheck": {
+    "logical_sections": ["bank5", "Battle Engine 2", "Doors and Ledges"],
+    "international_reference": {
+      "repository": "pret/pokeyellow",
+      "commit": "e89ead154b9968aa50eed9328ff2b38b6c194382",
+      "top_level_module_count": 7,
+      "sections": {
+        "bank5": [
+          "engine/gfx/load_pokedex_tiles.asm",
+          "engine/overworld/map_sprites.asm"
+        ],
+        "Battle Engine 2": [
+          "engine/battle/move_effects/substitute.asm",
+          "engine/menus/pc.asm"
+        ],
+        "Doors and Ledges": [
+          "engine/overworld/auto_movement.asm",
+          "engine/overworld/doors.asm",
+          "engine/overworld/ledges.asm"
+        ]
+      },
+      "nested_include": {
+        "parent": "engine/overworld/auto_movement.asm",
+        "path": "engine/events/pewter_guys.asm"
+      }
+    },
+    "japanese_reference": {
+      "repository": "Narishma-gb/pokeyellow-jp",
+      "commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572",
+      "top_level_module_count": 8,
+      "sections": {
+        "bank5": [
+          "engine/gfx/load_pokedex_tiles.asm",
+          "engine/overworld/map_sprites.asm"
+        ],
+        "Battle Engine 2": [
+          "engine/battle/move_effects/substitute.asm",
+          "engine/menus/pc.asm"
+        ],
+        "Doors and Ledges": [
+          "engine/overworld/auto_movement.asm",
+          "engine/events/pewter_guys.asm",
+          "engine/overworld/doors.asm",
+          "engine/overworld/ledges.asm"
+        ]
+      }
+    },
+    "logical_layout_identical": false,
+    "family_difference": "Japanese exposes pewter_guys.asm as a separate top-level Bank 05 include; international includes the same path from inside auto_movement.asm."
+  },
+  "direct_rom_observations": {
+    "unique_targets": 9,
+    "japanese_active_boundary_bank_offset": "0x3e8a",
+    "japanese_active_range": "0x14000-0x17e89",
+    "japanese_active_length": 16010,
+    "japanese_tail_range": "0x17e8a-0x17fff",
+    "japanese_tail_length": 374,
+    "japanese_pairwise": {
+      "jp-rev0a_vs_jp-revb": {
+        "whole_bank_differing_bytes": 415,
+        "active_differing_bytes": 41,
+        "active_difference_ranges": 40
+      },
+      "jp-revb_vs_jp-revc": {
+        "whole_bank_differing_bytes": 67,
+        "active_differing_bytes": 0
+      },
+      "jp-revc_vs_jp-revd": {
+        "whole_bank_differing_bytes": 349,
+        "active_differing_bytes": 0
+      }
+    },
+    "later_japanese_active_payload_identity": true,
+    "international_last_nonzero_bank_offset": {
+      "en-us-eu": "0x3de2",
+      "fr": "0x3de2",
+      "de": "0x3de2",
+      "it": "0x3de2",
+      "es": "0x3de2"
+    },
+    "international_trailing_zero_bytes": 541,
+    "boundary_note": "Last-nonzero observations are padding evidence only and are not treated as source-section boundaries."
+  },
+  "revision_source_search": {
+    "query": "DEF(_REV0)",
+    "japanese_reference_commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572",
+    "bank05_top_level_matches": 0,
+    "rev0a_active_difference_classification": "pending-symbol-aware-link-validation",
+    "note": "No direct _REV0 conditional was found in the Bank 05 top-level module paths. Rev 0A active differences are not classified as local semantic changes without symbol-aware link evidence."
+  },
+  "garbage_5": {
+    "classification": "historical leftover data",
+    "range": "0x17e8a-0x17fff",
+    "length": 374,
+    "jp-rev0a": {
+      "present": true,
+      "source": "data/garbage/jp/rev0a/bank05_tail.asm",
+      "raw_sha1": "2d09733845a5a930d1b90259443c8c7189be5c1e",
+      "public_git_blob_sha1": "39f2c42c2a5379bcfe83a6be230ffc2aa728cd19"
+    },
+    "jp-revb": {
+      "present": true,
+      "source": "data/garbage/jp/revb/bank05_tail.asm",
+      "raw_sha1": "a317bfc33f110d857b3bf87396fd86e167189a45",
+      "public_git_blob_sha1": "447bd05ce79df6fb76eb9265b11ad3424ace483a"
+    },
+    "jp-revc": {
+      "present": true,
+      "source": "data/garbage/jp/revc/bank05_tail.asm",
+      "raw_sha1": "4212d3c7390b61a623bb53c909a88bedd814c327",
+      "public_git_blob_sha1": "d80cc462b115747532c7e61f5ff01733b32b69d9"
+    },
+    "jp-revd": {
+      "present": false,
+      "zero_fill": true,
+      "raw_sha1_of_zero_tail": "f51ebfd66841e4f950a7011e4934f895d409ccbf"
+    },
+    "preservation_rule": "Preserve Rev 0A/B/C Garbage 5 explicitly as revision data; Rev D uses zero fill. Do not reinterpret these bytes as active engine code."
+  },
+  "next_phase": [
+    "Audit the union of eight Bank 05 source paths across the pinned Japanese and international references.",
+    "Resolve the pewter_guys top-level-versus-nested include relationship without duplicating emitted bytes.",
+    "Create banks/bank05.asm with family-aware section wiring and JP Garbage 5 tails.",
+    "Classify the 41 Rev 0A active-byte differences using symbol-aware linking before making semantic claims.",
+    "Enable per-target linked byte validation when cross-bank dependencies are available."
+  ]
+}
