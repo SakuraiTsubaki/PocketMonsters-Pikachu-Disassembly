@@ -1,0 +1,164 @@
+name: Analyze Bank 03 source variants
+
+on:
+  push:
+    paths:
+      - '.github/workflows/analyze-bank03-variants.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: target
+
+      - name: Checkout pinned international reference
+        uses: actions/checkout@v4
+        with:
+          repository: pret/pokeyellow
+          ref: e89ead154b9968aa50eed9328ff2b38b6c194382
+          path: intl
+
+      - name: Checkout pinned Japanese reference
+        uses: actions/checkout@v4
+        with:
+          repository: Narishma-gb/pokeyellow-jp
+          ref: f282e72ae26232790fdb780aa5a5db7ec8ebf572
+          path: jp
+
+      - name: Classify divergent modules and save diffs
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import difflib
+          import hashlib
+          import json
+          import re
+          import shutil
+
+          inventory = json.loads(Path('target/config/bank03_source_inventory.json').read_text(encoding='utf-8'))
+          divergent = [m['path'] for m in inventory['modules'] if m['upstream_relation'] == 'different']
+
+          def strip_comment(line: str) -> str:
+              out = []
+              quote = None
+              escaped = False
+              for ch in line:
+                  if escaped:
+                      out.append(ch)
+                      escaped = False
+                      continue
+                  if ch == '\\':
+                      out.append(ch)
+                      escaped = True
+                      continue
+                  if quote:
+                      out.append(ch)
+                      if ch == quote:
+                          quote = None
+                      continue
+                  if ch in ('"', "'"):
+                      quote = ch
+                      out.append(ch)
+                      continue
+                  if ch == ';':
+                      break
+                  out.append(ch)
+              return ''.join(out)
+
+          def normalized_tokens(text: str) -> list[str]:
+              cleaned = '\n'.join(strip_comment(line) for line in text.splitlines())
+              return re.findall(r'\$[0-9A-Fa-f]+|%[01]+|[A-Za-z_][A-Za-z0-9_@.#?]*|\d+|"(?:\\.|[^"\\])*"|\S', cleaned)
+
+          def sha(data: bytes) -> str:
+              return hashlib.sha1(data).hexdigest()
+
+          analysis = []
+          counts = {'cosmetic_only': 0, 'substantive': 0, 'imported_cosmetic': 0}
+          diff_root = Path('target/analysis/bank03/source_diffs')
+          diff_root.mkdir(parents=True, exist_ok=True)
+
+          for rel in divergent:
+              intl_path = Path('intl') / rel
+              jp_path = Path('jp') / rel
+              target_path = Path('target') / rel
+              intl_text = intl_path.read_text(encoding='utf-8')
+              jp_text = jp_path.read_text(encoding='utf-8')
+              intl_tokens = normalized_tokens(intl_text)
+              jp_tokens = normalized_tokens(jp_text)
+              classification = 'cosmetic-only' if intl_tokens == jp_tokens else 'substantive'
+              counts['cosmetic_only' if classification == 'cosmetic-only' else 'substantive'] += 1
+
+              if classification == 'cosmetic-only' and not target_path.exists():
+                  target_path.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copyfile(intl_path, target_path)
+                  counts['imported_cosmetic'] += 1
+
+              a = intl_text.splitlines(keepends=True)
+              b = jp_text.splitlines(keepends=True)
+              diff = ''.join(difflib.unified_diff(a, b, fromfile=f'international/{rel}', tofile=f'japanese/{rel}', n=3))
+              diff_path = diff_root / (rel.replace('/', '__') + '.diff')
+              diff_path.write_text(diff, encoding='utf-8')
+
+              matcher = difflib.SequenceMatcher(a=a, b=b, autojunk=False)
+              inserted = deleted = replaced_a = replaced_b = 0
+              hunks = 0
+              for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+                  if tag == 'equal':
+                      continue
+                  hunks += 1
+                  if tag == 'insert': inserted += j2-j1
+                  elif tag == 'delete': deleted += i2-i1
+                  else:
+                      replaced_a += i2-i1
+                      replaced_b += j2-j1
+
+              analysis.append({
+                  'path': rel,
+                  'classification': classification,
+                  'international_raw_sha1': sha(intl_path.read_bytes()),
+                  'japanese_raw_sha1': sha(jp_path.read_bytes()),
+                  'international_lines': len(a),
+                  'japanese_lines': len(b),
+                  'diff_hunks': hunks,
+                  'inserted_lines_in_japanese': inserted,
+                  'deleted_lines_from_international': deleted,
+                  'replaced_international_lines': replaced_a,
+                  'replacement_japanese_lines': replaced_b,
+                  'diff_path': str(diff_path.relative_to(Path('target'))),
+                  'target_source_present_after_analysis': target_path.exists(),
+              })
+
+          result = {
+              'schema_version': 1,
+              'bank': '03',
+              'status': 'variant-diff-classified',
+              'references': inventory['references'],
+              'divergent_module_count': len(divergent),
+              'counts': counts,
+              'classification_rule': 'cosmetic-only means token streams are identical after removing ASM comments and whitespace; substantive means assembly-relevant tokens differ and requires explicit target-aware merge.',
+              'modules': analysis,
+          }
+          Path('target/config/bank03_variant_analysis.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(counts, indent=2))
+          PY
+
+      - name: Commit variant analysis
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add config/bank03_variant_analysis.json analysis/bank03 engine data
+          if git diff --cached --quiet; then
+            echo 'No Bank 03 variant analysis changes to commit.'
+            exit 0
+          fi
+          git commit -m 'bank03: classify source variants and preserve diffs'
+          git push origin HEAD:main
