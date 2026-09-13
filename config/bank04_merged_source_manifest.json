@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "bank": "04",
-  "status": "safe-substantive-modules-fine-grained-manual-modules-pending",
+  "status": "all-substantive-modules-fine-grained-source-populated",
   "source_reconstruction_complete": false,
   "byte_perfect_rebuild_claim": false,
   "safe_fine_grained_count": 9,
