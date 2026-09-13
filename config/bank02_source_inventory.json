@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "bank": "02",
   "strategy": "single-shared-audio-source",
   "status": "reconstruction-in-progress",
@@ -96,6 +96,7 @@
       "name": "audio-engine-1",
       "files": ["audio/play_battle_music.asm", "audio/engine_1.asm", "audio/alternate_tempo.asm", "audio/notes.asm"],
       "status": "source-reconstructed",
+      "representation": "audio/notes.asm is an internal include of engine_1.asm, not a separate top-level Bank 02 section include.",
       "verification": "Public normalized JP source crosschecked; final byte-perfect validation waits for the full RGBDS build graph."
     },
     {
@@ -113,7 +114,11 @@
       ],
       "wave_table_files": 1,
       "sequence_or_fanfare_files": 25,
-      "status": "pending"
+      "status": "source-reconstructed",
+      "verification_manifest": "config/bank02_music1_blobs.json",
+      "reference_repository": "Narishma-gb/pokeyellow-jp",
+      "reference_commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572",
+      "representation": "All 26 editable ASM sources are pinned by Git blob SHA-1 and kept in canonical ROM include order."
     },
     {
       "name": "revision-tail",
@@ -148,7 +153,8 @@
     "noncry_sfx": 34,
     "cry_entries": 39,
     "sound_effects_1_total": 92,
-    "music1_sequences_or_fanfares": 25
+    "music1_sequences_or_fanfares": 25,
+    "music1_total_source_files_with_wave_table": 26
   },
   "dependencies": {
     "required_foundation": [
