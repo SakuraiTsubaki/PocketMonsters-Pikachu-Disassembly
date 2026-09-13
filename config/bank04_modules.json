@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "bank": "04",
+  "range": "0x10000-0x13fff",
+  "status": "survey-complete",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
+  "role": "Font/player graphics, status and party menus, TM handling, and Battle Engine 1",
+  "authority": "Reference ROM bytes override public disassembly source when they differ.",
+  "layout_crosscheck": {
+    "international_reference": {
+      "repository": "pret/pokeyellow",
+      "commit": "e89ead154b9968aa50eed9328ff2b38b6c194382",
+      "sections": {
+        "bank4": [
+          "gfx/font.asm",
+          "engine/pokemon/status_screen.asm",
+          "engine/menus/party_menu.asm",
+          "gfx/player.asm",
+          "engine/menus/start_sub_menus.asm",
+          "engine/items/tms.asm"
+        ],
+        "Battle Engine 1": [
+          "engine/battle/end_of_battle.asm",
+          "engine/battle/wild_encounters.asm",
+          "engine/battle/move_effects/recoil.asm",
+          "engine/battle/move_effects/conversion.asm",
+          "engine/battle/move_effects/haze.asm"
+        ]
+      },
+      "top_level_module_count": 11
+    },
+    "japanese_reference": {
+      "repository": "Narishma-gb/pokeyellow-jp",
+      "commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572",
+      "sections": {
+        "bank4": [
+          "data/moves/names.asm",
+          "gfx/font.asm",
+          "engine/overworld/is_player_just_outside_map.asm",
+          "engine/pokemon/status_screen.asm",
+          "engine/menus/party_menu.asm",
+          "gfx/player.asm",
+          "engine/menus/start_sub_menus.asm",
+          "engine/items/tms.asm"
+        ],
+        "Battle Engine 1": [
+          "engine/battle/end_of_battle.asm",
+          "engine/battle/wild_encounters.asm",
+          "engine/battle/move_effects/recoil.asm",
+          "engine/battle/move_effects/conversion.asm",
+          "engine/battle/move_effects/haze.asm",
+          "engine/overworld/npc_movement_2.asm"
+        ]
+      },
+      "top_level_module_count": 14
+    },
+    "section_names": [
+      "bank4",
+      "Battle Engine 1"
+    ],
+    "common_in_bank04": [
+      "gfx/font.asm",
+      "engine/pokemon/status_screen.asm",
+      "engine/menus/party_menu.asm",
+      "gfx/player.asm",
+      "engine/menus/start_sub_menus.asm",
+      "engine/items/tms.asm",
+      "engine/battle/end_of_battle.asm",
+      "engine/battle/wild_encounters.asm",
+      "engine/battle/move_effects/recoil.asm",
+      "engine/battle/move_effects/conversion.asm",
+      "engine/battle/move_effects/haze.asm"
+    ],
+    "japanese_additional_placements": {
+      "data/moves/names.asm": {
+        "international_placement": "text.asm / SECTION \"Move Names\"",
+        "classification": "family-specific bank placement"
+      },
+      "engine/overworld/is_player_just_outside_map.asm": {
+        "international_placement": "main.asm / SECTION \"bank3A\"",
+        "classification": "family-specific bank placement"
+      },
+      "engine/overworld/npc_movement_2.asm": {
+        "international_placement": "main.asm / SECTION \"bank3A\"",
+        "classification": "family-specific bank placement"
+      }
+    },
+    "logical_layout_identical": false
+  },
+  "bank_sha1": {
+    "jp-rev0a": "2344a36c8e3c74a6d722ee3a133ff899caa4d65c",
+    "jp-revb": "9159a3ae11ea0def01287749c81078e22eef92e8",
+    "jp-revc": "e9cc532c17d0802c4c5499f1aa738ac65204bf3e",
+    "jp-revd": "6897c1d250a4b095e6312569ae77388c346b9e67",
+    "en-us-eu": "5554b5f767c8016e1851df2cb5dbd5f5d55c7c8e",
+    "fr": "99ad4ca19a83246c7b15cc9f7ed98e60958c756b",
+    "de": "f73b98551029dcdc457920f7b6eb3d0d96b83a26",
+    "it": "6111f4f90d2327e1bcbe66aaf50764a2b36ae647",
+    "es": "06181f63918d821aa57dd6115f40003e404f6d4c"
+  },
+  "direct_rom_observations": {
+    "unique_targets": 9,
+    "japanese_active_boundary_bank_offset": "0x3fc2",
+    "japanese_active_range": "0x10000-0x13fc1",
+    "japanese_active_length": 16322,
+    "japanese_pairwise": {
+      "jp-rev0a_vs_jp-revb": {
+        "whole_bank_differing_bytes": 322,
+        "active_differing_bytes": 260,
+        "active_contiguous_ranges": 256
+      },
+      "jp-revb_vs_jp-revc": {
+        "whole_bank_differing_bytes": 9,
+        "active_differing_bytes": 0
+      },
+      "jp-revc_vs_jp-revd": {
+        "whole_bank_differing_bytes": 53,
+        "active_differing_bytes": 0
+      }
+    },
+    "japanese_revision_note": "Rev B, Rev C, and Rev D active bytes are identical through bank-local 0x3fc1. Rev 0A has 260 active-region byte differences; no direct _REV0 conditional was found in the pinned Japanese Bank 04 top-level modules, so relocation versus content classification remains pending symbol-aware validation.",
+    "international_last_nonzero_byte": {
+      "en-us-eu": {
+        "physical_offset": "0x13a21",
+        "bank_offset": "0x3a21",
+        "trailing_zero_bytes": 1502
+      },
+      "fr": {
+        "physical_offset": "0x13a32",
+        "bank_offset": "0x3a32",
+        "trailing_zero_bytes": 1485
+      },
+      "de": {
+        "physical_offset": "0x13a2e",
+        "bank_offset": "0x3a2e",
+        "trailing_zero_bytes": 1489
+      },
+      "it": {
+        "physical_offset": "0x13a4a",
+        "bank_offset": "0x3a4a",
+        "trailing_zero_bytes": 1461
+      },
+      "es": {
+        "physical_offset": "0x13a45",
+        "bank_offset": "0x3a45",
+        "trailing_zero_bytes": 1466
+      }
+    },
+    "international_boundary_note": "Last-nonzero observations are padding survey data only and are not treated as source-section boundaries."
+  },
+  "garbage_4": {
+    "classification": "historical leftover data",
+    "range": "0x13fc2-0x13fff",
+    "bank_range": "0x7fc2-0x7fff",
+    "length": 62,
+    "jp-rev0a": {
+      "present": true,
+      "source": "data/garbage/jp/rev0a/bank04_tail.asm",
+      "raw_sha1": "ad0888f5257205ab467810840a334b183eeb3f52",
+      "public_git_blob_sha1": "05019b76fa9ad16f8e6b84a2af6ea3e507c14d7e"
+    },
+    "jp-revb": {
+      "present": true,
+      "source": "data/garbage/jp/revb/bank04_tail.asm",
+      "raw_sha1": "237775b27321e2e943ff4227851619f3f4ae3b70",
+      "public_git_blob_sha1": "dcdb00ce7b97410f3b976ec7febbb3fa690e31ae"
+    },
+    "jp-revc": {
+      "present": true,
+      "source": "data/garbage/jp/revc/bank04_tail.asm",
+      "raw_sha1": "5d1943617c7a4bb19b829a7c942663baf70e40de",
+      "public_git_blob_sha1": "5ce7e4dd53b9a0c47630e069aff9c27c5fca0eea"
+    },
+    "jp-revd": {
+      "present": false,
+      "zero_fill": true,
+      "raw_sha1_of_zero_tail": "566538c1539e2db072bd6dd57dbaae4e470ad831",
+      "nonzero_bytes": 0
+    },
+    "public_crosscheck": "Narishma-gb/pokeyellow-jp garbage.asm wires Garbage 4 only for _REV0/_REV1/_REV2; the three public garbage_4.bin Git blob SHA-1 values match the extracted local reference tails."
+  },
+  "revision_source_search": {
+    "query": "DEF(_REV0) in pinned Narishma-gb/pokeyellow-jp",
+    "bank04_top_level_matches": 0,
+    "interpretation": "No direct Rev 0 conditional is presently evidenced in the Bank 04 top-level module sources. Rev 0A active differences are not classified as local code changes without symbol-aware proof."
+  },
+  "next_phase": [
+    "Audit the 11 common Bank 04 modules against pinned Japanese and international sources.",
+    "Preserve the three Japanese-only Bank 04 placements without duplicating content that is placed in other international banks.",
+    "Classify substantive JP/international source differences and deduplicate them with target-aware conditionals.",
+    "Create banks/bank04.asm with family-specific section placement and JP Garbage 4 wiring.",
+    "Enable linked byte validation only when cross-bank dependencies permit a trustworthy RGBDS Bank 04 build."
+  ]
+}
