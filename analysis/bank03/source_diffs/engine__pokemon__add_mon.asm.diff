@@ -1,0 +1,69 @@
+--- international/engine/pokemon/add_mon.asm
++++ japanese/engine/pokemon/add_mon.asm
+@@ -129,10 +129,10 @@
+ 	xor a
+ 	ld b, a
+ 	call CalcStat      ; calc HP stat (set cur Hp to max HP)
+-	ldh a, [hMultiplicand+1]
+-	ld [de], a
+-	inc de
+-	ldh a, [hMultiplicand+2]
++	ldh a, [hMultiplicand + 1]
++	ld [de], a
++	inc de
++	ldh a, [hMultiplicand + 2]
+ 	ld [de], a
+ 	inc de
+ 	xor a
+@@ -151,7 +151,7 @@
+ 	ld a, [wEnemyMonHP]    ; copy HP from cur enemy mon
+ 	ld [de], a
+ 	inc de
+-	ld a, [wEnemyMonHP+1]
++	ld a, [wEnemyMonHP + 1]
+ 	ld [de], a
+ 	inc de
+ 	xor a
+@@ -375,7 +375,7 @@
+ 	add hl, bc
+ 	ld a, [wMoveMonType]
+ 	cp DAYCARE_TO_PARTY
+-	ld a, [wDayCareMon]
++	ld a, [wDayCareMonSpecies]
+ 	jr z, .copySpecies
+ 	ld a, [wCurPartySpecies]
+ .copySpecies
+@@ -440,6 +440,7 @@
+ 	ld hl, wPartyMonOT
+ 	ld a, [wPartyCount]
+ 	jr nz, .addOToffset
++	; if it's PARTY_TO_BOX
+ 	ld hl, wBoxMonOT
+ 	ld a, [wBoxCount]
+ .addOToffset
+@@ -450,7 +451,7 @@
+ .findOTsrc
+ 	ld hl, wBoxMonOT
+ 	ld a, [wMoveMonType]
+-	and a
++	and a ; BOX_TO_PARTY
+ 	jr z, .addOToffset2
+ 	ld hl, wDayCareMonOT
+ 	cp DAYCARE_TO_PARTY
+@@ -471,6 +472,7 @@
+ 	ld hl, wPartyMonNicks
+ 	ld a, [wPartyCount]
+ 	jr nz, .addNickOffset
++	; if it's PARTY_TO_BOX
+ 	ld hl, wBoxMonNicks
+ 	ld a, [wBoxCount]
+ .addNickOffset
+@@ -481,7 +483,7 @@
+ .findNickSrc
+ 	ld hl, wBoxMonNicks
+ 	ld a, [wMoveMonType]
+-	and a
++	and a ; BOX_TO_PARTY
+ 	jr z, .addNickOffset2
+ 	ld hl, wDayCareMonName
+ 	cp DAYCARE_TO_PARTY

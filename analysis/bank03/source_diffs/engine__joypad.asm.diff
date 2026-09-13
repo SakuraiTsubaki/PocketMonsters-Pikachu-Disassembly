@@ -1,0 +1,78 @@
+--- international/engine/joypad.asm
++++ japanese/engine/joypad.asm
+@@ -2,15 +2,25 @@
+ ; Poll joypad input.
+ ; Unlike the hardware register, button
+ ; presses are indicated by a set bit.
++IF DEF(_REV1) || DEF(_REV2) || DEF(_REV3)
+ 	ldh a, [hDisableJoypadPolling]
+ 	and a
+ 	ret nz
++ENDC
+ 
+ 	ld a, 1 << 5 ; select direction keys
++IF DEF(_REV0)
++	ld c, 0
++ENDC
+ 
+ 	ldh [rJOYP], a
+ 	ldh a, [rJOYP]
+ 	ldh a, [rJOYP]
++IF DEF(_REV0)
++	REPT 4
++		ldh a, [rJOYP]
++	ENDR
++ENDC
+ 	cpl
+ 	and %1111
+ 	swap a
+@@ -21,6 +31,20 @@
+ REPT 6
+ 	ldh a, [rJOYP]
+ ENDR
++IF DEF(_REV0)
++	REPT 4
++		ldh a, [rJOYP]
++	ENDR
++	cpl
++	and %01001111
++
++	cp PAD_BUTTONS ; soft reset
++	jr nz, .notSoftReset
++	jp TrySoftReset
++.notSoftReset
++	or b
++	ld b, a
++ELSE
+ 	cpl
+ 	and %1111
+ 	or b
+@@ -40,6 +64,7 @@
+ 	and PAD_BUTTONS | PAD_UP
+ 	cp PAD_BUTTONS ; soft reset
+ 	jp z, TrySoftReset
++ENDC
+ 
+ 	ldh a, [hJoyLast]
+ 	ld e, a
+@@ -50,6 +75,10 @@
+ 	ld a, d
+ 	and b
+ 	ldh [hJoyPressed], a
++IF DEF(_REV0)
++	ld a, 1 << 4 + 1 << 5 ; deselect keys
++	ldh [rJOYP], a
++ENDC
+ 	ld a, b
+ 	ldh [hJoyLast], a
+ 
+@@ -84,8 +113,7 @@
+ TrySoftReset:
+ 	call DelayFrame
+ 
+-	; deselect (redundant)
+-	ld a, $30
++	ld a, 1 << 4 + 1 << 5 ; deselect keys
+ 	ldh [rJOYP], a
+ 
+ 	ld hl, hSoftReset

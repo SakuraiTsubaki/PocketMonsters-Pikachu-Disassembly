@@ -1,0 +1,11 @@
+--- international/engine/flag_action.asm
++++ japanese/engine/flag_action.asm
+@@ -41,7 +41,7 @@
+ .shifted
+ 
+ 	ld a, b
+-	and a
++	and a ; FLAG_RESET
+ 	jr z, .reset
+ 	cp FLAG_TEST
+ 	jr z, .read

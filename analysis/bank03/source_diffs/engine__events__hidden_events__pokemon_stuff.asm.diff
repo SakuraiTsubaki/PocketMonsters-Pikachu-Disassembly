@@ -1,0 +1,9 @@
+--- international/engine/events/hidden_events/pokemon_stuff.asm
++++ japanese/engine/events/hidden_events/pokemon_stuff.asm
+@@ -1,3 +1,4 @@
+ PokemonStuffText::
+-	text_far _PokemonStuffText
+-	text_end
++	text "わあ！　#グッズが"
++	line "たくさん　そろってるぞ！"
++	done

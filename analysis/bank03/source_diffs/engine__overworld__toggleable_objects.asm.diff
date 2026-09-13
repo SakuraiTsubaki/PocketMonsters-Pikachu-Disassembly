@@ -1,0 +1,34 @@
+--- international/engine/overworld/toggleable_objects.asm
++++ japanese/engine/overworld/toggleable_objects.asm
+@@ -27,17 +27,17 @@
+ 	ld a, h
+ 	ldh [hDividend], a
+ 	ld a, l
+-	ldh [hDividend+1], a
+-	xor a
+-	ldh [hDividend+2], a
+-	ldh [hDividend+3], a
++	ldh [hDividend + 1], a
++	xor a
++	ldh [hDividend + 2], a
++	ldh [hDividend + 3], a
+ 	ld a, $3
+ 	ldh [hDivisor], a
+ 	ld b, $2
+ 	call Divide
+ 	ld a, [wCurMap]
+ 	ld b, a
+-	ldh a, [hDividend+3]
++	ldh a, [hDividend + 3]
+ 	ld c, a                    ; store global offset in c
+ 	ld de, wToggleableObjectList
+ 	pop hl
+@@ -173,7 +173,7 @@
+ .shifted
+ 
+ 	ld a, b
+-	and a
++	and a ; FLAG_RESET
+ 	jr z, .reset
+ 	cp FLAG_TEST
+ 	jr z, .read

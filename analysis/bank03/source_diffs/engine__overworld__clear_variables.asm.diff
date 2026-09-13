@@ -1,0 +1,10 @@
+--- international/engine/overworld/clear_variables.asm
++++ japanese/engine/overworld/clear_variables.asm
+@@ -15,6 +15,6 @@
+ 	ld [hli], a
+ 	ld [hl], a
+ 	ld hl, wWhichTrade
+-	ld bc, wStandingOnWarpPadOrHole - wWhichTrade
++	ld bc, wMiscFlags - wWhichTrade
+ 	call FillMemory
+ 	ret

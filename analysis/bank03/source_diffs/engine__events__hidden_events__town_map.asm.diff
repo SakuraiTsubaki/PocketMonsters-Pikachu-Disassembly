@@ -1,0 +1,9 @@
+--- international/engine/events/hidden_events/town_map.asm
++++ japanese/engine/events/hidden_events/town_map.asm
+@@ -1,5 +1,5 @@
+ TownMapText::
+-	text_far _TownMapText
++	text "タウンマップだ！@"
+ 	text_promptbutton
+ 	text_asm
+ 	ld a, $1
