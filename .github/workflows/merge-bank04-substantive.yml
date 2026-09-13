@@ -1,0 +1,197 @@
+name: Merge Bank 04 substantive source variants
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/merge-bank04-substantive.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: target
+
+      - name: Checkout pinned international reference
+        uses: actions/checkout@v4
+        with:
+          repository: pret/pokeyellow
+          ref: e89ead154b9968aa50eed9328ff2b38b6c194382
+          path: intl
+
+      - name: Checkout pinned Japanese reference
+        uses: actions/checkout@v4
+        with:
+          repository: Narishma-gb/pokeyellow-jp
+          ref: f282e72ae26232790fdb780aa5a5db7ec8ebf572
+          path: jp
+
+      - name: Fine-grained merge and verify both families
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import difflib
+          import hashlib
+          import json
+          import re
+
+          target = Path('target')
+          inv = json.loads((target / 'config/bank04_source_inventory.json').read_text(encoding='utf-8'))
+          safety = json.loads((target / 'config/bank04_substantive_safety.json').read_text(encoding='utf-8'))
+          safety_by_path = {m['path']: m for m in safety['modules']}
+          substantive = [m for m in inv['modules'] if m['classification'] == 'substantive']
+          if len(substantive) != 9:
+              raise SystemExit(f'expected 9 substantive modules, got {len(substantive)}')
+
+          def raw_sha(data: bytes) -> str:
+              return hashlib.sha1(data).hexdigest()
+
+          def blob_sha(data: bytes) -> str:
+              return hashlib.sha1(f'blob {len(data)}\0'.encode('ascii') + data).hexdigest()
+
+          def strip_comments(line: str) -> str:
+              out = []
+              quote = None
+              escaped = False
+              for ch in line:
+                  if escaped:
+                      out.append(ch); escaped = False; continue
+                  if ch == '\\':
+                      out.append(ch); escaped = True; continue
+                  if quote:
+                      out.append(ch)
+                      if ch == quote: quote = None
+                      continue
+                  if ch in ('"', "'"):
+                      quote = ch; out.append(ch); continue
+                  if ch == ';': break
+                  out.append(ch)
+              return ''.join(out)
+
+          def tokens(text: str):
+              clean = '\n'.join(strip_comments(line) for line in text.splitlines())
+              return re.findall(r'\$[0-9A-Fa-f]+|%[01]+|[A-Za-z_][A-Za-z0-9_@.#?]*|\d+|"(?:\\.|[^"\\])*"|\S', clean)
+
+          def preprocess_simple(text: str, japanese: bool) -> str:
+              out = []
+              stack = []
+              active = True
+              for lineno, line in enumerate(text.splitlines(keepends=True), 1):
+                  code = line.split(';', 1)[0].strip()
+                  if code == 'IF DEF(_JAPAN)':
+                      stack.append((active, japanese, False))
+                      active = active and japanese
+                  elif code == 'ELSE':
+                      if not stack:
+                          raise SystemExit(f'bad ELSE at {lineno}')
+                      parent, cond, seen_else = stack[-1]
+                      if seen_else:
+                          raise SystemExit(f'duplicate ELSE at {lineno}')
+                      stack[-1] = (parent, cond, True)
+                      active = parent and not cond
+                  elif code == 'ENDC':
+                      if not stack:
+                          raise SystemExit(f'bad ENDC at {lineno}')
+                      parent, _, _ = stack.pop()
+                      active = parent
+                  elif active:
+                      out.append(line)
+              if stack:
+                  raise SystemExit('unterminated generated IF block')
+              return ''.join(out)
+
+          records = []
+          for m in substantive:
+              rel = m['path']
+              safe = safety_by_path.get(rel)
+              if not safe or safe.get('recommended_strategy') != 'automatic-fine-grained-safe':
+                  raise SystemExit(f'unsafe substantive module: {rel}')
+
+              i_data = (Path('intl') / rel).read_bytes()
+              j_data = (Path('jp') / rel).read_bytes()
+              if raw_sha(i_data) != m['international_raw_sha1'] or raw_sha(j_data) != m['japanese_raw_sha1']:
+                  raise SystemExit(f'provenance SHA mismatch: {rel}')
+              i_text = i_data.decode('utf-8')
+              j_text = j_data.decode('utf-8')
+              i_lines = i_text.splitlines(keepends=True)
+              j_lines = j_text.splitlines(keepends=True)
+              sm = difflib.SequenceMatcher(a=i_lines, b=j_lines, autojunk=False)
+
+              merged = []
+              selector_count = 0
+              for tag, i1, i2, j1, j2 in sm.get_opcodes():
+                  if tag == 'equal':
+                      merged.extend(i_lines[i1:i2])
+                      continue
+                  selector_count += 1
+                  merged.append('IF DEF(_JAPAN)\n')
+                  merged.extend(j_lines[j1:j2])
+                  if j2 > j1 and not j_lines[j2 - 1].endswith('\n'):
+                      merged.append('\n')
+                  merged.append('ELSE\n')
+                  merged.extend(i_lines[i1:i2])
+                  if i2 > i1 and not i_lines[i2 - 1].endswith('\n'):
+                      merged.append('\n')
+                  merged.append('ENDC\n')
+
+              merged_text = ''.join(merged)
+              actual_j = tokens(preprocess_simple(merged_text, True))
+              expected_j = tokens(j_text)
+              actual_i = tokens(preprocess_simple(merged_text, False))
+              expected_i = tokens(i_text)
+              if actual_j != expected_j:
+                  raise SystemExit(f'Japanese token equivalence failed: {rel}')
+              if actual_i != expected_i:
+                  raise SystemExit(f'international token equivalence failed: {rel}')
+
+              out = merged_text.encode('utf-8')
+              dst = target / rel
+              dst.parent.mkdir(parents=True, exist_ok=True)
+              dst.write_bytes(out)
+              records.append({
+                  'path': rel,
+                  'placement_class': m['placement_class'],
+                  'strategy': 'fine-grained-family-conditional',
+                  'selector_count': selector_count,
+                  'international_raw_sha1': m['international_raw_sha1'],
+                  'japanese_raw_sha1': m['japanese_raw_sha1'],
+                  'merged_raw_sha1': raw_sha(out),
+                  'merged_git_blob_sha1': blob_sha(out),
+                  'merged_length': len(out),
+                  'international_token_equivalence_verified': True,
+                  'japanese_token_equivalence_verified': True,
+              })
+
+          manifest = {
+              'schema_version': 1,
+              'bank': '04',
+              'status': 'nine-substantive-modules-fine-grained-merged',
+              'source_reconstruction_complete': False,
+              'byte_perfect_rebuild_claim': False,
+              'references': {
+                  'international': 'e89ead154b9968aa50eed9328ff2b38b6c194382',
+                  'japanese': 'f282e72ae26232790fdb780aa5a5db7ec8ebf572',
+              },
+              'counts': {'fine_grained': len(records), 'whole_family': 0},
+              'modules': records,
+          }
+          (target / 'config/bank04_merged_source_manifest.json').write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+          print(f'fine-grained merged and verified: {len(records)}/9')
+          PY
+
+      - name: Commit merged sources
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add config/bank04_merged_source_manifest.json engine data gfx
+          git commit -m 'bank04: fine-grained merge substantive source families'
+          git push origin HEAD:main
