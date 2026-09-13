@@ -37,17 +37,15 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import base64
           import hashlib
           import json
           import re
 
           target = Path('target')
           rel = 'engine/joypad.asm'
-          jp_path = Path('jp') / rel
-          intl_path = Path('intl') / rel
-          jp_raw = jp_path.read_bytes()
-          intl_raw = intl_path.read_bytes()
-
+          jp_raw = (Path('jp') / rel).read_bytes()
+          intl_raw = (Path('intl') / rel).read_bytes()
           manifest_path = target / 'config/bank03_merged_source_manifest.json'
           manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
           records = {m['path']: m for m in manifest['modules']}
@@ -66,155 +64,13 @@ jobs:
           if sha1(intl_raw) != record['international_raw_sha1']:
               raise SystemExit('international joypad provenance SHA mismatch')
 
-          merged_text = r'''; Bank 03 manually structured joypad family reconstruction.
-; Common instructions are emitted once. Japanese Rev 0 keeps its historical
-; polling/soft-reset path; Japanese Rev 1-3 and international targets share
-; the normal path wherever their source is assembly-equivalent.
-; JP: Narishma-gb/pokeyellow-jp @ f282e72ae26232790fdb780aa5a5db7ec8ebf572
-; INT: pret/pokeyellow @ e89ead154b9968aa50eed9328ff2b38b6c194382
+          merged_b64 = 'OyBCYW5rIDAzIG1hbnVhbGx5IHN0cnVjdHVyZWQgam95cGFkIGZhbWlseSByZWNvbnN0cnVjdGlvbi4KOyBDb21tb24gaW5zdHJ1Y3Rpb25zIGFyZSBlbWl0dGVkIG9uY2UuIEphcGFuZXNlIFJldiAwIGtlZXBzIGl0cyBoaXN0b3JpY2FsCjsgcG9sbGluZy9zb2Z0LXJlc2V0IHBhdGg7IEphcGFuZXNlIFJldiAxLTMgYW5kIGludGVybmF0aW9uYWwgdGFyZ2V0cyBzaGFyZQo7IHRoZSBub3JtYWwgcGF0aCB3aGVyZXZlciB0aGVpciBzb3VyY2UgaXMgYXNzZW1ibHktZXF1aXZhbGVudC4KOyBKUDogTmFyaXNobWEtZ2IvcG9rZXllbGxvdy1qcCBAIGYyODJlNzJhZTI2MjMyNzkwZmRiNzgwYWE1YTVkYjdlYzhlYmY1NzIKOyBJTlQ6IHByZXQvcG9rZXllbGxvdyBAIGU4OWVhZDE1NGI5OTY4YWE1MGVlZDkzMjhmZjJiMzhiNmMxOTQzODIKClJlYWRKb3lwYWRfOjoKOyBQb2xsIGpveXBhZCBpbnB1dC4KOyBVbmxpa2UgdGhlIGhhcmR3YXJlIHJlZ2lzdGVyLCBidXR0b24KOyBwcmVzc2VzIGFyZSBpbmRpY2F0ZWQgYnkgYSBzZXQgYml0LgpJRiBERUYoX0pBUEFOKQpJRiBERUYoX1JFVjEpIHx8IERFRihfUkVWMikgfHwgREVGKF9SRVYzKQoJbGRoIGEsIFtoRGlzYWJsZUpveXBhZFBvbGxpbmddCglhbmQgYQoJcmV0IG56CkVOREMKRUxTRQoJbGRoIGEsIFtoRGlzYWJsZUpveXBhZFBvbGxpbmddCglhbmQgYQoJcmV0IG56CkVOREMKCglsZCBhLCAxIDw8IDUgOyBzZWxlY3QgZGlyZWN0aW9uIGtleXMKSUYgREVGKF9KQVBBTikgJiYgREVGKF9SRVYwKQoJbGQgYywgMApFTkRDCgoJbGRoIFtySk9ZUF0sIGEKCWxkaCBhLCBbckpPWVBdCglsZGggYSwgW3JKT1lQXQpJRiBERUYoX0pBUEFOKSAmJiBERUYoX1JFVjApCglSRVBUIDQKCQlsZGggYSwgW3JKT1lQXQoJRU5EUgpFTkRDCgljcGwKCWFuZCAlMTExMQoJc3dhcCBhCglsZCBiLCBhCgoJbGQgYSwgMSA8PCA0IDsgc2VsZWN0IGJ1dHRvbiBrZXlzCglsZGggW3JKT1lQXSwgYQpSRVBUIDYKCWxkaCBhLCBbckpPWVBdCkVORFIKSUYgREVGKF9KQVBBTikgJiYgREVGKF9SRVYwKQoJUkVQVCA0CgkJbGRoIGEsIFtySk9ZUF0KCUVORFIKCWNwbAoJYW5kICUwMTAwMTExMQoKCWNwIFBBRF9CVVRUT05TIDsgc29mdCByZXNldAoJanIgbnosIC5ub3RTb2Z0UmVzZXQKCWpwIFRyeVNvZnRSZXNldAoubm90U29mdFJlc2V0CglvciBiCglsZCBiLCBhCkVMU0UKCWNwbAoJYW5kICUxMTExCglvciBiCgoJbGRoIFtoSm95SW5wdXRdLCBhCgoJbGQgYSwgMSA8PCA0ICsgMSA8PCA1IDsgZGVzZWxlY3Qga2V5cwoJbGRoIFtySk9ZUF0sIGEKCXJldAoKX0pveXBhZDo6CjsgaEpveVJlbGVhc2VkOiAoaEpveUxhc3QgXiBoSm95SW5wdXQpICYgaEpveUxhc3QKOyBoSm95UHJlc3NlZDogIChoSm95TGFzdCBeIGhKb3lJbnB1dCkgJiBoSm95SW5wdXQKCglsZGggYSwgW2hKb3lJbnB1dF0KCWxkIGIsIGEKCWFuZCBQQURfQlVUVE9OUyB8IFBBRF9VUAoJY3AgUEFEX0JVVFRPTlMgOyBzb2Z0IHJlc2V0CglqcCB6LCBUcnlTb2Z0UmVzZXQKRU5EQwoKCWxkaCBhLCBbaEpveUxhc3RdCglsZCBlLCBhCgl4b3IgYgoJbGQgZCwgYQoJYW5kIGUKCWxkaCBbaEpveVJlbGVhc2VkXSwgYQoJbGQgYSwgZAoJYW5kIGIKCWxkaCBbaEpveVByZXNzZWRdLCBhCklGIERFRihfSkFQQU4pICYmIERFRihfUkVWMCkKCWxkIGEsIDEgPDwgNCArIDEgPDwgNSA7IGRlc2VsZWN0IGtleXMKCWxkaCBbckpPWVBdLCBhCkVOREMKCWxkIGEsIGIKCWxkaCBbaEpveUxhc3RdLCBhCgoJbGQgYSwgW3dTdGF0dXNGbGFnczVdCgliaXQgQklUX0RJU0FCTEVfSk9ZUEFELCBhCglqciBueiwgRGlzY2FyZEJ1dHRvblByZXNzZXMKCglsZGggYSwgW2hKb3lMYXN0XQoJbGRoIFtoSm95SGVsZF0sIGEKCglsZCBhLCBbd0pveUlnbm9yZV0KCWFuZCBhCglyZXQgegoKCWNwbAoJbGQgYiwgYQoJbGRoIGEsIFtoSm95SGVsZF0KCWFuZCBiCglsZGggW2hKb3lIZWxkXSwgYQoJbGRoIGEsIFtoSm95UHJlc3NlZF0KCWFuZCBiCglsZGggW2hKb3lQcmVzc2VkXSwgYQoJcmV0CgpEaXNjYXJkQnV0dG9uUHJlc3NlczoKCXhvciBhCglsZGggW2hKb3lIZWxkXSwgYQoJbGRoIFtoSm95UHJlc3NlZF0sIGEKCWxkaCBbaEpveVJlbGVhc2VkXSwgYQoJcmV0CgpUcnlTb2Z0UmVzZXQ6CgljYWxsIERlbGF5RnJhbWUKCklGIERFRihfSkFQQU4pCglsZCBhLCAxIDw8IDQgKyAxIDw8IDUgOyBkZXNlbGVjdCBrZXlzCkVMU0UKCTsgZGVzZWxlY3QgKHJlZHVuZGFudCkKCWxkIGEsICQzMApFTkRDCglsZGggW3JKT1lQXSwgYQoKCWxkIGhsLCBoU29mdFJlc2V0CglkZWMgW2hsXQoJanAgeiwgU29mdFJlc2V0CgoJanAgSm95cGFkCg=='
+          merged_text = base64.b64decode(merged_b64).decode('utf-8')
 
-ReadJoypad_::
-; Poll joypad input.
-; Unlike the hardware register, button
-; presses are indicated by a set bit.
-IF DEF(_JAPAN)
-IF DEF(_REV1) || DEF(_REV2) || DEF(_REV3)
-	ldh a, [hDisableJoypadPolling]
-	and a
-	ret nz
-ENDC
-ELSE
-	ldh a, [hDisableJoypadPolling]
-	and a
-	ret nz
-ENDC
-
-	ld a, 1 << 5 ; select direction keys
-IF DEF(_JAPAN) && DEF(_REV0)
-	ld c, 0
-ENDC
-
-	ldh [rJOYP], a
-	ldh a, [rJOYP]
-	ldh a, [rJOYP]
-IF DEF(_JAPAN) && DEF(_REV0)
-	REPT 4
-		ldh a, [rJOYP]
-	ENDR
-ENDC
-	cpl
-	and %1111
-	swap a
-	ld b, a
-
-	ld a, 1 << 4 ; select button keys
-	ldh [rJOYP], a
-REPT 6
-	ldh a, [rJOYP]
-ENDR
-IF DEF(_JAPAN) && DEF(_REV0)
-	REPT 4
-		ldh a, [rJOYP]
-	ENDR
-	cpl
-	and %01001111
-
-	cp PAD_BUTTONS ; soft reset
-	jr nz, .notSoftReset
-	jp TrySoftReset
-.notSoftReset
-	or b
-	ld b, a
-ELSE
-	cpl
-	and %1111
-	or b
-
-	ldh [hJoyInput], a
-
-	ld a, 1 << 4 + 1 << 5 ; deselect keys
-	ldh [rJOYP], a
-	ret
-
-_Joypad::
-; hJoyReleased: (hJoyLast ^ hJoyInput) & hJoyLast
-; hJoyPressed:  (hJoyLast ^ hJoyInput) & hJoyInput
-
-	ldh a, [hJoyInput]
-	ld b, a
-	and PAD_BUTTONS | PAD_UP
-	cp PAD_BUTTONS ; soft reset
-	jp z, TrySoftReset
-ENDC
-
-	ldh a, [hJoyLast]
-	ld e, a
-	xor b
-	ld d, a
-	and e
-	ldh [hJoyReleased], a
-	ld a, d
-	and b
-	ldh [hJoyPressed], a
-IF DEF(_JAPAN) && DEF(_REV0)
-	ld a, 1 << 4 + 1 << 5 ; deselect keys
-	ldh [rJOYP], a
-ENDC
-	ld a, b
-	ldh [hJoyLast], a
-
-	ld a, [wStatusFlags5]
-	bit BIT_DISABLE_JOYPAD, a
-	jr nz, DiscardButtonPresses
-
-	ldh a, [hJoyLast]
-	ldh [hJoyHeld], a
-
-	ld a, [wJoyIgnore]
-	and a
-	ret z
-
-	cpl
-	ld b, a
-	ldh a, [hJoyHeld]
-	and b
-	ldh [hJoyHeld], a
-	ldh a, [hJoyPressed]
-	and b
-	ldh [hJoyPressed], a
-	ret
-
-DiscardButtonPresses:
-	xor a
-	ldh [hJoyHeld], a
-	ldh [hJoyPressed], a
-	ldh [hJoyReleased], a
-	ret
-
-TrySoftReset:
-	call DelayFrame
-
-IF DEF(_JAPAN)
-	ld a, 1 << 4 + 1 << 5 ; deselect keys
-ELSE
-	; deselect (redundant)
-	ld a, $30
-ENDC
-	ldh [rJOYP], a
-
-	ld hl, hSoftReset
-	dec [hl]
-	jp z, SoftReset
-
-	jp Joypad
-'''
-
-          # Minimal RGBDS conditional evaluator for the DEF-only expressions used here.
           def eval_expr(expr: str, defines: set[str]) -> bool:
               expr = re.sub(r'DEF\(([_A-Za-z0-9]+)\)', lambda m: 'True' if m.group(1) in defines else 'False', expr)
               expr = expr.replace('&&', ' and ').replace('||', ' or ')
-              expr = re.sub(r'!\s*(True|False)', r' not \1', expr)
-              if not re.fullmatch(r'[\sTrueFalsandornot()]+', expr):
+              if not re.fullmatch(r'[\sTrueFalsandor()]+', expr):
                   raise ValueError(f'unsupported conditional expression: {expr!r}')
               return bool(eval(expr, {'__builtins__': {}}, {}))
 
