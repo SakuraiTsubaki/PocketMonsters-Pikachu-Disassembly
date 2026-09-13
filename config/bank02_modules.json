@@ -1,8 +1,10 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "bank": "02",
   "range": "0x8000-0xbfff",
-  "status": "survey-started",
+  "status": "payload-equivalence-verified",
+  "source_reconstruction_complete": false,
+  "byte_perfect_rebuild_claim": false,
   "role": "Audio Engine 1 bank",
   "authority": "Reference ROM bytes override public disassembly source when they differ.",
   "layout_crosscheck": {
@@ -28,14 +30,16 @@
     "jp-revc": "4596a104d0e5c31862d215158aaee386ccf83eb5",
     "jp-revd": "c4fb78440bbd7f968814dab270260381c4886d1f"
   },
+  "active_audio_payload": {
+    "range": "0x8000-0xbec6",
+    "end_offset_within_bank": "0x3ec6",
+    "normalized_identical_across_all_nine_targets": true,
+    "remaining_non_relocation_differences": 0,
+    "evidence": "config/bank02_relocation_matrix.json",
+    "note": "Observed active-region byte differences are exclusively linked WRAM/Home symbol operands; no music, SFX, cry, wave, header, or command-stream payload difference remains after relocation normalization."
+  },
   "direct_rom_observations": {
     "international_union_differing_offsets_count": 23,
-    "international_union_differing_offsets": [
-      "0x9066", "0x9069", "0x906c", "0x906f", "0x9074", "0x907e", "0x909b",
-      "0x9182", "0x93bb", "0x94b1", "0x9648", "0x980d", "0x9869", "0x98c4",
-      "0x98d0", "0x9975", "0x99c2", "0x99e0", "0x99f7", "0x99fa", "0x99ff",
-      "0x9a04", "0x9a0b"
-    ],
     "international_pairwise_differing_bytes": {
       "en-us-eu_vs_fr": 23,
       "en-us-eu_vs_de": 23,
@@ -48,97 +52,87 @@
       "de_vs_es": 12,
       "it_vs_es": 13
     },
-    "japanese_pairwise_differing_bytes": {
+    "en_us_eu_vs_jp_revd_active_differing_bytes": 27,
+    "jp_revb_vs_jp_revc_active_differing_bytes": 0,
+    "jp_revc_vs_jp_revd_active_differing_bytes": 0,
+    "jp_rev0a_vs_revb_active_differing_bytes": 14,
+    "jp_rev0a_vs_revb_active_difference_resolution": "All 14 are Home routine relocation operands; no audio-content difference remains.",
+    "japanese_whole_bank_pairwise_differing_bytes": {
       "jp-rev0a_vs_jp-revb": 327,
       "jp-rev0a_vs_jp-revc": 327,
       "jp-rev0a_vs_jp-revd": 322,
       "jp-revb_vs_jp-revc": 54,
       "jp-revb_vs_jp-revd": 297,
       "jp-revc_vs_jp-revd": 296
-    },
-    "audio_payload_end": {
-      "offset_within_bank": "0x3ec6",
-      "absolute_rom_offset": "0xbec6",
-      "en_fr_de_it_es_jp_revd": "Bytes after this point are zero-filled.",
-      "jp_rev0a_revb_revc": "Garbage 2 begins at 0xbec7 and occupies the remaining bank tail."
-    },
-    "jp_revb_vs_jp_revc": {
-      "differing_bytes": 54,
-      "all_differences_inside_garbage_tail": true,
-      "difference_range": "0xbec8-0xbffe"
-    },
-    "jp_rev0a_pre_garbage_differences_vs_revb": {
-      "count": 14,
-      "absolute_offsets": [
-        "0x906c", "0x906f", "0x909b", "0x93bb", "0x94b1", "0x980d", "0x9869",
-        "0x98c4", "0x98d0", "0x98d1", "0x99c2", "0x99e0", "0x9a04", "0x9a0b"
-      ],
-      "note": "These must be resolved as true Rev 0A audio/header/engine differences or relocation effects before source reconstruction is marked complete."
     }
+  },
+  "garbage_tail": {
+    "range": "0xbec7-0xbfff",
+    "length": 313,
+    "classification": "historical leftover data",
+    "jp-rev0a": {
+      "present": true,
+      "raw_sha1": "8b7ee3d3c414c9b31c846f39c5f83dd2324486cb",
+      "git_blob_sha1": "72dd62ff37238e91d7b5e990b248c42b84d11a55",
+      "nonzero_bytes": 308,
+      "public_crosscheck": "Narishma-gb/pokeyellow-jp garbage/rev_0/garbage_2.bin exact blob match"
+    },
+    "jp-revb": {
+      "present": true,
+      "raw_sha1": "6bd1fed0b4151c0a4a47ac75dcea5850002f813f",
+      "git_blob_sha1": "527ecf5802e41e223919bd4233f425bc37403802",
+      "nonzero_bytes": 297,
+      "public_crosscheck": "Narishma-gb/pokeyellow-jp garbage/rev_1/garbage_2.bin exact blob match"
+    },
+    "jp-revc": {
+      "present": true,
+      "raw_sha1": "b155e1d0401566065e442e35bb09526f7d5de304",
+      "git_blob_sha1": "3303ea5d42ecbe546588ba1801409bf791b2152e",
+      "nonzero_bytes": 296,
+      "public_crosscheck": "Narishma-gb/pokeyellow-jp garbage/rev_2/garbage_2.bin exact blob match"
+    },
+    "jp-revd": {
+      "present": false,
+      "raw_sha1_of_zero_tail": "8f2546735c9653c10cae89332b593630d800df46",
+      "nonzero_bytes": 0
+    },
+    "international": "EN/FR/DE/IT/ES are zero-filled after 0xbec6.",
+    "preservation_rule": "Preserve Rev 0A/B/C garbage explicitly as classified revision data; do not reinterpret it as active audio or silently delete it from exact historical rebuilds."
   },
   "source_families": {
     "international": {
       "references": ["pret/pokeyellow", "Narishma-gb/pokeyellow-fr", "Brianum/pokeyellow-de"],
-      "sfx_headers": ["audio/headers/sfxheaders1.asm"],
-      "music_headers": ["audio/headers/musicheaders1.asm"],
       "sound_effects_1": {
         "logical_noise_instruments": 19,
         "logical_noncry_sfx": 34,
         "logical_cry_entries": 39,
         "logical_total": 92,
-        "storage_model": "Per-audio-bank suffixed source files such as *_1.asm."
+        "storage_model": "Per-audio-bank suffixed source files in the checked international disassemblies."
       },
-      "audio_engine_1": [
-        "audio/play_battle_music.asm",
-        "audio/engine_1.asm",
-        "audio/alternate_tempo.asm"
-      ],
-      "music_1": {
-        "wave_table": "audio/wave_samples.asm",
-        "sequence_or_fanfare_files": 25,
-        "total_includes_with_wave_table": 26
-      }
+      "audio_engine_1": ["audio/play_battle_music.asm", "audio/engine_1.asm", "audio/alternate_tempo.asm"],
+      "music_1": {"wave_table":"audio/wave_samples.asm", "sequence_or_fanfare_files":25, "total_includes_with_wave_table":26}
     },
     "japanese": {
       "reference": "Narishma-gb/pokeyellow-jp",
-      "sfx_headers": [
-        "audio/headers/sfx_headers_common.asm",
-        "audio/headers/sfx_headers_1_3.asm",
-        "audio/headers/sfx_headers_1.asm"
-      ],
-      "music_headers": ["audio/headers/music_headers_1.asm"],
       "sound_effects_1": {
         "shared_noise_source": "audio/noise_common.asm",
         "noncry_sfx_includes": 34,
         "shared_cry_source": "audio/cry_common.asm",
         "logical_content_matches_international_categories": true
       },
-      "audio_engine_1": [
-        "audio/play_battle_music.asm",
-        "audio/engine_1.asm",
-        "audio/alternate_tempo.asm"
-      ],
-      "music_1": {
-        "wave_table": "audio/wave_samples.asm",
-        "sequence_or_fanfare_files": 25,
-        "total_includes_with_wave_table": 26,
-        "note": "JP reference uses normalized underscore-style filenames, e.g. pkmn_healed.asm and routes_1.asm."
-      },
-      "garbage_tail": {
-        "jp-rev0a": true,
-        "jp-revb": true,
-        "jp-revc": true,
-        "jp-revd": false,
-        "start": "0xbec7"
-      }
+      "audio_engine_1": ["audio/play_battle_music.asm", "audio/engine_1.asm", "audio/alternate_tempo.asm"],
+      "music_1": {"wave_table":"audio/wave_samples.asm", "sequence_or_fanfare_files":25, "total_includes_with_wave_table":26}
     }
   },
+  "reconstruction_strategy": {
+    "active_audio": "Use one canonical shared source representation. Let target-specific Home/WRAM symbol layouts naturally generate relocation operand differences instead of duplicating audio data by locale.",
+    "garbage": "Add revision-specific historical Garbage 2 only for JP Rev 0A/B/C.",
+    "deduplication": "Prefer shared noise/cry/music sources where byte-equivalence is proven; do not preserve redundant per-locale copies merely because public reference repositories organize files differently."
+  },
   "next_phase": [
-    "Enumerate every Bank 02 logical audio record and its exact byte range.",
-    "Cross-compare EN/FR/DE source files and direct-verify IT/ES against their ROMs.",
-    "Resolve the 23 international differing byte positions as symbol relocation versus actual data changes.",
-    "Resolve the 14 JP Rev 0A pre-garbage differences.",
-    "Extract and preserve JP Rev 0A/B/C Garbage 2 as explicitly classified historical leftover data, not as anonymous raw-ROM padding.",
-    "Reconstruct a single locale/revision-aware Bank 02 source tree and only then enable byte-diff build validation."
+    "Create the canonical shared Audio Bank 1 source inventory and include order.",
+    "Import/reconstruct headers, 92 logical SFX records, Audio Engine 1, wave table, and 25 Music 1 sequence/fanfare files as editable repository sources.",
+    "Represent JP Rev 0A/B/C Garbage 2 as explicit revision assets/source data while keeping Rev D and international tails zero-filled.",
+    "Run source-inventory checks in CI, then enable RGBDS byte-diff validation when cross-bank build dependencies are ready."
   ]
 }
