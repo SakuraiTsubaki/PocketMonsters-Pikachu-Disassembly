@@ -6,6 +6,7 @@ Bank 03 covers physical ROM range `0xC000-0xFFFF`.
 
 - Survey status: **complete**
 - Canonical source population: **28/28 modules present**
+- Canonical logical layout: **28 top-level modules**
 - JP/international source deduplication: **complete at the pinned-source level**
 - Source classes: **10 exact shared + 4 cosmetic-normalized + 14 fine-grained family-conditional**
 - Whole-file JP/international duplication: **0 modules**
@@ -145,7 +146,7 @@ These bytes remain classified as historical leftover data. They are preserved fo
 
 ## International boundary caution
 
-For the five international targets, the final non-zero byte occurs at different physical offsets (`0xFAC7`-`0xFADB` range). A last-nonzero observation is not a source-section boundary. Exact locale-specific placement must be established from the eventual linked builds and byte comparisons.
+For the five international targets, the final non-zero byte occurs at different physical offsets (`0xFAC7`-`0xFADB` range). The **last non-zero byte is not a source-section boundary**; it is only a padding survey observation. Exact locale-specific placement must be established from the eventual linked builds and byte comparisons.
 
 ## Remaining completion gate
 
