@@ -1,0 +1,349 @@
+name: Refine Bank 03 joypad source variant
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/refine-bank03-joypad.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refine:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: target
+
+      - name: Checkout pinned international reference
+        uses: actions/checkout@v4
+        with:
+          repository: pret/pokeyellow
+          ref: e89ead154b9968aa50eed9328ff2b38b6c194382
+          path: intl
+
+      - name: Checkout pinned Japanese reference
+        uses: actions/checkout@v4
+        with:
+          repository: Narishma-gb/pokeyellow-jp
+          ref: f282e72ae26232790fdb780aa5a5db7ec8ebf572
+          path: jp
+
+      - name: Build and verify manual joypad merge
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+          import re
+
+          target = Path('target')
+          rel = 'engine/joypad.asm'
+          jp_path = Path('jp') / rel
+          intl_path = Path('intl') / rel
+          jp_raw = jp_path.read_bytes()
+          intl_raw = intl_path.read_bytes()
+
+          manifest_path = target / 'config/bank03_merged_source_manifest.json'
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          records = {m['path']: m for m in manifest['modules']}
+          record = records[rel]
+
+          def sha1(data: bytes) -> str:
+              return hashlib.sha1(data).hexdigest()
+
+          def blob_sha1(data: bytes) -> str:
+              return hashlib.sha1(f'blob {len(data)}\0'.encode('ascii') + data).hexdigest()
+
+          if record.get('strategy') != 'family-whole-file-conditional':
+              raise SystemExit(f'joypad must still be whole-family before manual merge: {record.get("strategy")}')
+          if sha1(jp_raw) != record['japanese_raw_sha1']:
+              raise SystemExit('Japanese joypad provenance SHA mismatch')
+          if sha1(intl_raw) != record['international_raw_sha1']:
+              raise SystemExit('international joypad provenance SHA mismatch')
+
+          merged_text = r'''; Bank 03 manually structured joypad family reconstruction.
+; Common instructions are emitted once. Japanese Rev 0 keeps its historical
+; polling/soft-reset path; Japanese Rev 1-3 and international targets share
+; the normal path wherever their source is assembly-equivalent.
+; JP: Narishma-gb/pokeyellow-jp @ f282e72ae26232790fdb780aa5a5db7ec8ebf572
+; INT: pret/pokeyellow @ e89ead154b9968aa50eed9328ff2b38b6c194382
+
+ReadJoypad_::
+; Poll joypad input.
+; Unlike the hardware register, button
+; presses are indicated by a set bit.
+IF DEF(_JAPAN)
+IF DEF(_REV1) || DEF(_REV2) || DEF(_REV3)
+	ldh a, [hDisableJoypadPolling]
+	and a
+	ret nz
+ENDC
+ELSE
+	ldh a, [hDisableJoypadPolling]
+	and a
+	ret nz
+ENDC
+
+	ld a, 1 << 5 ; select direction keys
+IF DEF(_JAPAN) && DEF(_REV0)
+	ld c, 0
+ENDC
+
+	ldh [rJOYP], a
+	ldh a, [rJOYP]
+	ldh a, [rJOYP]
+IF DEF(_JAPAN) && DEF(_REV0)
+	REPT 4
+		ldh a, [rJOYP]
+	ENDR
+ENDC
+	cpl
+	and %1111
+	swap a
+	ld b, a
+
+	ld a, 1 << 4 ; select button keys
+	ldh [rJOYP], a
+REPT 6
+	ldh a, [rJOYP]
+ENDR
+IF DEF(_JAPAN) && DEF(_REV0)
+	REPT 4
+		ldh a, [rJOYP]
+	ENDR
+	cpl
+	and %01001111
+
+	cp PAD_BUTTONS ; soft reset
+	jr nz, .notSoftReset
+	jp TrySoftReset
+.notSoftReset
+	or b
+	ld b, a
+ELSE
+	cpl
+	and %1111
+	or b
+
+	ldh [hJoyInput], a
+
+	ld a, 1 << 4 + 1 << 5 ; deselect keys
+	ldh [rJOYP], a
+	ret
+
+_Joypad::
+; hJoyReleased: (hJoyLast ^ hJoyInput) & hJoyLast
+; hJoyPressed:  (hJoyLast ^ hJoyInput) & hJoyInput
+
+	ldh a, [hJoyInput]
+	ld b, a
+	and PAD_BUTTONS | PAD_UP
+	cp PAD_BUTTONS ; soft reset
+	jp z, TrySoftReset
+ENDC
+
+	ldh a, [hJoyLast]
+	ld e, a
+	xor b
+	ld d, a
+	and e
+	ldh [hJoyReleased], a
+	ld a, d
+	and b
+	ldh [hJoyPressed], a
+IF DEF(_JAPAN) && DEF(_REV0)
+	ld a, 1 << 4 + 1 << 5 ; deselect keys
+	ldh [rJOYP], a
+ENDC
+	ld a, b
+	ldh [hJoyLast], a
+
+	ld a, [wStatusFlags5]
+	bit BIT_DISABLE_JOYPAD, a
+	jr nz, DiscardButtonPresses
+
+	ldh a, [hJoyLast]
+	ldh [hJoyHeld], a
+
+	ld a, [wJoyIgnore]
+	and a
+	ret z
+
+	cpl
+	ld b, a
+	ldh a, [hJoyHeld]
+	and b
+	ldh [hJoyHeld], a
+	ldh a, [hJoyPressed]
+	and b
+	ldh [hJoyPressed], a
+	ret
+
+DiscardButtonPresses:
+	xor a
+	ldh [hJoyHeld], a
+	ldh [hJoyPressed], a
+	ldh [hJoyReleased], a
+	ret
+
+TrySoftReset:
+	call DelayFrame
+
+IF DEF(_JAPAN)
+	ld a, 1 << 4 + 1 << 5 ; deselect keys
+ELSE
+	; deselect (redundant)
+	ld a, $30
+ENDC
+	ldh [rJOYP], a
+
+	ld hl, hSoftReset
+	dec [hl]
+	jp z, SoftReset
+
+	jp Joypad
+'''
+
+          # Minimal RGBDS conditional evaluator for the DEF-only expressions used here.
+          def eval_expr(expr: str, defines: set[str]) -> bool:
+              expr = re.sub(r'DEF\(([_A-Za-z0-9]+)\)', lambda m: 'True' if m.group(1) in defines else 'False', expr)
+              expr = expr.replace('&&', ' and ').replace('||', ' or ')
+              expr = re.sub(r'!\s*(True|False)', r' not \1', expr)
+              if not re.fullmatch(r'[\sTrueFalsandornot()]+', expr):
+                  raise ValueError(f'unsupported conditional expression: {expr!r}')
+              return bool(eval(expr, {'__builtins__': {}}, {}))
+
+          def preprocess(text: str, defines: set[str]) -> str:
+              out = []
+              stack = []
+              active = True
+              for lineno, line in enumerate(text.splitlines(keepends=True), 1):
+                  code = line.split(';', 1)[0].strip()
+                  if code.startswith('IF '):
+                      parent = active
+                      cond = eval_expr(code[3:].strip(), defines) if parent else False
+                      stack.append({'parent': parent, 'cond': cond, 'else': False})
+                      active = parent and cond
+                  elif code == 'ELSE':
+                      if not stack or stack[-1]['else']:
+                          raise ValueError(f'bad ELSE at line {lineno}')
+                      frame = stack[-1]
+                      frame['else'] = True
+                      active = frame['parent'] and not frame['cond']
+                  elif code == 'ENDC':
+                      if not stack:
+                          raise ValueError(f'bad ENDC at line {lineno}')
+                      frame = stack.pop()
+                      active = frame['parent']
+                  elif active:
+                      out.append(line)
+              if stack:
+                  raise ValueError('unterminated IF block')
+              return ''.join(out)
+
+          def strip_comments(line: str) -> str:
+              out = []
+              quote = None
+              escaped = False
+              for ch in line:
+                  if escaped:
+                      out.append(ch); escaped = False; continue
+                  if ch == '\\':
+                      out.append(ch); escaped = True; continue
+                  if quote:
+                      out.append(ch)
+                      if ch == quote: quote = None
+                      continue
+                  if ch in ('"', "'"):
+                      quote = ch; out.append(ch); continue
+                  if ch == ';': break
+                  out.append(ch)
+              return ''.join(out)
+
+          def tokens(text: str):
+              clean = '\n'.join(strip_comments(line) for line in text.splitlines())
+              return re.findall(r'\$[0-9A-Fa-f]+|%[01]+|[A-Za-z_][A-Za-z0-9_@.#?]*|\d+|"(?:\\.|[^"\\])*"|\S', clean)
+
+          merged_body = merged_text.split('\n\n', 1)[1]
+          jp_text = jp_raw.decode('utf-8')
+          intl_text = intl_raw.decode('utf-8')
+          checks = []
+          for rev, define in [('rev0a', '_REV0'), ('revb', '_REV1'), ('revc', '_REV2'), ('revd', '_REV3')]:
+              defines = {'_JAPAN', define}
+              actual = tokens(preprocess(merged_body, defines))
+              expected = tokens(preprocess(jp_text, defines))
+              if actual != expected:
+                  for i, (a, e) in enumerate(zip(actual, expected)):
+                      if a != e:
+                          raise SystemExit(f'joypad {rev} token mismatch at {i}: merged={a!r} expected={e!r}')
+                  raise SystemExit(f'joypad {rev} token length mismatch: merged={len(actual)} expected={len(expected)}')
+              checks.append({'target': rev, 'family': 'japanese', 'token_count': len(actual), 'equivalent': True})
+
+          actual = tokens(preprocess(merged_body, {'_ENGLISH'}))
+          expected = tokens(intl_text)
+          if actual != expected:
+              for i, (a, e) in enumerate(zip(actual, expected)):
+                  if a != e:
+                      raise SystemExit(f'joypad international token mismatch at {i}: merged={a!r} expected={e!r}')
+              raise SystemExit(f'joypad international token length mismatch: merged={len(actual)} expected={len(expected)}')
+          checks.append({'target': 'international', 'family': 'international', 'token_count': len(actual), 'equivalent': True})
+
+          merged = merged_text.encode('utf-8')
+          (target / rel).write_bytes(merged)
+          record.update({
+              'strategy': 'fine-grained-family-conditional',
+              'selector': 'manual semantic family/revision conditionals preserving JP Rev 0 polling path and shared normal path',
+              'selector_count': 6,
+              'merged_raw_sha1': sha1(merged),
+              'merged_git_blob_sha1': blob_sha1(merged),
+              'merged_length': len(merged),
+              'branch_source_reconstruction_verified': True,
+              'automatic_merge_safety_verified': False,
+              'manual_merge_structure_verified': True,
+              'target_branch_token_equivalence_verified': True,
+          })
+          manifest['fine_grained_module_count'] = sum(1 for m in manifest['modules'] if m.get('strategy') == 'fine-grained-family-conditional')
+          manifest['whole_family_module_count'] = sum(1 for m in manifest['modules'] if m.get('strategy') == 'family-whole-file-conditional')
+          if manifest['fine_grained_module_count'] != 14 or manifest['whole_family_module_count'] != 0:
+              raise SystemExit(f'unexpected final Bank 03 substantive strategy counts: fine={manifest["fine_grained_module_count"]}, whole={manifest["whole_family_module_count"]}')
+          manifest['status'] = 'all-substantive-modules-fine-grained-source-populated'
+          manifest_path.write_text(json.dumps(manifest, indent=2) + '\n', encoding='utf-8')
+
+          verification = {
+              'schema_version': 1,
+              'bank': '03',
+              'module': rel,
+              'strategy': 'manual-semantic-family-revision-merge',
+              'reason_manual': 'Naive line-opcode wrapping crosses Japanese revision IF/ELSE/ENDC structure and produces an invalid duplicate ELSE.',
+              'japanese_raw_sha1': sha1(jp_raw),
+              'international_raw_sha1': sha1(intl_raw),
+              'merged_raw_sha1': sha1(merged),
+              'source_reconstruction_complete': False,
+              'byte_perfect_rebuild_claim': False,
+              'checks': checks,
+          }
+          (target / 'config/bank03_joypad_manual_merge.json').write_text(json.dumps(verification, indent=2) + '\n', encoding='utf-8')
+          print('joypad semantic merge verified:', ', '.join(f"{c['target']}={c['token_count']} tokens" for c in checks))
+          print('final substantive strategies: fine=14 whole=0')
+          PY
+
+      - name: Validate Bank 03 source ledger
+        working-directory: target
+        run: |
+          python3 tools/check_bank03_sources.py
+          make bank03-check
+
+      - name: Commit manual joypad merge
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add engine/joypad.asm config/bank03_merged_source_manifest.json config/bank03_joypad_manual_merge.json
+          git commit -m 'bank03: manually refine joypad family and revision paths'
+          git push origin HEAD:main
