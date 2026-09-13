@@ -3,7 +3,8 @@
 
 This remains a ROM-free repository check. Historical JP Garbage 2 tails are
 stored as editable RGBDS db source; CI parses those bytes and verifies their
-reference hashes without requiring any ROM image.
+reference hashes without requiring any ROM image. It also enforces the exact
+shared cry include order and presence of all reconstructed child sources.
 """
 
 from __future__ import annotations
@@ -17,6 +18,7 @@ BANK = Path("config/bank02_modules.json")
 RELOC = Path("config/bank02_relocation_matrix.json")
 INVENTORY = Path("config/bank02_source_inventory.json")
 DOC = Path("docs/BANK_02.md")
+CRY_COMMON = Path("audio/cry_common.asm")
 
 EXPECTED_TARGETS = {
     "en-us-eu", "fr", "de", "it", "es",
@@ -28,6 +30,47 @@ EXPECTED_SECTIONS = [
     "Sound Effects 1",
     "Audio Engine 1",
     "Music 1",
+]
+EXPECTED_CRY_FILES = [
+    "audio/sfx/unused_cry.asm",
+    "audio/sfx/cry09.asm",
+    "audio/sfx/cry23.asm",
+    "audio/sfx/cry24.asm",
+    "audio/sfx/cry11.asm",
+    "audio/sfx/cry25.asm",
+    "audio/sfx/cry03.asm",
+    "audio/sfx/cry0f.asm",
+    "audio/sfx/cry10.asm",
+    "audio/sfx/cry00.asm",
+    "audio/sfx/cry0e.asm",
+    "audio/sfx/cry06.asm",
+    "audio/sfx/cry07.asm",
+    "audio/sfx/cry05.asm",
+    "audio/sfx/cry0b.asm",
+    "audio/sfx/cry0c.asm",
+    "audio/sfx/cry02.asm",
+    "audio/sfx/cry0d.asm",
+    "audio/sfx/cry01.asm",
+    "audio/sfx/cry0a.asm",
+    "audio/sfx/cry08.asm",
+    "audio/sfx/cry04.asm",
+    "audio/sfx/cry19.asm",
+    "audio/sfx/cry16.asm",
+    "audio/sfx/cry1b.asm",
+    "audio/sfx/cry12.asm",
+    "audio/sfx/cry13.asm",
+    "audio/sfx/cry14.asm",
+    "audio/sfx/cry1e.asm",
+    "audio/sfx/cry15.asm",
+    "audio/sfx/cry17.asm",
+    "audio/sfx/cry1c.asm",
+    "audio/sfx/cry1a.asm",
+    "audio/sfx/cry1d.asm",
+    "audio/sfx/cry18.asm",
+    "audio/sfx/cry1f.asm",
+    "audio/sfx/cry20.asm",
+    "audio/sfx/cry21.asm",
+    "audio/sfx/cry22.asm",
 ]
 EXPECTED_GARBAGE_BLOBS = {
     "jp-rev0a": "72dd62ff37238e91d7b5e990b248c42b84d11a55",
@@ -45,6 +88,7 @@ TAIL_SOURCE_FILES = {
     "jp-revc": Path("data/garbage/jp/revc/bank02_tail.asm"),
 }
 DB_BYTE = re.compile(r"\$([0-9a-fA-F]{2})(?![0-9a-fA-F])")
+INCLUDE_LINE = re.compile(r'^\s*INCLUDE\s+"([^"]+)"\s*(?:;.*)?$', re.IGNORECASE)
 
 
 def fail(message: str) -> None:
@@ -68,6 +112,17 @@ def parse_db_bytes(path: Path) -> bytes:
             continue
         values.extend(int(m.group(1), 16) for m in DB_BYTE.finditer(code))
     return bytes(values)
+
+
+def parse_includes(path: Path) -> list[str]:
+    if not path.is_file():
+        fail(f"missing include wrapper {path}")
+    includes: list[str] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        match = INCLUDE_LINE.match(line)
+        if match:
+            includes.append(match.group(1))
+    return includes
 
 
 def main() -> None:
@@ -141,6 +196,22 @@ def main() -> None:
     if missing_noncry:
         fail("missing non-cry SFX source(s): " + ", ".join(missing_noncry))
 
+    cries = source_group(inventory, "shared-cries")
+    if cries.get("status") != "source-reconstructed" or cries.get("logical_records") != 39:
+        fail("39 shared cry sources are not marked reconstructed")
+    if cries.get("files") != [str(CRY_COMMON)]:
+        fail("shared cry wrapper path mismatch")
+    child_files = cries.get("child_files", [])
+    if child_files != EXPECTED_CRY_FILES:
+        fail("cry child-file inventory/order mismatch")
+    if len(set(child_files)) != 39:
+        fail("cry child-file inventory must contain 39 unique paths")
+    missing_cries = [p for p in child_files if not Path(p).is_file()]
+    if missing_cries:
+        fail("missing cry source(s): " + ", ".join(missing_cries))
+    if parse_includes(CRY_COMMON) != EXPECTED_CRY_FILES:
+        fail("cry_common.asm include order does not match the canonical ROM order")
+
     revision_tail = source_group(inventory, "revision-tail")
     if revision_tail.get("status") != "source-reconstructed":
         fail("revision tail source is not marked reconstructed")
@@ -165,7 +236,7 @@ def main() -> None:
 
     print(
         "Bank 02 check passed: 9-target active audio equivalence, 34/34 non-cry SFX, "
-        "and three 313-byte JP revision tails verified from editable ASM source."
+        "39/39 cry sources in canonical order, and three 313-byte JP revision tails verified."
     )
 
 
