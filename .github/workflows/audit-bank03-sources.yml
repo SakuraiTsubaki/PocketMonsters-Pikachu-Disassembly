@@ -1,0 +1,182 @@
+name: Audit and import Bank 03 shared sources
+
+on:
+  push:
+    paths:
+      - '.github/workflows/audit-bank03-sources.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          path: target
+
+      - name: Checkout pinned international reference
+        uses: actions/checkout@v4
+        with:
+          repository: pret/pokeyellow
+          ref: e89ead154b9968aa50eed9328ff2b38b6c194382
+          path: intl
+
+      - name: Checkout pinned Japanese reference
+        uses: actions/checkout@v4
+        with:
+          repository: Narishma-gb/pokeyellow-jp
+          ref: f282e72ae26232790fdb780aa5a5db7ec8ebf572
+          path: jp
+
+      - name: Audit and safely import byte-identical shared source files
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+          import shutil
+
+          modules = [
+              'engine/joypad.asm',
+              'engine/overworld/clear_variables.asm',
+              'engine/overworld/player_state.asm',
+              'engine/events/poison.asm',
+              'engine/overworld/tilesets.asm',
+              'engine/overworld/daycare_exp.asm',
+              'data/maps/toggleable_objects.asm',
+              'engine/overworld/wild_mons.asm',
+              'engine/items/item_effects.asm',
+              'engine/menus/draw_badges.asm',
+              'engine/overworld/update_map.asm',
+              'engine/overworld/cut.asm',
+              'engine/overworld/toggleable_objects.asm',
+              'engine/overworld/push_boulder.asm',
+              'engine/pokemon/add_mon.asm',
+              'engine/flag_action.asm',
+              'engine/events/heal_party.asm',
+              'engine/math/bcd.asm',
+              'engine/movie/oak_speech/init_player_data.asm',
+              'engine/items/get_bag_item_quantity.asm',
+              'engine/overworld/pathfinding.asm',
+              'engine/gfx/hp_bar.asm',
+              'engine/events/hidden_events/bookshelves.asm',
+              'engine/events/hidden_events/indigo_plateau_statues.asm',
+              'engine/events/hidden_events/book_or_sculpture.asm',
+              'engine/events/hidden_events/elevator.asm',
+              'engine/events/hidden_events/town_map.asm',
+              'engine/events/hidden_events/pokemon_stuff.asm',
+          ]
+
+          def blob_sha(data: bytes) -> str:
+              return hashlib.sha1(f'blob {len(data)}\0'.encode('ascii') + data).hexdigest()
+
+          records = []
+          counts = {
+              'upstream_identical': 0,
+              'upstream_different': 0,
+              'imported_shared': 0,
+              'existing_matches_shared': 0,
+              'existing_matches_international': 0,
+              'existing_matches_japanese': 0,
+              'existing_custom': 0,
+              'deferred_missing_variant': 0,
+          }
+
+          for rel in modules:
+              intl_path = Path('intl') / rel
+              jp_path = Path('jp') / rel
+              target_path = Path('target') / rel
+              if not intl_path.is_file() or not jp_path.is_file():
+                  raise SystemExit(f'missing pinned upstream Bank 03 file: {rel}')
+
+              intl_data = intl_path.read_bytes()
+              jp_data = jp_path.read_bytes()
+              same_upstream = intl_data == jp_data
+              counts['upstream_identical' if same_upstream else 'upstream_different'] += 1
+
+              target_before = 'missing'
+              target_sha = None
+              action = None
+
+              if target_path.is_file():
+                  target_data = target_path.read_bytes()
+                  target_sha = blob_sha(target_data)
+                  if same_upstream and target_data == intl_data:
+                      target_before = 'matches-shared'
+                      action = 'reused-existing-shared'
+                      counts['existing_matches_shared'] += 1
+                  elif target_data == intl_data:
+                      target_before = 'matches-international'
+                      action = 'preserved-existing-international'
+                      counts['existing_matches_international'] += 1
+                  elif target_data == jp_data:
+                      target_before = 'matches-japanese'
+                      action = 'preserved-existing-japanese'
+                      counts['existing_matches_japanese'] += 1
+                  else:
+                      target_before = 'custom-or-different'
+                      action = 'preserved-existing-different'
+                      counts['existing_custom'] += 1
+              elif same_upstream:
+                  target_path.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copyfile(intl_path, target_path)
+                  target_sha = blob_sha(intl_data)
+                  action = 'imported-shared-identical'
+                  counts['imported_shared'] += 1
+              else:
+                  action = 'deferred-upstream-variant'
+                  counts['deferred_missing_variant'] += 1
+
+              records.append({
+                  'path': rel,
+                  'international_git_blob_sha1': blob_sha(intl_data),
+                  'japanese_git_blob_sha1': blob_sha(jp_data),
+                  'upstream_relation': 'identical' if same_upstream else 'different',
+                  'target_before': target_before,
+                  'target_git_blob_sha1': target_sha,
+                  'action': action,
+              })
+
+          inventory = {
+              'schema_version': 1,
+              'bank': '03',
+              'status': 'upstream-source-audited',
+              'source_reconstruction_complete': False,
+              'byte_perfect_rebuild_claim': False,
+              'references': {
+                  'international': {
+                      'repository': 'pret/pokeyellow',
+                      'commit': 'e89ead154b9968aa50eed9328ff2b38b6c194382',
+                  },
+                  'japanese': {
+                      'repository': 'Narishma-gb/pokeyellow-jp',
+                      'commit': 'f282e72ae26232790fdb780aa5a5db7ec8ebf572',
+                  },
+              },
+              'policy': 'Only missing files whose pinned JP and international source bytes are identical are auto-imported. Existing files are never overwritten; divergent upstream files are deferred for explicit merge/classification.',
+              'module_count': len(modules),
+              'counts': counts,
+              'modules': records,
+          }
+          out = Path('target/config/bank03_source_inventory.json')
+          out.write_text(json.dumps(inventory, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(counts, indent=2))
+          PY
+
+      - name: Commit audit inventory and safe shared imports
+        working-directory: target
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add config/bank03_source_inventory.json engine data
+          if git diff --cached --quiet; then
+            echo 'No Bank 03 source audit changes to commit.'
+            exit 0
+          fi
+          git commit -m 'bank03: audit source families and import shared modules'
+          git push origin HEAD:main
