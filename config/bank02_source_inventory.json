@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "bank": "02",
+  "strategy": "single-shared-audio-source",
+  "status": "reconstruction-started",
+  "entry_point": "banks/bank02.asm",
+  "source_groups": [
+    {
+      "name": "sfx-headers-1",
+      "files": [
+        "audio/headers/sfx_headers_common.asm",
+        "audio/headers/sfx_headers_1_3.asm",
+        "audio/headers/sfx_headers_1.asm"
+      ],
+      "status": "pending"
+    },
+    {
+      "name": "music-headers-1",
+      "files": ["audio/headers/music_headers_1.asm"],
+      "status": "pending"
+    },
+    {
+      "name": "shared-noise",
+      "files": ["audio/noise_common.asm"],
+      "logical_records": 19,
+      "status": "pending"
+    },
+    {
+      "name": "noncry-sfx-1",
+      "files": [
+        "audio/sfx/start_menu.asm", "audio/sfx/pokeflute.asm", "audio/sfx/cut.asm",
+        "audio/sfx/go_inside.asm", "audio/sfx/swap.asm", "audio/sfx/tink.asm", "audio/sfx/59.asm",
+        "audio/sfx/purchase.asm", "audio/sfx/collision.asm", "audio/sfx/go_outside.asm",
+        "audio/sfx/press_ab.asm", "audio/sfx/save.asm", "audio/sfx/heal_hp.asm",
+        "audio/sfx/poisoned.asm", "audio/sfx/heal_ailment.asm", "audio/sfx/trade_machine.asm",
+        "audio/sfx/turn_on_pc.asm", "audio/sfx/turn_off_pc.asm", "audio/sfx/enter_pc.asm",
+        "audio/sfx/shrink.asm", "audio/sfx/switch.asm", "audio/sfx/healing_machine.asm",
+        "audio/sfx/teleport_exit1.asm", "audio/sfx/teleport_enter1.asm", "audio/sfx/teleport_exit2.asm",
+        "audio/sfx/ledge.asm", "audio/sfx/teleport_enter2.asm", "audio/sfx/fly.asm",
+        "audio/sfx/denied.asm", "audio/sfx/arrow_tiles.asm", "audio/sfx/push_boulder.asm",
+        "audio/sfx/ss_anne_horn.asm", "audio/sfx/withdraw_deposit.asm", "audio/sfx/safari_zone_pa.asm"
+      ],
+      "logical_records": 34,
+      "status": "pending"
+    },
+    {
+      "name": "shared-cries",
+      "files": ["audio/cry_common.asm"],
+      "logical_records": 39,
+      "status": "pending"
+    },
+    {
+      "name": "audio-engine-1",
+      "files": ["audio/play_battle_music.asm", "audio/engine_1.asm", "audio/alternate_tempo.asm"],
+      "status": "pending"
+    },
+    {
+      "name": "music-1",
+      "files": [
+        "audio/wave_samples.asm", "audio/music/pkmn_healed.asm", "audio/music/routes_1.asm",
+        "audio/music/routes_2.asm", "audio/music/routes_3.asm", "audio/music/routes_4.asm",
+        "audio/music/indigo_plateau.asm", "audio/music/pallet_town.asm", "audio/music/unused_song.asm",
+        "audio/music/cities_1.asm", "audio/sfx/get_item1.asm", "audio/music/museum_guy.asm",
+        "audio/music/meet_prof_oak.asm", "audio/music/meet_rival.asm", "audio/sfx/pokedex_rating.asm",
+        "audio/sfx/get_item2.asm", "audio/sfx/get_key_item.asm", "audio/music/ss_anne.asm",
+        "audio/music/cities_2.asm", "audio/music/celadon.asm", "audio/music/cinnabar.asm",
+        "audio/music/vermilion.asm", "audio/music/lavender.asm", "audio/music/safari_zone.asm",
+        "audio/music/gym.asm", "audio/music/pokecenter.asm"
+      ],
+      "wave_table_files": 1,
+      "sequence_or_fanfare_files": 25,
+      "status": "pending"
+    },
+    {
+      "name": "revision-tail",
+      "files": [
+        "data/garbage/jp/rev0a/bank02_tail.bin",
+        "data/garbage/jp/revb/bank02_tail.bin",
+        "data/garbage/jp/revc/bank02_tail.bin"
+      ],
+      "status": "metadata-verified-binary-assets-not-yet-added",
+      "note": "Each file is 313 bytes and only participates in its matching early Japanese revision. Rev D and international targets remain zero-filled."
+    }
+  ],
+  "logical_audio_records": {
+    "noise_instruments": 19,
+    "noncry_sfx": 34,
+    "cry_entries": 39,
+    "sound_effects_1_total": 92,
+    "music1_sequences_or_fanfares": 25
+  },
+  "dependencies": {
+    "required_foundation": [
+      "macros/scripts/audio.asm",
+      "constants/audio_constants.asm",
+      "constants/music_constants.asm"
+    ],
+    "note": "Additional global constants/RAM symbols are cross-bank dependencies and will be completed as the shared build foundation is reconstructed."
+  }
+}
