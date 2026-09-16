@@ -1,12 +1,13 @@
 # Research
 
-Research for **Pocket Monsters Pikachu / Pokémon Yellow** belongs here.
+Research here is specific to **Pocket Monsters Pikachu / Pokémon Yellow**. The release matrix starts empty on
+purpose: no hash is accepted without independent verification.
 
-Initial priorities:
+Priorities:
 
-- establish the language and revision hash matrix;
-- map ROM banks and version-specific code/data boundaries;
-- document Pikachu-specific systems and media formats.
+- [ ] verify language and revision baselines
+- [ ] map version-specific banks and entry points
+- [ ] isolate title-specific systems and media formats
 
-Each note records sources, verified input hashes, procedure, evidence,
-confidence, and unresolved questions. Copyrighted binary inputs stay local.
+Use `templates/note.md` and follow the shared method in
+`SakuraiTsubaki/Disassembly`.
