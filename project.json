@@ -1,13 +1,15 @@
 {
-  "$schema": "https://raw.githubusercontent.com/SakuraiTsubaki/Disassembly/main/schemas/project.schema.json",
-  "schema_version": 1,
-  "id": "pikachu",
-  "repository": "SakuraiTsubaki/PocketMonsters-Pikachu-Disassembly",
-  "title": "Pocket Monsters Pikachu / Pokémon Yellow",
-  "platform": "Game Boy",
-  "cpu": "Sharp SM83",
-  "architecture": "gb-sm83",
-  "family": "generation-i",
-  "status": "foundation",
-  "releases": []
+  "$schema":"https://raw.githubusercontent.com/SakuraiTsubaki/Disassembly/main/schemas/project.schema.json","schema_version":1,"id":"pikachu","repository":"SakuraiTsubaki/PocketMonsters-Pikachu-Disassembly","title":"Pocket Monsters Pikachu / Pokémon Yellow","platform":"Game Boy","cpu":"Sharp SM83","architecture":"gb-sm83","family":"generation-i","status":"foundation",
+  "releases":[
+    {"id":"pikachu-jp-rev0","region":"Japan","language":"Japanese","revision":"0","status":"candidate","size":1048576,"sha1":"1fb6c264e950d97ce3fd99b347e485b2150df4ff","sha256":"09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436"},
+    {"id":"pikachu-jp-rev1","region":"Japan","language":"Japanese","revision":"1","status":"candidate","size":1048576,"sha1":"28e4b8531ea4ea1de5a396fccb0cfba51b06b149","sha256":"1acab20d1aa3e19c081abaac3e303c4cf3e582213937acbf25942b31c28aecfe"},
+    {"id":"pikachu-jp-rev2","region":"Japan","language":"Japanese","revision":"2","status":"candidate","size":1048576,"sha1":"91864ecdf26d1c593bde4d9ed615520eb57d5e41","sha256":"2c67561f6b2de4ca3a1150f04dc736aead4bf7b5a98ce38196cef899a91be2fd"},
+    {"id":"pikachu-jp-rev3","region":"Japan","language":"Japanese","revision":"3","status":"candidate","size":1048576,"sha1":"a40298a8123613ee60cd7aab204d788b8425976e","sha256":"1349408f328f633b33e059e654edabd19810530df9c883eda03a85d5bb10161a"},
+    {"id":"yellow-en-rev0","region":"USA/Europe","language":"English","revision":"0","status":"candidate","size":1048576,"sha1":"cc7d03262ebfaf2f06772c1a480c7d9d5f4a38e1","sha256":"8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf"},
+    {"id":"yellow-de-rev0","region":"Germany","language":"German","revision":"0","status":"candidate","size":1048576,"sha1":"42f3714eec6eca25200d42461ff08d57c98f6d1d","sha256":"aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9"},
+    {"id":"yellow-es-rev0","region":"Spain","language":"Spanish","revision":"0","status":"candidate","size":1048576,"sha1":"1dc242039218fba50928d1afb66b70565b6b9daf","sha256":"55d56d6f73225886bfdc0db1ddb754d2f4dfc6ef5ae74ddfa079c23b6ec80039"},
+    {"id":"yellow-fr-rev0","region":"France","language":"French","revision":"0","status":"candidate","size":1048576,"sha1":"0aceec0ef7aa2ca5aa831554598d91f61a925591","sha256":"77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa"},
+    {"id":"yellow-it-rev0","region":"Italy","language":"Italian","revision":"0","status":"candidate","size":1048576,"sha1":"05bb8e99f24d498613930949730afa8024e77d08","sha256":"e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856"}
+  ]
 }
+
