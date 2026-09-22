@@ -1,1 +1,11 @@
 id,region,language,revision,status,size,sha1,sha256,notes
+pikachu-jp-rev0,Japan,Japanese,0,candidate,1048576,1fb6c264e950d97ce3fd99b347e485b2150df4ff,09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436,"Header POKEMON YELLOW; CGB 0x00; header checksum 0x20; global 0x9c29"
+pikachu-jp-rev1,Japan,Japanese,1,candidate,1048576,28e4b8531ea4ea1de5a396fccb0cfba51b06b149,1acab20d1aa3e19c081abaac3e303c4cf3e582213937acbf25942b31c28aecfe,"Header POKEMON YELLOW; CGB 0x00; header checksum 0x1f; global 0x8858"
+pikachu-jp-rev2,Japan,Japanese,2,candidate,1048576,91864ecdf26d1c593bde4d9ed615520eb57d5e41,2c67561f6b2de4ca3a1150f04dc736aead4bf7b5a98ce38196cef899a91be2fd,"Header POKEMON YELLOW; CGB 0x00; header checksum 0x1e; global 0xedd9"
+pikachu-jp-rev3,Japan,Japanese,3,candidate,1048576,a40298a8123613ee60cd7aab204d788b8425976e,1349408f328f633b33e059e654edabd19810530df9c883eda03a85d5bb10161a,"Header POKEMON YELLOW; CGB 0x00; header checksum 0x1d; global 0xd984"
+yellow-en-rev0,USA/Europe,English,0,candidate,1048576,cc7d03262ebfaf2f06772c1a480c7d9d5f4a38e1,8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf,"Header POKEMON YELLOW; CGB 0x80; header checksum 0x97; global 0x047c"
+yellow-de-rev0,Germany,German,0,candidate,1048576,42f3714eec6eca25200d42461ff08d57c98f6d1d,aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9,"Header POKEMON YELAPSD; CGB 0x80; header checksum 0x61; global 0x66fb"
+yellow-es-rev0,Spain,Spanish,0,candidate,1048576,1dc242039218fba50928d1afb66b70565b6b9daf,55d56d6f73225886bfdc0db1ddb754d2f4dfc6ef5ae74ddfa079c23b6ec80039,"Header POKEMON YELAPSS; CGB 0x80; header checksum 0x52; global 0x5637"
+yellow-fr-rev0,France,French,0,candidate,1048576,0aceec0ef7aa2ca5aa831554598d91f61a925591,77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa,"Header POKEMON YELAPSF; CGB 0x80; header checksum 0x5f; global 0xb7c1"
+yellow-it-rev0,Italy,Italian,0,candidate,1048576,05bb8e99f24d498613930949730afa8024e77d08,e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856,"Header POKEMON YELAPSI; CGB 0x80; header checksum 0x5c; global 0x4e8f"
+
