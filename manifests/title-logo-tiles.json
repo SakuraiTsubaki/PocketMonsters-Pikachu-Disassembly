@@ -8,7 +8,9 @@
   "reference": {"repository":"pret/pokeyellow","symbols":["PokemonLogoJapanGraphics","PokemonLogoGraphics"],"paths":["gfx/title/pokemon_logo_japan.2bpp","gfx/title/pokemon_logo.2bpp"]},
   "inputs": [
     {"language":"ja","release":"Pocket Monsters Pikachu (Japan) rev 0","rom_size":1048576,"rom_sha256":"09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436","offset":66585,"length":1536,"source_sha256":"bcf9445e815446dbcf0372868ae61b77cc7ced7b6a33facc9f5d69ee71c8f933","tile_count":96,"tiles_per_row":16},
-    {"language":"en","release":"Pokemon Yellow (USA, Europe) rev 0","rom_size":1048576,"rom_sha256":"8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf","offset":1001211,"length":1840,"source_sha256":"960c082aff63eba1554ff2505e84eb4c9ec8c19b77ec7a1fd48169b6b7ec19d7","tile_count":115,"tiles_per_row":16}
+    {"language":"en","release":"Pokemon Yellow (USA, Europe) rev 0","rom_size":1048576,"rom_sha256":"8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf","offset":1001211,"length":1840,"source_sha256":"960c082aff63eba1554ff2505e84eb4c9ec8c19b77ec7a1fd48169b6b7ec19d7","tile_count":115,"tiles_per_row":16},
+    {"language":"de","release":"Pokemon Gelbe Edition (Germany) rev 0","rom_size":1048576,"rom_sha256":"aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9","offset":1001211,"length":1840,"source_sha256":"aa54b3a54e9653f52712ac04b3ff3a558c28ec414e2c39e33578078dd5c48c02","tile_count":115,"tiles_per_row":16,"tilemap_offset":1000953,"corner_offset":1003051},
+    {"language":"fr","release":"Pokemon Version Jaune (France) rev 0","rom_size":1048576,"rom_sha256":"77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa","offset":1001223,"length":1840,"source_sha256":"5394919146d4ed75f40d9ac33877398670e6a4f8166323654b34cb3834c3b4c4","tile_count":115,"tiles_per_row":16,"tilemap_offset":1000965,"corner_offset":1003063}
   ],
   "outputs": [
     {"path":"analysis/pikachu-jp-title-logo.json","sha256":"3c7bf3acd574ae499addd9be2d91cf5df8e1c75b649b2eba7e4a96fd10303d13"},
@@ -16,6 +18,14 @@
     {"path":"graphics/title/pokemon-logo-jp.png","sha256":"0b9df8643bf99707f8c3d1ad14cccab41f65eb248a4f36becc72816a6fcb1436"},
     {"path":"graphics/title/pokemon-logo-en.png","sha256":"9f3def71ce41dc97ab31a3dd352aad59ae4dff4bdcc734e54c82e1e95bae1be8"},
     {"path":"analysis/pikachu-en-title-logo-composed.json","sha256":"a1f3818f3cba62b0e14f49383a4d15cc63cd237d08c66c802675862aedb423e3"},
-    {"path":"graphics/title/pokemon-logo-composed-en.png","sha256":"81306ddb81d57254c606a9dfaef23485ba060d81062e5f07f745156c648bf967"}
+    {"path":"graphics/title/pokemon-logo-composed-en.png","sha256":"81306ddb81d57254c606a9dfaef23485ba060d81062e5f07f745156c648bf967"},
+    {"path":"analysis/pikachu-de-title-logo.json","sha256":"4ae3892f8794ceab207f26f07e898f59fc81d775e7cc0de4f7aef53c949867f0"},
+    {"path":"analysis/pikachu-de-title-logo-composed.json","sha256":"09be058cecb6d1ab7922c88b44b09d1590291d752cbb0f6c22cd888806ed196c"},
+    {"path":"graphics/title/pokemon-logo-de.png","sha256":"9daaf363d4b93dff7f5a3ab52d4cfddffff4e903c738c61976197827c851a03e"},
+    {"path":"graphics/title/pokemon-logo-composed-de.png","sha256":"2288e79b721abfa4c2c112794b4b566fcc131e6ccf0175272891d036e4304306"},
+    {"path":"analysis/pikachu-fr-title-logo.json","sha256":"63a25bd826b39196149306721bb95b8ed1e0c84224cab9fc21be3218078486f5"},
+    {"path":"analysis/pikachu-fr-title-logo-composed.json","sha256":"ed64a0f9c688aa3ebdcfe6928d828e1a1d12dc250f13a306514317a232bb5e52"},
+    {"path":"graphics/title/pokemon-logo-fr.png","sha256":"f209e348519f1b2ff676b67148dcab7af486725c9e2723f0adc495f03359843f"},
+    {"path":"graphics/title/pokemon-logo-composed-fr.png","sha256":"29634b009c0627a50ad151a9dc7cf0348613b8b6cf6dce876b2effc637772103"}
   ]
 }
