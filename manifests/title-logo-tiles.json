@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "pikachu-title-logo-tiles",
+  "generator": {"repository":"SakuraiTsubaki/Disassembly","tool":"tools/extract_gb_2bpp.py","format":"game-boy-2bpp-8x8-tiles"},
+  "reference": {"repository":"pret/pokeyellow","symbols":["PokemonLogoJapanGraphics","PokemonLogoGraphics"],"paths":["gfx/title/pokemon_logo_japan.2bpp","gfx/title/pokemon_logo.2bpp"]},
+  "inputs": [
+    {"language":"ja","release":"Pocket Monsters Pikachu (Japan) rev 0","rom_size":1048576,"rom_sha256":"09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436","offset":66585,"length":1536,"source_sha256":"bcf9445e815446dbcf0372868ae61b77cc7ced7b6a33facc9f5d69ee71c8f933","tile_count":96,"tiles_per_row":16},
+    {"language":"en","release":"Pokemon Yellow (USA, Europe) rev 0","rom_size":1048576,"rom_sha256":"8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf","offset":1001211,"length":1840,"source_sha256":"960c082aff63eba1554ff2505e84eb4c9ec8c19b77ec7a1fd48169b6b7ec19d7","tile_count":115,"tiles_per_row":16}
+  ],
+  "outputs": [
+    {"path":"analysis/pikachu-jp-title-logo.json","sha256":"3c7bf3acd574ae499addd9be2d91cf5df8e1c75b649b2eba7e4a96fd10303d13"},
+    {"path":"analysis/pikachu-en-title-logo.json","sha256":"9747db20cb506803a06c6a76b9ea68d11ae3944d5d80a2419792106da8d39d1e"},
+    {"path":"graphics/title/pokemon-logo-jp.png","sha256":"0b9df8643bf99707f8c3d1ad14cccab41f65eb248a4f36becc72816a6fcb1436"},
+    {"path":"graphics/title/pokemon-logo-en.png","sha256":"9f3def71ce41dc97ab31a3dd352aad59ae4dff4bdcc734e54c82e1e95bae1be8"}
+  ]
+}
