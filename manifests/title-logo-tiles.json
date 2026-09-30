@@ -1,7 +1,10 @@
 {
   "schema_version": 1,
   "id": "pikachu-title-logo-tiles",
-  "generator": {"repository":"SakuraiTsubaki/Disassembly","tool":"tools/extract_gb_2bpp.py","format":"game-boy-2bpp-8x8-tiles"},
+  "generators": [
+    {"repository":"SakuraiTsubaki/Disassembly","tool":"tools/extract_gb_2bpp.py","format":"game-boy-2bpp-8x8-tiles"},
+    {"repository":"SakuraiTsubaki/Disassembly","tool":"tools/compose_gb_2bpp_tilemap.py","format":"game-boy-2bpp-indexed-tilemap"}
+  ],
   "reference": {"repository":"pret/pokeyellow","symbols":["PokemonLogoJapanGraphics","PokemonLogoGraphics"],"paths":["gfx/title/pokemon_logo_japan.2bpp","gfx/title/pokemon_logo.2bpp"]},
   "inputs": [
     {"language":"ja","release":"Pocket Monsters Pikachu (Japan) rev 0","rom_size":1048576,"rom_sha256":"09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436","offset":66585,"length":1536,"source_sha256":"bcf9445e815446dbcf0372868ae61b77cc7ced7b6a33facc9f5d69ee71c8f933","tile_count":96,"tiles_per_row":16},
@@ -11,6 +14,8 @@
     {"path":"analysis/pikachu-jp-title-logo.json","sha256":"3c7bf3acd574ae499addd9be2d91cf5df8e1c75b649b2eba7e4a96fd10303d13"},
     {"path":"analysis/pikachu-en-title-logo.json","sha256":"9747db20cb506803a06c6a76b9ea68d11ae3944d5d80a2419792106da8d39d1e"},
     {"path":"graphics/title/pokemon-logo-jp.png","sha256":"0b9df8643bf99707f8c3d1ad14cccab41f65eb248a4f36becc72816a6fcb1436"},
-    {"path":"graphics/title/pokemon-logo-en.png","sha256":"9f3def71ce41dc97ab31a3dd352aad59ae4dff4bdcc734e54c82e1e95bae1be8"}
+    {"path":"graphics/title/pokemon-logo-en.png","sha256":"9f3def71ce41dc97ab31a3dd352aad59ae4dff4bdcc734e54c82e1e95bae1be8"},
+    {"path":"analysis/pikachu-en-title-logo-composed.json","sha256":"a1f3818f3cba62b0e14f49383a4d15cc63cd237d08c66c802675862aedb423e3"},
+    {"path":"graphics/title/pokemon-logo-composed-en.png","sha256":"81306ddb81d57254c606a9dfaef23485ba060d81062e5f07f745156c648bf967"}
   ]
 }
