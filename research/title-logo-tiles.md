@@ -8,4 +8,6 @@ The English on-screen composition is also reconstructed. Its 16×7 `TitleScreenP
 
 The German release uses the same tilemap and corner offsets with a localized 115-tile sheet at `0xf46fb`, producing `POKÉMON GELBE EDITION`. The French layout is shifted by twelve bytes: tilemap `0xf4605`, sheet `0xf4707`, and corner tiles `0xf4e37`; its composed result reads `POKÉMON VERSION JAUNE`. The distinct sheet hashes prove these are localized assets rather than renamed copies of the English result.
 
+Spanish follows the English/German address layout and composes as `POKÉMON EDICIÓN AMARILLA`. Italian follows the French address layout and composes as `POKÉMON VERSIONE GIALLA`. The decoded lettering and valid tile IDs provide an additional structural check for the two languages that do not have a corresponding public matching disassembly in the cited reference set.
+
 All PNGs are derived from locally verified retail ROMs. The reports and manifest retain full-ROM identity, offset, length, source hash, layout, and output hash without publishing ROM bytes.

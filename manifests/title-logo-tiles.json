@@ -10,7 +10,9 @@
     {"language":"ja","release":"Pocket Monsters Pikachu (Japan) rev 0","rom_size":1048576,"rom_sha256":"09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436","offset":66585,"length":1536,"source_sha256":"bcf9445e815446dbcf0372868ae61b77cc7ced7b6a33facc9f5d69ee71c8f933","tile_count":96,"tiles_per_row":16},
     {"language":"en","release":"Pokemon Yellow (USA, Europe) rev 0","rom_size":1048576,"rom_sha256":"8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf","offset":1001211,"length":1840,"source_sha256":"960c082aff63eba1554ff2505e84eb4c9ec8c19b77ec7a1fd48169b6b7ec19d7","tile_count":115,"tiles_per_row":16},
     {"language":"de","release":"Pokemon Gelbe Edition (Germany) rev 0","rom_size":1048576,"rom_sha256":"aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9","offset":1001211,"length":1840,"source_sha256":"aa54b3a54e9653f52712ac04b3ff3a558c28ec414e2c39e33578078dd5c48c02","tile_count":115,"tiles_per_row":16,"tilemap_offset":1000953,"corner_offset":1003051},
-    {"language":"fr","release":"Pokemon Version Jaune (France) rev 0","rom_size":1048576,"rom_sha256":"77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa","offset":1001223,"length":1840,"source_sha256":"5394919146d4ed75f40d9ac33877398670e6a4f8166323654b34cb3834c3b4c4","tile_count":115,"tiles_per_row":16,"tilemap_offset":1000965,"corner_offset":1003063}
+    {"language":"fr","release":"Pokemon Version Jaune (France) rev 0","rom_size":1048576,"rom_sha256":"77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa","offset":1001223,"length":1840,"source_sha256":"5394919146d4ed75f40d9ac33877398670e6a4f8166323654b34cb3834c3b4c4","tile_count":115,"tiles_per_row":16,"tilemap_offset":1000965,"corner_offset":1003063},
+    {"language":"es","release":"Pokemon Edicion Amarilla (Spain) rev 0","rom_size":1048576,"rom_sha256":"55d56d6f73225886bfdc0db1ddb754d2f4dfc6ef5ae74ddfa079c23b6ec80039","offset":1001211,"length":1840,"source_sha256":"3e873c340d67f006afcc583492e17960e5a7ef0081a72231679246a5a79cd3f3","tile_count":115,"tiles_per_row":16,"tilemap_offset":1000953,"corner_offset":1003051},
+    {"language":"it","release":"Pokemon Versione Gialla (Italy) rev 0","rom_size":1048576,"rom_sha256":"e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856","offset":1001223,"length":1840,"source_sha256":"aaf050fa762f99bea175461e1762e03e9e9edded2e68c7fb5074c46dcf1a1ef5","tile_count":115,"tiles_per_row":16,"tilemap_offset":1000965,"corner_offset":1003063}
   ],
   "outputs": [
     {"path":"analysis/pikachu-jp-title-logo.json","sha256":"3c7bf3acd574ae499addd9be2d91cf5df8e1c75b649b2eba7e4a96fd10303d13"},
@@ -26,6 +28,14 @@
     {"path":"analysis/pikachu-fr-title-logo.json","sha256":"63a25bd826b39196149306721bb95b8ed1e0c84224cab9fc21be3218078486f5"},
     {"path":"analysis/pikachu-fr-title-logo-composed.json","sha256":"ed64a0f9c688aa3ebdcfe6928d828e1a1d12dc250f13a306514317a232bb5e52"},
     {"path":"graphics/title/pokemon-logo-fr.png","sha256":"f209e348519f1b2ff676b67148dcab7af486725c9e2723f0adc495f03359843f"},
-    {"path":"graphics/title/pokemon-logo-composed-fr.png","sha256":"29634b009c0627a50ad151a9dc7cf0348613b8b6cf6dce876b2effc637772103"}
+    {"path":"graphics/title/pokemon-logo-composed-fr.png","sha256":"29634b009c0627a50ad151a9dc7cf0348613b8b6cf6dce876b2effc637772103"},
+    {"path":"analysis/pikachu-es-title-logo.json","sha256":"effdf6a08e848567b8164c6bd117cbf8c51a4411dc8900a616abe2e15fed08c3"},
+    {"path":"analysis/pikachu-es-title-logo-composed.json","sha256":"8370fa197dd4fc779753459ed6384a1018f49953c2bb3d8781130ceeb42b463c"},
+    {"path":"graphics/title/pokemon-logo-es.png","sha256":"a39c5d9df0cb750e136692e30e28a3452c7f40e4f0bae55f8e940d94b7bc14b9"},
+    {"path":"graphics/title/pokemon-logo-composed-es.png","sha256":"1b2e7674c683fbfb1bb6a915947916aedabae0baabcf80e6ad15624e9c035496"},
+    {"path":"analysis/pikachu-it-title-logo.json","sha256":"b4082bd2a2ac354563e61bce378186e0fc4738ddcbf924e8a6b50b8e7900338b"},
+    {"path":"analysis/pikachu-it-title-logo-composed.json","sha256":"c3add07cc4941f9ee386edffb2131ea4b61254e852e4aa80ce605b0be7888344"},
+    {"path":"graphics/title/pokemon-logo-it.png","sha256":"f2b8a61d3d84a49ac42a0cd109e406a4540532424e905a071cdda43554470adb"},
+    {"path":"graphics/title/pokemon-logo-composed-it.png","sha256":"c5ee3404b666e67a6d3b740abd69ffb8b99ebb3c4f4f1111791001bcbc8266aa"}
   ]
 }

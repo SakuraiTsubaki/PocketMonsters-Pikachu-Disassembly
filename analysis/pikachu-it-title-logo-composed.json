@@ -1,0 +1,25 @@
+{
+  "rom_size": 1048576,
+  "rom_sha256": "e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856",
+  "tiles_offset": 1001223,
+  "tiles_length": 1840,
+  "tiles_sha256": "aaf050fa762f99bea175461e1762e03e9e9edded2e68c7fb5074c46dcf1a1ef5",
+  "tile_count": 115,
+  "tilemap_offset": 1000965,
+  "tilemap_length": 112,
+  "tilemap_sha256": "32c4607e911333d8e117a29509ef8df19568afce5843988e7a5251311dddaed0",
+  "tilemap_width": 16,
+  "tilemap_height": 7,
+  "blank_tile_ids": [
+    "0xf4"
+  ],
+  "format": "game-boy-2bpp-indexed-tilemap",
+  "png_sha256": "c5ee3404b666e67a6d3b740abd69ffb8b99ebb3c4f4f1111791001bcbc8266aa",
+  "extra_tiles": {
+    "offset": 1003063,
+    "length": 48,
+    "sha256": "22d06ec4e81b7b9f20a86e34a4e9d117fb37c7e24eadd3d2321ff0feacba6328",
+    "count": 3,
+    "first_tile_id": "0xfd"
+  }
+}
