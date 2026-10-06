@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "start_address": 427,
+  "max_depth": 1,
+  "blocks": [
+    {
+      "schema_version": 1,
+      "start_address": 427,
+      "end_address": 431,
+      "byte_length": 4,
+      "instruction_count": 2,
+      "block_bytes_sha256": "13a16734bb14fe12b963b1f7a7a423d8329307f81bdbedb4c18971215802eee9",
+      "instructions": [
+        {
+          "address": 427,
+          "size": 2,
+          "source": "cp $11"
+        },
+        {
+          "address": 429,
+          "size": 2,
+          "source": "jr z $01b2",
+          "target_address": 434
+        }
+      ],
+      "terminator": "jr z $01b2",
+      "depth": 0
+    },
+    {
+      "schema_version": 1,
+      "start_address": 431,
+      "end_address": 434,
+      "byte_length": 3,
+      "instruction_count": 2,
+      "block_bytes_sha256": "89e961276f0986af0309912a3c1bcd267dda5693e415a3061274950ce0d16c2e",
+      "instructions": [
+        {
+          "address": 431,
+          "size": 1,
+          "source": "xor a"
+        },
+        {
+          "address": 432,
+          "size": 2,
+          "source": "jr $01b4",
+          "target_address": 436
+        }
+      ],
+      "terminator": "jr $01b4",
+      "depth": 1
+    },
+    {
+      "schema_version": 1,
+      "start_address": 434,
+      "end_address": 441,
+      "byte_length": 7,
+      "instruction_count": 3,
+      "block_bytes_sha256": "80743ee590a785f9b43eb71b9123a6b1b1f39972feb928f4cca910a94c5b9714",
+      "instructions": [
+        {
+          "address": 434,
+          "size": 2,
+          "source": "ld a, $01"
+        },
+        {
+          "address": 436,
+          "size": 2,
+          "source": "ldh [$ff00 + $fe], a"
+        },
+        {
+          "address": 438,
+          "size": 3,
+          "source": "jp $1d0c",
+          "target_address": 7436
+        }
+      ],
+      "terminator": "jp $1d0c",
+      "depth": 1
+    }
+  ],
+  "edges": [
+    {
+      "source": 427,
+      "target": 434,
+      "kind": "branch"
+    },
+    {
+      "source": 427,
+      "target": 431,
+      "kind": "fallthrough"
+    },
+    {
+      "source": 431,
+      "target": 436,
+      "kind": "branch"
+    },
+    {
+      "source": 434,
+      "target": 7436,
+      "kind": "branch"
+    }
+  ],
+  "source_size": 1048576,
+  "source_sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa"
+}
