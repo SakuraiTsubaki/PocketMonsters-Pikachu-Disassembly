@@ -1,0 +1,429 @@
+{
+  "schema_version": 1,
+  "start_address": 7572,
+  "end_address": 7702,
+  "byte_length": 130,
+  "instruction_count": 56,
+  "block_bytes": "cd161e2180ff017f00cdc616cdb8153e01e0b8ea0020cde049afe0d7e041e0aee0afe00feaf3c0eaf4c03e0de0ff3e90e0b0e04a3e07e04b3effe0aa2698cd1e1b269ccd1e1b3ee3e0403e10e08acd201efb3e40cdad3e3e1feaefc0eaf0c03e9ce0bdafe0bc3deab2cf3e32cdad3ecd9715cd161ecdeb3dcdb8153ee3e040c36a41",
+  "block_bytes_sha256": "2338602344e55293b45234a380ecc234141346d18957faa7c907faf27e5aa96e",
+  "instructions": [
+    {
+      "address": 7572,
+      "bytes": "cd161e",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $1e16",
+      "target_address": 7702
+    },
+    {
+      "address": 7575,
+      "bytes": "2180ff",
+      "opcode": 33,
+      "size": 3,
+      "source": "ld hl, $ff80",
+      "target_address": 65408
+    },
+    {
+      "address": 7578,
+      "bytes": "017f00",
+      "opcode": 1,
+      "size": 3,
+      "source": "ld bc, $007f",
+      "target_address": 127
+    },
+    {
+      "address": 7581,
+      "bytes": "cdc616",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $16c6",
+      "target_address": 5830
+    },
+    {
+      "address": 7584,
+      "bytes": "cdb815",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $15b8",
+      "target_address": 5560
+    },
+    {
+      "address": 7587,
+      "bytes": "3e01",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $01"
+    },
+    {
+      "address": 7589,
+      "bytes": "e0b8",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $b8], a"
+    },
+    {
+      "address": 7591,
+      "bytes": "ea0020",
+      "opcode": 234,
+      "size": 3,
+      "source": "ld [$2000], a",
+      "target_address": 8192
+    },
+    {
+      "address": 7594,
+      "bytes": "cde049",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $49e0",
+      "target_address": 18912
+    },
+    {
+      "address": 7597,
+      "bytes": "af",
+      "opcode": 175,
+      "size": 1,
+      "source": "xor a"
+    },
+    {
+      "address": 7598,
+      "bytes": "e0d7",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $d7], a"
+    },
+    {
+      "address": 7600,
+      "bytes": "e041",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $41], a"
+    },
+    {
+      "address": 7602,
+      "bytes": "e0ae",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $ae], a"
+    },
+    {
+      "address": 7604,
+      "bytes": "e0af",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $af], a"
+    },
+    {
+      "address": 7606,
+      "bytes": "e00f",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $0f], a"
+    },
+    {
+      "address": 7608,
+      "bytes": "eaf3c0",
+      "opcode": 234,
+      "size": 3,
+      "source": "ld [$c0f3], a",
+      "target_address": 49395
+    },
+    {
+      "address": 7611,
+      "bytes": "eaf4c0",
+      "opcode": 234,
+      "size": 3,
+      "source": "ld [$c0f4], a",
+      "target_address": 49396
+    },
+    {
+      "address": 7614,
+      "bytes": "3e0d",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $0d"
+    },
+    {
+      "address": 7616,
+      "bytes": "e0ff",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $ff], a"
+    },
+    {
+      "address": 7618,
+      "bytes": "3e90",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $90"
+    },
+    {
+      "address": 7620,
+      "bytes": "e0b0",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $b0], a"
+    },
+    {
+      "address": 7622,
+      "bytes": "e04a",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $4a], a"
+    },
+    {
+      "address": 7624,
+      "bytes": "3e07",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $07"
+    },
+    {
+      "address": 7626,
+      "bytes": "e04b",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $4b], a"
+    },
+    {
+      "address": 7628,
+      "bytes": "3eff",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $ff"
+    },
+    {
+      "address": 7630,
+      "bytes": "e0aa",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $aa], a"
+    },
+    {
+      "address": 7632,
+      "bytes": "2698",
+      "opcode": 38,
+      "size": 2,
+      "source": "ld h, $98"
+    },
+    {
+      "address": 7634,
+      "bytes": "cd1e1b",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $1b1e",
+      "target_address": 6942
+    },
+    {
+      "address": 7637,
+      "bytes": "269c",
+      "opcode": 38,
+      "size": 2,
+      "source": "ld h, $9c"
+    },
+    {
+      "address": 7639,
+      "bytes": "cd1e1b",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $1b1e",
+      "target_address": 6942
+    },
+    {
+      "address": 7642,
+      "bytes": "3ee3",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $e3"
+    },
+    {
+      "address": 7644,
+      "bytes": "e040",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $40], a"
+    },
+    {
+      "address": 7646,
+      "bytes": "3e10",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $10"
+    },
+    {
+      "address": 7648,
+      "bytes": "e08a",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $8a], a"
+    },
+    {
+      "address": 7650,
+      "bytes": "cd201e",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $1e20",
+      "target_address": 7712
+    },
+    {
+      "address": 7653,
+      "bytes": "fb",
+      "opcode": 251,
+      "size": 1,
+      "source": "ei"
+    },
+    {
+      "address": 7654,
+      "bytes": "3e40",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $40"
+    },
+    {
+      "address": 7656,
+      "bytes": "cdad3e",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $3ead",
+      "target_address": 16045
+    },
+    {
+      "address": 7659,
+      "bytes": "3e1f",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $1f"
+    },
+    {
+      "address": 7661,
+      "bytes": "eaefc0",
+      "opcode": 234,
+      "size": 3,
+      "source": "ld [$c0ef], a",
+      "target_address": 49391
+    },
+    {
+      "address": 7664,
+      "bytes": "eaf0c0",
+      "opcode": 234,
+      "size": 3,
+      "source": "ld [$c0f0], a",
+      "target_address": 49392
+    },
+    {
+      "address": 7667,
+      "bytes": "3e9c",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $9c"
+    },
+    {
+      "address": 7669,
+      "bytes": "e0bd",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $bd], a"
+    },
+    {
+      "address": 7671,
+      "bytes": "af",
+      "opcode": 175,
+      "size": 1,
+      "source": "xor a"
+    },
+    {
+      "address": 7672,
+      "bytes": "e0bc",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $bc], a"
+    },
+    {
+      "address": 7674,
+      "bytes": "3d",
+      "opcode": 61,
+      "size": 1,
+      "source": "dec a"
+    },
+    {
+      "address": 7675,
+      "bytes": "eab2cf",
+      "opcode": 234,
+      "size": 3,
+      "source": "ld [$cfb2], a",
+      "target_address": 53170
+    },
+    {
+      "address": 7678,
+      "bytes": "3e32",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $32"
+    },
+    {
+      "address": 7680,
+      "bytes": "cdad3e",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $3ead",
+      "target_address": 16045
+    },
+    {
+      "address": 7683,
+      "bytes": "cd9715",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $1597",
+      "target_address": 5527
+    },
+    {
+      "address": 7686,
+      "bytes": "cd161e",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $1e16",
+      "target_address": 7702
+    },
+    {
+      "address": 7689,
+      "bytes": "cdeb3d",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $3deb",
+      "target_address": 15851
+    },
+    {
+      "address": 7692,
+      "bytes": "cdb815",
+      "opcode": 205,
+      "size": 3,
+      "source": "call $15b8",
+      "target_address": 5560
+    },
+    {
+      "address": 7695,
+      "bytes": "3ee3",
+      "opcode": 62,
+      "size": 2,
+      "source": "ld a, $e3"
+    },
+    {
+      "address": 7697,
+      "bytes": "e040",
+      "opcode": 224,
+      "size": 2,
+      "source": "ldh [$ff00 + $40], a"
+    },
+    {
+      "address": 7699,
+      "bytes": "c36a41",
+      "opcode": 195,
+      "size": 3,
+      "source": "jp $416a",
+      "target_address": 16746
+    }
+  ],
+  "terminator": "jp $416a",
+  "source_size": 1048576,
+  "source_sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436"
+}
+

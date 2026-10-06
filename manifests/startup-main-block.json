@@ -1,0 +1,2 @@
+{"schema_version":1,"target":{"release":"Pikachu-JP-rev0-candidate","sha256":"09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436"},"block":{"start":"0x1D94","end_exclusive":"0x1E16","bytes_sha256":"2338602344e55293b45234a380ecc234141346d18957faa7c907faf27e5aa96e"},"outputs":[{"path":"src/startup_main_block.asm","sha256":"768de6d1ffe085a273cde1f223934b1755a1678132e0855a091b877005c9940e"},{"path":"analysis/pikachu-jp-startup-main-block.json","sha256":"06eabe37aa68be0e50c4ce1a5c08ec0d8752209c8178e8b8eec0e1a7a1cf65b7"}],"raw_rom_bytes_included":false}
+
