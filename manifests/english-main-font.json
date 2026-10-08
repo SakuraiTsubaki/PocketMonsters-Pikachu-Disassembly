@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-08",
+  "asset": "english-main-font",
+  "source_offset": 67072,
+  "source_length": 1024,
+  "reference": {
+    "repository": "pret/pokeyellow",
+    "source_commit": "e89ead154b9968aa50eed9328ff2b38b6c194382",
+    "symbols_commit": "573535d742a347c6b20ab74f962df4c9820a0bbb",
+    "paths": ["gfx/font.asm", "home/load_font.asm", "gfx/font/font.png", "pokeyellow.sym"],
+    "unique_rom_match": true
+  },
+  "generator": {"repository": "SakuraiTsubaki/Disassembly", "commit": "ed86c88d1a6ba5ea05663334732e9d354a8bb1dd", "tool": "tools/extract_gb_1bpp.py", "arguments": ["--offset", "0x10600", "--tile-count", "128", "--tiles-per-row", "16"]},
+  "release": {"id": "yellow-en-rev0", "sha1": "cc7d03262ebfaf2f06772c1a480c7d9d5f4a38e1", "sha256": "8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf", "range_sha256": "7da47648890723845fd71777e0ef6616c38f145a02a2aa58ca71d3460381d898"},
+  "outputs": [
+    {"path": "analysis/pikachu-en-main-font.json", "sha256": "915e701a48994adb8b966bc59b5de38729014fb718571cc1cb65afec9773c65a"},
+    {"path": "graphics/font/main-font-en.png", "sha256": "ba6731b4173bc0697f213fe5c2d6a795fccd0c729b9fdd26d92c9b207c2bfa46"},
+    {"path": "research/english-main-font.md", "sha256": "04b227ed547ad878f25ba39306fcc4e8d8ef90922869a6991c82d848605fd935"}
+  ],
+  "raw_rom_bytes_included": false
+}
