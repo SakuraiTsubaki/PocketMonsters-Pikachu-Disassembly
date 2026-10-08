@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-08",
+  "asset": "japanese-main-font",
+  "format": "game-boy-1bpp-8x8-tiles",
+  "tile_count": 128,
+  "source_offset": 68121,
+  "source_length": 1024,
+  "reference": {
+    "repository": "Narishma-gb/pokeyellow-jp",
+    "source_commit": "f282e72ae26232790fdb780aa5a5db7ec8ebf572",
+    "symbols_commit": "d19d9c5d5503db20e57479bfb76d5afb304a45b3",
+    "paths": ["gfx/font.asm", "home/load_font.asm", "gfx/font/font.png", "pokeyellow.sym", "pokeyellow11.sym", "pokeyellow12.sym", "pokeyellow13.sym"]
+  },
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "commit": "ed86c88d1a6ba5ea05663334732e9d354a8bb1dd",
+    "tool": "tools/extract_gb_1bpp.py",
+    "arguments": ["--offset", "0x10a19", "--tile-count", "128", "--tiles-per-row", "16"]
+  },
+  "releases": [
+    {"id": "pikachu-jp-rev0", "sha1": "1fb6c264e950d97ce3fd99b347e485b2150df4ff", "sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436", "range_sha256": "11bfba65ad8f3b4a93f3c9b400afb611fb4072b26e2c40c77aab67bd08c9bf15"},
+    {"id": "pikachu-jp-rev1", "sha1": "28e4b8531ea4ea1de5a396fccb0cfba51b06b149", "sha256": "1acab20d1aa3e19c081abaac3e303c4cf3e582213937acbf25942b31c28aecfe", "range_sha256": "11bfba65ad8f3b4a93f3c9b400afb611fb4072b26e2c40c77aab67bd08c9bf15"},
+    {"id": "pikachu-jp-rev2", "sha1": "91864ecdf26d1c593bde4d9ed615520eb57d5e41", "sha256": "2c67561f6b2de4ca3a1150f04dc736aead4bf7b5a98ce38196cef899a91be2fd", "range_sha256": "11bfba65ad8f3b4a93f3c9b400afb611fb4072b26e2c40c77aab67bd08c9bf15"},
+    {"id": "pikachu-jp-rev3", "sha1": "a40298a8123613ee60cd7aab204d788b8425976e", "sha256": "1349408f328f633b33e059e654edabd19810530df9c883eda03a85d5bb10161a", "range_sha256": "11bfba65ad8f3b4a93f3c9b400afb611fb4072b26e2c40c77aab67bd08c9bf15"}
+  ],
+  "outputs": [
+    {"path": "analysis/pikachu-jp-main-font.json", "sha256": "ee7064f1245cda74d388444573f91a2965b7a5a8d7d6129111efa65a107e7ae1"},
+    {"path": "graphics/font/main-font-jp.png", "sha256": "7264ef108040d7905db2d27476c6e3f47cd30f58b64767f10fc8290a355888cf"},
+    {"path": "research/japanese-main-font.md", "sha256": "466812e863d657c90c2bd8fc60c2b89715be29b1b73f0ff2195a3f22cbb98eb8"}
+  ],
+  "raw_rom_bytes_included": false
+}
