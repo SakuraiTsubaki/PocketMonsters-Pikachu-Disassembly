@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "rom_size": 1048576,
+  "rom_sha256": "aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9",
+  "format": "game-boy-1bpp-8x8-tiles",
+  "requested_source_length": 1024,
+  "candidates": [
+    {
+      "loader_offset": 13960,
+      "bank": 4,
+      "cpu_address": 17920,
+      "source_offset": 67072,
+      "source_length": 1024,
+      "tile_count": 128,
+      "source_sha256": "d05ea7a9245f217f2354a7067751b5e4b415adc9975edf256b83a352236754ab",
+      "raw_bytes_omitted": true
+    }
+  ],
+  "raw_rom_bytes_included": false
+}

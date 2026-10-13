@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "asset_group": "pikachu-yellow-main-font-loaders",
+  "generator": {"repository": "SakuraiTsubaki/Disassembly", "tool": "tools/locate_gb_1bpp_loader.py", "source_length": 1024},
+  "releases": [
+    {"id":"pikachu-jp-rev0","rom_sha256":"09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436","loader_offset":13988,"loader_report":"analysis/pikachu-jp-rev0-main-font-loader.json","font_report":"analysis/pikachu-jp-main-font.json"},
+    {"id":"pikachu-jp-rev1","rom_sha256":"1acab20d1aa3e19c081abaac3e303c4cf3e582213937acbf25942b31c28aecfe","loader_offset":13989,"loader_report":"analysis/pikachu-jp-rev1-main-font-loader.json","font_report":"analysis/pikachu-jp-main-font.json"},
+    {"id":"pikachu-jp-rev2","rom_sha256":"2c67561f6b2de4ca3a1150f04dc736aead4bf7b5a98ce38196cef899a91be2fd","loader_offset":13989,"loader_report":"analysis/pikachu-jp-rev2-main-font-loader.json","font_report":"analysis/pikachu-jp-main-font.json"},
+    {"id":"pikachu-jp-rev3","rom_sha256":"1349408f328f633b33e059e654edabd19810530df9c883eda03a85d5bb10161a","loader_offset":13989,"loader_report":"analysis/pikachu-jp-rev3-main-font-loader.json","font_report":"analysis/pikachu-jp-main-font.json"},
+    {"id":"yellow-en-rev0","rom_sha256":"8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf","loader_offset":13955,"loader_report":"analysis/yellow-en-rev0-main-font-loader.json","font_report":"analysis/pikachu-en-main-font.json"},
+    {"id":"yellow-de-rev0","rom_sha256":"aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9","loader_offset":13960,"loader_report":"analysis/yellow-de-rev0-main-font-loader.json","font_report":"analysis/pikachu-de-main-font.json"},
+    {"id":"yellow-es-rev0","rom_sha256":"55d56d6f73225886bfdc0db1ddb754d2f4dfc6ef5ae74ddfa079c23b6ec80039","loader_offset":13960,"loader_report":"analysis/yellow-es-rev0-main-font-loader.json","font_report":"analysis/pikachu-es-main-font.json"},
+    {"id":"yellow-fr-rev0","rom_sha256":"77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa","loader_offset":13958,"loader_report":"analysis/yellow-fr-rev0-main-font-loader.json","font_report":"analysis/pikachu-fr-main-font.json"},
+    {"id":"yellow-it-rev0","rom_sha256":"e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856","loader_offset":13953,"loader_report":"analysis/yellow-it-rev0-main-font-loader.json","font_report":"analysis/pikachu-it-main-font.json"}
+  ],
+  "outputs": [
+    {"path":"analysis/pikachu-jp-rev0-main-font-loader.json","sha256":"d417650b38a14f132762b07d5b5735c4ff3c61acb8532a30a866cbf0c4216747"},
+    {"path":"analysis/pikachu-jp-rev1-main-font-loader.json","sha256":"5842393f5f3f178c75efd3d8a7ece3c626fd0066dc2ca8949177cc0df80f7442"},
+    {"path":"analysis/pikachu-jp-rev2-main-font-loader.json","sha256":"7a05f183f7bb9b2e42b704aeff4482eba2bcfbca7de3991acc040fab349dab76"},
+    {"path":"analysis/pikachu-jp-rev3-main-font-loader.json","sha256":"47f6375f523baea031e8dbd9afa722f60940c605cb5972da1cd73057747cfe5c"},
+    {"path":"analysis/yellow-en-rev0-main-font-loader.json","sha256":"c7c83a35370141220eac44a89d0f5c72c6dc8b374c021cb8db47fdfb6e97495c"},
+    {"path":"analysis/yellow-de-rev0-main-font-loader.json","sha256":"7bf9bd2e46c8d1f3eeb4e8d0e631162103d4a2a562df1acd18306f17a64799b3"},
+    {"path":"analysis/yellow-es-rev0-main-font-loader.json","sha256":"a8bfa8985fa2b692ef65236d555ea61d38dcf1d0c1102274ee2dc6b2f296fc54"},
+    {"path":"analysis/yellow-fr-rev0-main-font-loader.json","sha256":"18c5510bce1ad241c84cbbe4a2f7f4567cb7308cfc19e5bc7b914f45ff066615"},
+    {"path":"analysis/yellow-it-rev0-main-font-loader.json","sha256":"17ea0e8fa9770d6839dd280cbd1fb90eec9e3d16de5b217ff64b6d746ae6072b"},
+    {"path":"research/main-font-loaders.md","sha256":"2464aae0c3d2649ff4e835d09dff6be6ead6cec189fae0bc7c05235067068780"}
+  ],
+  "raw_rom_bytes_included": false
+}
+
