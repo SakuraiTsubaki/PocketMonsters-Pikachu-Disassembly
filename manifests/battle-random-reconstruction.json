@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "function": "BattleRandom",
+  "releases": [
+    "pikachu-jp-rev0",
+    "pikachu-jp-rev1",
+    "pikachu-jp-rev2",
+    "pikachu-jp-rev3",
+    "yellow-en-rev0",
+    "yellow-de-rev0",
+    "yellow-es-rev0",
+    "yellow-fr-rev0",
+    "yellow-it-rev0"
+  ],
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/locate_gen1_battle_random.py",
+    "tool_sha256": "02c98200055999301ffea8b76ecac74cccae87da4f159c9b9d4b64afd2fb8dad"
+  },
+  "outputs": [
+    {
+      "path": "src/battle_random.asm",
+      "sha256": "d6f3ff2fcb40f7e7cb915f0481bb970caeeea30a26f8f7a175bee67783b88c62"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-battle-random.json",
+      "sha256": "6dc0fb1af9c2ff31d4da6deafbe1ddfc299797acf4479eafe68ca8d83bcab52f"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-battle-random.json",
+      "sha256": "70f6aee0910c3d6bf58683d39dbbf4d3d655612964817232322b102143605a09"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-battle-random.json",
+      "sha256": "a12bed96a230aa9c4560c570010ad2c915161c7931404c071e6ab18e738066a4"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-battle-random.json",
+      "sha256": "b84652f18c6f5b64f49575bff1b0a1393970ebae871c4bc312402fa6cc106480"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-battle-random.json",
+      "sha256": "9f189eb2fae737d563d554831d5b2cb9593b4f4c48e895631eea8e256a208673"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-battle-random.json",
+      "sha256": "f5cb4ccdf46f959375f921228474c095b4359a5c0c75fa2b3cb3c37f4ed1373e"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-battle-random.json",
+      "sha256": "9846995720f7d125e2c9520f64b429e601ae8dcd5a2bef55b3cee8167de05de1"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-battle-random.json",
+      "sha256": "49941d606b7835ce9ed4b6dbcbd798ef7398ad74739e6f66fd3d6a54588c4851"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-battle-random.json",
+      "sha256": "e4008bca2b093091a430ada8c38203ce346bcc06182204c0c4a1e16e51aee7c8"
+    },
+    {
+      "path": "research/battle-random-reconstruction.md",
+      "sha256": "53982ad5980d98e4cbbbe7e8c75d747a22b771e535f11a1297ecf3f3f3c60cc2"
+    },
+    {
+      "path": "tests/test_battle_random_reconstruction.py",
+      "sha256": "86962970041d8d3aeed9149a8fd2374f69a9d3ad3618186ddfe208a73f24360d"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}

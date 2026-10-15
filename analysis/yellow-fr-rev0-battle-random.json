@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-fr-rev0",
+    "sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa"
+  },
+  "function": {
+    "name": "BattleRandom",
+    "rom_offset": 258109,
+    "bank": 15,
+    "address": 28733,
+    "range_end_exclusive": 258165,
+    "length": 56,
+    "code_sha256": "d768ded1903ae0ae51ed803f59c3ee0d3929691e1e01752452420b5ac2429fe0",
+    "state": {
+      "wLinkState": 53551,
+      "link_state_battling": 4,
+      "wLinkBattleRandomNumberListIndex": 52446,
+      "wLinkBattleRandomNumberList": 53580,
+      "stream_length": 10,
+      "refreshed_seed_count": 9
+    },
+    "control_flow": {
+      "non_link_jump": {
+        "bank": 0,
+        "address": 15984
+      },
+      "early_return_offset": 29,
+      "refresh_loop_offset": 42,
+      "refresh_loop_back_edge": {
+        "from_offset": 50,
+        "to_offset": 42
+      }
+    },
+    "prng": {
+      "formula": "seed = (seed * 5 + 1) mod 256",
+      "refreshed_seed_count": 9
+    }
+  },
+  "semantics": {
+    "non_link": "tail-jump to Random",
+    "link": "consume shared ten-byte list and refresh nine seeds at boundary",
+    "synchronization": "shared state keeps linked peers aligned",
+    "return_register": "A"
+  },
+  "naming_basis": {
+    "repository": "pret/pokered",
+    "commit": "af519899719f0754965776faac0e836a3b906e6d",
+    "path": "engine/battle/core.asm",
+    "raw_rom_bytes_published": false
+  },
+  "raw_rom_bytes_included": false
+}
