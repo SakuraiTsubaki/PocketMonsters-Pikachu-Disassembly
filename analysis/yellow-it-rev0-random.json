@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-it-rev0",
+    "sha256": "e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856"
+  },
+  "function": {
+    "name": "Random_",
+    "rom_offset": 1009622,
+    "bank": 61,
+    "address": 26582,
+    "range_end_exclusive": 1009639,
+    "length": 17,
+    "code_sha256": "4f8dcfd55a40324b60e01baf3a1cfc0263398ba741ad3b73c697de486139d985",
+    "globals": {
+      "hRandomAdd": 65491,
+      "hRandomSub": 65492
+    }
+  },
+  "semantics": {
+    "entropy_source": "DIV register (0xFF04)",
+    "add_state": "hRandomAdd = hRandomAdd + DIV + carry",
+    "subtract_state": "hRandomSub = DIV - hRandomSub - carry",
+    "return_register": "A (updated hRandomSub)"
+  },
+  "naming_basis": {
+    "repository": "pret/pokered",
+    "commit": "af519899719f0754965776faac0e836a3b906e6d",
+    "path": "engine/math/random.asm",
+    "raw_rom_bytes_published": false
+  },
+  "raw_rom_bytes_included": false
+}

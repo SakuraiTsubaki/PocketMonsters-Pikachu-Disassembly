@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "function": "Random_",
+  "releases": [
+    "pikachu-jp-rev0",
+    "pikachu-jp-rev1",
+    "pikachu-jp-rev2",
+    "pikachu-jp-rev3",
+    "yellow-en-rev0",
+    "yellow-de-rev0",
+    "yellow-es-rev0",
+    "yellow-fr-rev0",
+    "yellow-it-rev0"
+  ],
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/locate_gen1_random.py",
+    "tool_sha256": "0c80e8a908ca3e7695520b46d739cdf9ce8c0004dd44c183d62261c7cbedfbd1"
+  },
+  "outputs": [
+    {
+      "path": "src/random.asm",
+      "sha256": "09ff231933febc3e14f608429bc2da22487abf1df18cf7265646c43e0f7d92a3"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-random.json",
+      "sha256": "85d2f75037863210d0784aec70e29400542f3067af05ab661af107c25fa82ac8"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-random.json",
+      "sha256": "f4b4a467d5d5fefb83faae565b627f79170dc16eddc54ddfeb10cdebe9280723"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-random.json",
+      "sha256": "280df499e281a5bf25a6cc90b951c74dd2447a53749774957ab8a75df4f850da"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-random.json",
+      "sha256": "db365bd5a5be85485c0beaba71517dfbb5f3b03108f087845767eca5fdcd4be4"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-random.json",
+      "sha256": "4c00f75f67532303094fdcd596b65cd23ba8fc57ee4898ff9440a3b30b681fd5"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-random.json",
+      "sha256": "a6e83a8bc301287211f70e9ac206acc38a548d0f8d64c871efe5a12e4e706c2f"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-random.json",
+      "sha256": "ebb6e8d0bb95bbc4f3070dc71a269934c1d1937a715c02cda38a148aaf3b07ff"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-random.json",
+      "sha256": "581b2570667404f50ffed76e79bbc0f534ad32a5ebe40c35fb22b0b761705e90"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-random.json",
+      "sha256": "aad835066fccbb95b544ed1e53be9486411270dfbe2b785dc8dad0831fb11655"
+    },
+    {
+      "path": "research/random-reconstruction.md",
+      "sha256": "25a253bb20f0895f915718f31e4b19ac5f0335ff05574910265cd36238bf97ca"
+    },
+    {
+      "path": "tests/test_random_reconstruction.py",
+      "sha256": "efef78ac1657d7f4009c6f5cc9557cfc38224dafb04d45a9a7a76a2759a86721"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
