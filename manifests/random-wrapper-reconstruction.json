@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "function": "Random",
+  "releases": [
+    "pikachu-jp-rev0",
+    "pikachu-jp-rev1",
+    "pikachu-jp-rev2",
+    "pikachu-jp-rev3",
+    "yellow-en-rev0",
+    "yellow-de-rev0",
+    "yellow-es-rev0",
+    "yellow-fr-rev0",
+    "yellow-it-rev0"
+  ],
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/locate_gen1_random_wrapper.py",
+    "tool_sha256": "a1c957a42389f463b3dba23642bc530eb21ab3d45066a9d2ff5f92e7a726621a"
+  },
+  "outputs": [
+    {
+      "path": "src/random_wrapper.asm",
+      "sha256": "78cd45803c739d3ea24193a4fd973f247b3f62f1be4fca73c3fac0da849def03"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-random-wrapper.json",
+      "sha256": "b9c97036c19e96cf41738f935e750e4c84fdbb3f059ab95ca506d9c216f839d7"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-random-wrapper.json",
+      "sha256": "06414cf92d7f952a5040e6fef791a2a8a877bcf77f1559c539381a64d85bc073"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-random-wrapper.json",
+      "sha256": "1f4fb538d69e3a282e0705c9a0cf43e4733de7da06c8147b21fcf62f3d61e7fb"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-random-wrapper.json",
+      "sha256": "f7e619eebc9e0df993040a6be10798f9cc1ff96664c03545aff5170a88a8d2d6"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-random-wrapper.json",
+      "sha256": "c0f021600296f4a5a8d4c2b59cd63ed11bd3c3778033ee9b03d42454eb5bd60f"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-random-wrapper.json",
+      "sha256": "959bd537a4631f37453a0419852f101e1d3a643a5fd45518a52d2d9bf73f3f58"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-random-wrapper.json",
+      "sha256": "cf4445f5e42821ebb5d5bf9ce952465cfb887f98c429dabe8f223b5b0d800572"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-random-wrapper.json",
+      "sha256": "0961e661f07bd82398c63b92b62d8c6fb9a35b2a4b0fa8a1dbfb738942457c1a"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-random-wrapper.json",
+      "sha256": "73ef7808098aa632f38b25122654d6f712389c28725c3e4606c1f9e778d1afe5"
+    },
+    {
+      "path": "research/random-wrapper-reconstruction.md",
+      "sha256": "046d5006beb4bd3099ab23389dc6c4f165b3e1b1924840d87cee066f4ef28278"
+    },
+    {
+      "path": "tests/test_random_wrapper_reconstruction.py",
+      "sha256": "8b4f87e14b608928edb1d5cbe269d244ab52bb9bdb855d39b1dffb6d615033a1"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}

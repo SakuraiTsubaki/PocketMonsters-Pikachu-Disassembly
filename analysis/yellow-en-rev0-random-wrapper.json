@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-en-rev0",
+    "sha256": "8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf"
+  },
+  "function": {
+    "name": "Random",
+    "rom_offset": 15981,
+    "bank": 0,
+    "address": 15981,
+    "range_end_exclusive": 15998,
+    "length": 17,
+    "code_sha256": "0965f9031ef49413bf48209c0ab4c4ac53290b037a405285c0c3383b80f149ce",
+    "dependencies": {
+      "Random_": {
+        "bank": 61,
+        "address": 26588
+      },
+      "hRandomAdd": 65491,
+      "Bankswitch": {
+        "bank": 0,
+        "address": 16004
+      }
+    },
+    "preserved_registers": [
+      "BC",
+      "DE",
+      "HL"
+    ],
+    "return_register": "A"
+  },
+  "semantics": {
+    "operation": "farcall Random_ and return hRandomAdd",
+    "register_preservation": "BC, DE, and HL are restored",
+    "return_register": "A"
+  },
+  "naming_basis": {
+    "repository": "pret/pokered",
+    "commit": "af519899719f0754965776faac0e836a3b906e6d",
+    "path": "home/random.asm",
+    "raw_rom_bytes_published": false
+  },
+  "raw_rom_bytes_included": false
+}
