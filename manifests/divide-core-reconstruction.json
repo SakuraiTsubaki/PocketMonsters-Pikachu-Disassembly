@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "function": "_Divide",
+  "releases": [
+    "pikachu-jp-rev0",
+    "pikachu-jp-rev1",
+    "pikachu-jp-rev2",
+    "pikachu-jp-rev3",
+    "yellow-en-rev0",
+    "yellow-de-rev0",
+    "yellow-es-rev0",
+    "yellow-fr-rev0",
+    "yellow-it-rev0"
+  ],
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/inspect_gen1_divide_core.py",
+    "tool_sha256": "9cdbb1733262625b2c58571dd19cf387ca7a911973b31f6dd9ac944bbd0e0a4b"
+  },
+  "outputs": [
+    {
+      "path": "src/divide_core.asm",
+      "sha256": "2adf7d354c01338495712c03465f316518e030d631637c68d77b503a2dc9c3ce"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-divide-core.json",
+      "sha256": "6d3bcf0fb74da4a3c9d377fbdc7c47875a487bc039fe9b24be83396bfceb13d1"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-divide-core.json",
+      "sha256": "6d523ea7a61ac6a39d0dcca43231b831fd138e2964b850515b51938cc993b229"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-divide-core.json",
+      "sha256": "2dbe814c71b3b6c9b5fac08e2d159c44788c0d711cb2df8aad758123efe54811"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-divide-core.json",
+      "sha256": "72f80f190033de0f83523e5bbf84898f7895d590225f70ce1e065a4e5aaa8819"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-divide-core.json",
+      "sha256": "4335354577a583adf08f858b7c6ef115034c9014b93e0dff6c8dcbe1e8c3c496"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-divide-core.json",
+      "sha256": "bce34d63580e2a797ef626a28a3bce7ef33cc53a1e4a79abb03e988d4593654d"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-divide-core.json",
+      "sha256": "0008363f21d3b3c4a3b1d4336f605b3e0816b90d314ff62f3566007eecdf1816"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-divide-core.json",
+      "sha256": "e63d957ddd25ba66b746a6aa1b43bb3f9ce28c49a00c019db533992cf7455311"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-divide-core.json",
+      "sha256": "51341400d549c30ef6de543fb6d501e2727b7ebc338ef34474f1be2b092ea295"
+    },
+    {
+      "path": "research/divide-core-reconstruction.md",
+      "sha256": "5662aeae427ee807e4b7890cd575bde69fa8fb682347005f1cfce18250e7239c"
+    },
+    {
+      "path": "tests/test_divide_core_reconstruction.py",
+      "sha256": "f443d206fcea226d24717278779f486073ce6534925158dc2f405cb389d41c80"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
