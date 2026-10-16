@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "function": "_Multiply",
+  "releases": [
+    "pikachu-jp-rev0",
+    "pikachu-jp-rev1",
+    "pikachu-jp-rev2",
+    "pikachu-jp-rev3",
+    "yellow-en-rev0",
+    "yellow-de-rev0",
+    "yellow-es-rev0",
+    "yellow-fr-rev0",
+    "yellow-it-rev0"
+  ],
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/inspect_gen1_multiply_core.py",
+    "tool_sha256": "a7a23dd6b2d3d80c7ef264826a4a24d08decc11141fcd2fc377c0ecdac2a6b80"
+  },
+  "outputs": [
+    {
+      "path": "src/multiply_core.asm",
+      "sha256": "02921fe7ee731912954474d5a66f42f015fd1b69a0cab38a6a25347517825a7e"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-multiply-core.json",
+      "sha256": "a89922c403aaee9ac0870d5e42066100a591dbf8c57cd9bc3f09a43b8263ac9b"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-multiply-core.json",
+      "sha256": "2a074061f01e86f7fdb2667ecfbc64dccb37f3773a160852c10f8a28755377b8"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-multiply-core.json",
+      "sha256": "894d87ed80e4663be958ad3a29b014cbb8523b16f33cc08916249ea2d987e38c"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-multiply-core.json",
+      "sha256": "c727bcbca187063750d132c85d0a382c8a47c618539e57b642476f831d731d77"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-multiply-core.json",
+      "sha256": "2d4ace574f6ca64952732138667e46add7d2b7b06a64839d7c047bc5eea1df5a"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-multiply-core.json",
+      "sha256": "017fe496b0ebd863132739b8e3bd55fe42253cbc4fa113fb8fbe9a00bb5eff31"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-multiply-core.json",
+      "sha256": "9a00b1b4a3aa85bc34762b9d17a7c4a39512495ae9b1d4e40295e2a3aa73728e"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-multiply-core.json",
+      "sha256": "a42273a8d206966349bf7f500cdb5988415c49a05c9e54879b27e0cae83496c7"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-multiply-core.json",
+      "sha256": "49bea88a2bc009a8f6c4482c4250963a1f11464494df0afa77f7cf03d60830c5"
+    },
+    {
+      "path": "research/multiply-core-reconstruction.md",
+      "sha256": "d5798149fb41187b217a9d5945b81cc270c831aed58cc1600b31ebf9410b29e8"
+    },
+    {
+      "path": "tests/test_multiply_core_reconstruction.py",
+      "sha256": "72fc201f9c473840c4c368c755a3d483576c44afc4e4174240385b35fd080b30"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
