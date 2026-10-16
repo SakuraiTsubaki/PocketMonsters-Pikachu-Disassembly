@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "pikachu-jp-rev0",
+    "sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436"
+  },
+  "function": {
+    "name": "Multiply",
+    "rom_offset": 14534,
+    "bank": 0,
+    "address": 14534,
+    "range_end_exclusive": 14547,
+    "length": 13,
+    "code_sha256": "3bffbc9f631d701c87e9cba5faca65b10f1e5b65f32070f7ddccbf739b9545fc",
+    "far_call": {
+      "target": {
+        "bank": 61,
+        "address": 22923,
+        "rom_offset": 1005963
+      },
+      "bankswitch": {
+        "bank": 0,
+        "address": 15997
+      }
+    },
+    "preserved_registers": [
+      "BC",
+      "HL"
+    ]
+  },
+  "semantics": {
+    "operation": "preserve HL/BC and far-call _Multiply",
+    "input": "three-byte hMultiplicand and hMultiplier",
+    "output": "four-byte hProduct",
+    "register_preservation": "BC and HL are restored"
+  },
+  "naming_basis": {
+    "repository": "pret/pokered",
+    "commit": "af519899719f0754965776faac0e836a3b906e6d",
+    "path": "home/math.asm",
+    "macro_path": "macros/farcall.asm",
+    "raw_rom_bytes_published": false
+  },
+  "raw_rom_bytes_included": false
+}
