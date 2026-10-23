@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "game": "Pokemon Yellow",
+  "asset": "AnimatedPartyIcons",
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/extract_gen1_party_icons.py",
+    "tool_sha256": "5fbb62555f95571d3567d67adad69b3798080a177319075d7575be2996a99960"
+  },
+  "outputs": [
+    {
+      "path": "graphics/pokemon/party-icons-atlas.png",
+      "sha256": "0de928b78122de91cc72045751fc696a1355100dcee0ad1c6f79c40c48449801"
+    },
+    {
+      "path": "graphics/pokemon/party-icons-source-atlas.png",
+      "sha256": "6ffe609e236f2a45b98490fa2857c21c2ac1bc9ba6233d7cef17fdfe189d96ab"
+    },
+    {
+      "path": "graphics/pokemon/party-icons-atlas.json",
+      "sha256": "7b49d88045ab5977c074c8b8a3c196fbc695bb2a6d83b87fc8413867fcb87947"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-party-icons.json",
+      "sha256": "2dff8f62fc2c8f3478cf386ad314550be5c36240017d81238073e38552dac76a"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-party-icons.json",
+      "sha256": "174a7bdee906366f5cf5661f35ae9c91a94deb1d2539ee948f7a6fe951aec98a"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-party-icons.json",
+      "sha256": "6cb34fb2c82a7fd4bacd4ca7b37bcab1bf805f9a528ff083717d54ed9eb35f9e"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-party-icons.json",
+      "sha256": "89703b86a2b0223ba07f7d8c7406e60b4bfd5bf93cd1f9020e5e92294566afd3"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-party-icons.json",
+      "sha256": "db144880b14e463a6d9efc9f1a6e419779bc50b9b6231c4ce43aefe046375cdc"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-party-icons.json",
+      "sha256": "939ed0caa290d34e3117630ffeadab86d43b92a206cc347b8d9350fece8f3475"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-party-icons.json",
+      "sha256": "90d866a23bc0c5b2f16b903e44199f36cfe6340ed54c20533681cf108f51c8e5"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-party-icons.json",
+      "sha256": "71db340bb446310453a79f521646a1c03c2d93f3ff649d212e157e2fa4aa2d23"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-party-icons.json",
+      "sha256": "66d3719dad8205f8a2e49a622028bc846886d0eece33ed670f79f280c0443634"
+    },
+    {
+      "path": "analysis/party-icons-summary.json",
+      "sha256": "99ca26e6f68d0826d57770847c2febbf76710235ae14bdea33be6a6df2b901f4"
+    },
+    {
+      "path": "research/party-icons.md",
+      "sha256": "3ef1a47a77c6e203bdec044aebaa43f7d991a93a403eaade13b928329a2514f7"
+    },
+    {
+      "path": "tests/test_party_icons.py",
+      "sha256": "1df60b1671d8bb6bd5e3eb10ac9d366a4efd97134e41eedf58991b81e2b1fa9a"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
