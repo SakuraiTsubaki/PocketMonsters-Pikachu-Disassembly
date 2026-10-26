@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "game": "Pokemon Yellow",
+  "asset_count": 26,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/catalog_public_graphics.py",
+    "tool_sha256": "b5bafdc488101945e9256675e9508a812fb77c57cbc1644465f2daf50e5acdbf"
+  },
+  "inputs": [
+    {
+      "path": "graphics/font/main-font-jp.png",
+      "sha256": "7264ef108040d7905db2d27476c6e3f47cd30f58b64767f10fc8290a355888cf"
+    },
+    {
+      "path": "graphics/font/main-font-en.png",
+      "sha256": "ba6731b4173bc0697f213fe5c2d6a795fccd0c729b9fdd26d92c9b207c2bfa46"
+    },
+    {
+      "path": "graphics/font/main-font-de.png",
+      "sha256": "cd47988ce551047aa51de6996d324adf9d68109a7f2aa54c0e222e5300420269"
+    },
+    {
+      "path": "graphics/font/main-font-fr.png",
+      "sha256": "cd47988ce551047aa51de6996d324adf9d68109a7f2aa54c0e222e5300420269"
+    },
+    {
+      "path": "graphics/font/main-font-it.png",
+      "sha256": "2f4da34f88a5d1690e76dd6a2c1421f6305d8bb3310633e1cd9a0a270028a9bd"
+    },
+    {
+      "path": "graphics/font/main-font-es.png",
+      "sha256": "2f4da34f88a5d1690e76dd6a2c1421f6305d8bb3310633e1cd9a0a270028a9bd"
+    },
+    {
+      "path": "graphics/header/nintendo-logo-en.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa"
+    },
+    {
+      "path": "graphics/header/nintendo-logo-de.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa"
+    },
+    {
+      "path": "graphics/header/nintendo-logo-fr.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa"
+    },
+    {
+      "path": "graphics/header/nintendo-logo-it.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa"
+    },
+    {
+      "path": "graphics/header/nintendo-logo-es.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa"
+    },
+    {
+      "path": "graphics/header/nintendo-logo.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa"
+    },
+    {
+      "path": "graphics/pokemon/party-icons-atlas.json",
+      "sha256": "7b49d88045ab5977c074c8b8a3c196fbc695bb2a6d83b87fc8413867fcb87947"
+    },
+    {
+      "path": "graphics/pokemon/party-icons-atlas.png",
+      "sha256": "0de928b78122de91cc72045751fc696a1355100dcee0ad1c6f79c40c48449801"
+    },
+    {
+      "path": "graphics/pokemon/party-icons-source-atlas.png",
+      "sha256": "6ffe609e236f2a45b98490fa2857c21c2ac1bc9ba6233d7cef17fdfe189d96ab"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-jp.png",
+      "sha256": "0b9df8643bf99707f8c3d1ad14cccab41f65eb248a4f36becc72816a6fcb1436"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-en.png",
+      "sha256": "81306ddb81d57254c606a9dfaef23485ba060d81062e5f07f745156c648bf967"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-en.png",
+      "sha256": "9f3def71ce41dc97ab31a3dd352aad59ae4dff4bdcc734e54c82e1e95bae1be8"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-de.png",
+      "sha256": "2288e79b721abfa4c2c112794b4b566fcc131e6ccf0175272891d036e4304306"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-de.png",
+      "sha256": "9daaf363d4b93dff7f5a3ab52d4cfddffff4e903c738c61976197827c851a03e"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-fr.png",
+      "sha256": "29634b009c0627a50ad151a9dc7cf0348613b8b6cf6dce876b2effc637772103"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-fr.png",
+      "sha256": "f209e348519f1b2ff676b67148dcab7af486725c9e2723f0adc495f03359843f"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-it.png",
+      "sha256": "c5ee3404b666e67a6d3b740abd69ffb8b99ebb3c4f4f1111791001bcbc8266aa"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-it.png",
+      "sha256": "f2b8a61d3d84a49ac42a0cd109e406a4540532424e905a071cdda43554470adb"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-es.png",
+      "sha256": "1b2e7674c683fbfb1bb6a915947916aedabae0baabcf80e6ad15624e9c035496"
+    },
+    {
+      "path": "graphics/title/pokemon-logo-es.png",
+      "sha256": "a39c5d9df0cb750e136692e30e28a3452c7f40e4f0bae55f8e940d94b7bc14b9"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "analysis/public-graphics-catalog.json",
+      "sha256": "4fe387dddc05338860b22c533f4099982e08b704382fd9ca8e4ff5336af344e6"
+    },
+    {
+      "path": "ASSETS.md",
+      "sha256": "57818fa0ab45b2a80a3493686fc7227e795166a6b9e83787680cc9b2f5d342d3"
+    },
+    {
+      "path": "research/public-graphics-catalog.md",
+      "sha256": "c8080d608ae308e049293e342a41f7d687a7f0a46890e88d9cb32d83854f4ff5"
+    },
+    {
+      "path": "tests/test_public_graphics_catalog.py",
+      "sha256": "fcdca1b5e698a45ee1a3eddbbcecddea207ea88c08c3a86a196e764430e66dbc"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}

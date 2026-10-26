@@ -1,0 +1,705 @@
+{
+  "schema_version": 1,
+  "game": "Pokemon Yellow",
+  "root": "graphics",
+  "asset_count": 26,
+  "png_count": 25,
+  "metadata_count": 1,
+  "official_language_priority": [
+    "Japanese",
+    "Korean",
+    "English",
+    "German",
+    "French",
+    "Italian",
+    "Spanish"
+  ],
+  "assets": [
+    {
+      "path": "graphics/font/main-font-jp.png",
+      "sha256": "7264ef108040d7905db2d27476c6e3f47cd30f58b64767f10fc8290a355888cf",
+      "size": 2218,
+      "format": "PNG",
+      "category": "font",
+      "language": "Japanese",
+      "origin_reference": true,
+      "provenance": [
+        {
+          "path": "manifests/japanese-main-font.json",
+          "sha256": "c2f3e89f049c603160ac4c8f89a55ba47e5999f3bdaf618601101d00c509d247"
+        }
+      ],
+      "png": {
+        "width": 512,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/font/main-font-en.png",
+      "sha256": "ba6731b4173bc0697f213fe5c2d6a795fccd0c729b9fdd26d92c9b207c2bfa46",
+      "size": 1690,
+      "format": "PNG",
+      "category": "font",
+      "language": "English",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/english-main-font.json",
+          "sha256": "d9afdaf0aaa7f969e86959599c83db265765801bd7c9c1f2755884f9cf649c25"
+        }
+      ],
+      "png": {
+        "width": 512,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/font/main-font-de.png",
+      "sha256": "cd47988ce551047aa51de6996d324adf9d68109a7f2aa54c0e222e5300420269",
+      "size": 1943,
+      "format": "PNG",
+      "category": "font",
+      "language": "German",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/european-main-fonts.json",
+          "sha256": "ed866c556f9f5fe0482d4161846481fec7f5b382bca4fefc71e017513b10ba27"
+        }
+      ],
+      "png": {
+        "width": 512,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/font/main-font-fr.png",
+      "sha256": "cd47988ce551047aa51de6996d324adf9d68109a7f2aa54c0e222e5300420269",
+      "size": 1943,
+      "format": "PNG",
+      "category": "font",
+      "language": "French",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/european-main-fonts.json",
+          "sha256": "ed866c556f9f5fe0482d4161846481fec7f5b382bca4fefc71e017513b10ba27"
+        }
+      ],
+      "png": {
+        "width": 512,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/font/main-font-it.png",
+      "sha256": "2f4da34f88a5d1690e76dd6a2c1421f6305d8bb3310633e1cd9a0a270028a9bd",
+      "size": 1992,
+      "format": "PNG",
+      "category": "font",
+      "language": "Italian",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/european-main-fonts.json",
+          "sha256": "ed866c556f9f5fe0482d4161846481fec7f5b382bca4fefc71e017513b10ba27"
+        }
+      ],
+      "png": {
+        "width": 512,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/font/main-font-es.png",
+      "sha256": "2f4da34f88a5d1690e76dd6a2c1421f6305d8bb3310633e1cd9a0a270028a9bd",
+      "size": 1992,
+      "format": "PNG",
+      "category": "font",
+      "language": "Spanish",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/european-main-fonts.json",
+          "sha256": "ed866c556f9f5fe0482d4161846481fec7f5b382bca4fefc71e017513b10ba27"
+        }
+      ],
+      "png": {
+        "width": 512,
+        "height": 256,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/header/nintendo-logo-en.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa",
+      "size": 662,
+      "format": "PNG",
+      "category": "header",
+      "language": "English",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/english-entry-header.json",
+          "sha256": "b59699c8e391f52f4f1797ee2a4499dd9bc84cb45761cee5a8e8f600ba4ee102"
+        }
+      ],
+      "png": {
+        "width": 384,
+        "height": 64,
+        "bit_depth": 8,
+        "color_type": "truecolor-alpha",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/header/nintendo-logo-de.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa",
+      "size": 662,
+      "format": "PNG",
+      "category": "header",
+      "language": "German",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/global-entry-header.json",
+          "sha256": "805f4a3afde4bb43ef157864b4c72cc0e63805bf7dea61a7abdf5046e536f69d"
+        }
+      ],
+      "png": {
+        "width": 384,
+        "height": 64,
+        "bit_depth": 8,
+        "color_type": "truecolor-alpha",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/header/nintendo-logo-fr.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa",
+      "size": 662,
+      "format": "PNG",
+      "category": "header",
+      "language": "French",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/global-entry-header.json",
+          "sha256": "805f4a3afde4bb43ef157864b4c72cc0e63805bf7dea61a7abdf5046e536f69d"
+        }
+      ],
+      "png": {
+        "width": 384,
+        "height": 64,
+        "bit_depth": 8,
+        "color_type": "truecolor-alpha",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/header/nintendo-logo-it.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa",
+      "size": 662,
+      "format": "PNG",
+      "category": "header",
+      "language": "Italian",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/global-entry-header.json",
+          "sha256": "805f4a3afde4bb43ef157864b4c72cc0e63805bf7dea61a7abdf5046e536f69d"
+        }
+      ],
+      "png": {
+        "width": 384,
+        "height": 64,
+        "bit_depth": 8,
+        "color_type": "truecolor-alpha",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/header/nintendo-logo-es.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa",
+      "size": 662,
+      "format": "PNG",
+      "category": "header",
+      "language": "Spanish",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/global-entry-header.json",
+          "sha256": "805f4a3afde4bb43ef157864b4c72cc0e63805bf7dea61a7abdf5046e536f69d"
+        }
+      ],
+      "png": {
+        "width": 384,
+        "height": 64,
+        "bit_depth": 8,
+        "color_type": "truecolor-alpha",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/header/nintendo-logo.png",
+      "sha256": "10e9a7189dad4bcced861a2ba409813b0cb6e78c5c87229bb5fd93343e397faa",
+      "size": 662,
+      "format": "PNG",
+      "category": "header",
+      "language": "Unspecified",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/header-logo.json",
+          "sha256": "1e82436917c151f3e1452b71d0d5d3d13326fe2f2d79b3efd973328b53aac1f2"
+        }
+      ],
+      "png": {
+        "width": 384,
+        "height": 64,
+        "bit_depth": 8,
+        "color_type": "truecolor-alpha",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/pokemon/party-icons-atlas.json",
+      "sha256": "7b49d88045ab5977c074c8b8a3c196fbc695bb2a6d83b87fc8413867fcb87947",
+      "size": 4913,
+      "format": "JSON",
+      "category": "pokemon",
+      "language": "Unspecified",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/party-icons.json",
+          "sha256": "8c98cabde55e33daf6c56c575b0f4419a27429fa28a76e0fc4a0e429461b63e7"
+        },
+        {
+          "path": "analysis/party-icons-summary.json",
+          "sha256": "99ca26e6f68d0826d57770847c2febbf76710235ae14bdea33be6a6df2b901f4"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev0-party-icons.json",
+          "sha256": "2dff8f62fc2c8f3478cf386ad314550be5c36240017d81238073e38552dac76a"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev1-party-icons.json",
+          "sha256": "174a7bdee906366f5cf5661f35ae9c91a94deb1d2539ee948f7a6fe951aec98a"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev2-party-icons.json",
+          "sha256": "6cb34fb2c82a7fd4bacd4ca7b37bcab1bf805f9a528ff083717d54ed9eb35f9e"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev3-party-icons.json",
+          "sha256": "89703b86a2b0223ba07f7d8c7406e60b4bfd5bf93cd1f9020e5e92294566afd3"
+        },
+        {
+          "path": "analysis/yellow-de-rev0-party-icons.json",
+          "sha256": "939ed0caa290d34e3117630ffeadab86d43b92a206cc347b8d9350fece8f3475"
+        },
+        {
+          "path": "analysis/yellow-en-rev0-party-icons.json",
+          "sha256": "db144880b14e463a6d9efc9f1a6e419779bc50b9b6231c4ce43aefe046375cdc"
+        },
+        {
+          "path": "analysis/yellow-es-rev0-party-icons.json",
+          "sha256": "90d866a23bc0c5b2f16b903e44199f36cfe6340ed54c20533681cf108f51c8e5"
+        },
+        {
+          "path": "analysis/yellow-fr-rev0-party-icons.json",
+          "sha256": "71db340bb446310453a79f521646a1c03c2d93f3ff649d212e157e2fa4aa2d23"
+        },
+        {
+          "path": "analysis/yellow-it-rev0-party-icons.json",
+          "sha256": "66d3719dad8205f8a2e49a622028bc846886d0eece33ed670f79f280c0443634"
+        }
+      ]
+    },
+    {
+      "path": "graphics/pokemon/party-icons-atlas.png",
+      "sha256": "0de928b78122de91cc72045751fc696a1355100dcee0ad1c6f79c40c48449801",
+      "size": 788,
+      "format": "PNG",
+      "category": "pokemon",
+      "language": "Unspecified",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/party-icons.json",
+          "sha256": "8c98cabde55e33daf6c56c575b0f4419a27429fa28a76e0fc4a0e429461b63e7"
+        },
+        {
+          "path": "analysis/party-icons-summary.json",
+          "sha256": "99ca26e6f68d0826d57770847c2febbf76710235ae14bdea33be6a6df2b901f4"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev0-party-icons.json",
+          "sha256": "2dff8f62fc2c8f3478cf386ad314550be5c36240017d81238073e38552dac76a"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev1-party-icons.json",
+          "sha256": "174a7bdee906366f5cf5661f35ae9c91a94deb1d2539ee948f7a6fe951aec98a"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev2-party-icons.json",
+          "sha256": "6cb34fb2c82a7fd4bacd4ca7b37bcab1bf805f9a528ff083717d54ed9eb35f9e"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev3-party-icons.json",
+          "sha256": "89703b86a2b0223ba07f7d8c7406e60b4bfd5bf93cd1f9020e5e92294566afd3"
+        },
+        {
+          "path": "analysis/yellow-de-rev0-party-icons.json",
+          "sha256": "939ed0caa290d34e3117630ffeadab86d43b92a206cc347b8d9350fece8f3475"
+        },
+        {
+          "path": "analysis/yellow-en-rev0-party-icons.json",
+          "sha256": "db144880b14e463a6d9efc9f1a6e419779bc50b9b6231c4ce43aefe046375cdc"
+        },
+        {
+          "path": "analysis/yellow-es-rev0-party-icons.json",
+          "sha256": "90d866a23bc0c5b2f16b903e44199f36cfe6340ed54c20533681cf108f51c8e5"
+        },
+        {
+          "path": "analysis/yellow-fr-rev0-party-icons.json",
+          "sha256": "71db340bb446310453a79f521646a1c03c2d93f3ff649d212e157e2fa4aa2d23"
+        },
+        {
+          "path": "analysis/yellow-it-rev0-party-icons.json",
+          "sha256": "66d3719dad8205f8a2e49a622028bc846886d0eece33ed670f79f280c0443634"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 128,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/pokemon/party-icons-source-atlas.png",
+      "sha256": "6ffe609e236f2a45b98490fa2857c21c2ac1bc9ba6233d7cef17fdfe189d96ab",
+      "size": 553,
+      "format": "PNG",
+      "category": "pokemon",
+      "language": "Unspecified",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/party-icons.json",
+          "sha256": "8c98cabde55e33daf6c56c575b0f4419a27429fa28a76e0fc4a0e429461b63e7"
+        },
+        {
+          "path": "analysis/party-icons-summary.json",
+          "sha256": "99ca26e6f68d0826d57770847c2febbf76710235ae14bdea33be6a6df2b901f4"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev0-party-icons.json",
+          "sha256": "2dff8f62fc2c8f3478cf386ad314550be5c36240017d81238073e38552dac76a"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev1-party-icons.json",
+          "sha256": "174a7bdee906366f5cf5661f35ae9c91a94deb1d2539ee948f7a6fe951aec98a"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev2-party-icons.json",
+          "sha256": "6cb34fb2c82a7fd4bacd4ca7b37bcab1bf805f9a528ff083717d54ed9eb35f9e"
+        },
+        {
+          "path": "analysis/pikachu-jp-rev3-party-icons.json",
+          "sha256": "89703b86a2b0223ba07f7d8c7406e60b4bfd5bf93cd1f9020e5e92294566afd3"
+        },
+        {
+          "path": "analysis/yellow-de-rev0-party-icons.json",
+          "sha256": "939ed0caa290d34e3117630ffeadab86d43b92a206cc347b8d9350fece8f3475"
+        },
+        {
+          "path": "analysis/yellow-en-rev0-party-icons.json",
+          "sha256": "db144880b14e463a6d9efc9f1a6e419779bc50b9b6231c4ce43aefe046375cdc"
+        },
+        {
+          "path": "analysis/yellow-es-rev0-party-icons.json",
+          "sha256": "90d866a23bc0c5b2f16b903e44199f36cfe6340ed54c20533681cf108f51c8e5"
+        },
+        {
+          "path": "analysis/yellow-fr-rev0-party-icons.json",
+          "sha256": "71db340bb446310453a79f521646a1c03c2d93f3ff649d212e157e2fa4aa2d23"
+        },
+        {
+          "path": "analysis/yellow-it-rev0-party-icons.json",
+          "sha256": "66d3719dad8205f8a2e49a622028bc846886d0eece33ed670f79f280c0443634"
+        }
+      ],
+      "png": {
+        "width": 128,
+        "height": 128,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-jp.png",
+      "sha256": "0b9df8643bf99707f8c3d1ad14cccab41f65eb248a4f36becc72816a6fcb1436",
+      "size": 1206,
+      "format": "PNG",
+      "category": "title",
+      "language": "Japanese",
+      "origin_reference": true,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 96,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-en.png",
+      "sha256": "81306ddb81d57254c606a9dfaef23485ba060d81062e5f07f745156c648bf967",
+      "size": 1399,
+      "format": "PNG",
+      "category": "title",
+      "language": "English",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 112,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-en.png",
+      "sha256": "9f3def71ce41dc97ab31a3dd352aad59ae4dff4bdcc734e54c82e1e95bae1be8",
+      "size": 1712,
+      "format": "PNG",
+      "category": "title",
+      "language": "English",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 128,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-de.png",
+      "sha256": "2288e79b721abfa4c2c112794b4b566fcc131e6ccf0175272891d036e4304306",
+      "size": 1389,
+      "format": "PNG",
+      "category": "title",
+      "language": "German",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 112,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-de.png",
+      "sha256": "9daaf363d4b93dff7f5a3ab52d4cfddffff4e903c738c61976197827c851a03e",
+      "size": 1714,
+      "format": "PNG",
+      "category": "title",
+      "language": "German",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 128,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-fr.png",
+      "sha256": "29634b009c0627a50ad151a9dc7cf0348613b8b6cf6dce876b2effc637772103",
+      "size": 1404,
+      "format": "PNG",
+      "category": "title",
+      "language": "French",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 112,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-fr.png",
+      "sha256": "f209e348519f1b2ff676b67148dcab7af486725c9e2723f0adc495f03359843f",
+      "size": 1728,
+      "format": "PNG",
+      "category": "title",
+      "language": "French",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 128,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-it.png",
+      "sha256": "c5ee3404b666e67a6d3b740abd69ffb8b99ebb3c4f4f1111791001bcbc8266aa",
+      "size": 1419,
+      "format": "PNG",
+      "category": "title",
+      "language": "Italian",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 112,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-it.png",
+      "sha256": "f2b8a61d3d84a49ac42a0cd109e406a4540532424e905a071cdda43554470adb",
+      "size": 1724,
+      "format": "PNG",
+      "category": "title",
+      "language": "Italian",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 128,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-composed-es.png",
+      "sha256": "1b2e7674c683fbfb1bb6a915947916aedabae0baabcf80e6ad15624e9c035496",
+      "size": 1392,
+      "format": "PNG",
+      "category": "title",
+      "language": "Spanish",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 112,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    },
+    {
+      "path": "graphics/title/pokemon-logo-es.png",
+      "sha256": "a39c5d9df0cb750e136692e30e28a3452c7f40e4f0bae55f8e940d94b7bc14b9",
+      "size": 1725,
+      "format": "PNG",
+      "category": "title",
+      "language": "Spanish",
+      "origin_reference": false,
+      "provenance": [
+        {
+          "path": "manifests/title-logo-tiles.json",
+          "sha256": "1619251545624563d50f23c524837115ef524c42dde8245d52f3218e6e584689"
+        }
+      ],
+      "png": {
+        "width": 256,
+        "height": 128,
+        "bit_depth": 8,
+        "color_type": "grayscale",
+        "interlaced": false
+      }
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
