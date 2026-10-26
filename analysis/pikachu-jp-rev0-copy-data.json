@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "pikachu-jp-rev0",
+    "sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436"
+  },
+  "function": {
+    "name": "CopyData",
+    "rom_offset": 1023584,
+    "bank": 62,
+    "address": 24160,
+    "range_end_exclusive": 1023593,
+    "length": 9,
+    "code_sha256": "4c81b1d98cede80c642119edcb1c3f45c1f05e97c1d9aafcf250b065f33d495c"
+  },
+  "semantics": {
+    "source": "HL",
+    "destination": "DE",
+    "length": "BC",
+    "operation": "copy one byte, increment HL and DE, decrement BC, repeat until BC is zero",
+    "zero_length_precondition": "BC must be nonzero; zero would wrap and copy 65536 bytes",
+    "return_registers": "HL and DE point one byte past their ranges; BC is zero"
+  },
+  "naming_basis": {
+    "repository": "pret/pokered",
+    "commit": "af519899719f0754965776faac0e836a3b906e6d",
+    "path": "home/copy.asm",
+    "raw_rom_bytes_published": false
+  },
+  "raw_rom_bytes_included": false
+}

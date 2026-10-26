@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "function": "CopyData",
+  "releases": [
+    "pikachu-jp-rev0",
+    "pikachu-jp-rev1",
+    "pikachu-jp-rev2",
+    "pikachu-jp-rev3",
+    "yellow-en-rev0",
+    "yellow-de-rev0",
+    "yellow-es-rev0",
+    "yellow-fr-rev0",
+    "yellow-it-rev0"
+  ],
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/locate_gen1_copy_data.py",
+    "tool_sha256": "02cd7f4be29e33890f7f9143e0f8a71d89b7025635102d95aba9f3ed285149e1"
+  },
+  "outputs": [
+    {
+      "path": "src/copy_data.asm",
+      "sha256": "91566795a6ccd6f2e5abcf7bf5dbd5ad2eb65a5714f36f418286353d15628a12"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-copy-data.json",
+      "sha256": "8e37d084090c277968a804bc5d16b4bd7fab41ed2dfb956b6b10dd119532b0cb"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-copy-data.json",
+      "sha256": "199c3ab71a74d743bd6bb2ae31ec0795a9fcca825c8cdf53b65b01d705daa4dd"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-copy-data.json",
+      "sha256": "f345467c96bbe119f3e69fe77e6190bc283b215cd6b8068c8646f1a61db81431"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-copy-data.json",
+      "sha256": "f2503f6307031d3d54c35431c79f3c83e0159d5914f29c49179e6a8634874eea"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-copy-data.json",
+      "sha256": "7900b4c2c7ea03d84d9ac170664b62206c8f518c419ace014bee338fc6728e7f"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-copy-data.json",
+      "sha256": "24eb733dfc1bd6c73b7b1ee476736c6d936fcb3be2a73accc14aa084102d8791"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-copy-data.json",
+      "sha256": "a233e539274f0dbc81566b78c29bd7a0b67aedccc5555b089aac2eb5d66aadd8"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-copy-data.json",
+      "sha256": "8ada333e4a4f8ca5e694552d880ad6f85b2778aa913310918ff022ca87de6b89"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-copy-data.json",
+      "sha256": "58fc68f9a76171e150825f4543f6bf59532f81bed38bd4d4e13fbc63c274c63e"
+    },
+    {
+      "path": "research/copy-data-reconstruction.md",
+      "sha256": "6c16bb8131113993fbfac29692b5dba930e481d4978bc0ae33c97e4c71074312"
+    },
+    {
+      "path": "tests/test_copy_data_reconstruction.py",
+      "sha256": "b71f0ae123a521ffbd905a5d10ae65b17313a4ea7ef2798f9abbf7c2defa1a0e"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
