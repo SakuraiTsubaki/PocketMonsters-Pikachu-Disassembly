@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-fr-rev0",
+    "sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "profile": "yellow",
+  "source": "src/fill_memory.asm",
+  "source_sha256": "c4000737524f452a30cea12820ae74ff1f95c35e2e0e0fb5ed026bdfd129810d",
+  "function": {
+    "name": "FillMemory",
+    "rom_offset": 5739,
+    "bank": 0,
+    "address": 5739,
+    "range_end_exclusive": 5758,
+    "length": 19,
+    "code_sha256": "70397ccc9d9467dbd4b318c78cc41bd2a08454bb651898730da54ad450edd1ed",
+    "raw_bytes_published": false
+  },
+  "semantics": {
+    "destination": "HL",
+    "length": "BC",
+    "fill_value": "A",
+    "operation": "fill memory while incrementing HL",
+    "zero_length_precondition": "BC must be nonzero; zero follows the 8-bit path and fills 256 bytes",
+    "return_registers": "HL points one byte past the range; BC is zero",
+    "preserves": []
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "31b7c2ea2ba6c8c64ed083723fbaa8cbb74669cb",
+    "path": "home/copy2.asm"
+  },
+  "raw_rom_bytes_included": false
+}

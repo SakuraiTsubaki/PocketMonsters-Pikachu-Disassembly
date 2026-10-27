@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "game": "Pikachu",
+  "function": "FillMemory",
+  "profile": "yellow",
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/catalog_gen1_fill_memory.py",
+    "tool_sha256": "be4e6c8d4c53efe135240cb7efa749ba10f0158e68750e4d209c438f3b00bd7d"
+  },
+  "outputs": [
+    {
+      "path": "research/releases.csv",
+      "sha256": "9d5ef0a026a810d91ea86ede9f5ae2c580989108b380ed22d7dae84b5eea648d"
+    },
+    {
+      "path": "src/fill_memory.asm",
+      "sha256": "c4000737524f452a30cea12820ae74ff1f95c35e2e0e0fb5ed026bdfd129810d"
+    },
+    {
+      "path": "analysis/fill-memory-summary.json",
+      "sha256": "91c5cfdfacd1304b605202638930372343ef08c60081db138c4b53ea1c3ccbb1"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-fill-memory.json",
+      "sha256": "fdc40cb6fc024543b74bd9d7a0200243787a3f45f7729097087d129355484841"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-fill-memory.json",
+      "sha256": "f862cbe7e2e9a7b765eb49053126e3f5527edaf66c05384d0009e4390e73aae0"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-fill-memory.json",
+      "sha256": "6eed42480d67c1e4651c6ea64a6fa9c67d8b61b0cc281cb7fcf592ad3febcede"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-fill-memory.json",
+      "sha256": "ca1568461518f3d997425e5cbb226ecd890e8fffd499ecbaa8adb4ca5317f4e0"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-fill-memory.json",
+      "sha256": "eb97948b3f0bf09a36b349165f651cbb617dd4efcbd04fbceb162e3949abad74"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-fill-memory.json",
+      "sha256": "34588f710524ef3a4a33e6d57801424b85eab07ba0571236008d1c6de7cda7dd"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-fill-memory.json",
+      "sha256": "ac7c5fab32c381628a08316e810436d0d0e952b08e59dce70f27b382a94e66a9"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-fill-memory.json",
+      "sha256": "c1eaafa631fb31a8382689837753a8b3c436c6834f36d1b10fdd9bcc961661c3"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-fill-memory.json",
+      "sha256": "8562ceb15aecf045573ef00a03eb5d5fc3921b651e9a5a6d9a967b8077fd4182"
+    },
+    {
+      "path": "research/fill-memory-reconstruction.md",
+      "sha256": "118cda1a3fbaef574ace158f043bca0adf18448b2861002891381cc3de90a31b"
+    },
+    {
+      "path": "tests/test_fill_memory_reconstruction.py",
+      "sha256": "4bab2de42ea447c4a8be63e880fcb547a6bd18bb3f306e01a7fa96c8bcb437ac"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
