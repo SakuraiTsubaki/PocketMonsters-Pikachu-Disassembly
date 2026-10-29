@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-fr-rev0",
+    "sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "axis": "Disassembly",
+  "profile": "yellow",
+  "source": "src/clear_screen.asm",
+  "source_sha256": "f45bcb9b9dfb6492abc5013f7efd3d8ff1315954188519233337f1883a6cf65b",
+  "function": {
+    "name": "ClearScreen",
+    "rom_offset": 5850,
+    "bank": 0,
+    "address": 5850,
+    "range_end_exclusive": 5869,
+    "length": 19,
+    "code_sha256": "8a67da7469dec8a8e314fe9c31c6e0cc80724c969cc55f07a9f2854ccae78d69",
+    "raw_bytes_published": false,
+    "tail_jump": {
+      "name": "Delay3",
+      "address": 15838
+    }
+  },
+  "verified_behavior": {
+    "tilemap_address": 50080,
+    "blank_tile_value": 127,
+    "filled_byte_count": 360,
+    "counter_encoding": "BC=$0168 then INC B; C wraps for the second pass",
+    "waits_for_bg_update": "tail-jump to Delay3"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "31b7c2ea2ba6c8c64ed083723fbaa8cbb74669cb",
+    "path": "home/copy2.asm"
+  },
+  "raw_rom_bytes_included": false
+}

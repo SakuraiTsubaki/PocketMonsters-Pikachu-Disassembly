@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "game": "Pikachu",
+  "axis": "Disassembly",
+  "function": "ClearScreen",
+  "profile": "yellow",
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/catalog_gen1_clear_screen.py",
+    "tool_sha256": "8122f4bdbea9d93e12041df5d81788d307dfe26b68783d187c047eda11e2ea7b"
+  },
+  "outputs": [
+    {
+      "path": "research/releases.csv",
+      "sha256": "9d5ef0a026a810d91ea86ede9f5ae2c580989108b380ed22d7dae84b5eea648d"
+    },
+    {
+      "path": "src/clear_screen.asm",
+      "sha256": "f45bcb9b9dfb6492abc5013f7efd3d8ff1315954188519233337f1883a6cf65b"
+    },
+    {
+      "path": "analysis/clear-screen-summary.json",
+      "sha256": "893dc32b0dcb21ac4f142250b26dd7516a7458afee722a6224c88b557d7649f2"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-clear-screen.json",
+      "sha256": "91f9205c891a399f97172b99bc8ad1a833abf75cd3889bee127ce7bf5718aa06"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-clear-screen.json",
+      "sha256": "1b8221883896faa00d547e3db2a9563c2dce0452a14d60a3e16d6e408cb793c8"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-clear-screen.json",
+      "sha256": "3f27d68cbe7b1b8646776f2a43a7bc1f1b38f1baffb52753c2d885cdee812f25"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-clear-screen.json",
+      "sha256": "8a0adf391ca3418932ed67f3f442581a8ab54b213a3f3ca81d95d381eb6375cc"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-clear-screen.json",
+      "sha256": "271c352a1a8d67ca4432a187bd550da6c25a9386ed3ff5910139430fefc82809"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-clear-screen.json",
+      "sha256": "b89fdd9483621b7b67b21d0d3d692cec781e5110b245c0af0cbc58ee001a3b88"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-clear-screen.json",
+      "sha256": "2627a7dec5a784f3437dc2d5fb8d99e33702a5580babfb9d8a73cc3950340545"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-clear-screen.json",
+      "sha256": "0e198416240afe6c8a090c8103ef0b207ce8069ecf3938974c20f252c175f780"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-clear-screen.json",
+      "sha256": "5712e2d7c589fb6a7d48172962fd4154c161d30a8404573ddb4f30fe09ac2c05"
+    },
+    {
+      "path": "research/clear-screen-reconstruction.md",
+      "sha256": "4eb5725c93d3a4b467c6f08e3d9ff730fcdd57369bcdaaf496a3704413f6c4e7"
+    },
+    {
+      "path": "tests/test_clear_screen_reconstruction.py",
+      "sha256": "3d748f4f4df006402c19b739b9a8974db8b964caa5f57773686ec026ac8497a6"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
