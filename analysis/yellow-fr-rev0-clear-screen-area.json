@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "axis": "Disassembly",
+  "profile": "yellow",
+  "target": {
+    "release": "yellow-fr-rev0",
+    "sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "source": "src/clear_screen_area.asm",
+  "source_sha256": "438405dd664d6e9311dd0692ee0d5a7bf7e3d19cd4ed4442388d68a32eee9d6f",
+  "function": {
+    "name": "ClearScreenArea",
+    "rom_offset": 5775,
+    "bank": 0,
+    "address": 5775,
+    "range_end_exclusive": 5793,
+    "length": 18,
+    "code_sha256": "46400b6a016d0cbf21a7005fe91b9e063f664adf0bca1ba38446c1624a3fa3ab",
+    "raw_bytes_published": false
+  },
+  "verified_behavior": {
+    "blank_tile_value": 127,
+    "row_stride": 20,
+    "width_input_register": "C",
+    "height_input_register": "B",
+    "tilemap_pointer_register": "HL",
+    "preserves_row_start_and_dimensions": true,
+    "inner_loop_relative_delta": -4,
+    "outer_loop_relative_delta": -12
+  },
+  "cross_reference": {
+    "clear_screen_map": "analysis/yellow-fr-rev0-clear-screen.json",
+    "clear_screen_map_sha256": "0e198416240afe6c8a090c8103ef0b207ce8069ecf3938974c20f252c175f780"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "31b7c2ea2ba6c8c64ed083723fbaa8cbb74669cb",
+    "path": "home/copy2.asm"
+  },
+  "raw_rom_bytes_included": false
+}

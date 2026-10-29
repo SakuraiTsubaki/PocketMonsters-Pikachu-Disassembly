@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "axis": "Disassembly",
+  "profile": "yellow",
+  "target": {
+    "release": "pikachu-jp-rev2",
+    "sha256": "2c67561f6b2de4ca3a1150f04dc736aead4bf7b5a98ce38196cef899a91be2fd",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "source": "src/clear_screen_area.asm",
+  "source_sha256": "438405dd664d6e9311dd0692ee0d5a7bf7e3d19cd4ed4442388d68a32eee9d6f",
+  "function": {
+    "name": "ClearScreenArea",
+    "rom_offset": 5895,
+    "bank": 0,
+    "address": 5895,
+    "range_end_exclusive": 5913,
+    "length": 18,
+    "code_sha256": "46400b6a016d0cbf21a7005fe91b9e063f664adf0bca1ba38446c1624a3fa3ab",
+    "raw_bytes_published": false
+  },
+  "verified_behavior": {
+    "blank_tile_value": 127,
+    "row_stride": 20,
+    "width_input_register": "C",
+    "height_input_register": "B",
+    "tilemap_pointer_register": "HL",
+    "preserves_row_start_and_dimensions": true,
+    "inner_loop_relative_delta": -4,
+    "outer_loop_relative_delta": -12
+  },
+  "cross_reference": {
+    "clear_screen_map": "analysis/pikachu-jp-rev2-clear-screen.json",
+    "clear_screen_map_sha256": "3f27d68cbe7b1b8646776f2a43a7bc1f1b38f1baffb52753c2d885cdee812f25"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "31b7c2ea2ba6c8c64ed083723fbaa8cbb74669cb",
+    "path": "home/copy2.asm"
+  },
+  "raw_rom_bytes_included": false
+}
