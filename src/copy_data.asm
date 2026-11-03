@@ -1,12 +1,22 @@
-; Generation I byte-copy routine across all catalogued Yellow releases.
-; All variants use bank $3e; JP rev0-rev3 $5e60, international addresses vary.
+SECTION "CopyData Reconstruction", ROM0
 
 CopyData::
+    ld a, b
+    and a
+    jr z, .copybytes
+    ld a, c
+    and a
+    jr z, .loop
+    inc b
+.loop
+    call .copybytes
+    dec b
+    jr nz, .loop
+    ret
+.copybytes
     ld a, [hli]
     ld [de], a
     inc de
-    dec bc
-    ld a, c
-    or b
-    jr nz, CopyData
+    dec c
+    jr nz, .copybytes
     ret

@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "pikachu-jp-rev0",
+    "sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436",
+    "status": "candidate"
+  },
+  "origin_reference": true,
+  "function": {
+    "name": "FarCopyData",
+    "rom_offset": 5604,
+    "bank": 0,
+    "address": 5604,
+    "range_end_exclusive": 5624,
+    "length": 20,
+    "code_sha256": "72a734a4b59a17a0a41851f1ce2e88c8cea4f495ee5149b345747389787cd616",
+    "wFarCopyDataSavedROMBank": "0xD0E8",
+    "hLoadedROMBank": "0xFFB8",
+    "bankswitch_common_address": "0x3E77",
+    "copy_data_address": "0x16D9"
+  },
+  "semantics": {
+    "source_bank": "A",
+    "source_address": "HL",
+    "destination_address": "DE",
+    "length": "BC",
+    "operation": "save the current ROM bank, switch to A, call CopyData, then restore the prior bank",
+    "preserves_previous_rom_bank": true
+  },
+  "cross_reference": {
+    "copy_data": "analysis/pikachu-jp-rev0-copy-data.json",
+    "sha256": "b3fc7ac17797b9f37c689e67f147099fb2431955b9582c9f36cd4ccd862ac400"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "31b7c2ea2ba6c8c64ed083723fbaa8cbb74669cb",
+    "path": "home/copy.asm"
+  },
+  "raw_rom_bytes_included": false
+}

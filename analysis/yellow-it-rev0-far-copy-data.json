@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-it-rev0",
+    "sha256": "e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "function": {
+    "name": "FarCopyData",
+    "rom_offset": 157,
+    "bank": 0,
+    "address": 157,
+    "range_end_exclusive": 177,
+    "length": 20,
+    "code_sha256": "d7546f68155380795cde11fc55a728fd86aad3824af7875d3fb119a21610b1db",
+    "wFarCopyDataSavedROMBank": "0xD127",
+    "hLoadedROMBank": "0xFFB8",
+    "bankswitch_common_address": "0x3E7C",
+    "copy_data_address": "0x00B1"
+  },
+  "semantics": {
+    "source_bank": "A",
+    "source_address": "HL",
+    "destination_address": "DE",
+    "length": "BC",
+    "operation": "save the current ROM bank, switch to A, call CopyData, then restore the prior bank",
+    "preserves_previous_rom_bank": true
+  },
+  "cross_reference": {
+    "copy_data": "analysis/yellow-it-rev0-copy-data.json",
+    "sha256": "9613a8561587cffc842824fe8ba2e08899c746bec1e2b26294d8071eb94dddba"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "31b7c2ea2ba6c8c64ed083723fbaa8cbb74669cb",
+    "path": "home/copy.asm"
+  },
+  "raw_rom_bytes_included": false
+}

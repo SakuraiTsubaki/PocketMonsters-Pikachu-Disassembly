@@ -6,17 +6,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).parents[1]
 ADDRESSES = {
-    "pikachu-jp-rev0": (0x3E, 0x5E60),
-    "pikachu-jp-rev1": (0x3E, 0x5E60),
-    "pikachu-jp-rev2": (0x3E, 0x5E60),
-    "pikachu-jp-rev3": (0x3E, 0x5E60),
-    "yellow-de-rev0": (0x3E, 0x5FA6),
-    "yellow-en-rev0": (0x3E, 0x5FAA),
-    "yellow-es-rev0": (0x3E, 0x5FA2),
-    "yellow-fr-rev0": (0x3E, 0x5FA7),
-    "yellow-it-rev0": (0x3E, 0x5F64),
+    "pikachu-jp-rev0": (0, 0x16D9),
+    "pikachu-jp-rev1": (0, 0x16DF),
+    "pikachu-jp-rev2": (0, 0x16DF),
+    "pikachu-jp-rev3": (0, 0x16DF),
+    "yellow-de-rev0": (0, 0x00B1),
+    "yellow-en-rev0": (0, 0x00B1),
+    "yellow-es-rev0": (0, 0x00B1),
+    "yellow-fr-rev0": (0, 0x00B1),
+    "yellow-it-rev0": (0, 0x00B1),
 }
-CODE_SHA256 = "4c81b1d98cede80c642119edcb1c3f45c1f05e97c1d9aafcf250b065f33d495c"
 
 
 class CopyDataReconstructionTests(unittest.TestCase):
@@ -29,7 +28,9 @@ class CopyDataReconstructionTests(unittest.TestCase):
             function = report["function"]
             self.assertEqual(report["target"]["sha256"], releases[release]["sha256"])
             self.assertEqual((function["bank"], function["address"]), location)
-            self.assertEqual((function["length"], function["code_sha256"]), (9, CODE_SHA256))
+            self.assertEqual(function["length"], 23)
+            self.assertEqual(function["copybytes_address"], function["address"] + 16)
+            self.assertEqual(report["naming_basis"]["repository"], "pret/pokeyellow")
             self.assertFalse(report["raw_rom_bytes_included"])
 
     def test_manifest(self):

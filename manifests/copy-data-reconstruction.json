@@ -1,70 +1,71 @@
 {
   "schema_version": 1,
+  "game": "Pikachu",
   "function": "CopyData",
-  "releases": [
-    "pikachu-jp-rev0",
-    "pikachu-jp-rev1",
-    "pikachu-jp-rev2",
-    "pikachu-jp-rev3",
-    "yellow-en-rev0",
-    "yellow-de-rev0",
-    "yellow-es-rev0",
-    "yellow-fr-rev0",
-    "yellow-it-rev0"
-  ],
+  "profile": "yellow",
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
   "generator": {
     "repository": "SakuraiTsubaki/Disassembly",
-    "tool": "tools/locate_gen1_copy_data.py",
-    "tool_sha256": "02cd7f4be29e33890f7f9143e0f8a71d89b7025635102d95aba9f3ed285149e1"
+    "tool": "tools/catalog_gen1_yellow_copy_data.py",
+    "tool_sha256": "abaf93b258b49d78171d1a8e5134ac8674870b66dd44f093a43757b31375ffb8"
   },
   "outputs": [
     {
+      "path": "research/releases.csv",
+      "sha256": "9d5ef0a026a810d91ea86ede9f5ae2c580989108b380ed22d7dae84b5eea648d"
+    },
+    {
       "path": "src/copy_data.asm",
-      "sha256": "91566795a6ccd6f2e5abcf7bf5dbd5ad2eb65a5714f36f418286353d15628a12"
+      "sha256": "fc49c0514ecb6ed1b5b98dce8684b9acfbd64c51007d6418640f97d7d447ef4a"
+    },
+    {
+      "path": "analysis/copy-data-summary.json",
+      "sha256": "d1fa5d5af8f3d377330716430cb2640acbb38f7157ad2f6fe4762ecef95ff560"
     },
     {
       "path": "analysis/pikachu-jp-rev0-copy-data.json",
-      "sha256": "8e37d084090c277968a804bc5d16b4bd7fab41ed2dfb956b6b10dd119532b0cb"
+      "sha256": "b3fc7ac17797b9f37c689e67f147099fb2431955b9582c9f36cd4ccd862ac400"
     },
     {
       "path": "analysis/pikachu-jp-rev1-copy-data.json",
-      "sha256": "199c3ab71a74d743bd6bb2ae31ec0795a9fcca825c8cdf53b65b01d705daa4dd"
+      "sha256": "71f24aa911eb87457ed1fad3c2ab7cc7ece21f97a3856e784deb8a796e555133"
     },
     {
       "path": "analysis/pikachu-jp-rev2-copy-data.json",
-      "sha256": "f345467c96bbe119f3e69fe77e6190bc283b215cd6b8068c8646f1a61db81431"
+      "sha256": "b310be55aec174041a09ca1862589f908e25f01e0ff5b37706d9a840b7cb225b"
     },
     {
       "path": "analysis/pikachu-jp-rev3-copy-data.json",
-      "sha256": "f2503f6307031d3d54c35431c79f3c83e0159d5914f29c49179e6a8634874eea"
+      "sha256": "927c5532f139009ee9ba779e805faaea528566bd324b963e91b06c3d40403bc0"
     },
     {
       "path": "analysis/yellow-en-rev0-copy-data.json",
-      "sha256": "7900b4c2c7ea03d84d9ac170664b62206c8f518c419ace014bee338fc6728e7f"
+      "sha256": "d6b8a2c4df509f64a4a4373693db553608a80fc89ce7f5d980fef7fc607000cd"
     },
     {
       "path": "analysis/yellow-de-rev0-copy-data.json",
-      "sha256": "24eb733dfc1bd6c73b7b1ee476736c6d936fcb3be2a73accc14aa084102d8791"
+      "sha256": "d64a2fa10a18177156825a054b6418a3311534fee9e699f10486aa3d405d8593"
     },
     {
       "path": "analysis/yellow-es-rev0-copy-data.json",
-      "sha256": "a233e539274f0dbc81566b78c29bd7a0b67aedccc5555b089aac2eb5d66aadd8"
+      "sha256": "4ca5825e8aa200f9f0af0a1d774aaa34dc8f3d64e282f65068ed1c96da45c6cf"
     },
     {
       "path": "analysis/yellow-fr-rev0-copy-data.json",
-      "sha256": "8ada333e4a4f8ca5e694552d880ad6f85b2778aa913310918ff022ca87de6b89"
+      "sha256": "cecfae750a32896453127eafd36e8e81aca75e84c363a61cfd37c995b94b031c"
     },
     {
       "path": "analysis/yellow-it-rev0-copy-data.json",
-      "sha256": "58fc68f9a76171e150825f4543f6bf59532f81bed38bd4d4e13fbc63c274c63e"
+      "sha256": "9613a8561587cffc842824fe8ba2e08899c746bec1e2b26294d8071eb94dddba"
     },
     {
       "path": "research/copy-data-reconstruction.md",
-      "sha256": "6c16bb8131113993fbfac29692b5dba930e481d4978bc0ae33c97e4c71074312"
+      "sha256": "4e0b1db96e1b9e4a930b6122b2980a7d5fb0f08382c902b63a2993431c226113"
     },
     {
       "path": "tests/test_copy_data_reconstruction.py",
-      "sha256": "b71f0ae123a521ffbd905a5d10ae65b17313a4ea7ef2798f9abbf7c2defa1a0e"
+      "sha256": "68bd0bf5a7ad7d9c261f551c8bde8a95f9d7e7a1385bf4a938a34a622c799be0"
     }
   ],
   "raw_rom_bytes_included": false

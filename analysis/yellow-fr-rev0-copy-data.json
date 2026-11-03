@@ -2,30 +2,32 @@
   "schema_version": 1,
   "target": {
     "release": "yellow-fr-rev0",
-    "sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa"
+    "sha256": "77b31f874fd877fbf48757f315ffc3144e06fc7222aba6ac4eda2045ebf5d3fa",
+    "status": "candidate"
   },
+  "origin_reference": false,
   "function": {
     "name": "CopyData",
-    "rom_offset": 1023911,
-    "bank": 62,
-    "address": 24487,
-    "range_end_exclusive": 1023920,
-    "length": 9,
-    "code_sha256": "4c81b1d98cede80c642119edcb1c3f45c1f05e97c1d9aafcf250b065f33d495c"
+    "rom_offset": 177,
+    "bank": 0,
+    "address": 177,
+    "range_end_exclusive": 200,
+    "length": 23,
+    "code_sha256": "43fe6924f7ce868a4e6e4fc325453a35b34f170760fe44343c18b15c02b8830b",
+    "copybytes_address": 193
   },
   "semantics": {
     "source": "HL",
     "destination": "DE",
     "length": "BC",
-    "operation": "copy one byte, increment HL and DE, decrement BC, repeat until BC is zero",
-    "zero_length_precondition": "BC must be nonzero; zero would wrap and copy 65536 bytes",
+    "operation": "copy BC bytes in C-sized chunks while B counts high-byte iterations",
+    "zero_length_precondition": "BC must be nonzero; zero would wrap the low-byte loop",
     "return_registers": "HL and DE point one byte past their ranges; BC is zero"
   },
   "naming_basis": {
-    "repository": "pret/pokered",
-    "commit": "af519899719f0754965776faac0e836a3b906e6d",
-    "path": "home/copy.asm",
-    "raw_rom_bytes_published": false
+    "repository": "pret/pokeyellow",
+    "commit": "31b7c2ea2ba6c8c64ed083723fbaa8cbb74669cb",
+    "path": "home/copy.asm"
   },
   "raw_rom_bytes_included": false
 }

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "game": "Pikachu",
+  "function": "FarCopyData",
+  "profile": "yellow",
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/catalog_gen1_far_copy_data.py",
+    "tool_sha256": "297f4de29bbea6e692490bee7bae88686f1033969c19d403ac86d425a750bb31"
+  },
+  "outputs": [
+    {
+      "path": "research/releases.csv",
+      "sha256": "9d5ef0a026a810d91ea86ede9f5ae2c580989108b380ed22d7dae84b5eea648d"
+    },
+    {
+      "path": "src/far_copy_data.asm",
+      "sha256": "b2a5fcde94a9bd6df24d2b9bc197036e17888cf4d8c61ce949b707ceb8ed9ed3"
+    },
+    {
+      "path": "analysis/far-copy-data-summary.json",
+      "sha256": "c5c7f128201811e1d2c001f862ff49b1268a1c517eb0517c6289938f938e66d2"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-far-copy-data.json",
+      "sha256": "3a156bdd64091694fd940005d190879ae4054c2d047e874131c84a9e7dea4b29"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-far-copy-data.json",
+      "sha256": "c02076571274029c2383b73d6473d8d0803347bdf27c5a05a158ceda5981dfbd"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-far-copy-data.json",
+      "sha256": "65cf936ba152639a92ea3f1bcf93e1b8c7ed3b3cc628cee43fa589fc80bef83f"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-far-copy-data.json",
+      "sha256": "1791b755728537926db6823e961dce290fe57ef92a61df2667612f9e03a9a334"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-far-copy-data.json",
+      "sha256": "12700de05f4d29d75b23e0bad26e54e077323a659f080c3fdb39a56d2f09fefb"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-far-copy-data.json",
+      "sha256": "ef6d77b47d5e0cbe68bae65faa692e6e9d1d2213ce499de30280d4ded2028372"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-far-copy-data.json",
+      "sha256": "e446cc6e5f000c53c541945b29f12bbbe990d3d55d90db4e88184c5eb634776e"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-far-copy-data.json",
+      "sha256": "2cb467382032dfc4b824807a268998c73c69d09ff4782320b02aa57e4ac2bbf9"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-far-copy-data.json",
+      "sha256": "82209b6399f08cdd6e60542b73c1184ef992cf957e6dccd5850e8c5dbc4b026d"
+    },
+    {
+      "path": "research/far-copy-data-reconstruction.md",
+      "sha256": "8798b31e20bad269fe3f2424cd5943c4df1ec931bb47b82a8f6a8c4baa270c51"
+    },
+    {
+      "path": "tests/test_far_copy_data_reconstruction.py",
+      "sha256": "ce8431815626229841b8a3f06ca8c6d2c2996f71203c47563752044cd8ce2771"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
