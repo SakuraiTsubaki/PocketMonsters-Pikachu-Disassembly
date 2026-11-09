@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "axis": "Disassembly",
+  "game": "Pikachu",
+  "profile": "yellow",
+  "functions": [
+    "Delay3",
+    "ProtectedDelay3"
+  ],
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/catalog_gen1_delay3.py",
+    "tool_sha256": "167f3aea2271487fc0c2bc885686c688b51c3e1ee19cb67dfbdc9073b4f34e99"
+  },
+  "outputs": [
+    {
+      "path": "research/releases.csv",
+      "sha256": "9d5ef0a026a810d91ea86ede9f5ae2c580989108b380ed22d7dae84b5eea648d"
+    },
+    {
+      "path": "analysis/delay-summary.json",
+      "sha256": "796e116cff2a0f7b9b53479dd2d6743e09bdd114f076c47736998a08ed01cae0"
+    },
+    {
+      "path": "src/delay3.asm",
+      "sha256": "2cfee926b987eccc759b1dd62dfe89e47c3e5e9d91da8a4569ac6f0746e28f59"
+    },
+    {
+      "path": "analysis/delay3-summary.json",
+      "sha256": "57e0f09b7661ad8bbaab298c351dff8ca25fa6cdb318879743674197ac850fd6"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-delay3.json",
+      "sha256": "30c3045774096427e3fe3c7c2df9859865baa8b44867b91787fcba49e2432583"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-delay3.json",
+      "sha256": "c27da3c288f62000d30bd339d1f724be3a3aecbfd619072dfb6dd468e3b5f96f"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-delay3.json",
+      "sha256": "25f4e462f32ca51508cdd52770e6af4e586f5704924d9002273647630d171a09"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-delay3.json",
+      "sha256": "c890ea24da2ba305edd581f2417d7ed719df46b0f0440eac7cf7963879d3c0d1"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-delay3.json",
+      "sha256": "a991eb451790e2731c0a01db302b243aa606aea3beba0d96d0c8c23ecf05b819"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-delay3.json",
+      "sha256": "2afff89cf17930a32d6c7ecc25908a26b0d7021c1a985222f4eb9394e8e0c2fa"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-delay3.json",
+      "sha256": "1a8bfea9f1bef650d78f9e3c9e7feef49ba748bc4ecc40e97f4485ae50d87f28"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-delay3.json",
+      "sha256": "07de9aa859b0cd5638516700eb6cedbfcd90679f0a45ec9218e54dabfa2ea4d4"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-delay3.json",
+      "sha256": "884c5203ab6bb5e7a37fd22066bdd6b36cab20784b9d86b68f0daf3f2289db32"
+    },
+    {
+      "path": "research/delay3-reconstruction.md",
+      "sha256": "4f04b9cf2b8fd1964f8b9c59ab3e233b5db0b2ca92ff53ee601775b42b0f7af3"
+    },
+    {
+      "path": "tests/test_delay3_reconstruction.py",
+      "sha256": "071874236fa1b362972e536fe16c4f64e31729eb559ef341fd0c1b9974fea1eb"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}

@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "axis": "Disassembly",
+  "target": {
+    "release": "pikachu-jp-rev0",
+    "sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436",
+    "status": "candidate"
+  },
+  "origin_reference": true,
+  "profile": "yellow",
+  "source": "src/delay3.asm",
+  "source_sha256": "2cfee926b987eccc759b1dd62dfe89e47c3e5e9d91da8a4569ac6f0746e28f59",
+  "dependency": {
+    "path": "analysis/delay-summary.json",
+    "sha256": "796e116cff2a0f7b9b53479dd2d6743e09bdd114f076c47736998a08ed01cae0",
+    "delay_frames_address": 14160
+  },
+  "functions": {
+    "Delay3": {
+      "rom_offset": 15846,
+      "bank": 0,
+      "address": 15846,
+      "range_end_exclusive": 15851,
+      "length": 5,
+      "frame_count": 3,
+      "delay_frames_target": 14160,
+      "code_sha256": "449e3474a1016ec824bb286e4765af210ef5a56ff7a7f812afd019482fec5987"
+    },
+    "ProtectedDelay3": {
+      "rom_offset": 6543,
+      "bank": 0,
+      "address": 6543,
+      "range_end_exclusive": 6549,
+      "length": 6,
+      "delay3_target": 15846,
+      "preserved_register": "BC",
+      "code_sha256": "5b0828898e7f3f3e2fe0df921a91ef3deda377109e054ee4fa2de55a955be747"
+    }
+  },
+  "semantics": {
+    "Delay3": "load C with three and tail-jump to DelayFrames",
+    "ProtectedDelay3": "preserve BC while calling Delay3",
+    "bg_update_reason": "wait three frames for the three-part background map update"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "b452f2ab07185075140061c5084ab866d5e4a794",
+    "paths": [
+      "home/palettes.asm",
+      "home/text.asm"
+    ]
+  },
+  "raw_rom_bytes_included": false
+}
