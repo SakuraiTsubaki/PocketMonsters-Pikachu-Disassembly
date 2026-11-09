@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "axis": "Disassembly",
+  "target": {
+    "release": "yellow-it-rev0",
+    "sha256": "e3f0663e16ac240bc1c6681cdb95ca7230d86fca23eb931ea58f4abce0002856",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "profile": "yellow",
+  "source": "src/delay.asm",
+  "source_sha256": "422fa50e2e93d7720047487f4ff9282956d102e9db1e9f463f461487606fcf76",
+  "functions": {
+    "DelayFrame": {
+      "rom_offset": 7780,
+      "bank": 0,
+      "address": 7780,
+      "range_end_exclusive": 7791,
+      "length": 11,
+      "h_vblank_occurred_offset": 214,
+      "h_vblank_occurred_address": 65494,
+      "code_sha256": "e455131e84afca95a58d4d691048cc09701d8145bbd252622df22b12596f2692"
+    },
+    "DelayFrames": {
+      "rom_offset": 14125,
+      "bank": 0,
+      "address": 14125,
+      "range_end_exclusive": 14132,
+      "length": 7,
+      "delay_frame_target": 7780,
+      "code_sha256": "80a0a8edf358f8ee3504b27628916db695bbb71732b93fb1499debf49c4ddbee"
+    }
+  },
+  "semantics": {
+    "DelayFrame": "set the VBlank flag, halt until the interrupt clears it, then return",
+    "DelayFrames": "call DelayFrame and decrement C until C reaches zero",
+    "zero_count_precondition": "C must be nonzero; zero wraps and waits 256 frames",
+    "halt_loop_target": "HALT instruction"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "b452f2ab07185075140061c5084ab866d5e4a794",
+    "paths": [
+      "home/vblank.asm",
+      "home/delay.asm"
+    ]
+  },
+  "raw_rom_bytes_included": false
+}
