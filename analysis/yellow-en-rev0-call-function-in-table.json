@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-en-rev0",
+    "sha256": "8cbaa499397e4f1a679c992ea9382a2dd7942ab398b48c19829c2d9529de47bf",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "source": "src/call_function_in_table.asm",
+  "source_sha256": "1f50a793da0500e1fb15c277b13f3995660905d1e14a44db7e8eacd826d4f6e5",
+  "function": {
+    "rom_offset": 15763,
+    "bank": 0,
+    "address": 15763,
+    "range_end_exclusive": 15783,
+    "length": 20,
+    "return_address": 15779,
+    "return_offset": 16,
+    "code_sha256": "fe5fe2cb89d9648291246cfd91d05db5e62416321c3f67a5a1aa3cd98e67dc68",
+    "name": "CallFunctionInTable",
+    "raw_bytes_published": false
+  },
+  "semantics": {
+    "input": "A is a zero-based index below 128; HL points to little-endian ROM0 addresses",
+    "operation": "load table[A], synthesize a return address, and jump to the target",
+    "return_mechanism": "the target returns to the embedded local address pushed before jp hl",
+    "preserves_after_target_return": [
+      "HL",
+      "DE",
+      "BC"
+    ],
+    "clobbers": [
+      "A",
+      "flags"
+    ]
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "b452f2ab07185075140061c5084ab866d5e4a794",
+    "path": "home/array2.asm"
+  },
+  "raw_rom_bytes_included": false
+}

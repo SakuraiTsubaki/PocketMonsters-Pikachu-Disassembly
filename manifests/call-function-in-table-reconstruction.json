@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "game": "Pocket Monsters Pikachu",
+  "function": "CallFunctionInTable",
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/catalog_gen1_call_function_in_table.py",
+    "tool_sha256": "d8cc618263234ef5a752bcfb576feefae31a7570d2c043a2b471fa2a257565e1",
+    "dependency": {
+      "tool": "tools/catalog_gen1_is_in_array.py",
+      "sha256": "cd31391b5203daa83fe09cc01fa8e6dfcd27abb838d1dd514060f8e24605f704"
+    }
+  },
+  "outputs": [
+    {
+      "path": "research/releases.csv",
+      "sha256": "9d5ef0a026a810d91ea86ede9f5ae2c580989108b380ed22d7dae84b5eea648d"
+    },
+    {
+      "path": "src/call_function_in_table.asm",
+      "sha256": "1f50a793da0500e1fb15c277b13f3995660905d1e14a44db7e8eacd826d4f6e5"
+    },
+    {
+      "path": "analysis/call-function-in-table-summary.json",
+      "sha256": "b5c50a373fcc5697baa7765b14c42d08561548e7f4efd88b1574a8128c0c6afa"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-call-function-in-table.json",
+      "sha256": "7a8ceb96c00657f8a02ccd02be377222ea91f43cf007b8ae6aed3fb1ba4ad4ea"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-call-function-in-table.json",
+      "sha256": "69997dbaf9449edfdcb1bb6d882f10cddf160abaf7ed5a287fb4f951aa631731"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-call-function-in-table.json",
+      "sha256": "81936f4ee8e23b5832aa0ea31a3f19669aba64d1fd149996b5b27ddb09f834b4"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-call-function-in-table.json",
+      "sha256": "02d2b4aa98b99edcc51badb4e60bd80570ba29b71652ce337335addd51cedfd5"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-call-function-in-table.json",
+      "sha256": "5c1ef111c68c80c86ce1b624f2d4ea6210783e8db66fed703bef01e31a07f406"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-call-function-in-table.json",
+      "sha256": "475144d5bfae84056671ab320ab05591de16f45b48dd9fe3f8fb1797484c72fe"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-call-function-in-table.json",
+      "sha256": "d73f237b07176fb1355175bc87efa6157036c0f999fe5d714fdcc0e4e10df22a"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-call-function-in-table.json",
+      "sha256": "7aab885d71b3b407bc5919d2d0b73d2c4760a62198d1d87097854c9f2d416955"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-call-function-in-table.json",
+      "sha256": "6fd6c2b9bb02918ab0bba9a3c25eda6303700998a1b92deea2addd275264cfff"
+    },
+    {
+      "path": "research/call-function-in-table-reconstruction.md",
+      "sha256": "baab53ecdac053bbec965411e0c25ed1e10e748c00c3958b68f083003ddf829d"
+    },
+    {
+      "path": "tests/test_call_function_in_table_reconstruction.py",
+      "sha256": "f8a28004f9b391eb14b173789b3a1dd05271ef5c3e30450516e5d716e2bf4e96"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
