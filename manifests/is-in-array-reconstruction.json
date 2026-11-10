@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "game": "Pocket Monsters Pikachu",
+  "function": "IsInArray",
+  "origin_reference": "pikachu-jp-rev0",
+  "release_count": 9,
+  "generator": {
+    "repository": "SakuraiTsubaki/Disassembly",
+    "tool": "tools/catalog_gen1_is_in_array.py",
+    "tool_sha256": "cd31391b5203daa83fe09cc01fa8e6dfcd27abb838d1dd514060f8e24605f704",
+    "dependency": {
+      "tool": "tools/catalog_gen1_fill_memory.py",
+      "sha256": "be4e6c8d4c53efe135240cb7efa749ba10f0158e68750e4d209c438f3b00bd7d"
+    }
+  },
+  "outputs": [
+    {
+      "path": "research/releases.csv",
+      "sha256": "9d5ef0a026a810d91ea86ede9f5ae2c580989108b380ed22d7dae84b5eea648d"
+    },
+    {
+      "path": "src/is_in_array.asm",
+      "sha256": "babfc1026dcce9bac102586effcbfd04fa3dacbdf24977f1aa93e5aa95245486"
+    },
+    {
+      "path": "analysis/is-in-array-summary.json",
+      "sha256": "f9498210a23bfadec906c8269e411bb6273c1c3bdaff1297f0dfe36902087a93"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev0-is-in-array.json",
+      "sha256": "97d5a746439e5d55594594b9f79413cd96db3ae6103ee7f12ca36b1299a9d183"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev1-is-in-array.json",
+      "sha256": "fea26e7ccbf6e2d3128b0716a5d086a13c5eb636b64e742763c3f2c4899a730f"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev2-is-in-array.json",
+      "sha256": "271b16ae74d29cafc8cc3480accf0cad95dfec048e126102468694af6f8bcf36"
+    },
+    {
+      "path": "analysis/pikachu-jp-rev3-is-in-array.json",
+      "sha256": "737f64f1e013412b2cb9e939038e1333edf480a4920e4e31e154e3d5a6f96be2"
+    },
+    {
+      "path": "analysis/yellow-en-rev0-is-in-array.json",
+      "sha256": "f8c5a4fae9fb3b917dc0bc4052127f2df1b85ba58ba0700975e278adef2e4558"
+    },
+    {
+      "path": "analysis/yellow-de-rev0-is-in-array.json",
+      "sha256": "b2a0803dad94286808e3d104fa74a1fb645e75ad4ab67744332ef3c821c7f288"
+    },
+    {
+      "path": "analysis/yellow-fr-rev0-is-in-array.json",
+      "sha256": "628ecf88eeed4b7e891410b8fcd80293b06fd32b4724719a1d72a4afb0ff2366"
+    },
+    {
+      "path": "analysis/yellow-it-rev0-is-in-array.json",
+      "sha256": "cc224f52f1caee7a1489ff556a6f967e518de170d202c855be33b32a7cb69950"
+    },
+    {
+      "path": "analysis/yellow-es-rev0-is-in-array.json",
+      "sha256": "6a9a447fbcc1fe464f60dbc562d7241e1bfec4e2bd7d1af4b24733d510943df9"
+    },
+    {
+      "path": "research/is-in-array-reconstruction.md",
+      "sha256": "64cd561f31c66021955f5c3c8700a7c7fedf3c51a2ce9c4a34bbafa5f05e7072"
+    },
+    {
+      "path": "tests/test_is_in_array_reconstruction.py",
+      "sha256": "56b5f1cc89611e254bfbacde0e3356f554d383bb68ffb57f60466f5543b24abf"
+    }
+  ],
+  "raw_rom_bytes_included": false
+}
