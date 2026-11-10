@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "pikachu-jp-rev0",
+    "sha256": "09a083624c4f84ccae99165d4091e7c5403aaf9ae44329a9349b4d59b4095436",
+    "status": "candidate"
+  },
+  "origin_reference": true,
+  "source": "src/skip_fixed_length_text_entries_add_n_times.asm",
+  "source_sha256": "a1ef71e76cf92ad35483b85d42b4d0afb6cda45cf160fa7e006fe5e0dffb0a4f",
+  "functions": {
+    "SkipFixedLengthTextEntries": {
+      "rom_offset": 14987,
+      "bank": 0,
+      "address": 14987,
+      "range_end_exclusive": 14997,
+      "length": 10,
+      "name_length": 6,
+      "raw_bytes_published": false
+    },
+    "AddNTimes": {
+      "rom_offset": 14997,
+      "bank": 0,
+      "address": 14997,
+      "range_end_exclusive": 15004,
+      "length": 7,
+      "raw_bytes_published": false
+    },
+    "adjacent_pair_sha256": "fa2f4d3fbc129ad0f2fabf342d5a7999407b6e4f4124a8f5f821b51fbdd510e1"
+  },
+  "semantics": {
+    "SkipFixedLengthTextEntries": "advance HL by A times release-specific NAME_LENGTH",
+    "AddNTimes": "advance HL by A times BC",
+    "zero_count": "return without changing HL",
+    "adjacency": "the fixed-name helper ends exactly where AddNTimes begins"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "b452f2ab07185075140061c5084ab866d5e4a794",
+    "path": "home/array.asm"
+  },
+  "raw_rom_bytes_included": false
+}

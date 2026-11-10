@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "target": {
+    "release": "yellow-de-rev0",
+    "sha256": "aed41ea3e785ac9c06fd641270ff30b59de5fc64fed4349e81a9aaa4ba7d31f9",
+    "status": "candidate"
+  },
+  "origin_reference": false,
+  "source": "src/skip_fixed_length_text_entries_add_n_times.asm",
+  "source_sha256": "a1ef71e76cf92ad35483b85d42b4d0afb6cda45cf160fa7e006fe5e0dffb0a4f",
+  "functions": {
+    "SkipFixedLengthTextEntries": {
+      "rom_offset": 14959,
+      "bank": 0,
+      "address": 14959,
+      "range_end_exclusive": 14969,
+      "length": 10,
+      "name_length": 11,
+      "raw_bytes_published": false
+    },
+    "AddNTimes": {
+      "rom_offset": 14969,
+      "bank": 0,
+      "address": 14969,
+      "range_end_exclusive": 14976,
+      "length": 7,
+      "raw_bytes_published": false
+    },
+    "adjacent_pair_sha256": "db83a113b394825fbb0c3a474b4b5765afa0118ddf8440bebc03350410342b48"
+  },
+  "semantics": {
+    "SkipFixedLengthTextEntries": "advance HL by A times release-specific NAME_LENGTH",
+    "AddNTimes": "advance HL by A times BC",
+    "zero_count": "return without changing HL",
+    "adjacency": "the fixed-name helper ends exactly where AddNTimes begins"
+  },
+  "naming_basis": {
+    "repository": "pret/pokeyellow",
+    "commit": "b452f2ab07185075140061c5084ab866d5e4a794",
+    "path": "home/array.asm"
+  },
+  "raw_rom_bytes_included": false
+}
